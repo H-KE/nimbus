@@ -28,7 +28,7 @@
           Products
       </ion-card-title>
       <ion-list>
-        <ion-item *ngFor="let item of menu">
+        <ion-item *ngFor="let item of menu" (click)="itemSelected($event, item)">
           <ion-avatar item-left>
             <img src="{{item.img}}">
           </ion-avatar>

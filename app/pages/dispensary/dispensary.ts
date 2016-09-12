@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { MenuService } from '../../providers/menu/menu';
 import { Item } from '../../models/item';
+import { ItemDetailsPage } from '../item-details/item-details';
 
 
 @Component({
@@ -18,4 +19,9 @@ export class DispensaryPage {
     this.menu = menuService.getMenuForDispensary();
   }
 
+  itemSelected(event, item) {
+    this.navCtrl.push(ItemDetailsPage, {
+      item: item
+    });
+  }
 }
