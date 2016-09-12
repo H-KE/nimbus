@@ -28,11 +28,12 @@
     </ion-card-header>
     <ion-list id="welcomeToNimbus-list4">
         <ion-item class="dispensary-list-item" *ngFor="let dispensary of dispensaries" (click)="dispensarySelected($event, dispensary)">
-          <ion-avatar item-left>
+          <ion-thumbnail item-left>
             <img src={{dispensary.avatar_url}}>
-          </ion-avatar>
+          </ion-thumbnail>
           <h2>{{dispensary.name}}</h2>
           <p>{{dispensary.address}}</p>
+          <button clear item-right>View</button>
         </ion-item>
     </ion-list>
   </ion-card>
