@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Premier Medicinal Cannabis Delivery</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding class="getting-started">
+
+  <ion-card>
+    <img src="../../img/welcome.jpg" class="nimbus-welcome"/>
+
+    <ion-card-content class="nimbus-home-card">
+      <ion-searchbar
+        class="nimbus-home-search"
+        [(ngModel)]="myInput"
+        [placeholder]="placeholder">
+      </ion-searchbar>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header style="color:#388000;font-weight:600;">
+      Or choose from a list nearest you
+    </ion-card-header>
+    <ion-list id="welcomeToNimbus-list4">
+        <ion-item class="dispensary-list-item" *ngFor="let dispensary of dispensaries" (click)="dispensarySelected($event, dispensary)">
+          <ion-avatar item-left>
+            <img src={{dispensary.avatar_url}}>
+          </ion-avatar>
+          <h2>{{dispensary.name}}</h2>
+          <p>{{dispensary.address}}</p>
+        </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <p>
+    <button primary menuToggle>Toggle Menu</button>
+  </p>
+
+</ion-content>

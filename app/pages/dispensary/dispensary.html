@@ -1,0 +1,42 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Dispensary Menu</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <div *ngIf="selectedDispensary" class="selection">
+    <ion-card>
+      <div id="dispensary-logo-wrapper">
+        <img src={{selectedDispensary.avatar_url}} class="dispensary-logo"/>
+      </div>
+      <ion-card-content>
+        <ion-card-title>
+          {{selectedDispensary.name}}
+        </ion-card-title>
+        <p>
+          {{selectedDispensary.description}}
+        </p>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+      <ion-card-title>
+          Products
+      </ion-card-title>
+      <ion-list>
+        <ion-item *ngFor="let item of menu">
+          <ion-avatar item-left>
+            <img src="{{item.img}}">
+          </ion-avatar>
+          <h2>{{item.name}}</h2>
+          <p>{{item.subspecies}} | THC: {{item.thc}}%</p>
+          <i class="icon ion-chevron-right icon-accessory"></i>
+        </ion-item>
+      </ion-list>
+    </ion-card>
+   </div>
+</ion-content>

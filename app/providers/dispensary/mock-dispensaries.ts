@@ -1,0 +1,8 @@
+import {Dispensary} from '../../models/dispensary';
+
+export var DISPENSARIES: Dispensary[] = [
+  { id: 1, avatar_url: 'http://cdn.theweedblog.com/wp-content/uploads//Medical-Marijuana2.jpg', name: 'Modern Apothecarium', address: '474 Victoria Park Ave, M4A 2M5', rating: 4.5, description: 'This is a made up dispensary for demo purposes. We specialize in all kinds of medicinal cannabis products including edibles, extracts, flowers, as well as accessories and apparatus.' },
+  { id: 2, avatar_url: 'http://www.cannabistherapyinstitute.com/images/cross.only.gif', name: 'The Green Cross', address: '2012 Neilson Avenue, M1M 1V1', rating: 4, description: 'This is a made up dispensary for demo purposes. We specialize in all kinds of medicinal cannabis products including edibles, extracts, flowers, as well as accessories and apparatus.' },
+  { id: 3, avatar_url: 'http://sites.middlebury.edu/middmag/files/2012/10/high-line-logo.jpeg', name: 'The High Line', address: '170 Islington Ave, M9V 2X5', rating: 5, description: 'This is a made up dispensary for demo purposes. We specialize in all kinds of medicinal cannabis products including edibles, extracts, flowers, as well as accessories and apparatus.' },
+  { id: 4, avatar_url: 'http://static1.squarespace.com/static/50414a88e4b0b97fe5a56a39/t/53695564e4b0e9a5f9b53913/1399412070542/', name: 'Shambhala Healing', address: '2792 Adelaide St, M5H 1P6', rating: 4.5, description: 'This is a made up dispensary for demo purposes. We specialize in all kinds of medicinal cannabis products including edibles, extracts, flowers, as well as accessories and apparatus.' },
+]
