@@ -4,22 +4,38 @@ import { MenuService } from '../../providers/menu/menu';
 import { Constants } from '../../../resources/constants/constants';
 import { Item } from '../../models/item';
 import { ItemDetailsPage } from '../item-details/item-details';
+import * as _ from 'underscore';
 
 
 @Component({
   templateUrl: 'build/pages/dispensary/dispensary.html',
-  providers: [MenuService]
+  providers: [MenuService, Constants]
 })
 export class DispensaryPage {
   selectedDispensary: any;
   menu: Item[];
-  menu_subcategories: any;
+  menuCategories: any[];
 
-  constructor(public navCtrl: NavController, navParams: NavParams, menuService: MenuService, @Inject(Constants) constants: Constants) {
+  constructor(public navCtrl: NavController, navParams: NavParams, menuService: MenuService, constants: Constants) {
     this.selectedDispensary = navParams.get('dispensary');
 
     this.menu = menuService.getMenuForDispensary();
-    this.menu_subcategories = constants.menu_subcategories;
+    this.menuCategories = [];
+    for (var category of constants.menuCategories) {
+      this.menuCategories.push ({
+        name: category,
+        show: false,
+        items: _.where(this.menu, {category: category})
+      })
+    }
+  }
+
+  toggleMenuCategory(category) {
+    category.show = !category.show;
+  }
+
+  isCategoryShown(category) {
+    return category.show;
   }
 
   itemSelected(event, item) {

@@ -6,5 +6,5 @@ export class Item {
   description: string;
   thc: number;
   subspecies: string;
-  subcategory: string;
+  category: string;
 }

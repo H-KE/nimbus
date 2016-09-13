@@ -28,39 +28,26 @@
           Products
       </ion-card-title>
       <ion-list>
-        <ion-item *ngFor="let item of menu" (click)="itemSelected($event, item)">
-          <ion-thumbnail item-left>
-            <img src="{{item.img}}">
-          </ion-thumbnail>
-          <h2>{{item.name}}</h2>
-          <p>{{item.subspecies}} | THC: {{item.thc}}%</p>
-          <i class="icon ion-chevron-right icon-accessory"></i>
-        </ion-item>
-      </ion-list>
-    </ion-card>
-   </div>
-</ion-content>
-
-
-      <ion-list>
-        <div *ngFor="subcategory in menu_subcategories">
+        <div *ngFor="let category of menuCategories">
           <ion-item class="item-stable"
-                    ng-click="toggleGroup(subcategory)"
-                    ng-class="{active: isGroupShown(subcategory)}">
-              <i class="icon" ng-class="isGroupShown(group) ? 'ion-minus' : 'ion-plus'"></i>
-            &nbsp;
-            {{subcategory}}
+                    (click)="toggleMenuCategory(category)"
+                    [class.active]="!isCategoryShown(category)">
+            <h2>{{category.name}}</h2>
+            <ion-icon [name]="isCategoryShown(category) ? 'remove' : 'add'" item-right></ion-icon>
           </ion-item>
-          <ion-item *ngFor="let item of menu"
+          <ion-item *ngFor="let item of category.items"
                     (click)="itemSelected($event, item)"
                     class="item-accordian"
-                    ng-show="isItemShown(subcategory, item)">
+                    [hidden]="!isCategoryShown(category)">
             <ion-thumbnail item-left>
               <img src="{{item.img}}">
             </ion-thumbnail>
             <h2>{{item.name}}</h2>
             <p>{{item.subspecies}} | THC: {{item.thc}}%</p>
-            <i class="icon ion-chevron-right icon-accessory"></i>
+            <ion-icon name="arrow-dropright" item-right></ion-icon>
           </ion-item>
         </div>
       </ion-list>
+    </ion-card>
+   </div>
+</ion-content>

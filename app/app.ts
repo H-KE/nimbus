@@ -4,6 +4,7 @@ import {StatusBar} from 'ionic-native';
 import {NimbusHomePage} from './pages/nimbus-home/nimbus-home';
 import {ListPage} from './pages/list/list';
 import {LoginPage} from './pages/login/login';
+import * as _ from 'underscore';
 
 
 @Component({
