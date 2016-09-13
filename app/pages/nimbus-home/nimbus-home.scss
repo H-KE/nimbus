@@ -5,6 +5,32 @@
     line-height: 22px;
     font-size: 16px;
   }
+
+  ion-card {
+    position: relative;
+    text-align: left;
+  }
+
+  .card-title {
+    position: absolute;
+    top: 50%;
+    font-size: 1.8em;
+    width: 80%;
+    left: 5%;
+    font-weight: bold;
+    color: #fff;
+  }
+
+  // .nav-header {
+  //   position: absolute;
+  //   top: 0;
+  //   left: 0;
+  //   padding: 0 90px 1px;
+  //   width: 100%;
+  //   height: 100%;
+  //   text-align: center;
+  // }
+
 }
 
 ion-card-content.nimbus-home-card {
