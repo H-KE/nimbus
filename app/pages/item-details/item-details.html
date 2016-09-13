@@ -9,9 +9,22 @@
 
 <ion-content>
  <div *ngIf="selectedItem" class="selection">
-    <b>{{selectedItem.name}}</b>
-    <div>
-      You navigated here from <b>{{selectedItem.name}}</b>
-    </div>
+    <ion-card>
+      <div id="item-logo-wrapper">
+        <img src={{selectedItem.img}} class="item-image"/>
+      </div>
+      <ion-card-content>
+        <ion-card-title>
+          {{selectedItem.name}}
+        </ion-card-title>
+        <p>
+          {{selectedItem.description}}
+        </p>
+        <button secondary outline full>
+          Add to Cart
+          <ion-icon name='cart'></ion-icon>
+        </button>
+      </ion-card-content>
+    </ion-card>
   </div>
 </ion-content>
