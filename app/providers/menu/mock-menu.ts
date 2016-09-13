@@ -50,5 +50,95 @@ export var MENU: Item[] = [
         thc: 15,
         subspecies: "Hybrid",
         category: "Flowers"
+    },
+    {
+        id: 6,
+        name: "Milk Chocolate Bar",
+        img: "img/Kraken84.jpeg",
+        price: 18,
+        description: "A mix of small buds and shake from our various strains. Exceptional quality at an exceptional price!",
+        thc: 15,
+        subspecies: "Hybrid",
+        category: "Edibles"
+    },
+    {
+        id: 7,
+        name: "Smores Brownie",
+        img: "img/smoresbrownie.png",
+        price: 18,
+        description: "A mix of small buds and shake from our various strains. Exceptional quality at an exceptional price!",
+        thc: 15,
+        subspecies: "Hybrid",
+        category: "Edibles"
+    },
+    {
+        id: 8,
+        name: "Cannabis Pop",
+        img: "img/sprig.jpg",
+        price: 18,
+        description: "A mix of small buds and shake from our various strains. Exceptional quality at an exceptional price!",
+        thc: 15,
+        subspecies: "Hybrid",
+        category: "Edibles"
+    },
+    {
+        id: 9,
+        name: "Premium Shatter",
+        img: "img/shatter_hover.png",
+        price: 18,
+        description: "A mix of small buds and shake from our various strains. Exceptional quality at an exceptional price!",
+        thc: 15,
+        subspecies: "Hybrid",
+        category: "Concentrates"
+    },
+    {
+        id: 10,
+        name: "Premium Wax",
+        img: "img/wax_hover.png",
+        price: 18,
+        description: "A mix of small buds and shake from our various strains. Exceptional quality at an exceptional price!",
+        thc: 15,
+        subspecies: "Hybrid",
+        category: "Concentrates"
+    },
+    {
+        id: 11,
+        name: "Bubba Kush",
+        img: "img/prerolls.jpg",
+        price: 18,
+        description: "A mix of small buds and shake from our various strains. Exceptional quality at an exceptional price!",
+        thc: 15,
+        subspecies: "Hybrid",
+        category: "Pre-rolls"
+    },
+    {
+        id: 12,
+        name: "Jack Herer",
+        img: "img/Jays-PreRolls-Joints-About-Graphic-2.jpg",
+        price: 18,
+        description: "A mix of small buds and shake from our various strains. Exceptional quality at an exceptional price!",
+        thc: 15,
+        subspecies: "Hybrid",
+        category: "Pre-rolls"
+    },
+    {
+        id: 13,
+        name: "Bong",
+        img: "img/smoke_cartel_sesh_supply_gaia_faberge_egg_water_pipe.png",
+        price: 18,
+        description: "A mix of small buds and shake from our various strains. Exceptional quality at an exceptional price!",
+        thc: 15,
+        subspecies: "Hybrid",
+        category: "Other"
+    },
+    {
+        id: 14,
+        name: "Bubbler Oil Rig",
+        img: "img/smoke_cartel_sesh_supply_orion_cube_perc_recycler.png",
+        price: 18,
+        description: "A mix of small buds and shake from our various strains. Exceptional quality at an exceptional price!",
+        thc: 15,
+        subspecies: "Hybrid",
+        category: "Other"
     }
 ]
