@@ -39,9 +39,9 @@
                     (click)="itemSelected($event, item)"
                     class="item-accordian"
                     [hidden]="!isCategoryShown(category)">
-            <ion-thumbnail item-left>
+            <ion-avatar item-left>
               <img src="{{item.img}}">
-            </ion-thumbnail>
+            </ion-avatar>
             <h2>{{item.name}}</h2>
             <p>{{item.subspecies}} | THC: {{item.thc}}%</p>
             <ion-icon name="arrow-dropright" item-right></ion-icon>
