@@ -8,8 +8,7 @@
   "filesGlob": [
     "**/*.ts",
     "!node_modules/**/*",
-    "typings/index.d.ts",
-    "app/models/item.ts"
+    "typings/index.d.ts"
   ],
   "exclude": [
     "node_modules",

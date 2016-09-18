@@ -20,12 +20,14 @@
         <p>
           {{selectedItem.description}}
         </p>
-        <ion-item>
-          <ion-range min="0" max="4" step="1" snaps="true" secondary [(ngModel)]="quantity">
-            <ion-label range-right>{{quantityLabel}}: {{itemPrice}}</ion-label>
-          </ion-range>
-        </ion-item>
-        <button secondary outline full>
+        <div *ngIf="displaySlider">
+          <ion-item>
+            <ion-range min="0" max="4" step="1" snaps="true" secondary [(ngModel)]="quantity" >
+              <ion-label range-right>{{selectedItem.priceLabels[quantity]}}: ${{selectedItem.price[quantity]}}</ion-label>
+            </ion-range>
+          </ion-item>
+        </div>
+        <button secondary outline (click)="addToCart(selectedItem, quantity)">
           Add to Cart
           <ion-icon name='cart'></ion-icon>
         </button>
