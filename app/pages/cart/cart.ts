@@ -1,19 +1,17 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
-/*
-  Generated class for the CartPage page.
+import { CartService } from '../../providers/cart/cart';
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
-  templateUrl: 'build/pages/cart/cart.html',
+  templateUrl: 'build/pages/cart/cart.html'
 })
 export class CartPage {
+  cartContents: any;
 
-  constructor(private navCtrl: NavController) {
-
+  constructor(private navCtrl: NavController, private cartService: CartService) {
+    this.cartService = cartService;
+    this.cartContents = this.cartService.getCart();
   }
 
 }

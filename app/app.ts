@@ -2,13 +2,16 @@ import {Component, ViewChild} from '@angular/core';
 import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {NimbusHomePage} from './pages/nimbus-home/nimbus-home';
-import {ListPage} from './pages/list/list';
+import {CartPage} from './pages/cart/cart';
 import {LoginPage} from './pages/login/login';
 import * as _ from 'underscore';
 
+import {CartService} from './providers/cart/cart'
+
 
 @Component({
-  templateUrl: 'build/app.html'
+  templateUrl: 'build/app.html',
+  providers: [CartService]
 })
 class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -26,7 +29,7 @@ class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'Home', component: NimbusHomePage },
-      { title: 'My First List', component: ListPage },
+      { title: 'Cart', component: CartPage },
       { title: 'Login', component: LoginPage}
     ];
   }

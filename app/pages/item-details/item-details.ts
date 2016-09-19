@@ -5,8 +5,7 @@ import { Item } from '../../models/item';
 import { CartService } from '../../providers/cart/cart';
 
 @Component({
-  templateUrl: 'build/pages/item-details/item-details.html',
-  providers: [CartService]
+  templateUrl: 'build/pages/item-details/item-details.html'
 })
 export class ItemDetailsPage {
   selectedItem: any;
@@ -14,11 +13,8 @@ export class ItemDetailsPage {
   quantityLabel: string;
   itemPrice: number;
   displaySlider: boolean;
-  cartService: any;
 
-  constructor(public navCtrl: NavController, navParams: NavParams, cartService: CartService) {
-    this.cartService = cartService;
-
+  constructor(public navCtrl: NavController, navParams: NavParams, private cartService: CartService) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
     this.quantity = 0;
@@ -31,6 +27,6 @@ export class ItemDetailsPage {
   }
 
   addToCart(selectedItem, quantity) {
-    this.cartService.addToCart(selectedItem, selectedItem.price[quantity], selectedItem.priceLabels[quantity]);
+    this.cartService.addToCart(selectedItem, selectedItem.priceLabels[quantity], selectedItem.price[quantity]);
   }
 }
