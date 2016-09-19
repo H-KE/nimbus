@@ -18,3 +18,13 @@
 @import "../pages/dispensary/dispensary.scss";
 
 @import "../pages/cart/cart.scss";
+
+ion-content {
+  background: color($colors, background, base);
+}
+
+ion-menu {
+  ion-content {
+    background: #fff;
+  }
+}

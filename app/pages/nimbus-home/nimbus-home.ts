@@ -15,7 +15,7 @@ export class NimbusHomePage {
   dispensaries: Dispensary[];
   constructor(dispensaryService: DispensaryService, public navCtrl: NavController) {
 
-      this.placeholder = "Search for a dispensary to get started";
+      this.placeholder = "Search for a dispensary";
       this.dispensaries = dispensaryService.getNearestDispensaries();
   }
 

@@ -1,10 +1,11 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar primary>
     <button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      <img src="./img/nimbus-logo.png" class="nimbus-logo" style="height:42px;">
+      <!-- <img src="./img/nimbus-logo.png" class="nimbus-logo" style="height:42px;"> -->
+      Dispensaries
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,8 +14,8 @@
 <ion-content padding class="getting-started">
 
   <ion-card>
-    <img src="./img/welcome-min.jpg" class="nimbus-welcome"/>
-    <div class="card-title">Premier medicinal cannabis to your door</div>
+    <!-- <img src="./img/welcome-min.jpg" class="nimbus-welcome"/>
+    <div class="card-title">Premier medicinal cannabis to your door</div> -->
 
     <ion-card-content class="nimbus-home-card">
       <ion-searchbar
@@ -26,9 +27,9 @@
   </ion-card>
 
   <ion-card>
-    <ion-card-header style="color:#388000;font-weight:600;">
+    <!-- <ion-card-header style="color:#388000;font-weight:600;">
       Or choose from a list nearest you
-    </ion-card-header>
+    </ion-card-header> -->
     <ion-list id="welcomeToNimbus-list4">
         <ion-item class="dispensary-list-item" *ngFor="let dispensary of dispensaries" (click)="dispensarySelected($event, dispensary)">
           <ion-thumbnail item-left>
