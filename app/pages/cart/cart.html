@@ -4,7 +4,7 @@
     <button menuToggle *ngIf="!selectedItem">
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Cart</ion-title>
+    <ion-title>My Cart</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -23,7 +23,10 @@
       </ion-item>
       <ion-item>
         <h2>${{cartService.cartTotal}} | Total</h2>
-        <ion-icon item-right name="cloud" secondary></ion-icon>
+        <button item-right secondary outline>
+          Checkout
+          <ion-icon name='checkmark'></ion-icon>
+        </button>
       </ion-item>
     </ion-list>
   </div>

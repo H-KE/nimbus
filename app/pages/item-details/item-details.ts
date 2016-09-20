@@ -3,6 +3,8 @@ import {NavController, NavParams} from 'ionic-angular';
 
 import { Item } from '../../models/item';
 import { CartService } from '../../providers/cart/cart';
+import {CartPage} from '../cart/cart';
+
 
 @Component({
   templateUrl: 'build/pages/item-details/item-details.html'
@@ -28,5 +30,10 @@ export class ItemDetailsPage {
 
   addToCart(selectedItem, quantity) {
     this.cartService.addToCart(selectedItem, selectedItem.priceLabels[quantity], selectedItem.price[quantity]);
+    this.navCtrl.pop();
+  }
+
+  openCart() {
+    this.navCtrl.push(CartPage);
   }
 }

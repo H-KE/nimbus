@@ -4,6 +4,7 @@ import { MenuService } from '../../providers/menu/menu';
 import { Constants } from '../../../resources/constants/constants';
 import { Item } from '../../models/item';
 import { ItemDetailsPage } from '../item-details/item-details';
+import {CartPage} from '../cart/cart';
 import * as _ from 'underscore';
 
 
@@ -42,5 +43,9 @@ export class DispensaryPage {
     this.navCtrl.push(ItemDetailsPage, {
       item: item
     });
+  }
+
+  openCart() {
+    this.navCtrl.push(CartPage);
   }
 }

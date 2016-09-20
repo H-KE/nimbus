@@ -4,6 +4,8 @@ import {NavController, NavParams} from 'ionic-angular';
 import {Dispensary} from '../../models/dispensary'
 import {DispensaryService} from '../../providers/dispensary/dispensary';
 import {DispensaryPage} from '../dispensary/dispensary'
+import {CartPage} from '../cart/cart';
+
 
 
 @Component({
@@ -23,5 +25,9 @@ export class NimbusHomePage {
     this.navCtrl.push(DispensaryPage, {
       dispensary: dispensary
     });
+  }
+
+  openCart() {
+    this.navCtrl.push(CartPage);
   }
 }

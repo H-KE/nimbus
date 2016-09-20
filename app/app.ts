@@ -29,7 +29,7 @@ class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'Home', component: NimbusHomePage },
-      { title: 'Cart', component: CartPage },
+      { title: 'My Cart', component: CartPage },
       { title: 'Login', component: LoginPage}
     ];
   }
