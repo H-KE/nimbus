@@ -1,16 +1,4 @@
-<ion-header>
-  <ion-navbar primary>
-    <button menuToggle *ngIf="!selectedItem">
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Item Details</ion-title>
-    <ion-buttons end>
-      <button (click)="openCart()">
-        1<ion-icon name="cart"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
-</ion-header>
+<nimbus-bar [title]="selectedItem.name" [showMenu]=false></nimbus-bar>
 
 <ion-content>
  <div *ngIf="selectedItem" class="selection">

@@ -6,7 +6,7 @@ import {CartPage} from './pages/cart/cart';
 import {LoginPage} from './pages/login/login';
 import * as _ from 'underscore';
 
-import {CartService} from './providers/cart/cart'
+import {CartService} from './providers/cart/cart';
 
 
 @Component({

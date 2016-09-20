@@ -7,12 +7,18 @@ import * as _ from 'underscore';
 
 @Injectable()
 export class CartService {
-  cart: any[];
-  cartTotal: number;
+  cart: {
+    content: any[],
+    count: number,
+    total: number
+  };
 
   constructor(private http: Http) {
-    this.cart = [];
-    this.cartTotal = 0;
+    this.cart = {
+      content: [],
+      count: 0,
+      total: 0
+    };
   }
 
   getCart() {
@@ -20,26 +26,35 @@ export class CartService {
     return this.cart;
   }
 
+  getCartTotal() {
+    return this.cart.total;
+  }
+
+  getCartCount() {
+    return this.cart.count;
+  }
+
   addToCart(item, quantity, price) {
-    this.cart.push({
+    this.cart.content.push({
       item: item,
       quantity: quantity,
       price: price
     })
-
-    this.cartTotal += price;
+    this.cart.count = this.cart.content.length;
+    this.cart.total += price;
   }
 
   removeFromCart(removedItem) {
-    var cartItemIndex = _.findIndex(this.cart, function(item){
+    var cartItemIndex = _.findIndex(this.cart.content, function(item){
       return item.id == removedItem.id && item.quantity == removedItem.quantity && item.price == removedItem.price;
     })
 
     if (cartItemIndex > -1) {
-      this.cart.splice(cartItemIndex, 1);
-      this.cartTotal -= removedItem.price;
+      this.cart.content.splice(cartItemIndex, 1);
+      this.cart.total -= removedItem.price;
     }
 
+    this.cart.count = this.cart.content.length;
   }
 
 }

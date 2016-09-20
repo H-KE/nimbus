@@ -4,10 +4,12 @@ import {NavController, NavParams} from 'ionic-angular';
 import { Item } from '../../models/item';
 import { CartService } from '../../providers/cart/cart';
 import {CartPage} from '../cart/cart';
+import {NimbusBar} from '../../components/nimbus-bar/nimbus-bar';
 
 
 @Component({
-  templateUrl: 'build/pages/item-details/item-details.html'
+  templateUrl: 'build/pages/item-details/item-details.html',
+  directives: [NimbusBar]
 })
 export class ItemDetailsPage {
   selectedItem: any;
@@ -25,15 +27,10 @@ export class ItemDetailsPage {
     this.quantityLabel = this.selectedItem.priceLabels[this.quantity];
 
     this.displaySlider = this.selectedItem.price.length > 1 ? true : false;
-    console.log(this.displaySlider);
   }
 
   addToCart(selectedItem, quantity) {
     this.cartService.addToCart(selectedItem, selectedItem.priceLabels[quantity], selectedItem.price[quantity]);
     this.navCtrl.pop();
-  }
-
-  openCart() {
-    this.navCtrl.push(CartPage);
   }
 }

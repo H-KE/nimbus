@@ -1,15 +1,4 @@
-<ion-header>
-
-  <ion-navbar primary>
-    <ion-title>Dispensary Menu</ion-title>
-    <ion-buttons end>
-      <button (click)="openCart()">
-        1<ion-icon name="cart"></ion-icon>
-      </button>
-    </ion-buttons>
-  </ion-navbar>
-
-</ion-header>
+<nimbus-bar [title]="selectedDispensary.name" [showMenu]=false></nimbus-bar>
 
 
 <ion-content padding>

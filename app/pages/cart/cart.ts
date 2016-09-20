@@ -7,11 +7,13 @@ import { CartService } from '../../providers/cart/cart';
   templateUrl: 'build/pages/cart/cart.html'
 })
 export class CartPage {
-  cartContents: any;
+  title: string;
+  cart: any;
 
   constructor(private navCtrl: NavController, private cartService: CartService) {
+    this.title = "Cart";
     this.cartService = cartService;
-    this.cartContents = this.cartService.getCart();
+    this.cart = this.cartService.getCart();
   }
 
 }

@@ -5,29 +5,26 @@ import {Dispensary} from '../../models/dispensary'
 import {DispensaryService} from '../../providers/dispensary/dispensary';
 import {DispensaryPage} from '../dispensary/dispensary'
 import {CartPage} from '../cart/cart';
-
-
+import {NimbusBar} from '../../components/nimbus-bar/nimbus-bar';
 
 @Component({
   templateUrl: 'build/pages/nimbus-home/nimbus-home.html',
-  providers: [DispensaryService]
+  providers: [DispensaryService],
+  directives: [NimbusBar]
 })
+
 export class NimbusHomePage {
   placeholder: string;
   dispensaries: Dispensary[];
-  constructor(dispensaryService: DispensaryService, public navCtrl: NavController) {
 
-      this.placeholder = "Search for a dispensary";
-      this.dispensaries = dispensaryService.getNearestDispensaries();
+  constructor(dispensaryService: DispensaryService, public navCtrl: NavController) {
+    this.placeholder = "Search for a dispensary";
+    this.dispensaries = dispensaryService.getNearestDispensaries();
   }
 
   dispensarySelected(event, dispensary) {
     this.navCtrl.push(DispensaryPage, {
       dispensary: dispensary
     });
-  }
-
-  openCart() {
-    this.navCtrl.push(CartPage);
   }
 }
