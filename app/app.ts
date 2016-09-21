@@ -1,6 +1,7 @@
 import {Component, ViewChild} from '@angular/core';
 import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
+import {HomePage} from './pages/home/home';
 import {SearchPage} from './pages/search/search';
 import {CartPage} from './pages/cart/cart';
 import {LoginPage} from './pages/login/login';
@@ -17,7 +18,7 @@ class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make SearchPage the root (or first) page
-  rootPage: any = SearchPage;
+  rootPage: any = HomePage;
   pages: Array<{title: string, component: any}>;
 
   constructor(

@@ -31,6 +31,6 @@ export class ItemDetailsPage {
 
   addToCart(selectedItem, quantity) {
     this.cartService.addToCart(selectedItem, selectedItem.priceLabels[quantity], selectedItem.price[quantity]);
-    this.navCtrl.pop();
+    // this.navCtrl.pop();
   }
 }
