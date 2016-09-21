@@ -8,12 +8,12 @@ import {CartPage} from '../cart/cart';
 import {NimbusBar} from '../../components/nimbus-bar/nimbus-bar';
 
 @Component({
-  templateUrl: 'build/pages/nimbus-home/nimbus-home.html',
+  templateUrl: 'build/pages/search/search.html',
   providers: [DispensaryService],
   directives: [NimbusBar]
 })
 
-export class NimbusHomePage {
+export class SearchPage {
   placeholder: string;
   dispensaries: Dispensary[];
 
