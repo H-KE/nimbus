@@ -8,7 +8,7 @@ import * as _ from 'underscore';
 @Injectable()
 export class CartService {
   cart: {
-    content: any[],
+    content: Item[],
     count: number,
     total: number
   };
@@ -35,11 +35,9 @@ export class CartService {
   }
 
   addToCart(item, quantity, price) {
-    this.cart.content.push({
-      item: item,
-      quantity: quantity,
-      price: price
-    })
+    item.quantity = quantity;
+    item.price = price;
+    this.cart.content.push(item);
     this.cart.count = this.cart.content.length;
     this.cart.total += price;
   }
@@ -55,6 +53,12 @@ export class CartService {
     }
 
     this.cart.count = this.cart.content.length;
+  }
+
+  clearCart() {
+    this.cart.content = [];
+    this.cart.total = 0;
+    this.cart.count = 0;
   }
 
 }

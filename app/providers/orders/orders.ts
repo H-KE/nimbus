@@ -1,0 +1,21 @@
+import { Injectable } from '@angular/core';
+import { Http } from '@angular/http';
+import 'rxjs/add/operator/map';
+
+import { Item } from '../../models/item';
+import { Order } from '../../models/order';
+import * as _ from 'underscore';
+
+@Injectable()
+export class OrderService {
+  orders: Order[];
+
+  constructor(private http: Http) {
+    this.orders = []
+  }
+
+  placeOrder(order: Order) {
+    this.orders.push(order);
+    console.log(this.orders);
+  }
+}

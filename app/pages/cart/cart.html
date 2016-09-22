@@ -1,13 +1,8 @@
 <ion-header>
-  <ion-navbar primary *ngIf="!showMenu">
+  <ion-navbar primary>
     <ion-title>
       {{title}}
     </ion-title>
-    <ion-buttons end>
-      <button (click)="openCart()">
-        <ion-icon name="cart"></ion-icon>{{cartService.cart.count}}
-      </button>
-    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -16,15 +11,15 @@
     <ion-list>
       <ion-item *ngFor="let item of cart.content">
         <ion-avatar item-left>
-          <img src="{{item.item.img}}">
+          <img src="{{item.img}}">
         </ion-avatar>
-        <h2>{{item.item.name}}</h2>
+        <h2>{{item.name}}</h2>
         <p>${{item.price}} | {{item.quantity}}</p>
         <ion-icon item-right name="close-circle" (click)="cartService.removeFromCart(item)"></ion-icon>
       </ion-item>
       <ion-item>
         <h2>${{cartService.cart.total}} | Total</h2>
-        <button item-right secondary outline>
+        <button item-right primary outline (click)="placeOrder()">
           Checkout
           <ion-icon name='checkmark'></ion-icon>
         </button>
