@@ -27,9 +27,6 @@
 <ion-content padding class="getting-started" [ngSwitch]="searchMode">
   <div *ngSwitchCase="'mail'">
     <ion-card>
-      <!-- <img src="./img/welcome-min.jpg" class="nimbus-welcome"/>
-      <div class="card-title">Premier medicinal cannabis to your door</div> -->
-
       <ion-card-content class="search-card">
         <ion-searchbar
           class="search-search"
@@ -38,11 +35,7 @@
         </ion-searchbar>
       </ion-card-content>
     </ion-card>
-
     <ion-card>
-      <!-- <ion-card-header style="color:#388000;font-weight:600;">
-        Or choose from a list nearest you
-      </ion-card-header> -->
       <ion-list id="welcomeToNimbus-list4">
           <ion-item class="dispensary-list-item" *ngFor="let dispensary of dispensaries" (click)="dispensarySelected($event, dispensary)">
             <ion-thumbnail item-left>
