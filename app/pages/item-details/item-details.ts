@@ -23,14 +23,14 @@ export class ItemDetailsPage {
     this.selectedItem = navParams.get('item');
     this.quantity = 0;
 
-    this.itemPrice = this.selectedItem.price[this.quantity];
+    this.itemPrice = this.selectedItem.prices[this.quantity];
     this.quantityLabel = this.selectedItem.priceLabels[this.quantity];
 
-    this.displaySlider = this.selectedItem.price.length > 1 ? true : false;
+    this.displaySlider = this.selectedItem.prices.length > 1 ? true : false;
   }
 
   addToCart(selectedItem, quantity) {
-    this.cartService.addToCart(selectedItem, selectedItem.priceLabels[quantity], selectedItem.price[quantity]);
+    this.cartService.addToCart(selectedItem, selectedItem.priceLabels[quantity], selectedItem.prices[quantity]);
     this.navCtrl.pop();
   }
 }

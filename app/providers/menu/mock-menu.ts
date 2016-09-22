@@ -5,154 +5,182 @@ export var MENU: Item[] = [
         id: 1,
         name: "OG Kush",
         img: "./img/OG_kush.jpg",
-        price: [15, 45, 80, 150, 280],
+        prices: [15, 45, 80, 150, 280],
         priceLabels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
         description: "OG Kush is cherished for its ability to crush stress under the weight of its heavy euphoria. It carries an earthy pine and sour lemon scent with woody undertones, an aroma that has become the signature of OG Kush varieties and descendants.",
         thc: 19.5,
         subspecies: "Indica",
-        category: "Flowers"
+        category: "Flowers",
+        price: null,
+        quantity: null
     },
     {
         id: 2,
         name: "Girl Scout Cookies",
         img: "./img/Girl_Scout.jpg",
-        price: [15, 45, 80, 150, 280],
+        prices: [15, 45, 80, 150, 280],
         priceLabels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
         description: "With a sweet and earthy aroma, Girl Scout Cookies launches you to euphoria’s top floor where full-body relaxation meets a time-bending cerebral space. A little goes a long way with this hybrid, whose THC heights have won Girl Scout Cookies numerous Cannabis Cup awards.",
         thc: 26.3,
         subspecies: "Hybrid",
-        category: "Flowers"
+        category: "Flowers",
+        price: null,
+        quantity: null
     },
     {
         id: 3,
         name: "Sour Diesel",
         img: "./img/Sour_Diesel.jpg",
-        price: [15, 45, 80, 150, 280],
+        prices: [15, 45, 80, 150, 280],
         priceLabels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
         description: "Sour Diesel, sometimes called Sour D, is an invigorating sativa named after its pungent, diesel-like aroma. This fast-acting strain delivers energizing, dreamy cerebral effects that have pushed Sour Diesel to its legendary status. Stress, pain, and depression fade away in long-lasting relief that makes Sour Diesel a top choice among medical patients.",
         thc: 20.1,
         subspecies: "Sativa",
-        category: "Flowers"
+        category: "Flowers",
+        price: null,
+        quantity: null
     },
     {
         id: 4,
         name: "Train Wreck",
         img: "./img/Sour_Diesel.jpg",
-        price: [15, 45, 80, 150, 280],
+        prices: [15, 45, 80, 150, 280],
         priceLabels: ["Gram (1g)", "Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
         description: "Trainwreck is a mind-bending hybrid with potent sativa effects that hit like a freight train. Mexican and Thai sativas were bred with Afghani indicas to produce this Northern California staple, passing on a sweet lemon and spicy pine aroma. Trainwreck begins its speedy hurtle through the mind with a surge of euphoria, awakening creativity and happiness.",
         thc: 18.8,
         subspecies: "Hybrid",
-        category: "Flowers"
+        category: "Flowers",
+        price: null,
+        quantity: null
     },
     {
         id: 5,
         name: "Shake Mix",
         img: "./img/Shake_Mix.jpg",
-        price: [80, 150, 280],
+        prices: [80, 150, 280],
         priceLabels: ["Eighth (3.5g)", "Quarter (7g)", "Half (14g)", "Ounce (28g)"],
         description: "A mix of small buds and shake from our various strains. Exceptional quality at an exceptional price!",
         thc: 15,
         subspecies: "Hybrid",
-        category: "Flowers"
+        category: "Flowers",
+        price: null,
+        quantity: null
     },
     {
         id: 6,
         name: "Milk Chocolate Bar",
         img: "./img/Kraken84.jpeg",
-        price: [18],
+        prices: [18],
         priceLabels: ["ea."],
         description: "A mix of small buds and shake from our various strains. Exceptional quality at an exceptional price!",
         thc: 15,
         subspecies: "Hybrid",
-        category: "Edibles"
+        category: "Edibles",
+        price: null,
+        quantity: null
     },
     {
         id: 7,
         name: "Smores Brownie",
         img: "./img/smoresbrownie.png",
-        price: [18],
+        prices: [18],
         priceLabels: ["ea."],
         description: "A mix of small buds and shake from our various strains. Exceptional quality at an exceptional price!",
         thc: 15,
         subspecies: "Hybrid",
-        category: "Edibles"
+        category: "Edibles",
+        price: null,
+        quantity: null
     },
     {
         id: 8,
         name: "Cannabis Pop",
         img: "./img/sprig.jpg",
-        price: [18],
+        prices: [18],
         priceLabels: ["ea."],
         description: "A mix of small buds and shake from our various strains. Exceptional quality at an exceptional price!",
         thc: 15,
         subspecies: "Hybrid",
-        category: "Edibles"
+        category: "Edibles",
+        price: null,
+        quantity: null
     },
     {
         id: 9,
         name: "Premium Shatter",
         img: "./img/shatter_hover.png",
-        price: [18],
+        prices: [18],
         priceLabels: ["ea."],
         description: "A mix of small buds and shake from our various strains. Exceptional quality at an exceptional price!",
         thc: 15,
         subspecies: "Hybrid",
-        category: "Concentrates"
+        category: "Concentrates",
+        price: null,
+        quantity: null
     },
     {
         id: 10,
         name: "Premium Wax",
         img: "./img/wax_hover.png",
-        price: [18],
+        prices: [18],
         priceLabels: ["ea."],
         description: "A mix of small buds and shake from our various strains. Exceptional quality at an exceptional price!",
         thc: 15,
         subspecies: "Hybrid",
-        category: "Concentrates"
+        category: "Concentrates",
+        price: null,
+        quantity: null
     },
     {
         id: 11,
         name: "Bubba Kush",
         img: "./img/prerolls.jpg",
-        price: [18],
+        prices: [18],
         priceLabels: ["ea."],
         description: "A mix of small buds and shake from our various strains. Exceptional quality at an exceptional price!",
         thc: 19,
         subspecies: "Indica",
-        category: "Pre-rolls"
+        category: "Pre-rolls",
+        price: null,
+        quantity: null
     },
     {
         id: 12,
         name: "Jack Herer",
         img: "./img/Jays-PreRolls-Joints-About-Graphic-2.jpg",
-        price: [18],
+        prices: [18],
         priceLabels: ["ea."],
         description: "A mix of small buds and shake from our various strains. Exceptional quality at an exceptional price!",
         thc: 21,
         subspecies: "sativa",
-        category: "Pre-rolls"
+        category: "Pre-rolls",
+        price: null,
+        quantity: null
     },
     {
         id: 13,
         name: "Bong",
         img: "./img/smoke_cartel_sesh_supply_gaia_faberge_egg_water_pipe.png",
-        price: [18],
+        prices: [18],
         priceLabels: ["ea."],
         description: "A mix of small buds and shake from our various strains. Exceptional quality at an exceptional price!",
         thc: 15,
         subspecies: "Hybrid",
-        category: "Other"
+        category: "Other",
+        price: null,
+        quantity: null
     },
     {
         id: 14,
         name: "Bubbler Oil Rig",
         img: "./img/smoke_cartel_sesh_supply_orion_cube_perc_recycler.png",
-        price: [18],
+        prices: [18],
         priceLabels: ["ea."],
         description: "A mix of small buds and shake from our various strains. Exceptional quality at an exceptional price!",
         thc: 15,
         subspecies: "Hybrid",
-        category: "Other"
+        category: "Other",
+        price: null,
+        quantity: null
     }
 ]

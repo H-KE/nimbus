@@ -3,15 +3,16 @@ import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
 import {SearchPage} from './pages/search/search';
 import {CartPage} from './pages/cart/cart';
+import {OrdersPage} from './pages/orders/orders'
 import {LoginPage} from './pages/login/login';
 import * as _ from 'underscore';
 
 import {CartService} from './providers/cart/cart';
-
+import {OrderService} from './providers/orders/orders';
 
 @Component({
   templateUrl: 'build/app.html',
-  providers: [CartService]
+  providers: [CartService, OrderService]
 })
 class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -30,6 +31,7 @@ class MyApp {
     this.pages = [
       { title: 'Home', component: SearchPage },
       { title: 'My Cart', component: CartPage },
+      { title: 'My Orders', component: OrdersPage},
       { title: 'Login', component: LoginPage}
     ];
   }
