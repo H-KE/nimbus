@@ -18,7 +18,7 @@ class MyApp {
   @ViewChild(Nav) nav: Nav;
 
   // make SearchPage the root (or first) page
-  rootPage: any = HomePage;
+  rootPage: any = SearchPage;
   pages: Array<{title: string, component: any}>;
 
   constructor(

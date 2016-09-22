@@ -1,26 +1,25 @@
 .getting-started {
 
-  p {
-    margin: 20px 0;
-    line-height: 22px;
-    font-size: 16px;
-  }
+  // p {
+  //   margin: 20px 0;
+  //   line-height: 22px;
+  //   font-size: 16px;
+  // }
+  //
+  // ion-card {
+  //   position: relative;
+  //   text-align: left;
+  // }
 
-  ion-card {
-    position: relative;
-    text-align: left;
-  }
-
-  .card-title {
-    position: absolute;
-    top: 50%;
-    font-size: 1.8em;
-    width: 80%;
-    left: 5%;
-    font-weight: bold;
-    color: #fff;
-  }
-
+  // .card-title {
+  //   position: absolute;
+  //   top: 50%;
+  //   font-size: 1.8em;
+  //   width: 80%;
+  //   left: 5%;
+  //   font-weight: bold;
+  //   color: #fff;
+  // }
   // .nav-header {
   //   position: absolute;
   //   top: 0;
@@ -39,4 +38,8 @@ ion-card-content.search-card {
 
 ion-searchbar.search-search {
   padding: 0;
+}
+
+.toolbar-background {
+  border-color: color($colors, primary, base) !important;
 }

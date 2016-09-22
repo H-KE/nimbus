@@ -32,9 +32,10 @@ $colors: (
   light:      #f4f4f4,
   dark:       #222,
   favorite:   #69BB7B,
-  background: #eeeeee
+  background: #eeeeee,
+  white:      #fff
 );
 
 ion-page > ion-content > scroll-content {
-	margin-top: 56px !important;
+	margin-top: 56px;
 };

@@ -16,10 +16,12 @@ import {NimbusBar} from '../../components/nimbus-bar/nimbus-bar';
 export class SearchPage {
   placeholder: string;
   dispensaries: Dispensary[];
+  searchMode: string;
 
   constructor(dispensaryService: DispensaryService, public navCtrl: NavController) {
     this.placeholder = "Search for a dispensary";
     this.dispensaries = dispensaryService.getNearestDispensaries();
+    this.searchMode = "mail";
   }
 
   dispensarySelected(event, dispensary) {

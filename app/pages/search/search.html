@@ -1,35 +1,60 @@
-<nimbus-bar title="Nimbus" [showMenu]=true></nimbus-bar>
+<!-- <nimbus-bar title="Nimbus" [showMenu]=true></nimbus-bar> -->
+<ion-header>
+
+  <ion-navbar primary>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Nimbus</ion-title>
+  </ion-navbar>
+  <ion-toolbar primary>
+    <ion-segment [(ngModel)]="searchMode" white>
+      <ion-segment-button value="mail">
+        Mail Order
+      </ion-segment-button>
+      <ion-segment-button value="delivery">
+        Delivery
+      </ion-segment-button>
+      <ion-segment-button value="pickup">
+        Pickup
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 
 
-<ion-content padding class="getting-started">
+</ion-header>
 
-  <ion-card>
-    <!-- <img src="./img/welcome-min.jpg" class="nimbus-welcome"/>
-    <div class="card-title">Premier medicinal cannabis to your door</div> -->
+<ion-content padding class="getting-started" [ngSwitch]="searchMode">
+  <div *ngSwitchCase="'mail'">
+    <ion-card>
+      <!-- <img src="./img/welcome-min.jpg" class="nimbus-welcome"/>
+      <div class="card-title">Premier medicinal cannabis to your door</div> -->
 
-    <ion-card-content class="search-card">
-      <ion-searchbar
-        class="search-search"
-        [(ngModel)]="myInput"
-        [placeholder]="placeholder">
-      </ion-searchbar>
-    </ion-card-content>
-  </ion-card>
+      <ion-card-content class="search-card">
+        <ion-searchbar
+          class="search-search"
+          [(ngModel)]="myInput"
+          [placeholder]="placeholder">
+        </ion-searchbar>
+      </ion-card-content>
+    </ion-card>
 
-  <ion-card>
-    <!-- <ion-card-header style="color:#388000;font-weight:600;">
-      Or choose from a list nearest you
-    </ion-card-header> -->
-    <ion-list id="welcomeToNimbus-list4">
-        <ion-item class="dispensary-list-item" *ngFor="let dispensary of dispensaries" (click)="dispensarySelected($event, dispensary)">
-          <ion-thumbnail item-left>
-            <img src={{dispensary.avatar_url}}>
-          </ion-thumbnail>
-          <h2>{{dispensary.name}}</h2>
-          <p>{{dispensary.address}}</p>
-          <button clear item-right>View</button>
-        </ion-item>
-    </ion-list>
-  </ion-card>
-
+    <ion-card>
+      <!-- <ion-card-header style="color:#388000;font-weight:600;">
+        Or choose from a list nearest you
+      </ion-card-header> -->
+      <ion-list id="welcomeToNimbus-list4">
+          <ion-item class="dispensary-list-item" *ngFor="let dispensary of dispensaries" (click)="dispensarySelected($event, dispensary)">
+            <ion-thumbnail item-left>
+              <img src={{dispensary.avatar_url}}>
+            </ion-thumbnail>
+            <h2>{{dispensary.name}}</h2>
+            <p>{{dispensary.address}}</p>
+            <button clear item-right>View</button>
+          </ion-item>
+      </ion-list>
+    </ion-card>
+  </div>
+  <div *ngSwitchCase="'delivery'">delivery</div>
+  <div *ngSwitchCase="'pickup'">pickup</div>
 </ion-content>
