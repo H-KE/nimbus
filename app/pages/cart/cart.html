@@ -19,6 +19,10 @@
       </ion-item>
       <ion-item>
         <h2>${{cartService.cart.total}} | Total</h2>
+        <button item-right primary navPush="OrdersPage">
+          My Orders
+          <ion-icon name='cloud'></ion-icon>
+        </button>
         <button item-right primary outline (click)="placeOrder()">
           Checkout
           <ion-icon name='checkmark'></ion-icon>

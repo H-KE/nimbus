@@ -1,18 +1,14 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 
-/*
-  Generated class for the CheckoutPage page.
+import { OrderService } from '../../providers/orders/orders';
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   templateUrl: 'build/pages/checkout/checkout.html',
 })
 export class CheckoutPage {
 
-  constructor(private navCtrl: NavController) {
+  constructor(public navCtrl: NavController, navParams: NavParams, private orderService: OrderService) {
 
   }
 

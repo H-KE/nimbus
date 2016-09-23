@@ -14,6 +14,10 @@ export class OrderService {
     this.orders = []
   }
 
+  getOrders() {
+    return this.orders;
+  }
+
   placeOrder(order: Order) {
     this.orders.push(order);
     console.log(this.orders);

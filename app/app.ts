@@ -1,15 +1,15 @@
 import {Component, ViewChild} from '@angular/core';
 import {ionicBootstrap, Platform, MenuController, Nav} from 'ionic-angular';
 import {StatusBar} from 'ionic-native';
+
 import {HomePage} from './pages/home/home';
 import {SearchPage} from './pages/search/search';
-import {CartPage} from './pages/cart/cart';
 import {OrdersPage} from './pages/orders/orders'
 import {LoginPage} from './pages/login/login';
-import * as _ from 'underscore';
 
 import {CartService} from './providers/cart/cart';
 import {OrderService} from './providers/orders/orders';
+import * as _ from 'underscore';
 
 @Component({
   templateUrl: 'build/app.html',
@@ -31,7 +31,6 @@ class MyApp {
     // set our app's pages
     this.pages = [
       { title: 'Home', component: SearchPage },
-      { title: 'My Cart', component: CartPage },
       { title: 'My Orders', component: OrdersPage},
       { title: 'Login', component: LoginPage}
     ];

@@ -1,14 +1,31 @@
 <nimbus-bar title="Orders" [showMenu]=true></nimbus-bar>
 
 
-<ion-content padding>
+<ion-content padding *ngIf="orders != null">
   <ion-card *ngFor="let order of orders">
-    <ion-item>
+    <ion-item (click)="toggleOrder(order)"
+              [class.active]="!isOrderShown(order)">
       <ion-thumbnail item-left>
         <img src="http://static1.squarespace.com/static/50414a88e4b0b97fe5a56a39/t/53695564e4b0e9a5f9b53913/1399412070542/">
       </ion-thumbnail>
       <h2>Shambhala Healing</h2>
-      <p>${{order.total}} | {{order.items.length}} items | {{order.status}}</p>
+      <p>${{order.total}} | {{order.items.length}} items | Packaging</p>
+    </ion-item>
+    <ion-item *ngFor="let item of order.items"
+              class="item-accordian"
+              [hidden]="!isOrderShown(order)">
+      <ion-avatar item-left>
+        <img src="{{item.img}}">
+      </ion-avatar>
+      <h2>{{item.name}}</h2>
+      <p>${{item.price}} | {{item.quantity}}</p>
+    </ion-item>
+  </ion-card>
+</ion-content>
+<ion-content padding *ngIf="orders == null || orders.length == 0">
+  <ion-card>
+    <ion-item>
+      You don't have any orders yet!
     </ion-item>
   </ion-card>
 </ion-content>

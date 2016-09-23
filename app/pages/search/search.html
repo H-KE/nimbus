@@ -6,6 +6,11 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>Nimbus</ion-title>
+    <ion-buttons end>
+      <button (click)="goToCart()">
+        <ion-icon name="cart"></ion-icon>{{cartService.cart.count}}
+      </button>
+    </ion-buttons>
   </ion-navbar>
   <ion-toolbar primary>
     <ion-segment [(ngModel)]="searchMode" white>
@@ -49,5 +54,7 @@
     </ion-card>
   </div>
   <div *ngSwitchCase="'delivery'">delivery</div>
-  <div *ngSwitchCase="'pickup'">pickup</div>
+  <div *ngSwitchCase="'pickup'">
+      <div style="height: 100%;" id="map_canvas"></div>
+  </div>
 </ion-content>

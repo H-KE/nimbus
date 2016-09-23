@@ -8,4 +8,5 @@ export class Order {
   user: string;
   total: number;
   status: string;
+  show: boolean;
 }
