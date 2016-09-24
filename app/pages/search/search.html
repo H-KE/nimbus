@@ -32,13 +32,11 @@
 <ion-content padding class="getting-started" [ngSwitch]="searchMode">
   <div *ngSwitchCase="'mail'">
     <ion-card>
-      <ion-card-content class="search-card">
-        <ion-searchbar
-          class="search-search"
-          [(ngModel)]="myInput"
-          [placeholder]="placeholder">
-        </ion-searchbar>
-      </ion-card-content>
+      <ion-searchbar
+        class="search-search"
+        [(ngModel)]="myInput"
+        [placeholder]="placeholder">
+      </ion-searchbar>
     </ion-card>
     <ion-card>
       <ion-list id="welcomeToNimbus-list4">
