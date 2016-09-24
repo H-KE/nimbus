@@ -3,17 +3,18 @@ import { NavController } from 'ionic-angular';
 
 import { Order } from '../../models/order';
 import { OrderService } from '../../providers/orders/orders';
-import { NimbusBar } from '../../components/nimbus-bar/nimbus-bar';
 
 @Component({
-  templateUrl: 'build/pages/orders/orders.html',
-  directives: [NimbusBar]
+  templateUrl: 'build/pages/orders/orders.html'
 })
 export class OrdersPage {
   orders: Order[];
 
   constructor(private navCtrl: NavController, private orderService: OrderService) {
     this.orders = this.orderService.getOrders();
+    for (var order of this.orders) {
+      order.show = false;
+    }
   }
 
   toggleOrder(order) {

@@ -1,4 +1,13 @@
-<nimbus-bar title="Orders" [showMenu]=true></nimbus-bar>
+<ion-header>
+  <ion-toolbar primary>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      My Orders
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
 
 <ion-content padding *ngIf="orders != null">

@@ -19,7 +19,7 @@
       </ion-item>
       <ion-item>
         <h2>${{cartService.cart.total}} | Total</h2>
-        <button item-right primary navPush="OrdersPage">
+        <button item-right primary (click)="goToOrders()">
           My Orders
           <ion-icon name='cloud'></ion-icon>
         </button>

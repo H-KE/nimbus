@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 
 import { Order } from '../../models/order'
+import { OrdersPage } from '../orders/orders'
 import { CartService } from '../../providers/cart/cart';
 import { OrderService } from '../../providers/orders/orders';
 
@@ -20,6 +21,10 @@ export class CartPage {
     this.title = "Cart";
     this.cart = this.cartService.getCart();
     this.order = new Order();
+  }
+
+  goToOrders() {
+    this.navCtrl.push(OrdersPage);
   }
 
   placeOrder() {
