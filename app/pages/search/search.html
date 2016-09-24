@@ -40,18 +40,24 @@
     </ion-card>
     <ion-card>
       <ion-list id="welcomeToNimbus-list4">
-          <ion-item class="dispensary-list-item" *ngFor="let dispensary of dispensaries" (click)="dispensarySelected($event, dispensary)">
+          <button ion-item class="dispensary-list-item" *ngFor="let dispensary of dispensaries" (click)="dispensarySelected($event, dispensary)">
             <ion-thumbnail item-left>
               <img src={{dispensary.avatar_url}}>
             </ion-thumbnail>
             <h2>{{dispensary.name}}</h2>
             <p>{{dispensary.address}}</p>
             <button clear item-right>View</button>
-          </ion-item>
+          </button>
       </ion-list>
     </ion-card>
   </div>
-  <div *ngSwitchCase="'delivery'">delivery</div>
+  <div *ngSwitchCase="'delivery'">
+    <ion-card>
+      <ion-item>
+        Same day delivery coming soon!
+      </ion-item>
+    </ion-card>
+  </div>
   <div *ngSwitchCase="'pickup'">
       <div style="height: 100%;" id="map_canvas"></div>
   </div>
