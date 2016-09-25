@@ -33,6 +33,10 @@
       <ion-list-header>
         <ion-label>Payment</ion-label>
       </ion-list-header>
+      <ion-item text-wrap no-lines *ngFor="let item of order.items">
+        <p>{{item.name}} X 1</p>
+        <p item-right>${{item.price}}</p>
+      </ion-item>
       <ion-item text-wrap>
         <p align="right">Subtotal: $50</p>
         <p align="right">Sales Tax (8.0%): $5</p>
@@ -46,7 +50,7 @@
       <ion-item text-wrap>
         <p>By pressing "place order" I agree to terms and conditions of the dispensary I am ordering from.</p>
         <div item-right>
-          <button item-right outline (click)="goToOrderDetails()">PLACE ORDER</button>
+          <button item-right outline (click)="placeOrder()">PLACE ORDER</button>
         </div>
       </ion-item>
     </ion-list>

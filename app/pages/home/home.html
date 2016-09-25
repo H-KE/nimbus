@@ -1,23 +1,33 @@
 <ion-content scroll="false" class="home">
-  <ion-grid padding>
+  <ion-grid>
     <ion-row class="home-logo">
       <ion-col>
+        <img src="./img/nimbus-logo.png"/>
       </ion-col>
     </ion-row>
     <ion-row class="auth-buttons">
-      <ion-col class="facebook-login">
+      <ion-col>
         <ion-row>
-          <button>Facebook Sign Up</button>
+          <ion-col>
+            <button facebook class="facebook-signup">
+              <ion-icon name="logo-facebook"></ion-icon>
+              <p>Facebook</p></button>
+          </ion-col>
+          <ion-col>
+            <button google class="google-signup">
+              <ion-icon name="logo-googleplus"></ion-icon>
+              <p>Google</p></button>
+          </ion-col>
         </ion-row>
-      </ion-col>
-      <ion-col class="signup-button">
         <ion-row>
-          <button (click)="gotoSignUp()">Email Sign Up</button>
+          <ion-col>
+            <button (click)="goToSignUp()" white class="email-signup"><p><b>Sign up</b> with Email</p></button>
+          </ion-col>
         </ion-row>
-      </ion-col>
-      <ion-col class="login-button">
-        <ion-row>
-          <a (click)="gotoLogin()">Or login</a>
+        <ion-row class="signin">
+          <ion-col>
+            <p>Already a member? <b><a (click)="goToLogin()">Sign in here!</a></b></p>
+          </ion-col>
         </ion-row>
       </ion-col>
     </ion-row>

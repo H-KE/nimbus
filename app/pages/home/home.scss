@@ -1,26 +1,66 @@
 .home {
+  background-color: color($colors, primary, base);
+
+  h1 {
+    color: #fff;
+    margin: auto;
+  }
   ion-grid {
     height: 100%;
   }
-  ion-row {
+  .auth-buttons ion-row {
     -webkit-flex: 1;
     -webkit-align-items: center;
     height: 100%;
+    max-width: 95%;
+    button {
+      width: 100%;
+    }
   }
   ion-col {
     height: 100%;
     display: flex;
+    -webkit-flex-direction: column;
     align-items: center;
     h1 {
       text-align: center;
     }
   }
-
   .home-logo {
+    -webkit-flex: 5;
+    img {
+      max-width: 60%;
+      margin: auto;
+    }
+  }
+  .auth-buttons {
     -webkit-flex: 3;
   }
-
-  .auth-buttons {
+  .facebook-signup {
+  }
+  .google-signup {
+    p {
+      color: white;
+    }
+  }
+  .email-signup {
+    p {
+      color: color($colors, primary, base);
+    }
+  }
+  .signin {
+    width: auto;
     -webkit-flex: 2;
+    a {
+      color: white;
+    }
+  }
+  p {
+    color: white;
+    text-align: center;
+  }
+
+  a {
+    text-align: center;
   }
 }

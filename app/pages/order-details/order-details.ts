@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+import { Order } from '../../models/order';
 
 /*
   Generated class for the OrderDetailsPage page.
@@ -11,9 +12,11 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'build/pages/order-details/order-details.html',
 })
 export class OrderDetailsPage {
+  order: Order;
 
-  constructor(private navCtrl: NavController) {
-
+  constructor(private navCtrl: NavController,
+              private navParams: NavParams) {
+    this.order = navParams.get('order');
   }
 
 }

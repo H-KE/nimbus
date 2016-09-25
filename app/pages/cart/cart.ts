@@ -30,37 +30,50 @@ export class CartPage {
   }
 
   goToCheckout() {
-    this.navCtrl.push(CheckoutPage);
-  }
-
-  placeOrder() {
-    let confirm = this.alertController.create({
-      title: "Place this order?",
-      message: "By placing this order, you agree to the terms and services of Nimbus",
-      buttons: [
-        {
-          text: 'Cancel',
-          handler: () => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Place Order',
-          handler: () => {
-            this.order.items = this.cart.content;
-            this.order.address = "123 University Ave";
-            this.order.user = "John Smith";
-            this.order.total = this.cart.total;
-            this.order.show = false;
-            this.orderService.placeOrder(this.order);
-
-            this.cartService.clearCart();
-            this.order = new Order();
-          }
-        }
-      ]
+    this.navCtrl.push(CheckoutPage, {
+      order: this.order
     });
-    confirm.present();
   }
+
+  checkoutCart() {
+    this.order.items = this.cart.content;
+    this.order.address = "123 University Ave";
+    this.order.user = "John Smith";
+    this.order.total = this.cart.total;
+    this.order.show = false;
+
+    this.goToCheckout();
+
+    this.order = new Order();
+  }
+  // placeOrder() {
+  //   let confirm = this.alertController.create({
+  //     title: "Place this order?",
+  //     message: "By placing this order, you agree to the terms and services of Nimbus",
+  //     buttons: [
+  //       {
+  //         text: 'Cancel',
+  //         handler: () => {
+  //           console.log('Cancel clicked');
+  //         }
+  //       },
+  //       {
+  //         text: 'Place Order',
+  //         handler: () => {
+  //           this.order.items = this.cart.content;
+  //           this.order.address = "123 University Ave";
+  //           this.order.user = "John Smith";
+  //           this.order.total = this.cart.total;
+  //           this.order.show = false;
+  //           this.orderService.placeOrder(this.order);
+  //
+  //           this.cartService.clearCart();
+  //           this.order = new Order();
+  //         }
+  //       }
+  //     ]
+  //   });
+  //   confirm.present();
+  // }
 
 }

@@ -12,11 +12,11 @@ export class HomePage {
 
   }
 
-  gotoSignUp() {
+  goToSignUp() {
     this.navCtrl.push(SignupPage);
   }
 
-  gotoLogin() {
+  goToLogin() {
     this.navCtrl.push(LoginPage);
   }
 }

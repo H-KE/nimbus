@@ -36,6 +36,13 @@
     <ion-list-header>
       <ion-label>Order Summary</ion-label>
     </ion-list-header>
+    <ion-item *ngFor="let item of order.items">
+      <ion-avatar item-left>
+        <img src="{{item.img}}">
+      </ion-avatar>
+      <h2>{{item.name}}</h2>
+      <p>${{item.price}} | {{item.quantity}}</p>
+    </ion-item>
   </ion-card>
   <ion-card>
     <ion-list>
