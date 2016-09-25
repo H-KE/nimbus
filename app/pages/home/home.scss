@@ -15,19 +15,12 @@
       text-align: center;
     }
   }
-  .home-icon {
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    height: 60%;
+
+  .home-logo {
+    -webkit-flex: 3;
   }
-  .store {
-    background-image: url(../../img/shop.png);
-  }
-  .delivery {
-    background-image: url(../../img/scooter.png);
-  }
-  .mail {
-    background-image: url(../../img/mailbox.png);
+
+  .auth-buttons {
+    -webkit-flex: 2;
   }
 }

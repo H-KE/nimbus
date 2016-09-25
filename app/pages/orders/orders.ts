@@ -9,9 +9,11 @@ import { OrderService } from '../../providers/orders/orders';
 })
 export class OrdersPage {
   orders: Order[];
+  orderSegment: String;
 
   constructor(private navCtrl: NavController, private orderService: OrderService) {
     this.orders = this.orderService.getOrders();
+    this.orderSegment = "open";
     for (var order of this.orders) {
       order.show = false;
     }

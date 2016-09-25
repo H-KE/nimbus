@@ -1,27 +1,25 @@
-<ion-header>
-
-  <ion-navbar primary>
-    <button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Nimbus</ion-title>
-  </ion-navbar>
-
-</ion-header>
-
 <ion-content scroll="false" class="home">
   <ion-grid padding>
-    <ion-row>
-      <ion-col width-50 class="home-icon store"></ion-col>
-      <ion-col width-50><h1 style="margin: auto;">IN-STORE PICKUP</h1></ion-col>
+    <ion-row class="home-logo">
+      <ion-col>
+      </ion-col>
     </ion-row>
-    <ion-row>
-      <ion-col width-50><h1 style="margin: auto;">MAIL ORDER</h1></ion-col>
-      <ion-col width-50 class="home-icon mail"></ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col width-50 class="home-icon delivery"></ion-col>
-      <ion-col width-50><h1 style="margin: auto;">DELIVERY</h1></ion-col>
+    <ion-row class="auth-buttons">
+      <ion-col class="facebook-login">
+        <ion-row>
+          <button>Facebook Sign Up</button>
+        </ion-row>
+      </ion-col>
+      <ion-col class="signup-button">
+        <ion-row>
+          <button (click)="gotoSignUp()">Email Sign Up</button>
+        </ion-row>
+      </ion-col>
+      <ion-col class="login-button">
+        <ion-row>
+          <a (click)="gotoLogin()">Or login</a>
+        </ion-row>
+      </ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>
