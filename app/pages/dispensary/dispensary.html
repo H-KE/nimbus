@@ -1,7 +1,7 @@
 <nimbus-bar [title]="selectedDispensary.name" [showMenu]=false></nimbus-bar>
 
 
-<ion-content padding>
+<ion-content>
   <div *ngIf="selectedDispensary" class="selection">
     <ion-card>
       <div id="dispensary-logo-wrapper">
@@ -17,29 +17,29 @@
       </ion-card-content>
     </ion-card>
 
-    <ion-card>
-      <ion-card-title>
-          Products
-      </ion-card-title>
-      <ion-list>
-        <div *ngFor="let category of menuCategories">
-          <button ion-item detail-none class="item-stable"
-                    (click)="toggleMenuCategory(category)"
-                    [class.active]="!isCategoryShown(category)">
-            <h2>{{category.name}}</h2>
-            <ion-icon [name]="isCategoryShown(category) ? 'none' : 'arrow-dropdown'" item-right></ion-icon>
-          </button>
-          <button ion-item *ngFor="let item of category.items"
-                    (click)="itemSelected($event, item)"
-                    class="item-accordian"
-                    [hidden]="!isCategoryShown(category)">
-            <ion-avatar item-left>
-              <img src="{{item.img}}">
-            </ion-avatar>
-            <h2>{{item.name}}</h2>
-            <p>{{item.subspecies}} | THC: {{item.thc}}%</p>
-          </button>
-        </div>
+  <ion-card>
+    <ion-list-header>
+      Products
+    </ion-list-header>
+    <ion-list>
+      <div *ngFor="let category of menuCategories">
+        <button ion-item detail-none class="item-stable"
+                  (click)="toggleMenuCategory(category)"
+                  [class.active]="!isCategoryShown(category)">
+          <h2>{{category.name}}</h2>
+          <ion-icon [name]="isCategoryShown(category) ? 'none' : 'arrow-dropdown'" item-right></ion-icon>
+        </button>
+        <button ion-item *ngFor="let item of category.items"
+                  (click)="itemSelected($event, item)"
+                  class="item-accordian"
+                  [hidden]="!isCategoryShown(category)">
+          <ion-avatar item-left>
+            <img src="{{item.img}}">
+          </ion-avatar>
+          <h2>{{item.name}}</h2>
+          <p>{{item.subspecies}} | THC: {{item.thc}}%</p>
+        </button>
+      </div>
       </ion-list>
     </ion-card>
    </div>

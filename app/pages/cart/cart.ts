@@ -5,6 +5,8 @@ import { Order } from '../../models/order'
 import { OrdersPage } from '../orders/orders'
 import { CartService } from '../../providers/cart/cart';
 import { OrderService } from '../../providers/orders/orders';
+import { CheckoutPage } from '../checkout/checkout'
+
 
 @Component({
   templateUrl: 'build/pages/cart/cart.html'
@@ -25,6 +27,10 @@ export class CartPage {
 
   goToOrders() {
     this.navCtrl.push(OrdersPage);
+  }
+
+  goToCheckout() {
+    this.navCtrl.push(CheckoutPage);
   }
 
   placeOrder() {

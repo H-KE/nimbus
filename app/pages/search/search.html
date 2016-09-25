@@ -5,7 +5,7 @@
     <button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Nimbus</ion-title>
+    <ion-title>Explore</ion-title>
     <ion-buttons end>
       <button (click)="goToCart()">
         <ion-icon name="cart"></ion-icon>{{cartService.cart.count}}
@@ -29,7 +29,7 @@
 
 </ion-header>
 
-<ion-content padding class="getting-started" [ngSwitch]="searchMode">
+<ion-content class="getting-started" [ngSwitch]="searchMode">
   <div *ngSwitchCase="'mail'">
     <ion-card>
       <ion-searchbar

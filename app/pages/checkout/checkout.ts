@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
+import { OrderDetailsPage } from '../order-details/order-details'
 
 /*
   Generated class for the CheckoutPage page.
@@ -14,6 +15,10 @@ export class CheckoutPage {
 
   constructor(private navCtrl: NavController) {
 
+  }
+
+  goToOrderDetails() {
+    this.navCtrl.setRoot(OrderDetailsPage);
   }
 
 }
