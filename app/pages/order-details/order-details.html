@@ -5,14 +5,49 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>order-details</ion-title>
-  </ion-navbar>
-
+  <ion-toolbar primary>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Order Details
+    </ion-title>
+  </ion-toolbar>
 </ion-header>
 
 
-<ion-content padding>
-
+<ion-content class="order-details">
+  <ion-card>
+    <ion-list-header>
+      <ion-label>Status</ion-label>
+    </ion-list-header>
+    <ol>
+      <li class="completed">
+         <ion-icon name="checkmark"></ion-icon> Verifying
+      </li>
+      <li class="completed">
+        <ion-icon name="checkmark"></ion-icon>  Packaging
+      </li>
+      <li class="current"> In Transit</li>
+      <li> Order Complete</li>
+    </ol>
+  </ion-card>
+  <ion-card>
+    <ion-list-header>
+      <ion-label>Order Summary</ion-label>
+    </ion-list-header>
+  </ion-card>
+  <ion-card>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Payment Summary</ion-label>
+      </ion-list-header>
+      <ion-item text-wrap>
+        <p align="right">Subtotal: $50</p>
+        <p align="right">Sales Tax (8.0%): $5</p>
+        <p align="right">Delivery Charges: $5</p>
+        <h3 align="right">Order Total: $60</h3>
+      </ion-item>
+    </ion-list>
+  </ion-card>
 </ion-content>
