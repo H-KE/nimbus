@@ -22,6 +22,8 @@
 
 @import "../pages/order-details/order-details.scss";
 
+@imposrt ""
+
 
 ion-content {
   background: color($colors, background, base);
@@ -31,4 +33,8 @@ ion-menu {
   ion-content {
     background: #fff;
   }
+}
+
+.error-message {
+  color: #f53d3d !important; 
 }

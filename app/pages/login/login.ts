@@ -2,19 +2,34 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { SearchPage } from '../search/search';
 
-/*
-  Generated class for the LoginPage page.
+import { User } from '../../models/user'
+import { AuthenticationService } from '../../providers/authentication/authentication'
 
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
-  templateUrl: 'build/pages/login/login.html',
+  templateUrl: 'build/pages/login/login.html'
 })
 export class LoginPage {
 
-  constructor(private navCtrl: NavController) {
+  email: string;
+  password: string;
+  errorMessage: string;
 
+  constructor(private navCtrl: NavController, private auth: AuthenticationService) {
+    this.errorMessage = " ";
+  }
+
+  login() {
+    let user = new User;
+    user.email = this.email;
+    user.password = this.password;
+
+    this.auth.login(user).then(response => {
+      if(response == true){
+        this.gotoSearch();
+      } else {
+        this.errorMessage = "Invalid credentials"
+      }
+    });
   }
 
   gotoSearch() {

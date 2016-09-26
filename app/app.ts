@@ -9,11 +9,12 @@ import {LoginPage} from './pages/login/login';
 
 import {CartService} from './providers/cart/cart';
 import {OrderService} from './providers/orders/orders';
+import {AuthenticationService} from './providers/authentication/authentication'
 import * as _ from 'underscore';
 
 @Component({
   templateUrl: 'build/app.html',
-  providers: [CartService, OrderService]
+  providers: [CartService, OrderService, AuthenticationService]
 })
 class MyApp {
   @ViewChild(Nav) nav: Nav;
