@@ -15,20 +15,19 @@ export class OrdersPage {
 
   constructor(private navCtrl: NavController, private orderService: OrderService) {
     this.orders = this.orderService.getOrders();
-    console.log("orders:" + this.orders);
     this.orderSegment = "open";
     for (var order of this.orders) {
       order.show = false;
     }
-  }
+  };
 
   goToOrderDetails(event, order) {
     this.navCtrl.push(OrderDetailsPage, {
       order: order
     });
-  }
+  };
 
   isOrderShown(order) {
     return order.show;
-  }
+  };
 }

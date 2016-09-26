@@ -19,7 +19,7 @@ import {DispensaryService} from '../../providers/dispensary/dispensary';
 
 export class SearchPage {
   placeholder: string;
-  dispensaries: Dispensary[];
+  dispensaries: any;
   searchMode: string;
   // map: GoogleMap;
   //
@@ -34,8 +34,11 @@ export class SearchPage {
               private _zone: NgZone,
               private cartService: CartService) {
     this.placeholder = "Search for a dispensary";
-    this.dispensaries = dispensaryService.getNearestDispensaries();
     this.searchMode = "mail";
+
+    this.dispensaryService.getDispensaries(this.searchMode).then(response => {
+      this.dispensaries = response;
+    });
     this.platform.ready().then(() => this.onPlatformReady());
   }
 
@@ -52,23 +55,23 @@ export class SearchPage {
   goToCart() {
     this.navCtrl.push(CartPage);
   }
-
+  //
   // ngAfterViewInit() {
   //   GoogleMap.isAvailable().then(() => {
   //
   //     this.map = new GoogleMap('map_canvas');
   //
-  //     // this.map.on(GoogleMapsEvent.MAP_READY).subscribe(
-  //     //   () => this.onMapReady(),
-  //     //   () => alert("Error: onMapReady")
-  //     // );
+  //     this.map.on(GoogleMapsEvent.MAP_READY).subscribe(
+  //       () => this.onMapReady(),
+  //       () => alert("Error: onMapReady")
+  //     );
   //
-  //     // this.map.on(GoogleMapsEvent.MAP_READY).subscribe(
-  //     //   (data: any) => {
-  //     //     alert("GoogleMap.onMapReady(): ");
-  //     //   },
-  //     //   () => alert("Error: GoogleMapsEvent.MAP_READY")
-  //     // );
+  //     this.map.on(GoogleMapsEvent.MAP_READY).subscribe(
+  //       (data: any) => {
+  //         alert("GoogleMap.onMapReady(): ");
+  //       },
+  //       () => alert("Error: GoogleMapsEvent.MAP_READY")
+  //     );
   //
   //     this.map.one(GoogleMapsEvent.MAP_READY).then((data: any) => {
   //       alert("GoogleMap.onMapReady(): " + JSON.stringify(data));

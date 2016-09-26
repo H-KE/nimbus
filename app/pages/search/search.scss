@@ -14,13 +14,10 @@ ion-searchbar.search-search {
   border-color: color($colors, primary, base) !important;
 }
 
-ion-app._gmaps_cdv_ .nav-decor {
+ion-app._gmapscdv_ .nav-decor {
   background-color: transparent !important;
 }
 
 ion-nav.has-views {
-  background-color: transparent !important;
-}
-
-.platform-ios ion-searchbar {
+    background-color: transparent !important;
 }
