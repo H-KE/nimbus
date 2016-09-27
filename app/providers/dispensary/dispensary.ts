@@ -10,12 +10,12 @@ export class DispensaryService {
 
       getDispensaries(distribution) {
         var headers = new Headers();
-        var params = "distribution=" + distribution;
+        var params = "?distribution=" + distribution;
         headers.append('Content-Type', 'application/x-www-form-urlencoded');
 
         return new Promise(resolve => {
 
-          this.http.get('http://localhost:3000/api/retailers', {headers: headers})
+          this.http.get('http://localhost:3000/api/retailers/channel' + params, {headers: headers})
               .map(response => response.json())
               .subscribe(
                 data => {
@@ -31,12 +31,13 @@ export class DispensaryService {
 
 
       }
+
       getDispensary(id) {
 
         return new Promise(resolve => {
           var headers = new Headers();
           headers.append('Content-Type', 'application/x-www-form-urlencoded');
-          this.http.post('http://localhost:3000/api/auth/' + id, {headers: headers})
+          this.http.get('http://localhost:3000/api/retailers/' + id, {headers: headers})
             .map(response => response.json())
             .subscribe(
               data => {
@@ -48,5 +49,23 @@ export class DispensaryService {
             )
         });
 
+      }
+
+      getDispensaryMenu(id) {
+
+        return new Promise(resolve => {
+          var headers = new Headers();
+          headers.append('Content-Type', 'application/x-www-form-urlencoded');
+          this.http.get('http://localhost:3000/api/retailers/' + id + '/products', {headers: headers})
+            .map(response => response.json())
+            .subscribe(
+              data => {
+                resolve(data);
+              },
+              error => {
+                console.log(error);
+              }
+            )
+        });
       }
 }

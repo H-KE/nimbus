@@ -1,11 +1,12 @@
 export class Item {
   id: number;
   name: string;
-  img: string;
+  images: string[];
   prices: number[];
-  priceLabels: string[];
+  price_labels: string[];
   description: string;
   thc: number;
+  cbd: number;
   subspecies: string;
   category: string;
   quantity: string;

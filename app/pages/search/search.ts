@@ -20,9 +20,9 @@ import {DispensaryService} from '../../providers/dispensary/dispensary';
 export class SearchPage {
   dispensaries: any;
   searchMode: string;
-  loader = this.loadingCtrl.create({
-    content: "Finding Dispensaries...",
-  });
+  // loader = this.loadingCtrl.create({
+  //   content: "Finding Dispensaries...",
+  // });
   // map: GoogleMap;
   //
   // zoom: number = 15;
@@ -36,21 +36,32 @@ export class SearchPage {
               private _zone: NgZone,
               private cartService: CartService,
               private loadingCtrl: LoadingController) {
-    this.loader.present();
-
     this.searchMode = "mail";
-
-    this.dispensaryService.getDispensaries(this.searchMode)
-      .then(response => {
-        this.dispensaries = response;
-        this.loader.dismiss();
-      });
-
+    this.loadDispensaries(this.searchMode);
     this.platform.ready().then(() => this.onPlatformReady());
   }
 
   private onPlatformReady(): void {
 
+  }
+
+  loadDispensaries(searchMode) {
+    var loader = this.loadingCtrl.create({
+      content: "Finding Dispensaries...",
+    });
+    loader.present();
+    this.dispensaryService.getDispensaries(searchMode)
+      .then(response => {
+        this.dispensaries = response;
+        loader.dismiss();
+      });
+  }
+
+  loadProducts(dispensary) {
+    this.dispensaryService.getDispensaryMenu(dispensary.id)
+      .then(response => {
+        console.log(response);
+      });
   }
 
   dispensarySelected(event, dispensary) {

@@ -4,7 +4,11 @@
  <div *ngIf="selectedItem" class="selection">
     <ion-card>
       <div id="item-logo-wrapper">
-        <img src={{selectedItem.img}} class="item-image"/>
+        <ion-slides loop pager>
+          <ion-slide *ngFor="let image of selectedItem.images">
+            <img src={{image}} class="item-image"/>
+          </ion-slide>
+        </ion-slides>
       </div>
       <ion-card-content>
         <ion-card-title>
@@ -16,7 +20,7 @@
         <div *ngIf="displaySlider">
           <ion-item>
             <ion-range min="0" max="4" step="1" snaps="true" secondary [(ngModel)]="quantity" >
-              <ion-label range-right>{{selectedItem.priceLabels[quantity]}}: ${{selectedItem.prices[quantity]}}</ion-label>
+              <ion-label range-right>{{selectedItem.price_labels[quantity]}}: ${{selectedItem.prices[quantity]}}</ion-label>
             </ion-range>
           </ion-item>
         </div>

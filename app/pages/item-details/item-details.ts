@@ -24,13 +24,13 @@ export class ItemDetailsPage {
     this.quantity = 0;
 
     this.itemPrice = this.selectedItem.prices[this.quantity];
-    this.quantityLabel = this.selectedItem.priceLabels[this.quantity];
+    this.quantityLabel = this.selectedItem.price_labels[this.quantity];
 
     this.displaySlider = this.selectedItem.prices.length > 1 ? true : false;
   }
 
   addToCart(selectedItem, quantity) {
-    this.cartService.addToCart(selectedItem, selectedItem.priceLabels[quantity], selectedItem.prices[quantity]);
+    this.cartService.addToCart(selectedItem, selectedItem.price_labels[quantity], selectedItem.prices[quantity]);
     this.navCtrl.pop();
   }
 }
