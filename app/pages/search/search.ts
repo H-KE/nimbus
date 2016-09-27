@@ -1,5 +1,5 @@
 import {Component, NgZone} from '@angular/core';
-import {NavController, NavParams, Platform} from 'ionic-angular';
+import {NavController, NavParams, Platform, LoadingController} from 'ionic-angular';
 // import {GoogleMap, GoogleMapsEvent, GoogleMapsLatLng, GoogleMapsMarkerOptions} from 'ionic-native';
 import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -18,9 +18,11 @@ import {DispensaryService} from '../../providers/dispensary/dispensary';
 })
 
 export class SearchPage {
-  placeholder: string;
   dispensaries: any;
   searchMode: string;
+  loader = this.loadingCtrl.create({
+    content: "Finding Dispensaries...",
+  });
   // map: GoogleMap;
   //
   // zoom: number = 15;
@@ -32,13 +34,18 @@ export class SearchPage {
               public navCtrl: NavController,
               private platform: Platform,
               private _zone: NgZone,
-              private cartService: CartService) {
-    this.placeholder = "Search for a dispensary";
+              private cartService: CartService,
+              private loadingCtrl: LoadingController) {
+    this.loader.present();
+
     this.searchMode = "mail";
 
-    this.dispensaryService.getDispensaries(this.searchMode).then(response => {
-      this.dispensaries = response;
-    });
+    this.dispensaryService.getDispensaries(this.searchMode)
+      .then(response => {
+        this.dispensaries = response;
+        this.loader.dismiss();
+      });
+
     this.platform.ready().then(() => this.onPlatformReady());
   }
 

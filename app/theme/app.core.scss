@@ -22,8 +22,7 @@
 
 @import "../pages/order-details/order-details.scss";
 
-@imposrt ""
-
+@import "../pages/checkout/checkout.scss";
 
 ion-content {
   background: color($colors, background, base);
@@ -36,5 +35,17 @@ ion-menu {
 }
 
 .error-message {
-  color: #f53d3d !important; 
+  color: #f53d3d !important;
 }
+
+ion-page > ion-content > scroll-content {
+	margin-top: 40px; //TODO: do not use fixed pixel margining, should be auto set by Ionic, look into scroll-content margining
+};
+
+.platform-ios ion-page > ion-content > scroll-content {
+	margin-top: 26px; //TODO: do not use fixed pixel margining, should be auto set by Ionic, look into scroll-content margining
+};
+
+.platform-android ion-page > ion-content > scroll-content {
+	margin-top: 40px; //TODO: do not use fixed pixel margining, should be auto set by Ionic, look into scroll-content margining
+};

@@ -37,7 +37,3 @@ $colors: (
   facebook:   #4E6BAC,
   google:     #303030
 );
-
-ion-page > ion-content > scroll-content {
-	margin-top: 56px; //TODO: do not use fixed pixel margining, should be auto set by Ionic, look into scroll-content margining
-};

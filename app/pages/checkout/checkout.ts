@@ -5,7 +5,6 @@ import { OrderService } from '../../providers/orders/orders';
 import { Order } from '../../models/order';
 import { CartService } from '../../providers/cart/cart';
 
-
 /*
   Generated class for the CheckoutPage page.
 
@@ -17,6 +16,8 @@ import { CartService } from '../../providers/cart/cart';
 })
 export class CheckoutPage {
   order: Order;
+  subTotal: number;
+  orderTotal: number;
 
 
   constructor(private navCtrl: NavController,
@@ -26,7 +27,9 @@ export class CheckoutPage {
               private alertController: AlertController) {
     this.order = null;
     this.order = navParams.get('order');
-    console.log("checkout order:" + this.order);
+    this.subTotal = this.order.total;
+    this.orderTotal = this.order.total + 5;
+    console.log("checkout order:" + JSON.stringify(this.order));
   }
 
   placeOrder() {

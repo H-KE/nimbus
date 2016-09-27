@@ -8,7 +8,6 @@ import {CartPage} from '../cart/cart';
 import {NimbusBar} from '../../components/nimbus-bar/nimbus-bar';
 import * as _ from 'underscore';
 
-
 @Component({
   templateUrl: 'build/pages/dispensary/dispensary.html',
   providers: [MenuService, Constants],

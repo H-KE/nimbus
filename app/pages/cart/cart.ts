@@ -12,7 +12,6 @@ import { CheckoutPage } from '../checkout/checkout'
   templateUrl: 'build/pages/cart/cart.html'
 })
 export class CartPage {
-  title: string;
   cart: any;
   order: Order;
 
@@ -20,7 +19,6 @@ export class CartPage {
               private cartService: CartService,
               private orderService: OrderService,
               private alertController: AlertController) {
-    this.title = "Cart";
     this.cart = this.cartService.getCart();
     this.order = new Order();
   }

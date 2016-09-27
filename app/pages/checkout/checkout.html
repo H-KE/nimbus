@@ -13,7 +13,7 @@
 </ion-header>
 
 
-<ion-content>
+<ion-content class="checkout">
   <ion-card>
     <ion-list>
       <ion-list-header>
@@ -31,17 +31,17 @@
   <ion-card>
     <ion-list>
       <ion-list-header>
-        <ion-label>Payment</ion-label>
+        <ion-label>Order Summary</ion-label>
       </ion-list-header>
       <ion-item text-wrap no-lines *ngFor="let item of order.items">
         <p>{{item.name}} X 1</p>
-        <p item-right>${{item.price}}</p>
+        <p class="item-price" item-right>${{item.price}}</p>
       </ion-item>
       <ion-item text-wrap>
-        <p align="right">Subtotal: $50</p>
-        <p align="right">Sales Tax (8.0%): $5</p>
+        <p align="right">Subtotal: ${{subTotal}}</p>
+        <!-- <p align="right">Sales Tax (8.0%): $5</p> -->
         <p align="right">Delivery Charges: $5</p>
-        <h3 align="right">Order Total: $60</h3>
+        <h3 align="right">Order Total: ${{orderTotal}}</h3>
       </ion-item>
     </ion-list>
   </ion-card>
