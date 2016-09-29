@@ -10,12 +10,12 @@ import {LoginPage} from './pages/login/login';
 import {CartService} from './providers/cart/cart';
 import {OrderService} from './providers/orders/orders';
 import {AuthenticationService} from './providers/authentication/authentication'
-import {PaymentService} from './providers/payment/payment';
+import {StripeService} from './providers/stripe/stripe';
 import * as _ from 'underscore';
 
 @Component({
   templateUrl: 'build/app.html',
-  providers: [CartService, OrderService, AuthenticationService, PaymentService]
+  providers: [CartService, OrderService, AuthenticationService, StripeService]
 })
 class MyApp {
   @ViewChild(Nav) nav: Nav;
@@ -54,4 +54,4 @@ class MyApp {
   }
 }
 
-ionicBootstrap(MyApp);
+ionicBootstrap(MyApp,[CartService, StripeService, AuthenticationService, OrderService]);

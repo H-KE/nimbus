@@ -1,20 +1,30 @@
-
-    <form [formGroup]="cardForm" (ngSubmit)="submit()">
-      <ion-item>
-        <ion-label floating>Creditcard #</ion-label>
-        <ion-input type="text" formControlName="number"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>CVC</ion-label>
-        <ion-input type="text" formControlName="cvc"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Exp. Month</ion-label>
-        <ion-input type="text" formControlName="exp_month"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label floating>Exp. Year</ion-label>
-        <ion-input type="text" formControlName="exp_year"></ion-input>
-      </ion-item>
-      <button type="submit" [disabled]="!cardForm.valid">Submit</button>
-    </form>
+<div class="modal_form" style="width: 80%; height: 60%; min-height: 0; max-height: 250px; top: 20%; left: 10%; right: 10%; bottom: 20%; position: absolute;">
+  <form [formGroup]="cardForm" (ngSubmit)="submit()">
+    <ion-item>
+      <ion-label floating>Creditcard #</ion-label>
+      <ion-input type="text" formControlName="number" (change)="cardNumberChanged = true;"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>CVC</ion-label>
+      <ion-input type="text" formControlName="cvc"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Exp. Month</ion-label>
+      <ion-input type="text" formControlName="exp_month"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating>Exp. Year</ion-label>
+      <ion-input type="text" formControlName="exp_year"></ion-input>
+    </ion-item>
+    <ion-item class="no_bottom_border" *ngIf="!cardForm.valid  && (cardNumberChanged)">
+     <p class="error-message">
+        Your credit card information is invalid.
+     </p>
+    </ion-item>
+    <ion-item class="no_bottom_border">
+      <ion-buttons end>
+        <button type="submit" small [disabled]="!cardForm.valid">Submit</button>
+      </ion-buttons>
+    </ion-item>
+  </form>
+</div>

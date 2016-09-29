@@ -7,7 +7,6 @@ import { CheckoutModalPage } from '../checkout-modal/checkout-modal';
 
 import { CartService } from '../../providers/cart/cart';
 import { OrderService } from '../../providers/orders/orders';
-import { PaymentService } from '../../providers/payment/payment';
 
 /*
   Generated class for the CheckoutPage page.
@@ -16,8 +15,7 @@ import { PaymentService } from '../../providers/payment/payment';
   Ionic pages and navigation.
 */
 @Component({
-  templateUrl: 'build/pages/checkout/checkout.html',
-  providers: [PaymentService]
+  templateUrl: 'build/pages/checkout/checkout.html'
 })
 export class CheckoutPage {
   order: Order;
@@ -28,7 +26,6 @@ export class CheckoutPage {
               private navParams: NavParams,
               private orderService: OrderService,
               private cartService: CartService,
-              private paymentService: PaymentService,
               private modalController: ModalController) {
 
     this.order = null;
