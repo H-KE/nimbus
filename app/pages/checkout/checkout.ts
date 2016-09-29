@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, AlertController} from 'ionic-angular';
-import { OrderDetailsPage } from '../order-details/order-details';
-import { OrderService } from '../../providers/orders/orders';
+import { NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
+
 import { Order } from '../../models/order';
+import { OrderDetailsPage } from '../order-details/order-details';
+import { CheckoutModalPage } from '../checkout-modal/checkout-modal';
+
 import { CartService } from '../../providers/cart/cart';
+import { OrderService } from '../../providers/orders/orders';
+import { PaymentService } from '../../providers/payment/payment';
 
 /*
   Generated class for the CheckoutPage page.
@@ -13,31 +17,40 @@ import { CartService } from '../../providers/cart/cart';
 */
 @Component({
   templateUrl: 'build/pages/checkout/checkout.html',
+  providers: [PaymentService]
 })
 export class CheckoutPage {
   order: Order;
   subTotal: number;
   orderTotal: number;
 
-
   constructor(private navCtrl: NavController,
               private navParams: NavParams,
               private orderService: OrderService,
               private cartService: CartService,
-              private alertController: AlertController) {
+              private paymentService: PaymentService,
+              private modalController: ModalController) {
+
     this.order = null;
     this.order = navParams.get('order');
     this.subTotal = this.order.total;
     this.orderTotal = this.order.total + 5;
-    console.log("checkout order:" + JSON.stringify(this.order));
   }
 
   placeOrder() {
-    this.orderService.placeOrder(this.order);
+    console.log("place order?")
+    let paymentModal = this.modalController.create(CheckoutModalPage);
 
-    this.cartService.clearCart();
+    paymentModal.onDidDismiss(data => {
+      console.log(data);
+    });
 
-    this.goToOrderDetails();
+    paymentModal.present();
+    // this.orderService.placeOrder(this.order);
+    //
+    // this.cartService.clearCart();
+    //
+    // this.goToOrderDetails();
   }
 
   goToOrderDetails() {
@@ -45,4 +58,6 @@ export class CheckoutPage {
       order: this.order
     });
   }
+
+
 }

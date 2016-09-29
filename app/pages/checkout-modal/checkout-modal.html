@@ -1,0 +1,20 @@
+
+    <form [formGroup]="cardForm" (ngSubmit)="submit()">
+      <ion-item>
+        <ion-label floating>Creditcard #</ion-label>
+        <ion-input type="text" formControlName="number"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>CVC</ion-label>
+        <ion-input type="text" formControlName="cvc"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Exp. Month</ion-label>
+        <ion-input type="text" formControlName="exp_month"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Exp. Year</ion-label>
+        <ion-input type="text" formControlName="exp_year"></ion-input>
+      </ion-item>
+      <button type="submit" [disabled]="!cardForm.valid">Submit</button>
+    </form>

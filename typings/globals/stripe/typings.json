@@ -1,0 +1,8 @@
+{
+  "resolution": "main",
+  "tree": {
+    "src": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/da354071c00aba723e72b1b0ce6b948f54f1ccb1/stripe/stripe.d.ts",
+    "raw": "registry:dt/stripe#0.0.0+20160811213059",
+    "typings": "https://raw.githubusercontent.com/DefinitelyTyped/DefinitelyTyped/da354071c00aba723e72b1b0ce6b948f54f1ccb1/stripe/stripe.d.ts"
+  }
+}
