@@ -12,13 +12,12 @@ export class StripeService {
   }
 
   createToken(cardParams) {
-    console.log(cardParams);
-    Stripe.card.createToken(cardParams, this.stripeResponseHandler);
-  }
+    return new Promise(resolve => {
+      Stripe.card.createToken(cardParams, function(status, response) {
+          resolve(response);
+      });
 
-  stripeResponseHandler(status, response) {
-    console.log(status);
-    console.log(response);
+    })
   }
 
 

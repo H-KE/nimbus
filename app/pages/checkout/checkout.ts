@@ -8,12 +8,6 @@ import { CheckoutModalPage } from '../checkout-modal/checkout-modal';
 import { CartService } from '../../providers/cart/cart';
 import { OrderService } from '../../providers/orders/orders';
 
-/*
-  Generated class for the CheckoutPage page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
-*/
 @Component({
   templateUrl: 'build/pages/checkout/checkout.html'
 })
