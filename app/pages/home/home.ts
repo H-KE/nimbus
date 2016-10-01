@@ -14,7 +14,7 @@ export class HomePage {
   }
 
   goToSearch() {
-    this.navCtrl.push(SearchPage);
+    this.navCtrl.setRoot(SearchPage);
   }
 
   goToSignUp() {
