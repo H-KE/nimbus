@@ -7,6 +7,7 @@ import { DispensaryService } from '../../providers/dispensary/dispensary';
 import { Item } from '../../models/item';
 import { ItemDetailsPage } from '../item-details/item-details';
 import {CartPage} from '../cart/cart';
+import {CartService} from '../../providers/cart/cart';
 import {NimbusBar} from '../../components/nimbus-bar/nimbus-bar';
 
 import * as _ from 'underscore';
@@ -22,9 +23,10 @@ export class DispensaryPage {
   menuCategories: any[];
 
   constructor(public navCtrl: NavController,
-              navParams: NavParams,
-              dispensaryService: DispensaryService,
-              menuService: MenuService) {
+              private navParams: NavParams,
+              private dispensaryService: DispensaryService,
+              private cartService: CartService,
+              private menuService: MenuService) {
     this.selectedDispensary = navParams.get('dispensary');
 
     dispensaryService.getDispensaryMenu(this.selectedDispensary.id)

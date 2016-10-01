@@ -28,7 +28,7 @@
 
 </ion-header>
 
-<ion-content class="getting-started" [ngSwitch]="searchMode">
+<ion-content class="search" [ngSwitch]="searchMode">
   <!-- <div *ngSwitchCase="'mail'"> -->
     <ion-card>
       <ion-searchbar
@@ -37,17 +37,14 @@
         placeholder="Search for a dispensary...">
       </ion-searchbar>
     </ion-card>
-    <ion-card>
-      <ion-list id="welcomeToNimbus-list4">
-          <button ion-item class="dispensary-list-item" *ngFor="let dispensary of dispensaries" (click)="dispensarySelected($event, dispensary)">
-            <ion-thumbnail item-left>
-              <img src={{dispensary.avatar_url}}>
-            </ion-thumbnail>
-            <h2>{{dispensary.name}}</h2>
-            <p>{{dispensary.address}}</p>
-            <button clear item-right>View</button>
-          </button>
-      </ion-list>
+    <ion-card *ngFor="let dispensary of dispensaries" (click)="dispensarySelected($event, dispensary)">
+      <button ion-item>
+        <ion-thumbnail item-left>
+          <img src={{dispensary.avatar_url}}>
+        </ion-thumbnail>
+        <h2>{{dispensary.name}}</h2>
+        <p>{{dispensary.address}}</p>
+      </button>
     </ion-card>
   <!-- </div> -->
   <!-- <div *ngSwitchCase="'delivery'">

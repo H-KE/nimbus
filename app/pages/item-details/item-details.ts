@@ -18,7 +18,7 @@ export class ItemDetailsPage {
   itemPrice: number;
   displaySlider: boolean;
 
-  constructor(public navCtrl: NavController, navParams: NavParams, private cartService: CartService) {
+  constructor(public navCtrl: NavController, private navParams: NavParams, private cartService: CartService) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
     this.quantity = 0;
