@@ -33,4 +33,8 @@ export class ItemDetailsPage {
     this.cartService.addToCart(selectedItem, selectedItem.price_labels[quantity], selectedItem.prices[quantity]);
     this.navCtrl.pop();
   }
+
+  goToCart() {
+    this.navCtrl.push(CartPage);
+  }
 }

@@ -58,4 +58,8 @@ export class DispensaryPage {
       item: item
     });
   }
+
+  goToCart() {
+    this.navCtrl.push(CartPage);
+  }
 }
