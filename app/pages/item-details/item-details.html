@@ -1,4 +1,13 @@
-<nimbus-bar [title]="selectedItem.name" [showMenu]=false></nimbus-bar>
+<ion-header>
+  <ion-navbar primary>
+    <ion-title>{{selectedItem.name}}</ion-title>
+    <ion-buttons end>
+      <button (click)="goToCart()">
+        <ion-icon name="cart"></ion-icon>{{cartService.cart.count}}
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
 
 <ion-content>
  <div *ngIf="selectedItem" class="selection">

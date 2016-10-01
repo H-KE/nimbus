@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams} from 'ionic-angular';
+import {NavController, NavParams, ToastController} from 'ionic-angular';
 
 import { Item } from '../../models/item';
 import { CartService } from '../../providers/cart/cart';
@@ -18,7 +18,10 @@ export class ItemDetailsPage {
   itemPrice: number;
   displaySlider: boolean;
 
-  constructor(public navCtrl: NavController, navParams: NavParams, private cartService: CartService) {
+  constructor(public navCtrl: NavController,
+              private navParams: NavParams,
+              private toastCtrl: ToastController,
+              private cartService: CartService) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
     this.quantity = 0;
@@ -31,6 +34,19 @@ export class ItemDetailsPage {
 
   addToCart(selectedItem, quantity) {
     this.cartService.addToCart(selectedItem, selectedItem.price_labels[quantity], selectedItem.prices[quantity]);
+    this.presentAddToCartToast(selectedItem);
     this.navCtrl.pop();
+  }
+
+  goToCart() {
+    this.navCtrl.push(CartPage);
+  }
+
+  presentAddToCartToast(selectedItem) {
+    let toast = this.toastCtrl.create({
+      message: selectedItem.name + ' is added to your cart.',
+      duration: 3000
+    });
+    toast.present();
   }
 }

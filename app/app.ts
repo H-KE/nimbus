@@ -34,7 +34,7 @@ class MyApp {
     this.pages = [
       { title: 'Home', component: SearchPage },
       { title: 'My Orders', component: OrdersPage},
-      { title: 'Login', component: LoginPage}
+      { title: 'Logout', component: HomePage} //TODO: remove this from menu or do actual logout
     ];
   }
 

@@ -1,23 +1,26 @@
-.getting-started {
+.search {
+  ion-card-content.search-card {
+    padding: 0;
+  }
 
-}
+  ion-searchbar.search-search {
+    padding: 0;
+  }
 
-ion-card-content.search-card {
-  padding: 0;
-}
+  ion-app._gmapscdv_ .nav-decor {
+    background-color: transparent !important;
+  }
 
-ion-searchbar.search-search {
-  padding: 0;
+  ion-nav.has-views {
+    background-color: transparent !important;
+  }
+
+  ion-card img {
+    height: 150px;
+    width: 296px;
+  }
 }
 
 .toolbar-background {
   border-color: color($colors, primary, base) !important;
-}
-
-ion-app._gmapscdv_ .nav-decor {
-  background-color: transparent !important;
-}
-
-ion-nav.has-views {
-    background-color: transparent !important;
 }

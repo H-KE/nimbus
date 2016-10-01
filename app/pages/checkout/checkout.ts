@@ -34,14 +34,14 @@ export class CheckoutPage {
 
     paymentModal.onDidDismiss(data => {
       console.log(data);
+      this.orderService.placeOrder(this.order);
+
+      this.cartService.clearCart();
+
+      this.goToOrderDetails();
     });
 
     paymentModal.present();
-    // this.orderService.placeOrder(this.order);
-    //
-    // this.cartService.clearCart();
-    //
-    // this.goToOrderDetails();
   }
 
   goToOrderDetails() {
