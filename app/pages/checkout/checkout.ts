@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, ViewController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, ViewController, LoadingController } from 'ionic-angular';
 
 import { Order } from '../../models/order';
 import { OrderDetailsPage } from '../order-details/order-details';
@@ -20,7 +20,8 @@ export class CheckoutPage {
               private navParams: NavParams,
               private orderService: OrderService,
               private cartService: CartService,
-              private modalController: ModalController) {
+              private modalController: ModalController,
+              private loadingCtrl: LoadingController) {
 
     this.order = null;
     this.order = navParams.get('order');
@@ -34,9 +35,17 @@ export class CheckoutPage {
     //
     // paymentModal.onDidDismiss(data => {
     //   console.log(data);
+    let loader = this.loadingCtrl.create({
+      content: "Placing Order...",
+      duration: 3000
+    });
+    loader.present();
+
       this.orderService.placeOrder(this.order);
 
       this.cartService.clearCart();
+
+      // loader.dismiss();
 
       this.goToOrderDetails();
     // });

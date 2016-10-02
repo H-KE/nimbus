@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, LoadingController} from 'ionic-angular';
 
 import { MenuService } from '../../providers/menu/menu';
 import { DispensaryService } from '../../providers/dispensary/dispensary';
@@ -26,10 +26,17 @@ export class DispensaryPage {
               private navParams: NavParams,
               private dispensaryService: DispensaryService,
               private cartService: CartService,
-              private menuService: MenuService) {
+              private menuService: MenuService,
+              private loadingCtrl: LoadingController) {
     this.selectedDispensary = navParams.get('dispensary');
+    this.loadMenu();
+  }
 
-    dispensaryService.getDispensaryMenu(this.selectedDispensary.id)
+  loadMenu() {
+    var loader = this.loadingCtrl.create({});
+    loader.present();
+
+    this.dispensaryService.getDispensaryMenu(this.selectedDispensary.id)
       .then(response => {
         console.log(response);
         this.menu = response;
@@ -42,9 +49,10 @@ export class DispensaryPage {
             items: _.where(this.menu, {category: category})
           })
         }
+
+        loader.dismiss();
       });
   }
-
   toggleMenuCategory(category) {
     category.show = !category.show;
   }

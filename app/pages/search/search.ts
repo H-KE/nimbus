@@ -57,12 +57,12 @@ export class SearchPage {
       });
   }
 
-  loadProducts(dispensary) {
-    this.dispensaryService.getDispensaryMenu(dispensary.id)
-      .then(response => {
-        console.log(response);
-      });
-  }
+  // loadProducts(dispensary) {
+  //   this.dispensaryService.getDispensaryMenu(dispensary.id)
+  //     .then(response => {
+  //       console.log(response);
+  //     });
+  // }
 
   dispensarySelected(event, dispensary) {
     this.navCtrl.push(DispensaryPage, {
