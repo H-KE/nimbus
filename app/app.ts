@@ -6,6 +6,8 @@ import {HomePage} from './pages/home/home';
 import {SearchPage} from './pages/search/search';
 import {OrdersPage} from './pages/orders/orders'
 import {LoginPage} from './pages/login/login';
+import {ProfilePage} from './pages/profile/profile';
+
 
 import {CartService} from './providers/cart/cart';
 import {OrderService} from './providers/orders/orders';
@@ -22,7 +24,7 @@ class MyApp {
 
   // make SearchPage the root (or first) page
   rootPage: any = HomePage;
-  pages: Array<{title: string, component: any}>;
+  pages: Array<{title: string, icon: string, component: any}>;
 
   constructor(
     public platform: Platform,
@@ -32,9 +34,10 @@ class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Home', component: SearchPage },
-      { title: 'My Orders', component: OrdersPage},
-      { title: 'Logout', component: HomePage} //TODO: remove this from menu or do actual logout
+      { title: 'Explore', icon: 'ios-search-outline', component: SearchPage },
+      { title: 'My Orders', icon: 'ios-paper-outline', component: OrdersPage},
+      { title: 'My Profile', icon: 'ios-contact', component: ProfilePage}
+      // { title: 'Logout', component: HomePage} //TODO: remove this from menu or do actual logout
     ];
   }
 
