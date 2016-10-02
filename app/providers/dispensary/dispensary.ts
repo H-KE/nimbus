@@ -15,7 +15,7 @@ export class DispensaryService {
 
         return new Promise(resolve => {
 
-          this.http.get('http://localhost:3000/api/retailers/channel' + params, {headers: headers})
+          this.http.get('http://development-nimbus.cfapps.io/api/retailers/channel' + params, {headers: headers})
               .map(response => response.json())
               .subscribe(
                 data => {
@@ -37,7 +37,7 @@ export class DispensaryService {
         return new Promise(resolve => {
           var headers = new Headers();
           headers.append('Content-Type', 'application/x-www-form-urlencoded');
-          this.http.get('http://localhost:3000/api/retailers/' + id, {headers: headers})
+          this.http.get('http://development-nimbus.cfapps.io/api/retailers/' + id, {headers: headers})
             .map(response => response.json())
             .subscribe(
               data => {
@@ -56,7 +56,7 @@ export class DispensaryService {
         return new Promise(resolve => {
           var headers = new Headers();
           headers.append('Content-Type', 'application/x-www-form-urlencoded');
-          this.http.get('http://localhost:3000/api/retailers/' + id + '/products', {headers: headers})
+          this.http.get('http://development-nimbus.cfapps.io/api/retailers/' + id + '/products', {headers: headers})
             .map(response => response.json())
             .subscribe(
               data => {
