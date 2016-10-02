@@ -23,13 +23,12 @@ export class LoginPage {
     user.email = this.email;
     user.password = this.password;
 
-    this.auth.login(user).then(response => {
-      if(response == true){
-        this.gotoSearch();
-      } else {
-        this.errorMessage = "Invalid credentials"
-      }
-    });
+    this.auth.signIn(this.email, this.password)
+      .map(response => response.json())
+      .subscribe(
+        res => this.gotoSearch(),
+        error => this.errorMessage = "Invalid login credentials."
+      )
   }
 
   gotoSearch() {

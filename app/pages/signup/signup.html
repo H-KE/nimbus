@@ -5,36 +5,42 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-list>
-    <ion-card>
-      <ion-item>
-        <ion-label floating>First Name</ion-label>
-        <ion-input type="text" [(ngModel)]="firstName"></ion-input>
-      </ion-item>
+  <ion-card>
+    <ion-list>
+      <form [formGroup]="signupForm" (ngSubmit)="signup()">
+        <ion-item>
+          <ion-label floating>First Name</ion-label>
+          <ion-input type="text" formControlName="firstName"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label floating>Last Name</ion-label>
-        <ion-input type="text" [(ngModel)]="lastName"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label floating>Last Name</ion-label>
+          <ion-input type="text" formControlName="lastName"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label floating>E-mail Address</ion-label>
-        <ion-input type="email" [(ngModel)]="email"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label floating>E-mail Address</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-label floating>Password</ion-label>
-        <ion-input type="password" [(ngModel)]="password"></ion-input>
-      </ion-item>
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
 
-      <ion-item>
-        <ion-buttons end>
-          <button outline medium (click)="signup()">
-            Sign Up
-            <ion-icon item-right primary name="cloud"></ion-icon>
-          </button>
-        </ion-buttons>
-      </ion-item>
-    </ion-card>
-  </ion-list>
+        <ion-item class="no_bottom_border" *ngIf="errorMessage">
+          <p class="error-message">{{errorMessage}}</p>
+        </ion-item>
+
+        <ion-item class="no_bottom_border">
+          <ion-buttons end>
+            <button outline small [disabled]="!signupForm.valid" (click)="signup()">
+              Sign Up
+              <ion-icon item-right primary name="cloud" ></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-item>
+      </form>
+    </ion-list>
+  </ion-card>
 </ion-content>

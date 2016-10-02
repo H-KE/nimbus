@@ -38,4 +38,9 @@ ion-menu {
 
 .error-message {
   color: #f53d3d !important;
+  word-wrap: break-word !important;
+}
+
+.no_bottom_border .item-inner {
+  border-bottom: 0 !important;
 }
