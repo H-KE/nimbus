@@ -28,7 +28,7 @@
         </p>
         <ion-list no-lines>
           <ion-item *ngIf="displaySlider">
-            <ion-range min="0" max="4" step="1" snaps="true" primary [(ngModel)]="quantity" >
+            <ion-range min="0" max="4" step="1" snaps="true" secondary [(ngModel)]="quantity" >
               <ion-label range-right>{{selectedItem.price_labels[quantity]}}: ${{selectedItem.prices[quantity]}}</ion-label>
             </ion-range>
           </ion-item>
