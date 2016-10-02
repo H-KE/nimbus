@@ -29,19 +29,19 @@ export class CheckoutPage {
   }
 
   placeOrder() {
-    console.log("place order?")
-    let paymentModal = this.modalController.create(CheckoutModalPage);
-
-    paymentModal.onDidDismiss(data => {
-      console.log(data);
+    // console.log("place order?")
+    // let paymentModal = this.modalController.create(CheckoutModalPage);
+    //
+    // paymentModal.onDidDismiss(data => {
+    //   console.log(data);
       this.orderService.placeOrder(this.order);
 
       this.cartService.clearCart();
 
       this.goToOrderDetails();
-    });
-
-    paymentModal.present();
+    // });
+    //
+    // paymentModal.present();
   }
 
   goToOrderDetails() {

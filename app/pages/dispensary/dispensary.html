@@ -25,30 +25,32 @@
       </ion-card-content>
     </ion-card>
 
-  <ion-card>
-    <ion-list-header>
-      <ion-label>Products</ion-label>
-    </ion-list-header>
-    <ion-list>
+    <ion-card>
+      <ion-list-header>
+        Products
+      </ion-list-header>
       <div *ngFor="let category of menuCategories">
-        <button ion-item detail-none class="item-stable"
-                  (click)="toggleMenuCategory(category)"
-                  [class.active]="!isCategoryShown(category)">
-          <h2>{{category.name}}</h2>
-          <ion-icon [name]="isCategoryShown(category) ? 'none' : 'arrow-dropdown'" item-right></ion-icon>
-        </button>
-        <button ion-item *ngFor="let item of category.items"
-                  (click)="itemSelected($event, item)"
-                  class="item-accordian"
-                  [hidden]="!isCategoryShown(category)">
-          <ion-avatar item-left>
-            <img src="{{item.images[0]}}">
-          </ion-avatar>
-          <h2>{{item.name}}</h2>
-          <p>{{item.subspecies}} | THC: {{item.thc}}%</p>
-        </button>
+        <ion-list>
+          <button ion-item detail-none class="item-stable"
+                    (click)="toggleMenuCategory(category)"
+                    [class.active]="!isCategoryShown(category)">
+            <h2>{{category.name}}</h2>
+            <ion-icon [name]="isCategoryShown(category) ? 'none' : 'arrow-dropdown'" item-right></ion-icon>
+          </button>
+        </ion-list>
+        <ion-list>
+          <button ion-item *ngFor="let item of category.items"
+                    (click)="itemSelected($event, item)"
+                    class="item-accordian"
+                    [hidden]="!isCategoryShown(category)">
+            <ion-avatar item-left>
+              <img src="{{item.images[0]}}">
+            </ion-avatar>
+            <h2>{{item.name}}</h2>
+            <p>{{item.subspecies}} | THC: {{item.thc}}%</p>
+          </button>
+        </ion-list>
       </div>
-      </ion-list>
     </ion-card>
-   </div>
+  </div>
 </ion-content>

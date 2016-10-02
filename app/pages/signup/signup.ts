@@ -18,7 +18,7 @@ export class SignupPage {
 
   }
 
-  signup() {
+  signUp() {
     let user = new User;
     user.firstName = this.firstName;
     user.lastName = this.lastName;
@@ -27,12 +27,12 @@ export class SignupPage {
 
     this.auth.register(user).then(data => {
       if(data){
-        this.gotoSearch();
+        this.goToSearch();
       }
     });
   }
 
-  gotoSearch() {
+  goToSearch() {
     this.navCtrl.setRoot(SearchPage);
   }
 }

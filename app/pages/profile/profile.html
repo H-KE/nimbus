@@ -1,0 +1,51 @@
+<ion-header>
+  <ion-navbar primary>
+    <button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      My Profile
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-list>
+    <ion-list-header>
+      Contact
+    </ion-list-header>
+    <button ion-item>
+      Peter He, peter3923@gmail.com, 6463194722
+    </button>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      Delivery Addresses
+    </ion-list-header>
+    <button ion-item>
+      <b>4 West 104th Street, 3B</b>, Toronto, ON, T3K 5M5
+    </button>
+    <button ion-item detail-none>
+      <span danger>Add another address</span>
+    </button>
+  </ion-list>
+
+  <ion-list>
+    <ion-list-header>
+      Payment
+    </ion-list-header>
+    <button ion-item>
+      <span>Payment Card</span>
+      <span item-right>
+        <ion-icon name="ios-card"></ion-icon>
+        Add Payment Card
+      </span>
+    </button>
+  </ion-list>
+
+  <ion-list>
+    <button full white (click)="signOut()">
+      <span secondary>Sign Out</span>
+    </button>
+  </ion-list>
+</ion-content>
