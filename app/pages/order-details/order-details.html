@@ -12,32 +12,40 @@
 
 <ion-content class="order-details">
   <ion-card>
-    <ion-list-header>
-      <ion-label>Status</ion-label>
-    </ion-list-header>
-    <ol>
-      <li class="completed">
-         <ion-icon name="checkmark"></ion-icon> Verifying
-      </li>
-      <li class="current">
-        Packaging
-      </li>
-      <li> In Transit</li>
-      <li> Order Complete</li>
-    </ol>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Status</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ol>
+          <li class="completed">
+             <ion-icon name="checkmark"></ion-icon> Verifying
+          </li>
+          <li class="current">
+            Packaging
+          </li>
+          <li> In Transit</li>
+          <li> Order Complete</li>
+        </ol>
+      </ion-item>
+    </ion-list>
   </ion-card>
+
   <ion-card>
-    <ion-list-header>
-      <ion-label>Items</ion-label>
-    </ion-list-header>
-    <ion-item *ngFor="let item of order.items">
-      <ion-avatar item-left>
-        <img src="{{item.images[0]}}">
-      </ion-avatar>
-      <h2>{{item.name}}</h2>
-      <p>${{item.price}} | {{item.quantity}}</p>
-    </ion-item>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Items</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let item of order.items">
+        <ion-avatar item-left>
+          <img src="{{item.images[0]}}">
+        </ion-avatar>
+        <h2>{{item.name}}</h2>
+        <p>${{item.price}} | {{item.quantity}}</p>
+      </ion-item>
+    </ion-list>
   </ion-card>
+
   <ion-card>
     <ion-list>
       <ion-list-header>
@@ -51,4 +59,5 @@
       </ion-item>
     </ion-list>
   </ion-card>
+
 </ion-content>

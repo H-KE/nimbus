@@ -14,7 +14,6 @@
 
 
 <ion-content class="checkout">
-  <ion-card>
     <ion-list>
       <ion-list-header>
         <ion-label>Shipping Details</ion-label>
@@ -27,8 +26,7 @@
         <p>(647)123-4567</p>
       </ion-item>
     </ion-list>
-  </ion-card>
-  <ion-card>
+
     <ion-list>
       <ion-list-header>
         <ion-label>Order Summary</ion-label>
@@ -44,16 +42,12 @@
         <h3 align="right">Order Total: ${{orderTotal}}</h3>
       </ion-item>
     </ion-list>
-  </ion-card>
-  <ion-card>
+
     <ion-list>
-      <ion-item text-wrap>
+      <button full secondary (click)="placeOrder()">PLACE ORDER</button>
+      <!-- <ion-item text-wrap>
         <p>By pressing "place order" I agree to terms and conditions of the dispensary I am ordering from.</p>
-        <div item-right>
-          <button item-right outline (click)="placeOrder()">PLACE ORDER</button>
-        </div>
-      </ion-item>
+      </ion-item> -->
     </ion-list>
-  </ion-card>
 
 </ion-content>

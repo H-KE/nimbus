@@ -10,7 +10,7 @@
 </ion-header>
 
 <ion-content>
-  <div *ngIf="selectedDispensary" class="selection">
+  <span *ngIf="selectedDispensary" class="selection">
     <ion-card>
       <div id="dispensary-logo-wrapper">
         <img src={{selectedDispensary.avatar_url}} class="dispensary-logo"/>
@@ -29,7 +29,7 @@
       <ion-list-header>
         Products
       </ion-list-header>
-      <div *ngFor="let category of menuCategories">
+      <span *ngFor="let category of menuCategories">
         <ion-list>
           <button ion-item detail-none class="item-stable"
                     (click)="toggleMenuCategory(category)"
@@ -50,7 +50,7 @@
             <p>{{item.subspecies}} | THC: {{item.thc}}%</p>
           </button>
         </ion-list>
-      </div>
+      </span>
     </ion-card>
-  </div>
+  </span>
 </ion-content>

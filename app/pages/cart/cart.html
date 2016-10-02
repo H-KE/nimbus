@@ -6,10 +6,13 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="cart">
   <div *ngIf="cart.content">
     <ion-card>
       <ion-list>
+        <ion-list-header>
+          Green Cross Demo
+        </ion-list-header>
         <ion-item *ngFor="let item of cart.content">
           <ion-avatar item-left>
             <img src="{{item.images[0]}}">
@@ -19,19 +22,9 @@
           <ion-icon item-right name="close-circle" (click)="cartService.removeFromCart(item)"></ion-icon>
         </ion-item>
       </ion-list>
-      <ion-list>
-        <ion-item>
-          <h2>${{cartService.cart.total}} | Total</h2>
-          <button item-right primary (click)="goToOrders()">
-            My Orders
-            <ion-icon name='cloud'></ion-icon>
-          </button>
-          <button item-right primary outline (click)="checkoutCart($event)">
-            CHECKOUT
-            <ion-icon name='checkmark'></ion-icon>
-          </button>
-        </ion-item>
-      </ion-list>
+      <button full secondary (click)="checkoutCart($event)">
+        CHECKOUT
+      </button>
     </ion-card>
   </div>
 </ion-content>

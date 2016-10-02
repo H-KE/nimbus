@@ -9,8 +9,8 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content>
- <div *ngIf="selectedItem" class="selection">
+<ion-content class="item-details">
+ <span *ngIf="selectedItem" class="selection">
     <ion-card>
       <div id="item-logo-wrapper">
         <ion-slides loop pager>
@@ -26,18 +26,18 @@
         <p>
           {{selectedItem.description}}
         </p>
-        <div *ngIf="displaySlider">
-          <ion-item>
+        <ion-list no-lines>
+          <ion-item *ngIf="displaySlider">
             <ion-range min="0" max="4" step="1" snaps="true" secondary [(ngModel)]="quantity" >
               <ion-label range-right>{{selectedItem.price_labels[quantity]}}: ${{selectedItem.prices[quantity]}}</ion-label>
             </ion-range>
           </ion-item>
-        </div>
-        <button primary outline (click)="addToCart(selectedItem, quantity)">
-          Add to Cart
-          <ion-icon name='cart'></ion-icon>
-        </button>
+        </ion-list>
       </ion-card-content>
+      <button secondary full (click)="addToCart(selectedItem, quantity)">
+        Add to Cart
+        <ion-icon name='cart'></ion-icon>
+      </button>
     </ion-card>
-  </div>
+  </span>
 </ion-content>

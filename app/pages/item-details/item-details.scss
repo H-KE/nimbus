@@ -1,7 +1,12 @@
-div.selection {
-  font-size: 22px;
-  display: block;
-  text-align: center;
-  padding-top: 5%;
-}
+.item-details {
+  div.selection {
+    font-size: 22px;
+    display: block;
+    text-align: center;
+    padding-top: 5%;
+  }
 
+  button {
+    margin: 0 !important;
+  }
+}
