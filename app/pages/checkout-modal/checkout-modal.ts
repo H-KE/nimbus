@@ -79,6 +79,10 @@ export class CheckoutModalPage {
       })
   }
 
+  dismiss(response) {
+    this.viewController.dismiss(response);
+  }
+
   placeOrder() {
 
   }
