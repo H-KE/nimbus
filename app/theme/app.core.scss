@@ -39,15 +39,3 @@ ion-menu {
 .error-message {
   color: #f53d3d !important;
 }
-
-ion-page > ion-content > scroll-content {
-	margin-top: 40px; //TODO: do not use fixed pixel margining, should be auto set by Ionic, look into scroll-content margining
-};
-
-.platform-ios ion-page > ion-content > scroll-content {
-	margin-top: 26px; //TODO: do not use fixed pixel margining, should be auto set by Ionic, look into scroll-content margining
-};
-
-.platform-android ion-page > ion-content > scroll-content {
-	margin-top: 40px; //TODO: do not use fixed pixel margining, should be auto set by Ionic, look into scroll-content margining
-};
