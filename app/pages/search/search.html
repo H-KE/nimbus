@@ -30,14 +30,7 @@
 
 <ion-content class="search" [ngSwitch]="searchMode">
   <!-- <div *ngSwitchCase="'mail'"> -->
-    <ion-card>
-      <ion-searchbar
-        class="search-search"
-        [(ngModel)]="myInput"
-        placeholder="Search for a dispensary...">
-      </ion-searchbar>
-    </ion-card>
-    <ion-card *ngFor="let dispensary of dispensaries" (click)="dispensarySelected($event, dispensary)">
+    <!-- <ion-card *ngFor="let dispensary of dispensaries" (click)="dispensarySelected($event, dispensary)">
       <button ion-item>
         <ion-thumbnail item-left>
           <img src={{dispensary.avatar_url}}>
@@ -45,7 +38,15 @@
         <h2>{{dispensary.name}}</h2>
         <p>{{dispensary.address}}</p>
       </button>
+    </ion-card> -->
+    <ion-card class="dispensary-avatar" *ngFor="let dispensary of dispensaries" (click)="dispensarySelected($event, dispensary)">
+      <img src={{dispensary.avatar_url}}>
+      <ion-item>
+        <h2>{{dispensary.name}}</h2>
+        <p>{{dispensary.address}}</p>
+      </ion-item>
     </ion-card>
+
   <!-- </div> -->
   <!-- <div *ngSwitchCase="'delivery'">
     <ion-card>
