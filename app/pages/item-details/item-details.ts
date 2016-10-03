@@ -17,6 +17,10 @@ export class ItemDetailsPage {
   quantityLabel: string;
   itemPrice: number;
   displaySlider: boolean;
+  slideOptions = {
+    pager: true,
+    loop: true
+  };
 
   constructor(public navCtrl: NavController,
               private navParams: NavParams,

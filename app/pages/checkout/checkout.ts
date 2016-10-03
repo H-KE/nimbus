@@ -35,11 +35,12 @@ export class CheckoutPage {
     //
     // paymentModal.onDidDismiss(data => {
     //   console.log(data);
-    let loader = this.loadingCtrl.create({
-      content: "Placing Order...",
-      duration: 3000
-    });
-    loader.present();
+    //
+    // let loader = this.loadingCtrl.create({
+    //   content: "Placing Order...",
+    //   duration: 3000
+    // });
+    // loader.present();
 
       this.orderService.placeOrder(this.order);
 

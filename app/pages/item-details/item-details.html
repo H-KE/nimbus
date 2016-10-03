@@ -13,7 +13,7 @@
  <span *ngIf="selectedItem" class="selection">
     <ion-card>
       <div id="item-logo-wrapper">
-        <ion-slides loop pager>
+        <ion-slides [options]="slideOptions">
           <ion-slide *ngFor="let image of selectedItem.images">
             <img src={{image}} class="item-image"/>
           </ion-slide>

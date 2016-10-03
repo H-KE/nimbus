@@ -39,12 +39,12 @@
         <p>{{dispensary.address}}</p>
       </button>
     </ion-card> -->
-    <ion-card class="dispensary-avatar" *ngFor="let dispensary of dispensaries" (click)="dispensarySelected($event, dispensary)">
-      <img src={{dispensary.avatar_url}}>
-      <ion-item>
+    <ion-card class="dispensary-avatar" *ngFor="let dispensary of dispensaries">
+      <img src={{dispensary.avatar_url}} (click)="dispensarySelected($event, dispensary)">
+      <button ion-item detail-none (click)="dispensarySelected($event, dispensary)">
         <h2>{{dispensary.name}}</h2>
         <p>{{dispensary.address}}</p>
-      </ion-item>
+      </button>
     </ion-card>
 
   <!-- </div> -->
