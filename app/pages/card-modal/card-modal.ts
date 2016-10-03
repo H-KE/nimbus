@@ -8,9 +8,9 @@ declare var Stripe: any;
 
 
 @Component({
-  templateUrl: 'build/pages/checkout-modal/checkout-modal.html'
+  templateUrl: 'build/pages/card-modal/card-modal.html'
 })
-export class CheckoutModalPage {
+export class CreditCardModalPage {
   cardForm: any;
   cardNumberChanged: boolean;
   cvcChanged: boolean;
@@ -74,12 +74,12 @@ export class CheckoutModalPage {
         }
         else {
           console.log(response);
-          this.viewController.dismiss(response['id']);
+          this.viewController.dismiss(response);
         }
       })
   }
 
-  placeOrder() {
-
+  dismiss() {
+    this.viewController.dismiss("User dimiss");
   }
 }

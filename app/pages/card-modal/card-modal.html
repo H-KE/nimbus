@@ -1,5 +1,16 @@
 <div class="modal_form" style="width: 80%; height: 60%; min-height: 0; max-height: 250px; top: 20%; left: 10%; right: 10%; bottom: 20%; position: absolute;">
+
   <form [formGroup]="cardForm" (ngSubmit)="submit()">
+      <ion-toolbar>
+        <ion-buttons start>
+          <button ion-button (click)="dismiss()">
+            <ion-icon name="close"></ion-icon>
+          </button>
+        </ion-buttons>
+        <ion-title>
+          <p>Add Card</p>
+        </ion-title>
+      </ion-toolbar>
     <ion-item>
       <ion-label floating>Creditcard #</ion-label>
       <ion-input type="text" formControlName="number" (change)="cardNumberChanged = true;"></ion-input>

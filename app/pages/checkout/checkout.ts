@@ -3,7 +3,6 @@ import { NavController, NavParams, ModalController, ViewController, LoadingContr
 
 import { Order } from '../../models/order';
 import { OrderDetailsPage } from '../order-details/order-details';
-import { CheckoutModalPage } from '../checkout-modal/checkout-modal';
 
 import { CartService } from '../../providers/cart/cart';
 import { OrderService } from '../../providers/orders/orders';
@@ -30,28 +29,12 @@ export class CheckoutPage {
   }
 
   placeOrder() {
-    // console.log("place order?")
-    // let paymentModal = this.modalController.create(CheckoutModalPage);
-    //
-    // paymentModal.onDidDismiss(data => {
-    //   console.log(data);
-    //
-    // let loader = this.loadingCtrl.create({
-    //   content: "Placing Order...",
-    //   duration: 3000
-    // });
-    // loader.present();
 
       this.orderService.placeOrder(this.order);
 
       this.cartService.clearCart();
 
-      // loader.dismiss();
-
       this.goToOrderDetails();
-    // });
-    //
-    // paymentModal.present();
   }
 
   goToOrderDetails() {

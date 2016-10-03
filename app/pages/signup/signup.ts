@@ -19,8 +19,8 @@ export class SignupPage {
               private auth: AuthenticationService) {
 
     this.signupForm = formBuilder.group({
-      firstName: ["", Validators.required],
-      lastName: ["", Validators.required],
+      first_name: ["", Validators.required],
+      last_name: ["", Validators.required],
       email: ["", Validators.required],
       password: ["", Validators.required]
     });
@@ -29,13 +29,15 @@ export class SignupPage {
 
   signup() {
     this.auth.registerAccount(
+      this.signupForm.controls.first_name.value,
+      this.signupForm.controls.last_name.value,
       this.signupForm.controls.email.value,
       this.signupForm.controls.password.value,
       this.signupForm.controls.password.value)
       .subscribe(
         res => {
           let toast = this.toastCtrl.create({
-            message: "Your account was created successfully!",
+            message: "Your account was successfully created!",
             duration: 3000
           })
           toast.present();

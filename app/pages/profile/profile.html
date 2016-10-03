@@ -34,11 +34,13 @@
     <ion-list-header>
       Payment
     </ion-list-header>
-    <button ion-item>
-      <span>Payment Card</span>
+    <ion-item *ngFor="let card of cards">
+      <ion-icon item-left name="card"></ion-icon>
+      {{card.brand}} ending in {{card.last4}}
+    </ion-item>
+    <button ion-item (click)="addCreditCard()">
       <span item-right>
-        <ion-icon name="ios-card"></ion-icon>
-        Add Payment Card
+        Add Card
       </span>
     </button>
   </ion-list>
