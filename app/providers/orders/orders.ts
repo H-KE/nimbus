@@ -19,6 +19,7 @@ export class OrderService {
   }
 
   placeOrder(order: Order) {
+    order.dispensary_id = order.items[0].dispensary_id;
     this.orders.push(order);
     console.log(this.orders);
   }

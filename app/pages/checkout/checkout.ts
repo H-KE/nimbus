@@ -12,6 +12,7 @@ import { OrderService } from '../../providers/orders/orders';
 })
 export class CheckoutPage {
   order: Order;
+  user: string;
   subTotal: number;
   orderTotal: number;
 
@@ -24,11 +25,16 @@ export class CheckoutPage {
 
     this.order = null;
     this.order = navParams.get('order');
-    this.subTotal = this.order.total;
-    this.orderTotal = this.order.total + 5;
+    this.order.address = "123 University Ave";
+    this.subTotal = this.order.total_price;
+    this.orderTotal = this.order.total_price + 5;
+
+    this.user = "John Smith";
   }
 
   placeOrder() {
+
+      console.log(this.order);
 
       this.orderService.placeOrder(this.order);
 

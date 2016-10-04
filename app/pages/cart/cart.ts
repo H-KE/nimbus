@@ -35,9 +35,7 @@ export class CartPage {
 
   checkoutCart() {
     this.order.items = this.cart.content;
-    this.order.address = "123 University Ave";
-    this.order.user = "John Smith";
-    this.order.total = this.cart.total;
+    this.order.total_price = this.cart.total;
     this.order.show = false;
 
     this.goToCheckout();

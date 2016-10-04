@@ -21,8 +21,8 @@ export class OrderDetailsPage {
               private navParams: NavParams) {
     this.order = null;
     this.order = navParams.get('order');
-    this.subTotal = this.order.total;
-    this.orderTotal = this.order.total + 5;
+    this.subTotal = this.order.total_price;
+    this.orderTotal = this.order.total_price + 5;
   }
 
 }
