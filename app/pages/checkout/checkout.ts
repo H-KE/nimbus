@@ -38,9 +38,9 @@ export class CheckoutPage {
 
       this.orderService.placeOrder(this.order);
 
-      this.cartService.clearCart();
-
-      this.goToOrderDetails();
+      // this.cartService.clearCart();
+      //
+      // this.goToOrderDetails();
   }
 
   goToOrderDetails() {

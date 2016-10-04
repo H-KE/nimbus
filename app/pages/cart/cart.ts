@@ -34,7 +34,7 @@ export class CartPage {
   }
 
   checkoutCart() {
-    this.order.items = this.cart.content;
+    this.order.order_details = this.cart.content;
     this.order.total_price = this.cart.total;
     this.order.show = false;
 

@@ -2,8 +2,9 @@ import { Item } from './item';
 
 export class Order {
   id: number;
-  dispensary_id: number;
-  items: Item[];
+  retailer_id: number;
+  distribution_channel: string;
+  order_details: Item[];
   address: string;
   total_price: number;
   status: string;

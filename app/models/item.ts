@@ -1,6 +1,6 @@
 export class Item {
   id: number;
-  dispensary_id: number;
+  retailer_id: number;
   name: string;
   images: string[];
   prices: number[];

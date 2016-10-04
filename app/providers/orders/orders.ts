@@ -4,13 +4,16 @@ import 'rxjs/add/operator/map';
 
 import { Item } from '../../models/item';
 import { Order } from '../../models/order';
+import { AuthenticationService } from '../../providers/authentication/authentication';
+
 import * as _ from 'underscore';
 
 @Injectable()
 export class OrderService {
   orders: Order[];
 
-  constructor(private http: Http) {
+  constructor(private http: Http,
+              private auth: AuthenticationService) {
     this.orders = []
   }
 
@@ -19,8 +22,10 @@ export class OrderService {
   }
 
   placeOrder(order: Order) {
-    order.dispensary_id = order.items[0].dispensary_id;
-    this.orders.push(order);
-    console.log(this.orders);
+    order.retailer_id = order.order_details[0].retailer_id;
+    order.status = "NEW";
+
+    let body = JSON.stringify(order);
+    this.auth.post('orders', body)
   }
 }
