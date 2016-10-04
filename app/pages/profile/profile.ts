@@ -12,6 +12,10 @@ import { ProfileService } from '../../providers/profile/profile';
   providers: [ ProfileService ]
 })
 export class ProfilePage {
+  email: string;
+  firstName: string;
+  lastName: string;
+  address: string;
   cards: any[];
 
   constructor(private navCtrl: NavController,
@@ -19,18 +23,27 @@ export class ProfilePage {
               private toastCtrl: ToastController,
               private modalCtrl: ModalController,
               private profileService: ProfileService) {
+    this.getUserProfile();
+
+  }
+
+  getUserProfile() {
     this.profileService.loadUserCards()
       .map(response => response.json())
       .subscribe(
         data => {
           console.log(data);
-          this.cards = data;
+          this.email = data.email;
+          this.firstName = data.first_name;
+          this.lastName = data.last_name;
+          this.address = data.address;
+          this.cards = data.cards;
         },
         error => {
           console.log(error);
           this.cards = [];
         }
-      )
+      );
   }
 
   addCreditCard() {
@@ -41,17 +54,10 @@ export class ProfilePage {
         this.cards.push(data.card);
         this.addCreditCardToUser(data);
       }
-    // let loader = this.loadingCtrl.create({
-    //   content: "Placing Order...",
-    //   duration: 3000
-    // });
-    // loader.present();
 
     });
 
     cardModal.present();
-    // this.addCreditCardToUser({id: "hola"});
-
   }
 
   addCreditCardToUser(data) {

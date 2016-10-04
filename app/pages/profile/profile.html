@@ -14,7 +14,7 @@
       Contact
     </ion-list-header>
     <button ion-item>
-      Peter He, peter3923@gmail.com, 6463194722
+      {{firstName}} {{lastName}}, {{email}}
     </button>
   </ion-list>
 
@@ -23,7 +23,7 @@
       Delivery Addresses
     </ion-list-header>
     <button ion-item>
-      <b>4 West 104th Street, 3B</b>, Toronto, ON, T3K 5M5
+      {{address}}
     </button>
     <button ion-item detail-none>
       <span danger>Add another address</span>
@@ -40,7 +40,7 @@
     </ion-item>
     <button ion-item (click)="addCreditCard()">
       <span item-right>
-        Add Card
+        Add Payment Card
       </span>
     </button>
   </ion-list>
