@@ -51,26 +51,22 @@ export class CheckoutPage {
           console.log(error);
         }
       );
-
-    console.log(this.userProfile);
-  }
+    }
 
   placeOrder() {
 
-      console.log(this.order);
+    console.log(this.order);
 
-      this.orderService.placeOrder(this.order)
-        .map( res => res.json())
-        .subscribe(
-          data => {
-            console.log(data)
-          },
-          errors => console.log(errors)
-      )
-
-      this.cartService.clearCart();
-
-      this.goToOrderDetails();
+    this.orderService.placeOrder(this.order)
+      .map( res => res.json())
+      .subscribe(
+        data => {
+          console.log(data);
+          this.cartService.clearCart();
+          this.goToOrderDetails();
+        },
+        errors => console.log(errors)
+    )
   }
 
   goToOrderDetails() {
@@ -78,6 +74,4 @@ export class CheckoutPage {
       order: this.order
     });
   }
-
-
 }

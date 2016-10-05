@@ -17,11 +17,9 @@ export class DispensaryService {
             .map(response => response.json())
             .subscribe(
               data => {
-                console.log(data);
                 resolve(data);
               },
               error => {
-                console.log(error);
                 resolve(error);
               }
             )
@@ -35,11 +33,9 @@ export class DispensaryService {
             .map(response => response.json())
             .subscribe(
               data => {
-                console.log(data);
                 resolve(data);
               },
               error => {
-                console.log(error);
                 resolve(error);
               }
             )
@@ -48,17 +44,15 @@ export class DispensaryService {
       }
 
       getDispensaryMenu(id) {
-        
+
         return new Promise(resolve => {
           this.auth.get('retailers/' + id + '/products')
             .map(response => response.json())
             .subscribe(
               data => {
-                console.log(data);
                 resolve(data);
               },
               error => {
-                console.log(error);
                 resolve(error);
               }
             )

@@ -37,12 +37,11 @@ export class SearchPage {
               private cartService: CartService,
               private loadingCtrl: LoadingController) {
     this.searchMode = "mail";
-    this.loadDispensaries(this.searchMode);
     this.platform.ready().then(() => this.onPlatformReady());
   }
 
   private onPlatformReady(): void {
-
+    this.loadDispensaries(this.searchMode);
   }
 
   loadDispensaries(searchMode) {
