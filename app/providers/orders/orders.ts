@@ -26,6 +26,6 @@ export class OrderService {
     order.status = "NEW";
 
     let body = JSON.stringify(order);
-    this.auth.post('orders', body)
+    return this.auth.post('orders', body);
   }
 }
