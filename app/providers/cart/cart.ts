@@ -61,4 +61,12 @@ export class CartService {
     this.cart.count = 0;
   }
 
+  getItemThumbnail(item) {
+    let url = item.images[0]
+    if (item.retailer_id == 2) {
+      url = url.replace('.jpg', '_tn.jpg');
+    }
+    return url;
+  }
+
 }

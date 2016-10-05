@@ -12,4 +12,11 @@ export class Item {
   category: string;
   quantity: string;
   price: number;
+
+  getAvatarUrl(url) {
+    if (this.retailer_id == 2) {
+      url = url.replace('.jpg', '_tn.jpg');
+    }
+    return url;
+  }
 }

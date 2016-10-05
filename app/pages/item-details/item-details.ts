@@ -12,7 +12,7 @@ import {NimbusBar} from '../../components/nimbus-bar/nimbus-bar';
   directives: [NimbusBar]
 })
 export class ItemDetailsPage {
-  selectedItem: any;
+  selectedItem: Item;
   quantity: number;
   quantityLabel: string;
   itemPrice: number;

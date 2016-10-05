@@ -15,7 +15,7 @@
         </ion-list-header>
         <ion-item *ngFor="let item of cart.content">
           <ion-avatar item-left>
-            <img src="{{item.images[0]}}">
+            <img src="{{cartService.getItemThumbnail(item)}}">
           </ion-avatar>
           <h2>{{item.name}}</h2>
           <p>${{item.price}} | {{item.quantity}}</p>

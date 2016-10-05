@@ -6,9 +6,9 @@ import { DispensaryService } from '../../providers/dispensary/dispensary';
 
 import { Item } from '../../models/item';
 import { ItemDetailsPage } from '../item-details/item-details';
-import {CartPage} from '../cart/cart';
-import {CartService} from '../../providers/cart/cart';
-import {NimbusBar} from '../../components/nimbus-bar/nimbus-bar';
+import { CartPage } from '../cart/cart';
+import { CartService } from '../../providers/cart/cart';
+import { NimbusBar } from '../../components/nimbus-bar/nimbus-bar';
 
 import * as _ from 'underscore';
 
@@ -19,7 +19,7 @@ import * as _ from 'underscore';
 })
 export class DispensaryPage {
   selectedDispensary: any;
-  menu: any;
+  menu: Item[];
   menuCategories: any[];
 
   constructor(public navCtrl: NavController,
@@ -39,14 +39,14 @@ export class DispensaryPage {
     this.dispensaryService.getDispensaryMenu(this.selectedDispensary.id)
       .then(response => {
         console.log(response);
-        this.menu = response;
+        this.menu = response as Item[];
 
         this.menuCategories = [];
         for (var category of _.uniq(_.pluck(this.menu, 'category'))) {
           this.menuCategories.push ({
             name: category,
             show: false,
-            items: _.where(this.menu, {category: category})
+            items: _.where(this.menu, {category: category}) as Item[]
           })
         }
 

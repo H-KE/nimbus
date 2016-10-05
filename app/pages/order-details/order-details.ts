@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { Order } from '../../models/order';
+import { CartService } from '../../providers/cart/cart';
 
 
 /*
@@ -18,7 +19,8 @@ export class OrderDetailsPage {
   orderTotal: number;
 
   constructor(private navCtrl: NavController,
-              private navParams: NavParams) {
+              private navParams: NavParams,
+              private cartService: CartService) {
     this.order = null;
     this.order = navParams.get('order');
     this.subTotal = this.order.total_price;
