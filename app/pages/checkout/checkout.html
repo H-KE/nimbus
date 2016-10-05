@@ -18,12 +18,12 @@
       <ion-list-header>
         <ion-label>Shipping Details</ion-label>
       </ion-list-header>
-      <ion-item text-wrap>
-        <h3>John Doe</h3>
-        <p>123 Dundas Street</p>
-        <p>Toronto, ON, Canada</p>
-        <p>P0S T2L</p>
-        <p>(647)123-4567</p>
+      <ion-item text-wrap *ngIf="userProfile">
+        <h3>{{userProfile.first_name}} {{userProfile.last_name}}</h3>
+        <!-- <p>(647)123-4567</p> -->
+        <p>{{selectedAddress.streetAndNumber}}</p>
+        <p>{{selectedAddress.city}}, {{selectedAddress.province}}, Canada</p>
+        <p>{{selectedAddress.postalCode}}</p>
       </ion-item>
     </ion-list>
 

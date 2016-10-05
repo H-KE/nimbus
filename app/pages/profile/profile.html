@@ -22,10 +22,10 @@
     <ion-list-header>
       Delivery Addresses
     </ion-list-header>
-    <button ion-item>
-      {{address}}
+    <button ion-item *ngFor="let address of addresses">
+      <b>{{address.streetAndNumber}}, {{address.streetAndNumber}}</b>, {{address.city}}, {{address.province}}, {{address.postalCode}}
     </button>
-    <button ion-item detail-none>
+    <button ion-item detail-none (click)="addAddress()">
       <span danger>Add another address</span>
     </button>
   </ion-list>
