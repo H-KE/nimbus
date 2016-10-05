@@ -13,17 +13,15 @@ export class ProfileService {
               private auth: AuthenticationService) {
   }
 
-  loadUserCards() {
+  loadUserProfile() {
     return this.auth.get('users/credit_cards')
   }
 
-  addCreditCardToUser(token) {
-    let body = JSON.stringify({
-      token: token
-    });
+  updateUser(data) {
+    let body = JSON.stringify(data);
 
     return new Promise(resolve => {
-      this.auth.put('users/add_credit_card', body)
+      this.auth.put('users/update_user', body)
         .map(response => response.json())
         .subscribe(
           data => {

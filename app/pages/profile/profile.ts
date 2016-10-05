@@ -3,6 +3,7 @@ import { NavController, ToastController, ModalController } from 'ionic-angular';
 
 import { HomePage } from '../home/home';
 import { CreditCardModalPage } from '../../pages/card-modal/card-modal';
+import { AddressModalPage } from '../../pages/address-modal/address-modal';
 
 import { AuthenticationService } from '../../providers/authentication/authentication';
 import { ProfileService } from '../../providers/profile/profile';
@@ -15,7 +16,7 @@ export class ProfilePage {
   email: string;
   firstName: string;
   lastName: string;
-  address: string;
+  addresses: any[];
   cards: any[];
 
   constructor(private navCtrl: NavController,
@@ -28,7 +29,7 @@ export class ProfilePage {
   }
 
   getUserProfile() {
-    this.profileService.loadUserCards()
+    this.profileService.loadUserProfile()
       .map(response => response.json())
       .subscribe(
         data => {
@@ -36,7 +37,7 @@ export class ProfilePage {
           this.email = data.email;
           this.firstName = data.first_name;
           this.lastName = data.last_name;
-          this.address = data.address;
+          this.addresses = data.address ? JSON.parse(data.address) : [];
           this.cards = data.cards;
         },
         error => {
@@ -44,6 +45,25 @@ export class ProfilePage {
           this.cards = [];
         }
       );
+  }
+
+  addAddress() {
+    let addressModal = this.modalCtrl.create(AddressModalPage);
+    addressModal.present();
+    addressModal.onDidDismiss(data => {
+      console.log(data);
+      if (data) {
+        this.addresses.push(data);
+        this.addAddressToUser(JSON.stringify(this.addresses))
+        console.log(this.addresses);
+      }
+    });
+  }
+
+  addAddressToUser(address) {
+    this.profileService.updateUser({
+      address: address
+    });
   }
 
   addCreditCard() {
@@ -61,7 +81,9 @@ export class ProfilePage {
   }
 
   addCreditCardToUser(data) {
-    this.profileService.addCreditCardToUser(data.id);
+    this.profileService.updateUser({
+      token: data.id
+    });
   }
 
   signOut() {
