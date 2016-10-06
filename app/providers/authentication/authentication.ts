@@ -259,11 +259,11 @@ export class AuthenticationService {
               headers = new Headers({
                   'Content-Type': 'application/json', // ToDo: Add to RequestOptions if available
                   'Accept': 'application/json',
-                  'access-token': this._currentAuthData.accessToken,
-                  'client': this._currentAuthData.client,
-                  'expiry': this._currentAuthData.expiry,
-                  'token-type': this._currentAuthData.tokenType,
-                  'uid': this._currentAuthData.uid
+                  'Access-Token': this._currentAuthData.accessToken,
+                  'Client': this._currentAuthData.client,
+                  'Expiry': this._currentAuthData.expiry,
+                  'Token-Type': this._currentAuthData.tokenType,
+                  'Uid': this._currentAuthData.uid
               });
           else
               headers = new Headers({
@@ -278,6 +278,8 @@ export class AuthenticationService {
 
           // Merge standard and custom RequestOptions
           mergedRequestOptions = baseRequestOptions.merge(requestOptions);
+
+          console.log(mergedRequestOptions);
 
           let response = this.http.request(new Request(mergedRequestOptions)).share();
 
@@ -299,13 +301,17 @@ export class AuthenticationService {
       private _parseAuthHeadersFromResponse(data: any){
           let headers = data.headers;
 
+          console.log(data.headers.get('Access-Token'));
+
           let authData: AuthData = {
-              accessToken:    headers.get('access-token'),
-              client:         headers.get('client'),
-              expiry:         headers.get('expiry'),
-              tokenType:      headers.get('token-type'),
-              uid:            headers.get('uid')
+              accessToken:    headers.get('Access-Token'),
+              client:         headers.get('Client'),
+              expiry:         headers.get('Expiry'),
+              tokenType:      headers.get('Token-Type'),
+              uid:            headers.get('Uid')
           };
+
+          console.log(authData);
 
           this._setAuthData(authData);
       }
