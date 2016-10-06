@@ -4,7 +4,7 @@
     <button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Explore</ion-title>
+    <ion-title>{{firstToUpperCase(searchMode)}} Order</ion-title>
     <ion-buttons end>
       <button (click)="goToCart()">
         <ion-icon name="cart"></ion-icon>{{cartService.cart.count}}
@@ -14,13 +14,11 @@
   <ion-toolbar primary>
     <ion-segment [(ngModel)]="searchMode" white>
       <ion-segment-button value="mail" (click)="loadDispensaries('mail')">
-        Mail Order
+        <ion-icon name="mail-outline"></ion-icon>
       </ion-segment-button>
       <ion-segment-button value="delivery" (click)="loadDispensaries('delivery')">
-        Delivery
-      </ion-segment-button>
-      <ion-segment-button value="pickup" (click)="loadDispensaries('pickup')">
-        Pickup
+        <ion-icon name="car-outline"></ion-icon>
+
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>

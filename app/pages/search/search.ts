@@ -65,6 +65,10 @@ export class SearchPage {
   goToCart() {
     this.navCtrl.push(CartPage);
   }
+
+  firstToUpperCase( str: String ) {
+    return str.substr(0, 1).toUpperCase() + str.substr(1);
+  }
   //
   // ngAfterViewInit() {
   //   GoogleMap.isAvailable().then(() => {

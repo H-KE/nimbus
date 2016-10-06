@@ -34,9 +34,9 @@ class MyApp {
 
     // set our app's pages
     this.pages = [
-      { title: 'Explore', icon: 'ios-search-outline', component: SearchPage },
-      { title: 'My Orders', icon: 'ios-paper-outline', component: OrdersPage},
-      { title: 'My Profile', icon: 'ios-contact', component: ProfilePage}
+      { title: 'Explore', icon: 'search-outline', component: SearchPage },
+      { title: 'My Orders', icon: 'paper-outline', component: OrdersPage},
+      { title: 'My Profile', icon: 'contact', component: ProfilePage}
       // { title: 'Logout', component: HomePage} //TODO: remove this from menu or do actual logout
     ];
   }

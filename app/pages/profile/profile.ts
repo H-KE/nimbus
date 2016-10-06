@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController, ModalController } from 'ionic-angular';
+import { NavController, ToastController, ModalController, LoadingController } from 'ionic-angular';
 
 import { HomePage } from '../home/home';
 import { CreditCardModalPage } from '../../pages/card-modal/card-modal';
@@ -23,7 +23,12 @@ export class ProfilePage {
               private auth: AuthenticationService,
               private toastCtrl: ToastController,
               private modalCtrl: ModalController,
+              private loadingCtrl: LoadingController,
               private profileService: ProfileService) {
+
+    var loader = this.loadingCtrl.create({
+    });
+    loader.present();
     this.profileService.getUser()
       .map(response => response.json())
       .subscribe(
@@ -34,6 +39,7 @@ export class ProfilePage {
           this.lastName = data.last_name;
           this.addresses = data.address ? JSON.parse(data.address) : [];
           this.cards = data.cards;
+          loader.dismiss();
         },
         error => {
           console.log(error);

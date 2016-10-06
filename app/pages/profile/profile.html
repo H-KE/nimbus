@@ -8,8 +8,9 @@
     </ion-title>
   </ion-navbar>
 </ion-header>
+<!-- TODO: remove the ng ifs -->
 <ion-content>
-  <ion-list>
+  <ion-list *ngIf="email">
     <ion-list-header>
       Contact
     </ion-list-header>
@@ -18,19 +19,19 @@
     </button>
   </ion-list>
 
-  <ion-list>
+  <ion-list *ngIf="email">
     <ion-list-header>
       Delivery Addresses
     </ion-list-header>
     <button ion-item *ngFor="let address of addresses">
-      <b>{{address.streetAndNumber}}, {{address.streetAndNumber}}</b>, {{address.city}}, {{address.province}}, {{address.postalCode}}
+      <b>{{address.streetAndNumber}}, {{address.aptNumber}}</b>, {{address.city}}, {{address.province}}, {{address.postalCode}}
     </button>
     <button ion-item detail-none (click)="addAddress()">
       <span danger>Add another address</span>
     </button>
   </ion-list>
 
-  <ion-list>
+  <ion-list *ngIf="email">
     <ion-list-header>
       Payment
     </ion-list-header>
@@ -45,7 +46,7 @@
     </button>
   </ion-list>
 
-  <ion-list>
+  <ion-list *ngIf="email">
     <button full white (click)="signOut()">
       <span secondary>Sign Out</span>
     </button>
