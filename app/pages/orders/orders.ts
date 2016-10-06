@@ -14,11 +14,19 @@ export class OrdersPage {
   orderSegment: String;
 
   constructor(private navCtrl: NavController, private orderService: OrderService) {
-    this.orders = this.orderService.getOrders();
-    this.orderSegment = "open";
-    for (var order of this.orders) {
-      order.show = false;
-    }
+    this.orderService.loadOrders()
+      .map(response => response.json())
+      .subscribe(
+          data => {
+            console.log(data);
+            this.orders = data as Order[]
+            this.orderSegment = "open";
+            for (var order of this.orders) {
+              order.show = false;
+            }
+          },
+          error => console.log(error)
+      )
   };
 
   goToOrderDetails(event, order) {

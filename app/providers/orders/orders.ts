@@ -14,11 +14,10 @@ export class OrderService {
 
   constructor(private http: Http,
               private auth: AuthenticationService) {
-    this.orders = []
   }
 
-  getOrders() {
-    return this.orders;
+  loadOrders() {
+    return this.auth.get('orders');
   }
 
   placeOrder(order: Order) {

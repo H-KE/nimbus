@@ -48,8 +48,8 @@ export class AuthenticationService {
       init(options?: Angular2TokenOptions) {
 
           let defaultOptions: Angular2TokenOptions = {
-              apiPath:                    'http://development-nimbus.cfapps.io/api',
-              // apiPath:                    'http://localhost:3000/api',
+              // apiPath:                    'http://development-nimbus.cfapps.io/api',
+              apiPath:                    'http://localhost:3000/api',
 
               signInPath:                 'auth/sign_in',
               signInRedirect:             null,
@@ -257,13 +257,20 @@ export class AuthenticationService {
           // Set Headers
           if (this._currentAuthData != null)
               headers = new Headers({
+                  // 'Content-Type': 'application/json', // ToDo: Add to RequestOptions if available
+                  // 'Accept': 'application/json',
+                  // 'Access-Token': this._currentAuthData.accessToken,
+                  // 'Client': this._currentAuthData.client,
+                  // 'Expiry': this._currentAuthData.expiry,
+                  // 'Token-Type': this._currentAuthData.tokenType,
+                  // 'Uid': this._currentAuthData.uid
                   'Content-Type': 'application/json', // ToDo: Add to RequestOptions if available
                   'Accept': 'application/json',
-                  'Access-Token': this._currentAuthData.accessToken,
-                  'Client': this._currentAuthData.client,
-                  'Expiry': this._currentAuthData.expiry,
-                  'Token-Type': this._currentAuthData.tokenType,
-                  'Uid': this._currentAuthData.uid
+                  'access-token': this._currentAuthData.accessToken,
+                  'client': this._currentAuthData.client,
+                  'expiry': this._currentAuthData.expiry,
+                  'token-type': this._currentAuthData.tokenType,
+                  'uid': this._currentAuthData.uid
               });
           else
               headers = new Headers({
@@ -279,8 +286,6 @@ export class AuthenticationService {
           // Merge standard and custom RequestOptions
           mergedRequestOptions = baseRequestOptions.merge(requestOptions);
 
-          console.log(mergedRequestOptions);
-
           let response = this.http.request(new Request(mergedRequestOptions)).share();
 
           this._handleResponse(response);
@@ -294,24 +299,25 @@ export class AuthenticationService {
               this._parseAuthHeadersFromResponse(<any>res);
           }, error => {
               this._parseAuthHeadersFromResponse(<any>error);
-              console.log('Session Service: Error Fetching Response');
           });
       }
 
       private _parseAuthHeadersFromResponse(data: any){
           let headers = data.headers;
 
-          console.log(data.headers.get('Access-Token'));
-
           let authData: AuthData = {
-              accessToken:    headers.get('Access-Token'),
-              client:         headers.get('Client'),
-              expiry:         headers.get('Expiry'),
-              tokenType:      headers.get('Token-Type'),
-              uid:            headers.get('Uid')
-          };
+              // accessToken:    headers.get('Access-Token'),
+              // client:         headers.get('Client'),
+              // expiry:         headers.get('Expiry'),
+              // tokenType:      headers.get('Token-Type'),
+              // uid:            headers.get('Uid')
 
-          console.log(authData);
+              accessToken:    headers.get('access-token'),
+              client:         headers.get('client'),
+              expiry:         headers.get('expiry'),
+              tokenType:      headers.get('token-type'),
+              uid:            headers.get('uid')
+          };
 
           this._setAuthData(authData);
       }
