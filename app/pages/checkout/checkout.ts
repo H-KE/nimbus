@@ -15,10 +15,9 @@ import { ProfileService } from '../../providers/profile/profile';
 })
 export class CheckoutPage {
   order: Order;
-  user: string;
+  user: any;
   subTotal: number;
   orderTotal: number;
-  userProfile: any;
   selectedAddress: any;
 
   constructor(private navCtrl: NavController,
@@ -31,29 +30,27 @@ export class CheckoutPage {
 
     this.order = null;
     this.order = navParams.get('order');
-    this.order.address = "123 University Ave";
     this.subTotal = this.order.total_price;
     this.orderTotal = this.order.total_price + 5;
 
-    this.user = "John Smith";
-
-    this.profileService.loadUserProfile()
+    this.profileService.getUser()
       .map(response => response.json())
       .subscribe(
         data => {
           console.log(data);
-          this.userProfile = data;
+          this.user = data;
           this.selectedAddress = JSON.parse(data.address)[0];
           console.log(JSON.parse(data.address));
-
         },
         error => {
           console.log(error);
         }
       );
-    }
+  }
 
   placeOrder() {
+    this.order.address = JSON.stringify(this.selectedAddress);
+    this.order.distribution_channel = "delivery";
 
     console.log(this.order);
 
@@ -66,7 +63,7 @@ export class CheckoutPage {
           this.goToOrderDetails();
         },
         errors => console.log(errors)
-    )
+      )
   }
 
   goToOrderDetails() {

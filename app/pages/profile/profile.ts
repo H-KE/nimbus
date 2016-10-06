@@ -24,12 +24,7 @@ export class ProfilePage {
               private toastCtrl: ToastController,
               private modalCtrl: ModalController,
               private profileService: ProfileService) {
-    this.getUserProfile();
-
-  }
-
-  getUserProfile() {
-    this.profileService.loadUserProfile()
+    this.profileService.getUser()
       .map(response => response.json())
       .subscribe(
         data => {
@@ -45,44 +40,32 @@ export class ProfilePage {
           this.cards = [];
         }
       );
+
   }
 
   addAddress() {
     let addressModal = this.modalCtrl.create(AddressModalPage);
     addressModal.present();
     addressModal.onDidDismiss(data => {
-      console.log(data);
       if (data) {
         this.addresses.push(data);
-        this.addAddressToUser(JSON.stringify(this.addresses))
-        console.log(this.addresses);
+        this.profileService.updateUser({
+          address: JSON.stringify(this.addresses)
+        });
       }
-    });
-  }
-
-  addAddressToUser(address) {
-    this.profileService.updateUser({
-      address: address
     });
   }
 
   addCreditCard() {
     let cardModal = this.modalCtrl.create(CreditCardModalPage);
+    cardModal.present();
     cardModal.onDidDismiss(data => {
-      console.log(data);
       if (data.card) {
         this.cards.push(data.card);
-        this.addCreditCardToUser(data);
+        this.profileService.updateUser({
+          token: data.id
+        });
       }
-
-    });
-
-    cardModal.present();
-  }
-
-  addCreditCardToUser(data) {
-    this.profileService.updateUser({
-      token: data.id
     });
   }
 
