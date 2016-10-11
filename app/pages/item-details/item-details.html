@@ -27,9 +27,14 @@
           {{selectedItem.description}}
         </p>
         <ion-list no-lines>
-          <ion-item *ngIf="displaySlider">
-            <ion-range min="0" max="4" step="1" snaps="true" secondary [(ngModel)]="quantity" >
+          <ion-item *ngIf="dynamicSlider">
+            <ion-range min="0" [max]="selectedItem.prices.length - 1" step="1" snaps="true" secondary [(ngModel)]="quantity" >
               <ion-label range-right>{{selectedItem.price_labels[quantity]}}: ${{selectedItem.prices[quantity]}}</ion-label>
+            </ion-range>
+          </ion-item>
+          <ion-item *ngIf="!dynamicSlider">
+            <ion-range min="1" max="10" step="1" snaps="true" secondary [(ngModel)]="quantity" >
+              <ion-label range-right>{{quantity}}: ${{itemPrice * quantity}}</ion-label>
             </ion-range>
           </ion-item>
         </ion-list>

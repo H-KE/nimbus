@@ -16,7 +16,7 @@ export class ItemDetailsPage {
   quantity: number;
   quantityLabel: string;
   itemPrice: number;
-  displaySlider: boolean;
+  dynamicSlider: boolean;
   slideOptions = {
     pager: true,
     loop: true
@@ -28,16 +28,21 @@ export class ItemDetailsPage {
               private cartService: CartService) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
+
     this.quantity = 0;
 
     this.itemPrice = this.selectedItem.prices[this.quantity];
     this.quantityLabel = this.selectedItem.price_labels[this.quantity];
 
-    this.displaySlider = this.selectedItem.prices.length > 1 ? true : false;
+    this.dynamicSlider = this.selectedItem.prices.length > 1 ? true : false;
   }
 
   addToCart(selectedItem, quantity) {
-    this.cartService.addToCart(selectedItem, selectedItem.price_labels[quantity], selectedItem.prices[quantity]);
+    if (this.dynamicSlider == true) {
+      this.cartService.addToCart(selectedItem, selectedItem.price_labels[quantity], selectedItem.prices[quantity]);
+    } else {
+      this.cartService.addToCart(selectedItem, quantity, quantity * this.itemPrice);
+    }
     this.presentAddToCartToast(selectedItem);
     this.navCtrl.pop();
   }

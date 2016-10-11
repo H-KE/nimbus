@@ -46,8 +46,11 @@
             <ion-avatar item-left>
               <img src="{{cartService.getItemThumbnail(item)}}">
             </ion-avatar>
-            <h2>{{item.name}}</h2>
-            <p>{{item.subspecies}} | THC: {{item.thc}}%</p>
+            <h2 style="display:inline">
+              {{item.name}}
+              <p style="display:inline" *ngIf="item.subspecies"> ({{item.subspecies}})</p>
+            </h2>
+            <p>{{renderItemDescription(item)}}</p>
           </button>
         </ion-list>
       </span>

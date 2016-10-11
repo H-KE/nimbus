@@ -5,8 +5,8 @@ import { Order } from '../../models/order'
 import { OrdersPage } from '../orders/orders'
 import { CartService } from '../../providers/cart/cart';
 import { OrderService } from '../../providers/orders/orders';
-import { CheckoutPage } from '../checkout/checkout'
-
+import { CheckoutPage } from '../checkout/checkout';
+import { ItemDetailsPage } from '../item-details/item-details';
 
 @Component({
   templateUrl: 'build/pages/cart/cart.html'
@@ -31,6 +31,13 @@ export class CartPage {
     this.navCtrl.push(CheckoutPage, {
       order: this.order
     });
+  }
+
+  editItem(item) {
+    item.edit = true;
+    this.navCtrl.push(ItemDetailsPage, {
+      item: item
+    })
   }
 
   checkoutCart() {
