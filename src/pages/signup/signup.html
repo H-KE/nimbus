@@ -1,0 +1,46 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Create Account</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="signup" padding>
+  <ion-card>
+    <ion-list>
+      <form [formGroup]="signupForm" (ngSubmit)="signup()">
+        <ion-item>
+          <ion-label floating>First Name</ion-label>
+          <ion-input type="text" formControlName="first_name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Last Name</ion-label>
+          <ion-input type="text" formControlName="last_name"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>E-mail Address</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password" formControlName="password"></ion-input>
+        </ion-item>
+
+        <ion-item class="no_bottom_border" *ngIf="errorMessage">
+          <p class="error-message">{{errorMessage}}</p>
+        </ion-item>
+
+        <ion-item class="no_bottom_border">
+          <ion-buttons end>
+            <button ion-button icon-right outline small [disabled]="!signupForm.valid" (click)="signup()">
+              Sign Up
+              <ion-icon color="primary" name="cloud" ></ion-icon>
+            </button>
+          </ion-buttons>
+        </ion-item>
+      </form>
+    </ion-list>
+  </ion-card>
+</ion-content>

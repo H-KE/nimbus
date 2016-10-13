@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{selectedItem.name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goToCart()">
+        <ion-icon name="cart"></ion-icon>{{cartService.cart.count}}
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="item-details">
+ <span *ngIf="selectedItem" class="selection">
+    <ion-card>
+      <div id="item-logo-wrapper">
+        <ion-slides [options]="slideOptions">
+          <ion-slide *ngFor="let image of selectedItem.images">
+            <img src={{image}} class="item-image"/>
+          </ion-slide>
+        </ion-slides>
+      </div>
+      <ion-card-content>
+        <ion-card-title>
+          {{selectedItem.name}}
+        </ion-card-title>
+        <p>
+          {{selectedItem.description}}
+        </p>
+        <ion-list no-lines>
+          <ion-item *ngIf="dynamicSlider">
+            <ion-range min="0" [max]="selectedItem.prices.length - 1" step="1" snaps="true" secondary [(ngModel)]="quantity" >
+              <ion-label range-right>{{selectedItem.price_labels[quantity]}}: ${{selectedItem.prices[quantity]}}</ion-label>
+            </ion-range>
+          </ion-item>
+          <ion-item *ngIf="!dynamicSlider">
+            <ion-range min="1" max="10" step="1" snaps="true" secondary [(ngModel)]="quantity" >
+              <ion-label range-right>{{quantity}}: ${{itemPrice * quantity}}</ion-label>
+            </ion-range>
+          </ion-item>
+        </ion-list>
+      </ion-card-content>
+      <button ion-button icon-left color="secondary" full (click)="addToCart(selectedItem, quantity)">
+        Add to Cart
+        <ion-icon name='cart'></ion-icon>
+      </button>
+    </ion-card>
+  </span>
+</ion-content>

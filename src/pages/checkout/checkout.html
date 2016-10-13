@@ -1,0 +1,47 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Checkout</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="checkout">
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Shipping Details</ion-label>
+      </ion-list-header>
+      <ion-item text-wrap *ngIf="user">
+        <h3>{{user.first_name}} {{user.last_name}}</h3>
+        <!-- <p>(647)123-4567</p> -->
+        <p>{{selectedAddress.streetAndNumber}}</p>
+        <p>{{selectedAddress.city}}, {{selectedAddress.province}}, Canada</p>
+        <p>{{selectedAddress.postalCode}}</p>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Order Summary</ion-label>
+      </ion-list-header>
+      <ion-item text-wrap no-lines *ngFor="let item of order.order_details">
+        <p>{{item.name}} X {{item.quantity}}</p>
+        <p class="item-price" item-right>${{item.price}}</p>
+      </ion-item>
+      <ion-item text-wrap>
+        <p align="right">Subtotal: ${{subTotal}}</p>
+        <!-- <p align="right">Sales Tax (8.0%): $5</p> -->
+        <!-- <p align="right">Delivery Charges: $5</p> -->
+        <h3 align="right">Order Total: ${{orderTotal}}</h3>
+      </ion-item>
+    </ion-list>
+
+    <ion-list>
+      <button ion-button full color="secondary" (click)="placeOrder()">PLACE ORDER</button>
+      <!-- <ion-item text-wrap>
+        <p>By pressing "place order" I agree to terms and conditions of the dispensary I am ordering from.</p>
+      </ion-item> -->
+    </ion-list>
+
+</ion-content>

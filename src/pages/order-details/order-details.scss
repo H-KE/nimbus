@@ -1,0 +1,107 @@
+.order-details {
+  $grad-top:         #f74d85;
+  $grad-bottom:      #ca3063;
+  $content-height:   460px;
+  $li-height:        48px;
+  $l-g:              #aaa;
+  $sl-g:             #cfcfcf;
+  $complete:         #3ec78c;
+
+  ol{
+    //background: #e7ecee;
+
+    li{
+      color: #aaa;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      font-size: 12px;
+      font-weight: 700;
+      min-height: $li-height;
+      // border-top: 1px solid $sl-g;
+      line-height: 46px;
+      text-indent: 0;
+      position: relative;
+      margin: 0 20px 0 28px;
+      list-style-type: none;
+
+      &.current{
+        color: #444;
+        &:after{
+          border-color: $grad-bottom;
+        }
+      }
+
+      &:before{
+        content:"";
+        position: absolute;
+        display: block;
+        top: 2px;
+        left: -14px;
+        width: 4px;
+        height: 4px;
+        background: $sl-g;
+        border-radius: 50%;
+        box-shadow:
+          0 8px 0 $sl-g,
+          0 30px 0 $sl-g,
+          0 39px 0 $sl-g;
+      }
+
+      &:after{
+        content:"";
+        position: absolute;
+        display: block;
+        border-radius: 50%;
+        width: 4px;
+        height: 4px;
+        border: 2px solid $l-g;
+        left: -16px;
+        top: 19px;
+      }
+      &.completed:after{
+        display: none;
+      }
+
+      &:first-child{
+        border-top: 0;
+        &:before{
+          top: 32px;
+          box-shadow:
+            0 9px 0 $sl-g;
+        }
+      }
+
+      &:last-child:before{
+        box-shadow:
+          0 9px 0 $sl-g;
+      }
+
+      ion-icon {
+        color: $complete;
+        position: absolute;
+        left: -16px;
+        // top: 16px;
+        font-size: 24px;
+        font-weight: 900;
+      }
+    }
+  }
+
+  .platform-ios .order-details ion-icon {
+    color: $complete;
+    position: absolute;
+    left: -16px;
+    top: 12px;
+    font-size: 22px;
+    font-weight: 900;
+  }
+
+  .platform-android .order-details ion-icon {
+    color: $complete;
+    position: absolute;
+    left: -16px;
+    top: 16px;
+    font-size: 14px;
+    font-weight: 900;
+  }
+}
