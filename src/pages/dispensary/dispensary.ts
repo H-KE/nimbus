@@ -74,7 +74,7 @@ export class DispensaryPage {
       case "Flowers":
         var desc = "";
         if (item.thc == 0 && item.cbd == 0 ) {
-          desc += "No Lab Tests | ";
+          desc += "THC: --% CBD: --%| ";
         } else {
           desc += "THC: " + item.thc + "% CBD: " + item.cbd + "% | ";
         }
@@ -84,7 +84,7 @@ export class DispensaryPage {
       case "Hybrid":
         var desc = "";
         if (item.thc == 0 && item.cbd == 0 ) {
-          desc += "No Lab Tests | ";
+          desc += "THC: --% CBD: --%| ";
         } else {
           desc += "THC: " + item.thc + "% CBD: " + item.cbd + "% | ";
         }
@@ -94,7 +94,7 @@ export class DispensaryPage {
       case "Indica":
         var desc = "";
         if (item.thc == 0 && item.cbd == 0 ) {
-          desc += "No Lab Tests | ";
+          desc += "THC: --% CBD: --%| ";
         } else {
           desc += "THC: " + item.thc + "% CBD: " + item.cbd + "% | ";
         }
@@ -104,7 +104,7 @@ export class DispensaryPage {
       case "Sativa":
         var desc = "";
         if (item.thc == 0 && item.cbd == 0 ) {
-          desc += "No Lab Tests | ";
+          desc += "THC: --% CBD: --%| ";
         } else {
           desc += "THC: " + item.thc + "% CBD: " + item.cbd + "% | ";
         }
@@ -124,7 +124,7 @@ export class DispensaryPage {
       case "Pre-rolls":
         var desc = ""
         if (item.thc == 0 && item.cbd == 0 ) {
-          desc += "No Lab Tests | ";
+          desc += "THC: --% CBD: --%| ";
         } else {
           desc += "THC: " + item.thc + "% CBD: " + item.cbd + "% | ";
         }

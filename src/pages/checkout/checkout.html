@@ -32,9 +32,9 @@
       <ion-list-header>
         <ion-label>Credit Card Details</ion-label>
       </ion-list-header>
-      <ion-item>
+      <ion-item *ngIf="user && user.cards.length > 0">
         <ion-icon item-left name="card"></ion-icon>
-        <ion-select [selectOptions]="cardOptions" [(ngModel)]="selectedCard" *ngIf="user">
+        <ion-select [selectOptions]="cardOptions" [(ngModel)]="selectedCard">
           <ion-option *ngFor="let card of user.cards" [value]="card">{{card.brand}} ending in {{card.last4}}</ion-option>
         </ion-select>
       </ion-item>

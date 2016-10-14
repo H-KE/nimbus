@@ -4,7 +4,7 @@
     <button ion-button icon-only menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>{{firstToUpperCase(searchMode)}} Order</ion-title>
+    <ion-title>Dispensaries</ion-title>
     <ion-buttons end>
       <button ion-button icon-left (click)="goToCart()">
         <ion-icon name="cart"></ion-icon>
@@ -12,32 +12,9 @@
       </button>
     </ion-buttons>
   </ion-navbar>
-  <ion-toolbar color="primary">
-    <ion-segment [(ngModel)]="searchMode" color="white">
-      <ion-segment-button icon-only value="mail" (click)="loadDispensaries('mail')">
-        <ion-icon name="mail"></ion-icon>
-      </ion-segment-button>
-      <ion-segment-button icon-only value="delivery" (click)="loadDispensaries('delivery')">
-        <ion-icon name="car"></ion-icon>
-
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
-
-
 </ion-header>
 
-<ion-content class="search" [ngSwitch]="searchMode">
-  <!-- <div *ngSwitchCase="'mail'"> -->
-    <!-- <ion-card *ngFor="let dispensary of dispensaries" (click)="dispensarySelected($event, dispensary)">
-      <button ion-item>
-        <ion-thumbnail item-left>
-          <img src={{dispensary.avatar_url}}>
-        </ion-thumbnail>
-        <h2>{{dispensary.name}}</h2>
-        <p>{{dispensary.address}}</p>
-      </button>
-    </ion-card> -->
+<ion-content class="search">
     <ion-card class="dispensary-avatar" *ngFor="let dispensary of dispensaries">
       <img src={{dispensary.avatar_url}} (click)="dispensarySelected($event, dispensary)">
       <button ion-item detail-none (click)="dispensarySelected($event, dispensary)">
@@ -45,16 +22,4 @@
         <p>{{dispensary.address}}</p>
       </button>
     </ion-card>
-
-  <!-- </div> -->
-  <!-- <div *ngSwitchCase="'delivery'">
-    <ion-card>
-      <ion-item>
-        Same day delivery coming soon!
-      </ion-item>
-    </ion-card>
-  </div>
-  <div *ngSwitchCase="'pickup'">
-      <div style="height: 100%;" id="map_canvas"></div>
-  </div> -->
 </ion-content>

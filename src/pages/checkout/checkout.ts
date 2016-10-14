@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, ViewController, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, ViewController, LoadingController, AlertController } from 'ionic-angular';
 
 import { Order } from '../../models/order';
 import { OrderDetailsPage } from '../order-details/order-details';
@@ -26,6 +26,7 @@ export class CheckoutPage {
   cardOptions: any;
   addressOptions: any;
   selectedText: any;
+  dismissModal: boolean;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -33,7 +34,8 @@ export class CheckoutPage {
               public cartService: CartService,
               public profileService: ProfileService,
               public modalCtrl: ModalController,
-              public loadingCtrl: LoadingController) {
+              public loadingCtrl: LoadingController,
+              public alertCtrl: AlertController) {
 
     this.order = null;
     this.order = navParams.get('order');
@@ -60,7 +62,7 @@ export class CheckoutPage {
         data => {
           console.log(data);
           this.user = data;
-          this.user.addresses = JSON.parse(data.address);
+          this.user.addresses = data.address ? JSON.parse(data.address) : [];
           this.selectedAddress = this.user.addresses[0];
           this.selectedCard = this.user.cards[0];
           loader.dismiss();
@@ -73,6 +75,7 @@ export class CheckoutPage {
 
   addAddress() {
     let addressModal = this.modalCtrl.create(AddressModalPage);
+    this.dismissModal = false;
     addressModal.present();
     addressModal.onDidDismiss(data => {
       if (data) {
@@ -88,12 +91,15 @@ export class CheckoutPage {
           console.log(response);
           loader.dismiss()
         });
+      } else {
+          this.dismissModal = true;
       }
     });
   }
 
   addCreditCard() {
     let cardModal = this.modalCtrl.create(CardModalPage);
+    this.dismissModal = false;
     cardModal.present();
     cardModal.onDidDismiss(data => {
       if (data.card) {
@@ -109,16 +115,33 @@ export class CheckoutPage {
           console.log(response);
           loader.dismiss()
         });
+      } else {
+        this.dismissModal = true;
       }
     });
   }
 
   placeOrder() {
+
     if (!this.selectedAddress) {
-      console.log("NO ADDRESS");
+      let alert = this.alertCtrl.create({
+        title: 'No Address!',
+        subTitle: 'Please add an address so we know where to ship your order.',
+        buttons: ['OK']
+      });
+      alert.present();
+
       return;
-    } else if (!this.selectedCard) {
-      console.log("NO CARD");
+    }
+
+    if (!this.selectedCard) {
+      let alert = this.alertCtrl.create({
+        title: 'No Credit Card!',
+        subTitle: 'Please add a credit card so we can fulfill your order.',
+        buttons: ['OK']
+      });
+      alert.present();
+
       return;
     }
 
@@ -127,12 +150,17 @@ export class CheckoutPage {
 
     console.log(this.order);
 
+
+    var loader = this.loadingCtrl.create({});
+    loader.present();
+
     this.orderService.placeOrder(this.order)
       .map( res => res.json())
       .subscribe(
         data => {
           console.log(data);
           this.cartService.clearCart();
+          loader.dismiss()
           this.goToOrderDetails();
         },
         errors => console.log(errors)

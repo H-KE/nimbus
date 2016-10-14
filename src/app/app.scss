@@ -21,7 +21,7 @@ ion-content {
 
 ion-menu {
   ion-content {
-    background: #fff;
+    background: #fff !important;
   }
 }
 
@@ -31,6 +31,10 @@ ion-select {
 
 #address_select .select-text{
   white-space: pre-line;
+}
+
+.list-md .item-block .item-inner {
+  border-bottom: 1px solid #dedede !important;
 }
 
 .alert-radio-label {
