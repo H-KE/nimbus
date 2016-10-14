@@ -25,6 +25,25 @@ ion-menu {
   }
 }
 
+ion-select {
+  max-width: 100% !important;
+}
+
+#address_select .select-text{
+  white-space: pre-line;
+}
+
+.alert-radio-label {
+  white-space: pre-line !important;
+}
+
+
+button {
+  .item-accordion {
+    transition: 0.09s all linear;
+  }
+}
+
 .error-message {
   color: #f53d3d !important;
   word-wrap: break-word !important;
