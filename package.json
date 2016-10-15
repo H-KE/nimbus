@@ -14,8 +14,8 @@
   },
   "dependencies": {
     "@ionic/storage": "1.1.2",
-    "ionic-angular": "^2.0.0-rc.0",
-    "ionic-native": "^2.0.3",
+    "ionic-angular": "2.0.0-rc.0",
+    "ionic-native": "2.0.3",
     "ionicons": "^3.0.0",
     "stripe": "^4.11.0",
     "underscore": "^1.8.3",

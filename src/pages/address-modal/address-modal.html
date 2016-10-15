@@ -23,19 +23,27 @@
   <form [formGroup]="addressForm">
     <ion-list>
       <ion-item>
-        <ion-input formControlName="streetAndNumber" placeholder="Street Name and Number" clearInput></ion-input>
+        <ion-label floating>Street Name and Number</ion-label>
+        <ion-input formControlName="streetAndNumber" clearInput></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input formControlName="aptNumber" placeholder="Optional Apt. Number" clearInput></ion-input>
+        <ion-label floating>Optional Apt. Number</ion-label>
+        <ion-input formControlName="aptNumber" clearInput></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input formControlName="city" placeholder="City" clearInput></ion-input>
+        <ion-label floating>City</ion-label>
+        <ion-input formControlName="city" clearInput></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input formControlName="province" placeholder="Province" clearInput></ion-input>
+        <ion-label floating>Province</ion-label>
+        <ion-input formControlName="province" clearInput></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input formControlName="postalCode" placeholder="Postal Code" clearInput></ion-input>
+        <ion-label floating>Postal Code</ion-label>
+        <ion-input formControlName="postalCode" clearInput></ion-input>
+      </ion-item>
+      <ion-item class="no_bottom_border" *ngIf="errorMessage">
+        <p class="error-message">{{errorMessage}}</p>
       </ion-item>
     </ion-list>
   </form>

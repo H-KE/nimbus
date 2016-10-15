@@ -16,17 +16,16 @@ export class HomePage {
 
   }
 
-  goToSearch() {
-
-    this.auth.signIn(
-      "admin@nimbusfly.co",
-      "topsecret")
-      .map(response => response.json())
-      .subscribe(
-        res => this.navCtrl.setRoot(SearchPage),
-        error => console.log("WTF")
-      )
-  }
+  // goToSearch() {
+  //   this.auth.signIn(
+  //     "admin@nimbusfly.co",
+  //     "topsecret")
+  //     .map(response => response.json())
+  //     .subscribe(
+  //       res => this.navCtrl.setRoot(SearchPage),
+  //       error => console.log("WTF")
+  //     )
+  // }
 
   goToSignUp() {
     this.navCtrl.push(SignupPage);

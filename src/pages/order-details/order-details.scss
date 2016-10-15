@@ -87,7 +87,7 @@
     }
   }
 
-  .platform-ios .order-details ion-icon {
+  .platform-ios .order-details ol li ion-icon {
     color: $complete;
     position: absolute;
     left: -16px;
@@ -96,7 +96,7 @@
     font-weight: 900;
   }
 
-  .platform-android .order-details ion-icon {
+  .platform-android .order-details ol li ion-icon {
     color: $complete;
     position: absolute;
     left: -16px;

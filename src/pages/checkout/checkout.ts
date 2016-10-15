@@ -146,7 +146,7 @@ export class CheckoutPage {
     }
 
     this.order.address = JSON.stringify(this.selectedAddress);
-    this.order.distribution_channel = "delivery";
+    this.order.distribution_channel = "mail";
 
     console.log(this.order);
 
