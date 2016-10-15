@@ -36,7 +36,6 @@ export class DispensaryPage {
 
     this.dispensaryService.getDispensaryMenu(this.selectedDispensary.id)
       .then(response => {
-        console.log(response);
         this.menu = response as Item[];
 
         this.menuCategories = [];
@@ -61,7 +60,8 @@ export class DispensaryPage {
 
   itemSelected(event, item) {
     this.navCtrl.push(ItemDetailsPage, {
-      item: item
+      item: item,
+      dispensaryName: this.selectedDispensary.name
     });
   }
 

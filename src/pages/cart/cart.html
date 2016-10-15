@@ -7,25 +7,25 @@
 </ion-header>
 
 <ion-content class="cart">
-  <ion-card *ngIf="cart.count > 0">
+  <ion-card *ngFor="let cart of carts">
     <ion-list>
-      <!-- <ion-list-header>
-        Green Cross Demo
-      </ion-list-header> -->
-      <button ion-item (click)=editItem(item) *ngFor="let item of cart.content">
+      <ion-list-header>
+        {{cart.dispensary_name}}
+      </ion-list-header>
+      <ion-item *ngFor="let item of cart.content; let i = index">
         <ion-avatar item-left>
           <img src="{{cartService.getItemThumbnail(item)}}">
         </ion-avatar>
         <h2>{{item.name}}</h2>
         <p>Total: ${{item.price}} | Qty: {{item.quantity}}</p>
-        <ion-icon item-right name="close-circle" (click)="cartService.removeFromCart(item)"></ion-icon>
-      </button>
+        <ion-icon item-right name="close-circle" (click)="cartService.removeFromCart(cart.dispensary_name, item, i)"></ion-icon>
+      </ion-item>
     </ion-list>
-    <button ion-button full color="secondary" (click)="checkoutCart($event)">
+    <button ion-button full color="secondary" (click)="checkoutCart(cart.dispensary_name)">
       CHECKOUT
     </button>
   </ion-card>
-  <ion-card *ngIf="cart.count == 0">
+  <ion-card *ngIf="cartService.itemCount == 0">
     <ion-item>
       Your cart is empty!
     </ion-item>

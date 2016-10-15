@@ -159,7 +159,7 @@ export class CheckoutPage {
       .subscribe(
         data => {
           console.log(data);
-          this.cartService.clearCart();
+          this.cartService.clearCart(this.order.dispensary_name);
           loader.dismiss()
           this.goToOrderDetails();
         },

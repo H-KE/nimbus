@@ -3,71 +3,76 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
 import { Item } from '../../models/item';
+import { Cart } from '../../models/cart';
+
 import _ from 'underscore';
 
 @Injectable()
 export class CartService {
-  cart: {
-    content: Item[],
-    count: number,
-    total: number
-  };
+  carts: any; //TODO: object type should be map of dispensary name to cart objects, eg. {dispensary_name: Cart}
+  itemCount: number;
 
   constructor(public http: Http) {
-    this.cart = {
-      content: [],
-      count: 0,
-      total: 0
-    };
+    this.carts = {};
+    this.itemCount = 0;
   }
 
-  getCart() {
-    console.log(this.cart);
-    return this.cart;
+  getAll() {
+    return this.carts;
+  }
+  getCart(dispensaryName) {
+    return this.carts[dispensaryName];
   }
 
-  getCartTotal() {
-    return this.cart.total;
+  getCartTotal(dispensaryName) {
+    return this.carts[dispensaryName].total;
   }
 
-  getCartCount() {
-    return this.cart.count;
+  getCartCount() { //TODO: instead of keeping a state of the counts, might should make it stateless and sum up count when retreived
+    return this.carts.itemCount;
   }
 
-  addToCart(item, quantity, price) {
+  addToCart(dispensaryName, item, quantity, price) {
     let newItem = Object.assign({}, item);
     newItem.quantity = quantity;
     newItem.price = price;
-    this.cart.content.push(newItem);
-    this.cart.count = this.cart.content.length;
-    this.cart.total += price;
+
+    let cart = this.carts[dispensaryName] == null?
+                new Cart(dispensaryName, [], 0, 0) : this.carts[dispensaryName];
+    cart.content.push(newItem);
+    cart.count += 1;
+    cart.total += price;
+
+    this.carts[dispensaryName] = cart;
+    this.itemCount += 1;
+
+    console.log(this.carts);
   }
 
-  removeFromCart(removedItem) {
-    var cartItemIndex = _.findIndex(this.cart.content, function(item){
-      return item.id == removedItem.id && item.quantity == removedItem.quantity && item.price == removedItem.price;
-    })
+  removeFromCart(dispensaryName, removedItem, itemIndex) {
+    this.carts[dispensaryName].content.splice(itemIndex, 1);
+    this.carts[dispensaryName].total -= removedItem.price;
 
-    if (cartItemIndex > -1) {
-      this.cart.content.splice(cartItemIndex, 1);
-      this.cart.total -= removedItem.price;
+    this.carts[dispensaryName].count = this.carts[dispensaryName].content.length;
+
+    this.itemCount -= 1;
+
+    if(this.carts[dispensaryName].count == 0) {
+      this.clearCart(dispensaryName);
     }
-
-    this.cart.count = this.cart.content.length;
   }
 
-  clearCart() {
-    this.cart.content = [];
-    this.cart.total = 0;
-    this.cart.count = 0;
+  clearCart(dispensaryName) {//TODO: this is not used, but if to use, need to handle itemCOunt logic to it
+    this.itemCount -= this.carts[dispensaryName].count;
+    delete this.carts[dispensaryName];
+    console.log(this.carts);
   }
 
-  getItemThumbnail(item) {
+  getItemThumbnail(item) { //TODO: Why is this here? move to item service or something
     let url = item.images[0]
     if (item.retailer_id == 2) {
       url = url.replace('.jpg', '_tn.jpg');
     }
     return url;
   }
-
 }

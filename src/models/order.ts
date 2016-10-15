@@ -11,4 +11,5 @@ export class Order {
   total_price: number;
   status: string;
   show: boolean;
+  dispensary_name: string;
 }

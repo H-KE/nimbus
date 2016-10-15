@@ -1,6 +1,7 @@
 export class Item {
   id: number;
   retailer_id: number;
+  retailer_name: string;
   name: string;
   images: string[];
   prices: number[];

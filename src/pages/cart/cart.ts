@@ -8,20 +8,22 @@ import { OrderService } from '../../providers/orders/orders';
 import { CheckoutPage } from '../checkout/checkout';
 import { ItemDetailsPage } from '../item-details/item-details';
 
+import _ from 'underscore';
 
 @Component({
   selector: 'cart',
   templateUrl: 'cart.html'
 })
 export class CartPage {
-  cart: any;
+  carts: any;
   order: Order;
 
   constructor(public navCtrl: NavController,
               public cartService: CartService,
               public orderService: OrderService,
               public alertController: AlertController) {
-    this.cart = this.cartService.getCart();
+    this.carts = _.values(this.cartService.getAll());
+    this.carts.itemCount = this.cartService.itemCount;
     this.order = new Order();
   }
 
@@ -42,44 +44,14 @@ export class CartPage {
     })
   }
 
-  checkoutCart() {
-    this.order.order_details = this.cart.content;
-    this.order.total_price = this.cart.total;
+  checkoutCart(dispensaryName) {
+    this.order.order_details = this.cartService.carts[dispensaryName].content;
+    this.order.total_price = this.cartService.carts[dispensaryName].total;
+    this.order.dispensary_name = dispensaryName;
     this.order.show = false;
 
     this.goToCheckout();
 
     this.order = new Order();
   }
-
-  // placeOrder() {
-  //   let confirm = this.alertController.create({
-  //     title: "Place this order?",
-  //     message: "By placing this order, you agree to the terms and services of Nimbus",
-  //     buttons: [
-  //       {
-  //         text: 'Cancel',
-  //         handler: () => {
-  //           console.log('Cancel clicked');
-  //         }
-  //       },
-  //       {
-  //         text: 'Place Order',
-  //         handler: () => {
-  //           this.order.items = this.cart.content;
-  //           this.order.address = "123 University Ave";
-  //           this.order.user = "John Smith";
-  //           this.order.total = this.cart.total;
-  //           this.order.show = false;
-  //           this.orderService.placeOrder(this.order);
-  //
-  //           this.cartService.clearCart();
-  //           this.order = new Order();
-  //         }
-  //       }
-  //     ]
-  //   });
-  //   confirm.present();
-  // }
-
 }

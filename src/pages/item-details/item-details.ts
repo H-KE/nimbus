@@ -26,6 +26,7 @@ export class ItemDetailsPage {
               public cartService: CartService) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
+    this.selectedItem.retailer_name = navParams.get('dispensaryName');
 
     this.itemPrice = this.selectedItem.prices[0];
     this.quantityLabel = this.selectedItem.price_labels[0];
@@ -36,9 +37,9 @@ export class ItemDetailsPage {
 
   addToCart(selectedItem, quantity) {
     if (this.dynamicSlider == true) {
-      this.cartService.addToCart(selectedItem, selectedItem.price_labels[quantity], selectedItem.prices[quantity]);
+      this.cartService.addToCart(this.selectedItem.retailer_name, selectedItem, selectedItem.price_labels[quantity], selectedItem.prices[quantity]);
     } else {
-      this.cartService.addToCart(selectedItem, quantity, quantity * this.itemPrice);
+      this.cartService.addToCart(this.selectedItem.retailer_name, selectedItem, quantity, quantity * this.itemPrice);
     }
     this.presentAddToCartToast(selectedItem);
     this.navCtrl.pop();
@@ -55,6 +56,4 @@ export class ItemDetailsPage {
     });
     toast.present();
   }
-
-
 }
