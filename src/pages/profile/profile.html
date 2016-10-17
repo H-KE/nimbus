@@ -14,7 +14,7 @@
     <ion-list-header>
       Contact
     </ion-list-header>
-    <button ion-item>
+    <button detail-push ion-item>
       {{firstName}} {{lastName}}, {{email}}
     </button>
   </ion-list>
@@ -23,7 +23,7 @@
     <ion-list-header>
       Delivery Addresses
     </ion-list-header>
-    <button ion-item *ngFor="let address of addresses">
+    <button detail-push ion-item *ngFor="let address of addresses">
       <b>{{address.streetAndNumber}}, {{address.aptNumber}}</b>, {{address.city}}, {{address.province}}, {{address.postalCode}}
     </button>
     <button ion-item detail-none (click)="addAddress()">
@@ -35,11 +35,11 @@
     <ion-list-header>
       Payment
     </ion-list-header>
-    <ion-item *ngFor="let card of cards">
+    <button detail-push ion-item *ngFor="let card of cards">
       <ion-icon item-left name="card"></ion-icon>
       {{card.brand}} ending in {{card.last4}}
-    </ion-item>
-    <button ion-item (click)="addCreditCard()">
+    </button>
+    <button detail-push ion-item (click)="addCreditCard()">
       <span item-right>
         Add Payment Card
       </span>

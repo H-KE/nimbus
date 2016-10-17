@@ -39,7 +39,7 @@
           </button>
         </ion-list>
         <ion-list>
-          <button ion-item *ngFor="let item of category.items"
+          <button ion-item detail-push *ngFor="let item of category.items"
                     (click)="itemSelected($event, item)"
                     class="item-accordian"
                     [hidden]="!isCategoryShown(category)">
