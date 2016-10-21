@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      My Cart
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="cart">
+  <ion-card *ngFor="let cart of carts">
+    <ion-list>
+      <ion-list-header>
+        {{cart.dispensary_name}}
+      </ion-list-header>
+      <ion-item *ngFor="let item of cart.content; let i = index">
+        <ion-avatar item-left>
+          <img src="{{cartService.getItemThumbnail(item)}}">
+        </ion-avatar>
+        <h2>{{item.name}}</h2>
+        <p>Total: ${{item.price}} | Qty: {{item.quantity}}</p>
+        <ion-icon item-right name="close-circle" (click)="cartService.removeFromCart(cart.dispensary_name, item, i)"></ion-icon>
+      </ion-item>
+    </ion-list>
+    <button ion-button full color="secondary" (click)="checkoutCart(cart.dispensary_name)">
+      CHECKOUT
+    </button>
+  </ion-card>
+  <ion-card *ngIf="cartService.itemCount == 0">
+    <ion-item>
+      Your cart is empty!
+    </ion-item>
+  </ion-card>
+</ion-content>

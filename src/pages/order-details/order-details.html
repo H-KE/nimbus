@@ -1,0 +1,63 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      {{order.dispensary_name}}
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content class="order-details">
+  <ion-card>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Status</ion-label>
+      </ion-list-header>
+      <ion-item>
+        <ol>
+          <li class="completed">
+             <ion-icon name="checkmark"></ion-icon> Verifying
+          </li>
+          <li class="current">
+            Packaging
+          </li>
+          <li> In Transit</li>
+          <li> Order Complete</li>
+        </ol>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Items</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let item of order.order_details">
+        <ion-avatar item-left>
+          <img src="{{cartService.getItemThumbnail(item)}}">
+        </ion-avatar>
+        <h2>{{item.name}}</h2>
+        <p>Total: ${{item.price}} | Qty: {{item.quantity}}</p>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Payment</ion-label>
+      </ion-list-header>
+      <ion-item text-wrap>
+        <p align="right">Subtotal: ${{subTotal}}</p>
+        <!-- <p align="right">Sales Tax (8.0%): $5</p> -->
+        <!-- <p align="right">Delivery Charges: $5</p> -->
+        <h3 align="right">Order Total: ${{orderTotal}}</h3>
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+</ion-content>

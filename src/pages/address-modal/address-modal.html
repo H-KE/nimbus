@@ -1,0 +1,56 @@
+<!--
+  Generated template for the AddressModalPage page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button ion-button (click)="cancel()">Cancel</button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="save()">Save</button>
+    </ion-buttons>
+    <ion-title>Add Address</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content class="address-modal">
+  <form [formGroup]="addressForm">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Street Name and Number</ion-label>
+        <ion-input formControlName="streetAndNumber" clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Optional Apt. Number</ion-label>
+        <ion-input formControlName="aptNumber" clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>City</ion-label>
+        <ion-input formControlName="city" clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Province</ion-label>
+        <ion-input formControlName="province" clearInput></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Postal Code</ion-label>
+        <ion-input formControlName="postalCode" clearInput></ion-input>
+      </ion-item>
+      <ion-item class="no_bottom_border" *ngIf="errorMessage">
+        <p class="error-message">{{errorMessage}}</p>
+      </ion-item>
+    </ion-list>
+  </form>
+
+  <!-- <ion-list>
+    <button full color="secondary" (click)="remove()">
+      <span>Remove Address</span>
+    </button>
+  </ion-list> -->
+</ion-content>

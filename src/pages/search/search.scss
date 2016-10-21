@@ -1,0 +1,27 @@
+.search {
+  ion-card-content.search-card {
+    padding: 0;
+  }
+
+  ion-searchbar.search-search {
+    padding: 0;
+  }
+
+  ion-app._gmapscdv_ .nav-decor {
+    background-color: transparent !important;
+  }
+
+  ion-nav.has-views {
+    background-color: transparent !important;
+  }
+
+  ion-card img {
+    height: 100px;
+    width: 100%;
+    object-fit: cover;
+  }
+}
+
+.toolbar-background {
+  border-color: color($colors, primary, base) !important;
+}

@@ -1,0 +1,25 @@
+<!-- <nimbus-bar title="Nimbus" [showMenu]=true></nimbus-bar> -->
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Dispensaries</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-left (click)="goToCart()">
+        <ion-icon name="cart"></ion-icon>
+        {{cartService.itemCount}}
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="search">
+    <ion-card class="dispensary-avatar" *ngFor="let dispensary of dispensaries">
+      <img src={{dispensary.avatar_url}} (click)="dispensarySelected($event, dispensary)">
+      <button ion-item detail-none (click)="dispensarySelected($event, dispensary)">
+        <h2>{{dispensary.name}}</h2>
+        <p>{{dispensary.address}}</p>
+      </button>
+    </ion-card>
+</ion-content>

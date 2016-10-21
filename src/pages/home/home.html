@@ -1,0 +1,35 @@
+<ion-content scroll="false" class="home">
+  <ion-grid>
+    <ion-row class="home-logo">
+      <ion-col>
+        <img src="./assets/img/nimbus-logo.jpg"/>
+      </ion-col>
+    </ion-row>
+    <ion-row class="auth-buttons">
+      <ion-col>
+        <ion-row>
+          <ion-col>
+            <button disabled="true" ion-button icon-left color="facebook" class="facebook-signup" (click)="goToSearch()">
+              <ion-icon name="logo-facebook"></ion-icon>
+              <p>Facebook</p></button>
+          </ion-col>
+          <ion-col>
+            <button disabled="true" ion-button icon-left color="google" class="google-signup" (click)="goToSearch()">
+              <ion-icon name="logo-googleplus"></ion-icon>
+              <p>Google</p></button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <button ion-button (click)="goToSignUp()" color="white" class="email-signup"><p><b>Sign up</b> with Email</p></button>
+          </ion-col>
+        </ion-row>
+        <ion-row class="signin">
+          <ion-col>
+            <p>Already a member? <b><a (click)="goToLogin()">Sign in here!</a></b></p>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

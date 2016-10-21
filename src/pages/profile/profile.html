@@ -1,0 +1,54 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      My Profile
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<!-- TODO: remove the ng ifs -->
+<ion-content class="profile">
+  <ion-list *ngIf="email">
+    <ion-list-header>
+      Contact
+    </ion-list-header>
+    <button detail-push ion-item>
+      {{firstName}} {{lastName}}, {{email}}
+    </button>
+  </ion-list>
+
+  <ion-list *ngIf="email">
+    <ion-list-header>
+      Delivery Addresses
+    </ion-list-header>
+    <button detail-push ion-item *ngFor="let address of addresses">
+      <b>{{address.streetAndNumber}}, {{address.aptNumber}}</b>, {{address.city}}, {{address.province}}, {{address.postalCode}}
+    </button>
+    <button ion-item detail-none (click)="addAddress()">
+      <span color="danger">Add another address</span>
+    </button>
+  </ion-list>
+
+  <ion-list *ngIf="email">
+    <ion-list-header>
+      Payment
+    </ion-list-header>
+    <button detail-push ion-item *ngFor="let card of cards">
+      <ion-icon item-left name="card"></ion-icon>
+      {{card.brand}} ending in {{card.last4}}
+    </button>
+    <button detail-push ion-item (click)="addCreditCard()">
+      <span item-right>
+        Add Payment Card
+      </span>
+    </button>
+  </ion-list>
+
+  <ion-list *ngIf="email">
+    <button ion-button full color="white" (click)="signOut()">
+      <span color="secondary">Sign Out</span>
+    </button>
+  </ion-list>
+</ion-content>
