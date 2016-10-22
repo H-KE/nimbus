@@ -5,4 +5,5 @@ export class Dispensary {
   address: string;
   rating: number;
   description: string;
+  shipping_fee: number;
 }

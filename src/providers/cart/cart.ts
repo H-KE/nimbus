@@ -32,13 +32,13 @@ export class CartService {
     return this.carts.itemCount;
   }
 
-  addToCart(dispensaryName, item, quantity, price) {
+  addToCart(dispensaryName, dispensary, item, quantity, price) {
     let newItem = Object.assign({}, item);
     newItem.quantity = quantity;
     newItem.price = price;
 
     let cart = this.carts[dispensaryName] == null?
-                new Cart(dispensaryName, [], 0, 0) : this.carts[dispensaryName];
+                new Cart(dispensaryName, dispensary, [], 0, 0) : this.carts[dispensaryName];
     cart.content.push(newItem);
     cart.count += 1;
     cart.total += price;
@@ -68,11 +68,11 @@ export class CartService {
     console.log(this.carts);
   }
 
-  getItemThumbnail(item) { //TODO: Why is this here? move to item service or something
+  getItemThumbnail(item) { //TODO: make this better..
     let url = item.images[0]
-    if (item.retailer_id == 2) {
-      url = url.replace('.jpg', '_tn.jpg');
-    }
+    // if (item.retailer_id == 2) {
+    //   url = url.replace('.jpg', '_tn.jpg');
+    // }
     return url;
   }
 }

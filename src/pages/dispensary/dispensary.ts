@@ -61,7 +61,7 @@ export class DispensaryPage {
   itemSelected(event, item) {
     this.navCtrl.push(ItemDetailsPage, {
       item: item,
-      dispensaryName: this.selectedDispensary.name
+      dispensary: this.selectedDispensary
     });
   }
 

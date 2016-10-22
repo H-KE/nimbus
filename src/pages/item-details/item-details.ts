@@ -2,6 +2,7 @@ import {Component} from '@angular/core';
 import {NavController, NavParams, ToastController} from 'ionic-angular';
 
 import { Item } from '../../models/item';
+import { Dispensary } from '../../models/dispensary';
 import { CartService } from '../../providers/cart/cart';
 import { CartPage } from '../cart/cart';
 
@@ -11,6 +12,7 @@ import { CartPage } from '../cart/cart';
 })
 export class ItemDetailsPage {
   selectedItem: Item;
+  retailer: Dispensary;
   quantity: number;
   quantityLabel: string;
   itemPrice: number;
@@ -26,7 +28,8 @@ export class ItemDetailsPage {
               public cartService: CartService) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
-    this.selectedItem.retailer_name = navParams.get('dispensaryName');
+    this.retailer = navParams.get('dispensary');
+    this.selectedItem.retailer_name = this.retailer.name;
 
     this.itemPrice = this.selectedItem.prices[0];
     this.quantityLabel = this.selectedItem.price_labels[0];
@@ -37,9 +40,9 @@ export class ItemDetailsPage {
 
   addToCart(selectedItem, quantity) {
     if (this.dynamicSlider == true) {
-      this.cartService.addToCart(this.selectedItem.retailer_name, selectedItem, selectedItem.price_labels[quantity], selectedItem.prices[quantity]);
+      this.cartService.addToCart(this.retailer.name, this.retailer, selectedItem, selectedItem.price_labels[quantity], selectedItem.prices[quantity]);
     } else {
-      this.cartService.addToCart(this.selectedItem.retailer_name, selectedItem, quantity, quantity * this.itemPrice);
+      this.cartService.addToCart(this.retailer.name, this.retailer, selectedItem, quantity, quantity * this.itemPrice);
     }
     this.presentAddToCartToast(selectedItem);
     this.navCtrl.pop();

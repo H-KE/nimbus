@@ -18,9 +18,8 @@ import { CardModalPage } from '../../pages/card-modal/card-modal';
 })
 export class CheckoutPage {
   order: Order;
+  totalPrice: number;
   user: any;
-  subTotal: number;
-  orderTotal: number;
   selectedAddress: any;
   selectedCard: any;
   cardOptions: any;
@@ -39,8 +38,9 @@ export class CheckoutPage {
 
     this.order = null;
     this.order = navParams.get('order');
-    this.subTotal = this.order.total_price;
-    this.orderTotal = this.order.total_price;
+
+    //TODO: why the fuck cant i do normal addition in typescript. THIS IS FUCKED UP
+    this.totalPrice = this.order.total_price * 1 + this.order.delivery_fee * 1;
 
     this.cardOptions = {
       title: 'Select a card'

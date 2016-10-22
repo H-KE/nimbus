@@ -12,4 +12,5 @@ export class Order {
   status: string;
   show: boolean;
   dispensary_name: string;
+  delivery_fee: number;
 }

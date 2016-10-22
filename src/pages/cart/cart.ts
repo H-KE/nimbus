@@ -47,6 +47,7 @@ export class CartPage {
   checkoutCart(dispensaryName) {
     this.order.order_details = this.cartService.carts[dispensaryName].content;
     this.order.total_price = this.cartService.carts[dispensaryName].total;
+    this.order.delivery_fee = this.cartService.carts[dispensaryName].dispensary.shipping_fee;
     this.order.dispensary_name = dispensaryName;
     this.order.show = false;
 
