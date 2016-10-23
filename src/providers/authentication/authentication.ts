@@ -1,12 +1,10 @@
 import { Injectable }       from '@angular/core';
-import {
-    Http,
-    Response,
-    Headers,
-    Request,
-    RequestMethod,
-    RequestOptions
-} from '@angular/http';
+import { Http,
+         Response,
+         Headers,
+         Request,
+         RequestMethod,
+         RequestOptions }   from '@angular/http';
 import { Observable }       from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/share';
@@ -39,7 +37,7 @@ export class AuthenticationService {
     public _currentUserData: any;
 
       constructor(public http: Http,
-              public localStorage: Storage) {
+                  public localStorage: Storage) {
           this.init();
       }
 
@@ -47,7 +45,7 @@ export class AuthenticationService {
       init(options?: Angular2TokenOptions) {
 
           let defaultOptions: Angular2TokenOptions = {
-              apiPath:                    'http://demo-nimbus.cfapps.io/api',
+              apiPath:                    'https://demo-nimbus.cfapps.io/api',
               // apiPath:                    'http://localhost:3000/api',
 
               signInPath:                 'auth/sign_in',

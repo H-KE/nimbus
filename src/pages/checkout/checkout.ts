@@ -1,5 +1,16 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, ViewController, LoadingController, AlertController } from 'ionic-angular';
+import { NavController,
+         NavParams,
+         ModalController,
+         ViewController,
+         LoadingController,
+         AlertController } from 'ionic-angular';
+import { Http,
+         Response,
+         Headers,
+         Request,
+         RequestMethod,
+         RequestOptions }   from '@angular/http';
 
 import { Order } from '../../models/order';
 import { OrderDetailsPage } from '../order-details/order-details';
@@ -26,6 +37,7 @@ export class CheckoutPage {
   addressOptions: any;
   selectedText: any;
   dismissModal: boolean;
+  file: File;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -34,7 +46,8 @@ export class CheckoutPage {
               public profileService: ProfileService,
               public modalCtrl: ModalController,
               public loadingCtrl: LoadingController,
-              public alertCtrl: AlertController) {
+              public alertCtrl: AlertController,
+              public http: Http) {
 
     this.order = null;
     this.order = navParams.get('order');
@@ -173,5 +186,33 @@ export class CheckoutPage {
     this.navCtrl.setRoot(OrderDetailsPage, {
       order: this.order
     });
+  }
+
+  onChange(event, type) {
+    var files = event.srcElement.files;
+    this.file = files[0];
+
+    let formData: FormData = new FormData();
+    let xhr: XMLHttpRequest = new XMLHttpRequest();
+
+    //Build AWS S3 Request
+    formData.append('key', this.user.email + "_" + type);
+    formData.append('Content-Type','image/jpeg');
+    //Put in your access key here
+    formData.append('file',this.file);
+
+    var requestOptions = new RequestOptions({
+      method: RequestMethod.Post,
+      url: 'https://s3.amazonaws.com/verification.nimbus/',
+      body: formData
+    })
+
+    var loader = this.loadingCtrl.create({});
+    loader.present();
+
+    this.http.request(new Request(requestOptions))
+      .subscribe(res => {
+        loader.dismiss()
+      })
   }
 }

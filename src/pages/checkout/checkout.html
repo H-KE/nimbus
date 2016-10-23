@@ -42,6 +42,29 @@
 
     <ion-list>
       <ion-list-header>
+        <ion-label>Verification Details</ion-label>
+      </ion-list-header>
+      <!-- <ion-item *ngIf="user && user.cards.length > 0">
+        <ion-icon item-left name="card"></ion-icon>
+        <ion-select [selectOptions]="cardOptions" [(ngModel)]="selectedCard">
+          <ion-option *ngFor="let card of user.cards" [value]="card">{{card.brand}} ending in {{card.last4}}</ion-option>
+        </ion-select>
+      </ion-item> -->
+      <ion-item detail-none > <!--(click)="personal.click()">-->
+        Add personal identification
+
+        <input type="file" accept="image/*;capture=camera" #personal (change)="onChange($event, '_id')">
+        <ion-icon name="add" item-right></ion-icon>
+      </ion-item>
+      <button ion-item detail-none (click)="medical.click()">
+        Add medical documentation
+        <input type="file" accept="image/*;capture=camera" #medical style="display:none" (change)="onChange($event, '_med')">
+        <ion-icon name="add" item-right></ion-icon>
+      </button>
+    </ion-list>
+
+    <ion-list>
+      <ion-list-header>
         <ion-label>Order Summary</ion-label>
       </ion-list-header>
       <ion-item text-wrap no-lines *ngFor="let item of order.order_details">
