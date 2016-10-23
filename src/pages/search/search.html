@@ -15,11 +15,11 @@
 </ion-header>
 
 <ion-content class="search">
-    <ion-card class="dispensary-avatar" *ngFor="let dispensary of dispensaries">
-      <img src={{dispensary.avatar_url}} (click)="dispensarySelected($event, dispensary)">
-      <button ion-item detail-none (click)="dispensarySelected($event, dispensary)">
-        <h2>{{dispensary.name}}</h2>
-        <p>{{dispensary.address}}</p>
-      </button>
+  <a *ngFor="let dispensary of dispensaries" (click)="dispensarySelected($event, dispensary)">
+    <ion-card class="dispensary-avatar">
+      <img src={{dispensary.avatar_url}}>
+      <div class="card-title">{{dispensary.name}}</div>
+      <div class="card-subtitle">{{dispensary.address}}</div>
     </ion-card>
+  </a>
 </ion-content>
