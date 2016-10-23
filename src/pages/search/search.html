@@ -18,8 +18,10 @@
   <a *ngFor="let dispensary of dispensaries" (click)="dispensarySelected($event, dispensary)">
     <ion-card class="dispensary-avatar">
       <img src={{dispensary.avatar_url}}>
-      <div class="card-title">{{dispensary.name}}</div>
-      <div class="card-subtitle">{{dispensary.address}}</div>
+      <div class="card-detail">
+        <div class="card-title">{{dispensary.name}}</div>
+        <div class="card-subtitle">{{dispensary.address}}</div>
+      </div>
     </ion-card>
   </a>
 </ion-content>
