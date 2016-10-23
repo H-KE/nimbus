@@ -71,15 +71,6 @@ export class DispensaryPage {
     this.navCtrl.push(CartPage);
   }
 
-  getItemThumbnail(item) {
-    let url = item.thumbnail == undefined? item.images[0] : item.thumbnail
-    //TODO: make this better..
-    if (item.retailer_id == 2) {
-      url = url.replace('.jpg', '_tn.jpg');
-    }
-    return url;
-  }
-
   renderItemDescription(item: Item) {
     switch(item.category) {
       case "Flowers":

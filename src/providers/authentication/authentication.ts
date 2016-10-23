@@ -45,7 +45,7 @@ export class AuthenticationService {
       init(options?: Angular2TokenOptions) {
 
           let defaultOptions: Angular2TokenOptions = {
-              apiPath:                    'https://demo-nimbus.cfapps.io/api',
+              apiPath:                    'https://nimbus-app.cfapps.io/api',
               // apiPath:                    'http://localhost:3000/api',
 
               signInPath:                 'auth/sign_in',

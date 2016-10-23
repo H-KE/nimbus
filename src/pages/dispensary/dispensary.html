@@ -44,7 +44,7 @@
                     class="item-accordian"
                     [hidden]="!isCategoryShown(category)">
             <ion-avatar item-left>
-              <img src="{{getItemThumbnail(item)}}">
+              <img src="{{cartService.getItemThumbnail(item)}}">
             </ion-avatar>
             <h2 style="display:inline">
               {{item.name}}
