@@ -4,6 +4,7 @@ export class Item {
   retailer_name: string;
   name: string;
   images: string[];
+  thumbnail: string;
   prices: number[];
   price_labels: string[];
   description: string;

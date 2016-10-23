@@ -67,12 +67,4 @@ export class CartService {
     delete this.carts[dispensaryName];
     console.log(this.carts);
   }
-
-  getItemThumbnail(item) { //TODO: make this better..
-    let url = item.images[0]
-    // if (item.retailer_id == 2) {
-    //   url = url.replace('.jpg', '_tn.jpg');
-    // }
-    return url;
-  }
 }

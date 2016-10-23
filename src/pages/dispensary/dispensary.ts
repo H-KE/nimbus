@@ -38,6 +38,8 @@ export class DispensaryPage {
       .then(response => {
         this.menu = response as Item[];
 
+        console.log(this.menu);
+
         this.menuCategories = [];
         for (var category of _.uniq(_.pluck(this.menu, 'category'))) {
           this.menuCategories.push ({
@@ -67,6 +69,15 @@ export class DispensaryPage {
 
   goToCart() {
     this.navCtrl.push(CartPage);
+  }
+
+  getItemThumbnail(item) {
+    let url = item.thumbnail == undefined? item.images[0] : item.thumbnail
+    //TODO: make this better..
+    if (item.retailer_id == 2) {
+      url = url.replace('.jpg', '_tn.jpg');
+    }
+    return url;
   }
 
   renderItemDescription(item: Item) {
