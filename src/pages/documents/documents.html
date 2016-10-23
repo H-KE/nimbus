@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>
+      My Documents
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <div id="item-logo-wrapper">
+      <ion-slides [options]="slideOptions">
+        <ion-slide *ngFor="let document of documents">
+          <img src={{document.url}} class="item-image"/>
+        </ion-slide>
+      </ion-slides>
+    </div>
+  </ion-card>
+
+</ion-content>

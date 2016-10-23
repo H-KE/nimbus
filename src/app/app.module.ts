@@ -16,6 +16,7 @@ import { DispensaryPage } from '../pages/dispensary/dispensary';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { AddressModalPage } from '../pages/address-modal/address-modal';
 import { CardModalPage } from '../pages/card-modal/card-modal';
+import { DocumentsPage } from '../pages/documents/documents';
 
 import { CartService } from '../providers/cart/cart';
 import { DispensaryService } from '../providers/dispensary/dispensary';
@@ -24,6 +25,7 @@ import { ProfileService } from '../providers/profile/profile';
 import { OrderService } from '../providers/orders/orders';
 import { AuthenticationService } from '../providers/authentication/authentication'
 import { StripeService } from '../providers/stripe/stripe';
+import { VerificationService } from '../providers/verification/verification';
 
 
 @NgModule({
@@ -41,7 +43,8 @@ import { StripeService } from '../providers/stripe/stripe';
     DispensaryPage,
     ItemDetailsPage,
     AddressModalPage,
-    CardModalPage
+    CardModalPage,
+    DocumentsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -63,7 +66,8 @@ import { StripeService } from '../providers/stripe/stripe';
     DispensaryPage,
     ItemDetailsPage,
     AddressModalPage,
-    CardModalPage
+    CardModalPage,
+    DocumentsPage
   ],
   providers: [
     CartService,
@@ -73,6 +77,7 @@ import { StripeService } from '../providers/stripe/stripe';
     ProfileService,
     AuthenticationService,
     StripeService,
+    VerificationService,
     Storage
   ]
 })

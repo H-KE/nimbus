@@ -14,7 +14,7 @@
     <ion-list-header>
       Contact
     </ion-list-header>
-    <button detail-push ion-item>
+    <button detail-none ion-item>
       <ion-icon item-left name="person"></ion-icon>
       {{firstName}} {{lastName}}, {{email}}
     </button>
@@ -29,7 +29,7 @@
       <b>{{address.streetAndNumber}}, {{address.aptNumber}}</b>, {{address.city}}, {{address.province}}, {{address.postalCode}}
     </button>
     <button ion-item (click)="addAddress()">
-      <span color="danger" item-right>Add another address</span>
+      <span color="danger" item-right>Add shipping address</span>
     </button>
   </ion-list>
 
@@ -43,9 +43,25 @@
     </button>
     <button detail-push ion-item (click)="addCreditCard()">
       <span color="danger" item-right>
-        Add Payment Card
+        Add payment card
       </span>
     </button>
+  </ion-list>
+
+  <ion-list *ngIf="email">
+    <ion-list-header>
+      Verification Documents
+    </ion-list-header>
+    <button detail-push ion-item *ngIf="documents.length > 0" (click)="goToDocumentsPage()">
+      <ion-icon item-left name="document"></ion-icon>
+      View available verification documents
+    </button>
+    <ion-item detail-push>
+      <input type="file" accept="image/*;capture=camera" (change)="addDocument($event, 'medical')"/>
+      <span color="danger" item-right>
+        Add Verification Document
+      </span>
+    </ion-item>
   </ion-list>
 
   <ion-list *ngIf="email">

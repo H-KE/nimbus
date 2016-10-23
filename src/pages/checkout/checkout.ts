@@ -5,12 +5,6 @@ import { NavController,
          ViewController,
          LoadingController,
          AlertController } from 'ionic-angular';
-import { Http,
-         Response,
-         Headers,
-         Request,
-         RequestMethod,
-         RequestOptions }   from '@angular/http';
 
 import { Order } from '../../models/order';
 import { OrderDetailsPage } from '../order-details/order-details';
@@ -18,6 +12,7 @@ import { OrderDetailsPage } from '../order-details/order-details';
 import { CartService } from '../../providers/cart/cart';
 import { OrderService } from '../../providers/orders/orders';
 import { ProfileService } from '../../providers/profile/profile';
+import { VerificationService } from '../../providers/verification/verification';
 
 import { AddressModalPage } from '../../pages/address-modal/address-modal';
 import { CardModalPage } from '../../pages/card-modal/card-modal';
@@ -44,10 +39,10 @@ export class CheckoutPage {
               public orderService: OrderService,
               public cartService: CartService,
               public profileService: ProfileService,
+              public verificationService: VerificationService,
               public modalCtrl: ModalController,
               public loadingCtrl: LoadingController,
-              public alertCtrl: AlertController,
-              public http: Http) {
+              public alertCtrl: AlertController) {
 
     this.order = null;
     this.order = navParams.get('order');
@@ -172,7 +167,7 @@ export class CheckoutPage {
       .subscribe(
         data => {
           this.cartService.clearCart(this.order.dispensary_name);
-          loader.dismiss()
+          loader.dismiss();
           this.order.id = data.id;
           this.order.address = data.address;
           this.order.status = data.status;
@@ -188,31 +183,38 @@ export class CheckoutPage {
     });
   }
 
+  displayAlert(title, message) {
+    let alert = this.alertCtrl.create({
+      title: title,
+      subTitle: message,
+      buttons: ['OK']
+    });
+    alert.present();
+  }
+
   onChange(event, type) {
     var files = event.srcElement.files;
+    var filePath = this.user.email +  '/' + type;
     this.file = files[0];
-
-    let formData: FormData = new FormData();
-    let xhr: XMLHttpRequest = new XMLHttpRequest();
-
-    //Build AWS S3 Request
-    formData.append('key', this.user.email + "_" + type);
-    formData.append('Content-Type','image/jpeg');
-    //Put in your access key here
-    formData.append('file',this.file);
-
-    var requestOptions = new RequestOptions({
-      method: RequestMethod.Post,
-      url: 'https://s3.amazonaws.com/verification.nimbus/',
-      body: formData
-    })
 
     var loader = this.loadingCtrl.create({});
     loader.present();
 
-    this.http.request(new Request(requestOptions))
-      .subscribe(res => {
-        loader.dismiss()
-      })
+    this.verificationService.saveDocument(this.user.email, this.file, type)
+      .map(res => res.json())
+      .subscribe(
+        data => {
+          loader.dismiss();
+          this.user.documents.push({
+            type: type,
+            url: "https://s3.amazonaws.com/verification.nimbus.co/" + filePath
+          })
+        },
+        errors => {
+          loader.dismiss();
+          this.displayAlert('Upload Failed', 'Failed to upload your verification document to our servers. Please try again');
+        }
+      )
   }
+
 }
