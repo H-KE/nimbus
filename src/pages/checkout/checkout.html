@@ -13,7 +13,6 @@
         <ion-label>Shipping Details</ion-label>
       </ion-list-header>
       <ion-item text-wrap id="address_select" *ngIf="user && user.addresses.length > 0">
-        <ion-icon item-left name="home"></ion-icon>
         <ion-select [selectOptions]="addressOptions" [(ngModel)]="selectedAddress" *ngIf="user">
           <ion-option *ngFor="let address of user.addresses" [value]="address"><b>{{address.streetAndNumber}}</b>, {{address.city}}, {{address.province}}, {{address.postalCode}}, Canada</ion-option>
         </ion-select>
@@ -50,12 +49,12 @@
           <ion-option *ngFor="let card of user.cards" [value]="card">{{card.brand}} ending in {{card.last4}}</ion-option>
         </ion-select>
       </ion-item> -->
-      <ion-item detail-none > <!--(click)="personal.click()">-->
+      <button ion-item detail-none (click)="personal.click()">
         Add personal identification
 
-        <input type="file" accept="image/*;capture=camera" #personal (change)="onChange($event, '_id')">
+        <input type="file" accept="image/*;capture=camera" #personal style="display:none" (change)="onChange($event, '_id')">
         <ion-icon name="add" item-right></ion-icon>
-      </ion-item>
+      </button>
       <button ion-item detail-none (click)="medical.click()">
         Add medical documentation
         <input type="file" accept="image/*;capture=camera" #medical style="display:none" (change)="onChange($event, '_med')">
@@ -75,7 +74,7 @@
         <p align="right">Subtotal: {{order.total_price | currency:'USD':true:'1.2-2'}}</p>
         <!-- <p align="right">Sales Tax (8.0%): $5</p> -->
         <p align="right">Delivery Charges: {{order.delivery_fee | currency:'USD':true:'1.2-2'}}</p>
-        <h3 align="right">Order Total: {{totalPrice | currency:'USD':true:'1.2-2'}}</h3>
+        <h3 align="right">Order Total: {{this.totalPrice | currency:'USD':true:'1.2-2'}}</h3>
       </ion-item>
     </ion-list>
 
