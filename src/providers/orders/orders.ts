@@ -20,6 +20,10 @@ export class OrderService {
     return this.auth.get('orders');
   }
 
+  loadOrder(id): Observable {
+    return this.auth.get('orders/'+id);
+  }
+
   placeOrder(order: Order): Observable {
     order.retailer_id = order.order_details[0].retailer_id;
     order.status = "NEW";

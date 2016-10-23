@@ -11,19 +11,77 @@
 
 
 <ion-content class="order-details">
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+     pullingIcon="arrow-dropdown"
+     pullingText="Pull to refresh"
+     refreshingSpinner="circles"
+     refreshingText="Refreshing...">
+   </ion-refresher-content>
+  </ion-refresher>
   <ion-card>
     <ion-list>
       <ion-list-header>
         <ion-label>Status</ion-label>
       </ion-list-header>
-      <ion-item>
-        <ol>
+      <ion-item [ngSwitch]="order.status">
+        <ol *ngSwitchCase="'NEW'">
+          <li class="current">Verifying</li>
+          <li>Packaging</li>
+          <li> In Transit</li>
+          <li> Order Complete</li>
+        </ol>
+
+        <ol *ngSwitchCase="'packaging'">
           <li class="completed">
              <ion-icon name="checkmark"></ion-icon> Verifying
           </li>
           <li class="current">
             Packaging
           </li>
+          <li> In Transit</li>
+          <li> Order Complete</li>
+        </ol>
+
+        <ol *ngSwitchCase="'in_transit'">
+          <li class="completed">
+             <ion-icon name="checkmark"></ion-icon> Verifying
+          </li>
+          <li class="completed">
+            <ion-icon name="checkmark"></ion-icon> Packaging
+          </li>
+          <li class="current">
+            In Transit
+          </li>
+          <li> Order Complete</li>
+        </ol>
+
+        <ol *ngSwitchCase="'completed'">
+          <li class="completed">
+             <ion-icon name="checkmark"></ion-icon> Verifying
+          </li>
+          <li class="completed">
+            <ion-icon name="checkmark"></ion-icon> Packaging
+          </li>
+          <li class="completed">
+            <ion-icon name="checkmark"></ion-icon> In Transit
+          </li>
+          <li class="completed">
+            <ion-icon name="checkmark"></ion-icon> Order Complete
+          </li>
+        </ol>
+
+        <ol *ngSwitchCase="'declined'">
+          <li class="completed">
+            <ion-icon name="close"></ion-icon> Order Declined
+            <!--TODO: Dynamic reason-->
+          </li>
+          <li class="current">Your documents were not verified.</li>
+        </ol>
+
+        <ol *ngSwitchDefault>
+          <li class="current">Verifying</li>
+          <li>Packaging</li>
           <li> In Transit</li>
           <li> Order Complete</li>
         </ol>
