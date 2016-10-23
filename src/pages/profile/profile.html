@@ -15,6 +15,7 @@
       Contact
     </ion-list-header>
     <button detail-push ion-item>
+      <ion-icon item-left name="person"></ion-icon>
       {{firstName}} {{lastName}}, {{email}}
     </button>
   </ion-list>
@@ -24,10 +25,11 @@
       Delivery Addresses
     </ion-list-header>
     <button detail-push ion-item *ngFor="let address of addresses">
+      <ion-icon item-left name="home"></ion-icon>
       <b>{{address.streetAndNumber}}, {{address.aptNumber}}</b>, {{address.city}}, {{address.province}}, {{address.postalCode}}
     </button>
-    <button ion-item detail-none (click)="addAddress()">
-      <span color="danger">Add another address</span>
+    <button ion-item (click)="addAddress()">
+      <span color="danger" item-right>Add another address</span>
     </button>
   </ion-list>
 
@@ -40,7 +42,7 @@
       {{card.brand}} ending in {{card.last4}}
     </button>
     <button detail-push ion-item (click)="addCreditCard()">
-      <span item-right>
+      <span color="danger" item-right>
         Add Payment Card
       </span>
     </button>

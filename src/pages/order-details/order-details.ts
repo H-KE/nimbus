@@ -17,8 +17,9 @@ import { OrderService } from '../../providers/orders/orders';
 })
 export class OrderDetailsPage {
   order: Order;
-  subTotal: number;
   orderTotal: number;
+  dispensaryName: string;
+  address: string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -26,9 +27,9 @@ export class OrderDetailsPage {
               public orderService: OrderService) {
     this.order = null;
     this.order = navParams.get('order');
-    this.subTotal = this.order.total_price;
-    this.orderTotal = this.order.total_price;
-    console.log(this.order);
+    this.dispensaryName = this.order.dispensary_name;
+    this.orderTotal = this.order.total_price * 1 + this.order.delivery_fee * 1;
+    this.address = JSON.parse(this.order.address);
   };
 
   doRefresh(refresher) {

@@ -26,7 +26,7 @@ export class OrderService {
 
   placeOrder(order: Order): Observable {
     order.retailer_id = order.order_details[0].retailer_id;
-    order.status = "NEW";
+    order.status = "verifying"; //TODO: should not set status on create, should default to verifying in db schema
 
     let body = JSON.stringify(order);
     return this.auth.post('orders', body);

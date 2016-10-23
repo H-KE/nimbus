@@ -4,7 +4,7 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      {{order.dispensary_name}}
+      {{dispensaryName}}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -103,6 +103,18 @@
       </ion-item>
     </ion-list>
   </ion-card>
+  
+  <ion-card>
+    <ion-list>
+      <ion-list-header>
+        Delivery Addresses
+      </ion-list-header>
+      <ion-item>
+        <ion-icon item-left name="home"></ion-icon>
+        {{address.streetAndNumber}}, {{address.aptNumber}}, {{address.city}}, {{address.province}}, {{address.postalCode}}
+      </ion-item>
+    </ion-list>
+  </ion-card>
 
   <ion-card>
     <ion-list>
@@ -110,10 +122,10 @@
         <ion-label>Payment</ion-label>
       </ion-list-header>
       <ion-item text-wrap>
-        <p align="right">Subtotal: ${{subTotal}}</p>
+        <p align="right">Subtotal: {{order.total_price | currency:'USD':true:'1.2-2'}}</p>
         <!-- <p align="right">Sales Tax (8.0%): $5</p> -->
-        <!-- <p align="right">Delivery Charges: $5</p> -->
-        <h3 align="right">Order Total: ${{orderTotal}}</h3>
+        <p align="right">Delivery Charges: {{order.delivery_fee | currency:'USD':true:'1.2-2'}}</p>
+        <h3 align="right">Order Total: {{orderTotal | currency:'USD':true:'1.2-2'}}</h3>
       </ion-item>
     </ion-list>
   </ion-card>
