@@ -8,6 +8,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class AddressModalPage {
   addressForm: any;
+  errorMessage: string;
 
   constructor(public viewCtrl: ViewController,
               public formBuilder: FormBuilder) {

@@ -16,15 +16,15 @@ export class OrderService {
               public auth: AuthenticationService) {
   }
 
-  loadOrders(): Observable {
+  loadOrders(): any {
     return this.auth.get('orders');
   }
 
-  loadOrder(id): Observable {
+  loadOrder(id): any {
     return this.auth.get('orders/'+id);
   }
 
-  placeOrder(order: Order): Observable {
+  placeOrder(order: Order): any {
     order.retailer_id = order.order_details[0].retailer_id;
     order.status = "verifying"; //TODO: should not set status on create, should default to verifying in db schema
 

@@ -13,7 +13,7 @@ export class ProfileService {
               public auth: AuthenticationService) {
   }
 
-  getUser() {
+  getUser(): any {
     return this.auth.get('users/credit_cards')
   }
 
