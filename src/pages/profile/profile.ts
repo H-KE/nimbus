@@ -129,11 +129,6 @@ export class ProfilePage {
   signOut() {
     this.auth.signOut().subscribe(
       res => {
-        let toast = this.toastCtrl.create({
-          message: "You have been signed out.",
-          duration: 3000
-        })
-        // toast.present();
         this.navCtrl.push(HomePage);
       },
       error => this.navCtrl.push(HomePage)

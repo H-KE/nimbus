@@ -10,7 +10,6 @@ import { OrderService } from '../../providers/orders/orders';
 })
 export class OrderDetailsPage {
   order: Order;
-  orderTotal: number;
   dispensaryName: string;
   address: any;
 
@@ -21,7 +20,6 @@ export class OrderDetailsPage {
     this.order = null;
     this.order = navParams.get('order');
     this.dispensaryName = this.order.dispensary_name;
-    this.orderTotal = this.order.total_price * 1 + this.order.delivery_fee * 1;
     this.address = JSON.parse(this.order.address);
   };
 
