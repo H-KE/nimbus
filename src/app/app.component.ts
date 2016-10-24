@@ -6,7 +6,6 @@ import { HomePage } from '../pages/home/home';
 import { SearchPage } from '../pages/search/search';
 import { OrdersPage } from '../pages/orders/orders'
 import { ProfilePage } from '../pages/profile/profile';
-import { SearchPage } from '../pages/search/search';
 
 import { AuthenticationService } from '../providers/authentication/authentication';
 
