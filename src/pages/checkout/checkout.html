@@ -43,12 +43,16 @@
       <ion-list-header>
         <ion-label>Verification Documents</ion-label>
       </ion-list-header>
-      <ion-item detail-none>
+      <button ion-item detail-none *ngIf="user && user.documents.length > 0" (click)="goToDocumentsPage()">
+        <ion-icon item-left name="document"></ion-icon>
+        View available documents
+      </button>
+      <ion-item detail-none *ngIf="user && user.documents.length < 2">
         Add government id
         <input type="file" accept="image/*;capture=camera" (change)="onChange($event, 'identification')"/>
         <ion-icon name="camera" item-right></ion-icon>
       </ion-item>
-      <ion-item detail-none>
+      <ion-item detail-none *ngIf="user && user.documents.length < 2">
         Add medical documentation
         <input type="file" accept="image/*;capture=camera" (change)="onChange($event, 'medical')"/>
         <ion-icon name="camera" item-right></ion-icon>

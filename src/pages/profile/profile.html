@@ -54,12 +54,12 @@
     </ion-list-header>
     <button detail-push ion-item *ngIf="documents.length > 0" (click)="goToDocumentsPage()">
       <ion-icon item-left name="document"></ion-icon>
-      View available verification documents
+      View available documents
     </button>
     <ion-item detail-push>
       <input type="file" accept="image/*;capture=camera" (change)="addDocument($event, 'medical')"/>
       <span color="danger" item-right>
-        Add Verification Document
+        Add a document
       </span>
     </ion-item>
   </ion-list>

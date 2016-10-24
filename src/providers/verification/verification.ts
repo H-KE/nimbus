@@ -20,7 +20,7 @@ export class VerificationService {
     this.hostUrl = 'https://s3.amazonaws.com/verification.nimbus.co/';
   }
 
-  saveDocument(email, file, type): Observable {
+  saveDocument(email, file, type): any {
     var filePath = email +  '/' + type;
     var data = {
       verification_type: type,
@@ -36,7 +36,7 @@ export class VerificationService {
       )
   }
 
-  postImageToS3(file, path): Oberservable {
+  postImageToS3(file, path): any {
 
     let formData: FormData = new FormData();
 

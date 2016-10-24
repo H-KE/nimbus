@@ -8,6 +8,7 @@ import { NavController,
 
 import { Order } from '../../models/order';
 import { OrderDetailsPage } from '../order-details/order-details';
+import { DocumentsPage } from '../documents/documents';
 
 import { CartService } from '../../providers/cart/cart';
 import { OrderService } from '../../providers/orders/orders';
@@ -16,6 +17,8 @@ import { VerificationService } from '../../providers/verification/verification';
 
 import { AddressModalPage } from '../../pages/address-modal/address-modal';
 import { CardModalPage } from '../../pages/card-modal/card-modal';
+
+import _ from 'underscore';
 
 
 @Component({
@@ -149,6 +152,17 @@ export class CheckoutPage {
       return;
     }
 
+    if (this.user.documents.length < 2) {
+      let alert = this.alertCtrl.create({
+        title: 'Insufficient Verification!',
+        subTitle: 'Please upload a picture of your identification (driver license or health card) and your medical documentation.',
+        buttons: ['OK']
+      });
+      alert.present();
+
+      return;
+    }
+
     this.order.address = JSON.stringify(this.selectedAddress);
     this.order.distribution_channel = "mail";
 
@@ -179,6 +193,12 @@ export class CheckoutPage {
     });
   }
 
+  goToDocumentsPage() {
+    this.navCtrl.push(DocumentsPage, {
+      documents: this.user.documents
+    })
+  }
+
   displayAlert(title, message) {
     let alert = this.alertCtrl.create({
       title: title,
@@ -207,8 +227,13 @@ export class CheckoutPage {
           })
         },
         errors => {
+          // TODO: HACK  -- status 204 resolves to error
           loader.dismiss();
-          this.displayAlert('Upload Failed', 'Failed to upload your verification document to our servers. Please try again');
+          this.user.documents.push({
+            type: type,
+            url: "https://s3.amazonaws.com/verification.nimbus.co/" + filePath
+          })
+          // this.displayAlert('Upload Failed', 'Failed to upload your verification document to our servers. Please try again');
         }
       )
   }
