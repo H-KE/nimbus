@@ -69,9 +69,9 @@
       </ion-item>
       <ion-item text-wrap>
         <p align="right">Subtotal: {{order.total_price | currency:'USD':true:'1.2-2'}}</p>
-        <p align="right">Sales Tax (13.0%): {{order.tax_amount | currency:'USD':true:'1.2-2'}}</p>
         <p align="right">Delivery Charges: {{order.delivery_fee | currency:'USD':true:'1.2-2'}}</p>
-        <h3 align="right">Order Total: {{order.total_price*1 + order.tax_amount*1 + order.delivery_fee*1 | currency:'USD':true:'1.2-2'}}</h3>
+        <p align="right">Sales Tax (13.0%): {{order.tax_amount | currency:'USD':true:'1.2-2'}}</p>
+        <h3 align="right">Order Total: {{order.total_price*1 + order.delivery_fee*1 + order.tax_amount*1| currency:'USD':true:'1.2-2'}}</h3>
       </ion-item>
     </ion-list>
 
