@@ -45,9 +45,9 @@
       </ion-list-header>
       <button ion-item detail-none *ngIf="user && user.documents.length > 0" (click)="goToDocumentsPage()">
         <ion-icon item-left name="document"></ion-icon>
-        View available documents
+        View uploaded documents
       </button>
-      <ion-item detail-none *ngIf="user && user.documents.length < 2">
+      <ion-item detail-none *ngIf="user && user.documents.length < 1">
         Add government id
         <input type="file" accept="image/*;capture=camera" (change)="onChange($event, 'identification')"/>
         <ion-icon name="camera" item-right></ion-icon>

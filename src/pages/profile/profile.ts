@@ -106,7 +106,7 @@ export class ProfilePage {
         },
         errors => {
           loader.dismiss();
-          this.displayAlert('Upload Failed', 'Failed to upload your verification document to our servers. Please try again');
+          // this.displayAlert('Upload Failed', 'Failed to upload your verification document to our servers. Please try again');
         }
       )
   }

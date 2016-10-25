@@ -54,12 +54,18 @@
     </ion-list-header>
     <button detail-push ion-item *ngIf="documents.length > 0" (click)="goToDocumentsPage()">
       <ion-icon item-left name="document"></ion-icon>
-      View available documents
+      View uploaded documents
     </button>
+    <ion-item detail-push *ngIf="documents.length < 1">
+      <input type="file" accept="image/*;capture=camera" (change)="onChange($event, 'identification')"/>
+      <span color="danger" item-right>
+        Add a government ID
+      </span>
+    </ion-item>
     <ion-item detail-push>
       <input type="file" accept="image/*;capture=camera" (change)="addDocument($event, 'medical')"/>
       <span color="danger" item-right>
-        Add a document
+        Add a medical document
       </span>
     </ion-item>
   </ion-list>
