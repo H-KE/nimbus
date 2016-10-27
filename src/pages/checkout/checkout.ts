@@ -178,9 +178,7 @@ export class CheckoutPage {
         data => {
           this.cartService.clearCart(this.order.dispensary_name);
           loader.dismiss();
-          this.order.id = data.id;
-          this.order.address = data.address;
-          this.order.status = data.status;
+          this.order = data;
           this.goToOrderDetails();
         },
         errors => console.log(errors)

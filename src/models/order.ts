@@ -12,6 +12,7 @@ export class Order {
   status: string;
   show: boolean;
   dispensary_name: string;
+  dispensary_email: string;
   delivery_fee: number;
   tax_amount: number;
 }

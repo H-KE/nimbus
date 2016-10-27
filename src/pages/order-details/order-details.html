@@ -25,12 +25,28 @@
         <ion-label>Status</ion-label>
       </ion-list-header>
       <ion-item [ngSwitch]="order.status">
-        <ol *ngSwitchCase="'NEW'">
+        <ol *ngSwitchCase="'payment_pending'">
+          <li class="current">
+            Awaiting Payment
+            <div class="status_detail">
+              <p>Please email transfer your <b>order total</b> to {{order.dispensary_name}}'s email to complete the checkout.</p>
+              <p>Email: <b>{{order.dispensary_email}}</b></p>
+              <p>Security Question: <b>{{order.dispensary_name}}</b></p>
+              <p>Security Answer: <b>{{order.id}}</b></p>
+            </div>
+          </li>
+          <li>Verifying</li>
+          <li>Packaging</li>
+          <li>In Transit</li>
+          <li>Order Complete</li>
+        </ol>
+
+        <!-- <ol *ngSwitchCase="'verifying'">
           <li class="current">Verifying</li>
           <li>Packaging</li>
           <li> In Transit</li>
           <li> Order Complete</li>
-        </ol>
+        </ol> -->
 
         <ol *ngSwitchCase="'packaging'">
           <li class="completed">

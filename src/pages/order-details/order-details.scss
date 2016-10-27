@@ -7,6 +7,12 @@
   $sl-g:             #cfcfcf;
   $complete:         #3ec78c;
 
+  .status_detail {
+    text-transform: none;
+    font-weight: 400;
+    white-space: normal;
+  }
+
   ol{
     //background: #e7ecee;
 
@@ -21,7 +27,7 @@
       line-height: 46px;
       text-indent: 0;
       position: relative;
-      margin: 0 20px 0 28px;
+      // margin: 0 20px 0 28px;
       list-style-type: none;
 
       &.current{

@@ -10,7 +10,6 @@ import { OrderService } from '../../providers/orders/orders';
 })
 export class OrderDetailsPage {
   order: Order;
-  dispensaryName: string;
   address: any;
 
   constructor(public navCtrl: NavController,
@@ -19,7 +18,6 @@ export class OrderDetailsPage {
               public orderService: OrderService) {
     this.order = null;
     this.order = navParams.get('order');
-    this.dispensaryName = this.order.dispensary_name;
     this.address = JSON.parse(this.order.address);
   };
 
