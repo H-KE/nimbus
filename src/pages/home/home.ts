@@ -16,15 +16,19 @@ export class HomePage {
 
   }
 
+  ionViewDidLoad() {
+    this.auth.validateToken()
+      .map(res => res.json())
+      .subscribe(
+        res => {
+          this.goToSearch();
+        },
+        error => {}
+      )
+  }
+
   goToSearch() {
-    // this.auth.signIn(
-    //   "admin@nimbusfly.co",
-    //   "topsecret")
-    //   .map(response => response.json())
-    //   .subscribe(
-    //     res => this.navCtrl.setRoot(SearchPage),
-    //     error => console.log("WTF")
-    //   )
+    this.navCtrl.setRoot(SearchPage);
   }
 
   goToSignUp() {

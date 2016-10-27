@@ -7,8 +7,6 @@ import { SearchPage } from '../pages/search/search';
 import { OrdersPage } from '../pages/orders/orders'
 import { ProfilePage } from '../pages/profile/profile';
 
-import { AuthenticationService } from '../providers/authentication/authentication';
-
 @Component({
   templateUrl: 'app.html',
 })
@@ -19,8 +17,7 @@ export class MyApp {
 
   pages: Array<{title: string, icon: string, component: any}>;
 
-  constructor(public platform: Platform,
-              public auth: AuthenticationService) {
+  constructor(public platform: Platform) {
     this.initializeApp();
 
     // used for an example of ngFor and navigation
@@ -29,13 +26,6 @@ export class MyApp {
       { title: 'My Orders', icon: 'cloud', component: OrdersPage},
       { title: 'My Profile', icon: 'contact', component: ProfilePage}
     ];
-
-    this.auth.validateToken()
-      .map(res => res.json())
-      .subscribe(
-        res => this.rootPage = SearchPage
-      )
-
   }
 
   initializeApp() {

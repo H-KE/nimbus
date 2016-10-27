@@ -11,6 +11,7 @@ import { OrderService } from '../../providers/orders/orders';
 export class OrderDetailsPage {
   order: Order;
   address: any;
+  securityAnswer: string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -19,6 +20,8 @@ export class OrderDetailsPage {
     this.order = null;
     this.order = navParams.get('order');
     this.address = JSON.parse(this.order.address);
+
+    this.securityAnswer = this.order.dispensary_name.toLowerCase().replace(/ /g, '');
   };
 
   doRefresh(refresher) {

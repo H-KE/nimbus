@@ -32,6 +32,7 @@ export class CheckoutPage {
   selectedText: any;
   dismissModal: boolean;
   file: File;
+  paymentMethod: string;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -42,7 +43,8 @@ export class CheckoutPage {
               public modalCtrl: ModalController,
               public loadingCtrl: LoadingController,
               public alertCtrl: AlertController) {
-
+    this.paymentMethod = "etransfer";
+    
     this.order = null;
     this.order = navParams.get('order');
 
