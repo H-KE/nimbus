@@ -16,7 +16,6 @@ import { ProfileService } from '../../providers/profile/profile';
 import { VerificationService } from '../../providers/verification/verification';
 
 import { AddressModalPage } from '../../pages/address-modal/address-modal';
-import { CardModalPage } from '../../pages/card-modal/card-modal';
 
 import _ from 'underscore';
 
@@ -29,8 +28,6 @@ export class CheckoutPage {
   order: Order;
   user: any;
   selectedAddress: any;
-  selectedCard: any;
-  cardOptions: any;
   addressOptions: any;
   selectedText: any;
   dismissModal: boolean;
@@ -49,9 +46,6 @@ export class CheckoutPage {
     this.order = null;
     this.order = navParams.get('order');
 
-    this.cardOptions = {
-      title: 'Select a card'
-    };
     this.addressOptions = {
       title: 'Select an address'
     }
@@ -71,7 +65,6 @@ export class CheckoutPage {
           this.user = data;
           this.user.addresses = data.address ? JSON.parse(data.address) : [];
           this.selectedAddress = this.user.addresses[0];
-          this.selectedCard = this.user.cards[0];
           loader.dismiss();
         },
         error => {
@@ -104,47 +97,12 @@ export class CheckoutPage {
     });
   }
 
-  addCreditCard() {
-    let cardModal = this.modalCtrl.create(CardModalPage);
-    this.dismissModal = false;
-    cardModal.present();
-    cardModal.onDidDismiss(data => {
-      if (data.card) {
-        var loader = this.loadingCtrl.create({});
-        loader.present();
-
-        this.user.cards.push(data.card);
-        this.selectedCard = data.card;
-
-        this.profileService.updateUser({
-          token: data.id
-        }).then(response => {
-          console.log(response);
-          loader.dismiss()
-        });
-      } else {
-        this.dismissModal = true;
-      }
-    });
-  }
-
   placeOrder() {
 
     if (!this.selectedAddress) {
       let alert = this.alertCtrl.create({
         title: 'No Address!',
         subTitle: 'Please add an address so we know where to ship your order.',
-        buttons: ['OK']
-      });
-      alert.present();
-
-      return;
-    }
-
-    if (!this.selectedCard) {
-      let alert = this.alertCtrl.create({
-        title: 'No Credit Card!',
-        subTitle: 'Please add a credit card so we can fulfill your order.',
         buttons: ['OK']
       });
       alert.present();

@@ -15,7 +15,6 @@ import { CheckoutPage } from '../pages/checkout/checkout';
 import { DispensaryPage } from '../pages/dispensary/dispensary';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { AddressModalPage } from '../pages/address-modal/address-modal';
-import { CardModalPage } from '../pages/card-modal/card-modal';
 import { DocumentsPage } from '../pages/documents/documents';
 
 import { CartService } from '../providers/cart/cart';
@@ -24,7 +23,6 @@ import { MenuService } from '../providers/menu/menu';
 import { ProfileService } from '../providers/profile/profile';
 import { OrderService } from '../providers/orders/orders';
 import { AuthenticationService } from '../providers/authentication/authentication'
-import { StripeService } from '../providers/stripe/stripe';
 import { VerificationService } from '../providers/verification/verification';
 
 
@@ -43,7 +41,6 @@ import { VerificationService } from '../providers/verification/verification';
     DispensaryPage,
     ItemDetailsPage,
     AddressModalPage,
-    CardModalPage,
     DocumentsPage
   ],
   imports: [
@@ -66,7 +63,6 @@ import { VerificationService } from '../providers/verification/verification';
     DispensaryPage,
     ItemDetailsPage,
     AddressModalPage,
-    CardModalPage,
     DocumentsPage
   ],
   providers: [
@@ -76,7 +72,6 @@ import { VerificationService } from '../providers/verification/verification';
     MenuService,
     ProfileService,
     AuthenticationService,
-    StripeService,
     VerificationService,
     Storage
   ]

@@ -6,7 +6,6 @@ import { NavController,
          AlertController } from 'ionic-angular';
 
 import { HomePage } from '../home/home';
-import { CardModalPage } from '../../pages/card-modal/card-modal';
 import { AddressModalPage } from '../../pages/address-modal/address-modal';
 import { DocumentsPage } from '../../pages/documents/documents';
 
@@ -23,7 +22,6 @@ export class ProfilePage {
   firstName: string;
   lastName: string;
   addresses: any[];
-  cards: any[];
   documents: any[];
   file: File;
 
@@ -48,13 +46,11 @@ export class ProfilePage {
           this.firstName = data.first_name;
           this.lastName = data.last_name;
           this.addresses = data.address ? JSON.parse(data.address) : [];
-          this.cards = data.cards;
           this.documents = data.documents;
           loader.dismiss();
         },
         error => {
           console.log(error);
-          this.cards = [];
         }
       );
 
@@ -73,18 +69,6 @@ export class ProfilePage {
     });
   }
 
-  addCreditCard() {
-    let cardModal = this.modalCtrl.create(CardModalPage);
-    cardModal.present();
-    cardModal.onDidDismiss(data => {
-      if (data.card) {
-        this.cards.push(data.card);
-        this.profileService.updateUser({
-          token: data.id
-        });
-      }
-    });
-  }
 
   addDocument(event, type) {
     var files = event.srcElement.files;

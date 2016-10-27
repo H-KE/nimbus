@@ -35,21 +35,6 @@
 
   <ion-list *ngIf="email">
     <ion-list-header>
-      Payment
-    </ion-list-header>
-    <button detail-push ion-item *ngFor="let card of cards">
-      <ion-icon item-left name="card"></ion-icon>
-      {{card.brand}} ending in {{card.last4}}
-    </button>
-    <button detail-push ion-item (click)="addCreditCard()">
-      <span color="danger" item-right>
-        Add payment card
-      </span>
-    </button>
-  </ion-list>
-
-  <ion-list *ngIf="email">
-    <ion-list-header>
       Verification Documents
     </ion-list-header>
     <button detail-push ion-item *ngIf="documents.length > 0" (click)="goToDocumentsPage()">
