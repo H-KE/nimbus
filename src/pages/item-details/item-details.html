@@ -33,13 +33,14 @@
             </ion-range>
           </ion-item>
           <ion-item *ngIf="!dynamicSlider">
-            <ion-range min="1" max="10" step="1" snaps="true" secondary [(ngModel)]="quantity" >
-              <ion-label range-right>{{quantity}}: ${{itemPrice * quantity}}</ion-label>
-            </ion-range>
+            <ion-label>Select Quantity</ion-label>
+            <ion-select [(ngModel)]="quantity">
+              <ion-option *ngFor='let i of quantityRange'>{{i}}</ion-option>
+            </ion-select>
           </ion-item>
         </ion-list>
       </ion-card-content>
-      <button ion-button icon-left color="secondary" full (click)="addToCart(selectedItem, quantity)">
+      <button ion-button icon-left color="secondary" full (click)="addToCart(selectedItem, quantity)" [disabled]=disabled>
         Add to Cart
         <ion-icon name='cart'></ion-icon>
       </button>

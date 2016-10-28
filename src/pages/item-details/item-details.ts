@@ -6,6 +6,8 @@ import { Dispensary } from '../../models/dispensary';
 import { CartService } from '../../providers/cart/cart';
 import { CartPage } from '../cart/cart';
 
+import _ from 'underscore';
+
 @Component({
   selector: 'item-details',
   templateUrl: 'item-details.html'
@@ -16,7 +18,9 @@ export class ItemDetailsPage {
   quantity: number;
   quantityLabel: string;
   itemPrice: number;
+  quantityRange: number[];
   dynamicSlider: boolean;
+  disabled: boolean;
   slideOptions = {
     pager: true,
     loop: true
@@ -36,6 +40,8 @@ export class ItemDetailsPage {
 
     this.dynamicSlider = this.selectedItem.prices.length > 1 ? true : false;
     this.quantity = this.dynamicSlider ? 0 : 1;
+    this.quantityRange = _.range(1,20);
+    this.disabled = this.retailer.address === "Coming Soon";
   }
 
   addToCart(selectedItem, quantity) {
