@@ -25,22 +25,37 @@
         <ion-label>Status</ion-label>
       </ion-list-header>
       <ion-item [ngSwitch]="order.status">
-        <ol *ngSwitchCase="'verifying'">
-          <li class="current">Verifying</li>
+        <ol *ngSwitchCase="'payment_pending'">
+          <li class="current">
+            Awaiting Payment
             <div class="status_detail">
-              <p>Please use the following information to email transfer your <b>order total</b> to {{order.dispensary_name}} to complete the order.</p>
-              <br>
-              <p>Transfer To: <b>{{order.dispensary_email}}</b></p>
-              <p>Transfer Description: <b>{{order.id}}</b></p>
-              <p>Security Question: <b>something cool</b></p>
+              <p style="">Please use the following information to email transfer your order total to complete the order.</p>
+              <p>Transfer To: <b>payment@nimbusfly.co</b></p>
+              <p>Amount: <b>{{order.total_price*1 + order.delivery_fee*1 + order.tax_amount*1 | currency:'USD':true:'1.2-2'}}</b></p>
+              <p>Transfer Description: <b>invoice {{order.id}}</b></p>
               <p>Security Answer: <b>{{securityAnswer}}</b></p>
             </div>
+          </li>
+          <li>Verifying</li>
+          <li>Packaging</li>
+          <li> In Transit</li>
+          <li> Order Complete</li>
+        </ol>
+
+        <ol *ngSwitchCase="'verifying'">
+          <li class="completed">
+            <ion-icon name="checkmark"></ion-icon>Awaiting Payment
+          </li>
+          <li class="current">Verifying</li>
           <li>Packaging</li>
           <li> In Transit</li>
           <li> Order Complete</li>
         </ol>
 
         <ol *ngSwitchCase="'packaging'">
+          <li class="completed">
+            <ion-icon name="checkmark"></ion-icon>Awaiting Payment
+          </li>
           <li class="completed">
              <ion-icon name="checkmark"></ion-icon> Verifying
           </li>
@@ -52,6 +67,9 @@
         </ol>
 
         <ol *ngSwitchCase="'in_transit'">
+          <li class="completed">
+            <ion-icon name="checkmark"></ion-icon>Awaiting Payment
+          </li>
           <li class="completed">
              <ion-icon name="checkmark"></ion-icon> Verifying
           </li>
@@ -65,6 +83,9 @@
         </ol>
 
         <ol *ngSwitchCase="'completed'">
+          <li class="completed">
+            <ion-icon name="checkmark"></ion-icon>Awaiting Payment
+          </li>
           <li class="completed">
              <ion-icon name="checkmark"></ion-icon> Verifying
           </li>
@@ -88,7 +109,16 @@
         </ol>
 
         <ol *ngSwitchDefault>
-          <li class="current">Verifying</li>
+          <li class="current">
+            Awaiting Payment
+            <div class="status_detail">
+              <p>Please use the following information to email transfer your <b>order total</b> to complete the order.</p>
+              <p>Transfer To: <b>payment@nimbusfly.co</b></p>
+              <p>Transfer Description: <b>invoice {{order.id}}</b></p>
+              <p>Security Answer: <b>{{securityAnswer}}</b></p>
+            </div>
+          </li>
+          <li>Verifying</li>
           <li>Packaging</li>
           <li> In Transit</li>
           <li> Order Complete</li>

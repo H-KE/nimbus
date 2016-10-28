@@ -26,7 +26,7 @@ export class OrderService {
 
   placeOrder(order: Order): any {
     order.retailer_id = order.order_details[0].retailer_id;
-    order.status = "verifying";
+    order.status = "payment_pending";
 
     let body = JSON.stringify(order);
     return this.auth.post('orders', body);

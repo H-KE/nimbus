@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import { AuthenticationService } from '../authentication/authentication'
 import { Observable } from "node_modules/rxjs/Observable";
+import { Storage } from '@ionic/storage'
 
 import { Item } from '../../models/item';
 import _ from 'underscore';
@@ -10,18 +11,19 @@ import _ from 'underscore';
 export class ProfileService {
 
   constructor(public http: Http,
-              public auth: AuthenticationService) {
+              public auth: AuthenticationService,
+              public localStorage: Storage) {
   }
 
   getUser(): any {
-    return this.auth.get('users/credit_cards')
+    return this.auth.get('users/' + localStorage.getItem('uid'))
   }
 
   updateUser(data) {
     let body = JSON.stringify(data);
 
     return new Promise(resolve => {
-      this.auth.put('users/update_user', body)
+      this.auth.put('users/' + localStorage.getItem('uid'), body)
         .map(response => response.json())
         .subscribe(
           data => {
