@@ -40,4 +40,14 @@ export class OrdersPage {
   isOrderShown(order) {
     return order.show;
   };
+
+  orderStatusPipe(orderStatus: string) {
+    let displayStatus = orderStatus;
+    switch(orderStatus) {
+      case 'payment_pending':
+        displayStatus = 'awaiting payment'
+        break;
+    }
+    return displayStatus;
+  }
 }
