@@ -1,10 +1,8 @@
 import { Component, Inject } from '@angular/core';
 import { NavController, NavParams, LoadingController} from 'ionic-angular';
 
-import { MenuService } from '../../providers/menu/menu';
-import { DispensaryService } from '../../providers/dispensary/dispensary';
-
 import { Item } from '../../models/item';
+import { Dispensary } from '../../models/dispensary';
 import { ItemDetailsPage } from '../item-details/item-details';
 import { CartPage } from '../cart/cart';
 import { CartService } from '../../providers/cart/cart';
@@ -16,42 +14,30 @@ import _ from 'underscore';
   templateUrl: 'dispensary.html'
 })
 export class DispensaryPage {
-  selectedDispensary: any;
+  selectedDispensary: Dispensary;
   menu: Item[];
   menuCategories: any[];
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
-              public dispensaryService: DispensaryService,
               public cartService: CartService,
-              public menuService: MenuService,
               public loadingCtrl: LoadingController) {
     this.selectedDispensary = navParams.get('dispensary');
-    this.loadMenu();
+    this.menu = this.selectedDispensary.products;
+    this.categorizeMenu();
   }
 
-  loadMenu() {
-    var loader = this.loadingCtrl.create({});
-    loader.present();
-
-    this.dispensaryService.getDispensaryMenu(this.selectedDispensary.id)
-      .then(response => {
-        this.menu = response as Item[];
-
-        console.log(this.menu);
-
-        this.menuCategories = [];
-        for (var category of _.uniq(_.pluck(this.menu, 'category'))) {
-          this.menuCategories.push ({
-            name: category,
-            show: false,
-            items: _.where(this.menu, {category: category}) as Item[]
-          })
-        }
-
-        loader.dismiss();
-      });
+  categorizeMenu() {
+    this.menuCategories = [];
+    for (var category of _.uniq(_.pluck(this.menu, 'category'))) {
+      this.menuCategories.push ({
+        name: category,
+        show: false,
+        items: _.where(this.menu, {category: category}) as Item[]
+      })
+    }
   }
+
   toggleMenuCategory(category) {
     category.show = !category.show;
   }

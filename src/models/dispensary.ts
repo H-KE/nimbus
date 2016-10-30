@@ -1,3 +1,5 @@
+import { Item } from './item';
+
 export class Dispensary {
   id: number;
   avatar_url: string;
@@ -6,4 +8,5 @@ export class Dispensary {
   rating: number;
   description: string;
   shipping_fee: number;
+  products: Item[];
 }
