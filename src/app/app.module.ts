@@ -24,6 +24,7 @@ import { ProfileService } from '../providers/profile/profile';
 import { OrderService } from '../providers/orders/orders';
 import { AuthenticationService } from '../providers/authentication/authentication'
 import { VerificationService } from '../providers/verification/verification';
+import { TrackingService } from '../providers/tracking/tracking';
 
 
 @NgModule({
@@ -73,6 +74,7 @@ import { VerificationService } from '../providers/verification/verification';
     ProfileService,
     AuthenticationService,
     VerificationService,
+    TrackingService,
     Storage
   ]
 })

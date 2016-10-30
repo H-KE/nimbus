@@ -29,6 +29,7 @@
       position: relative;
       // margin: 0 20px 0 28px;
       list-style-type: none;
+      white-space: normal;
 
       &.current{
         color: #444;
@@ -87,27 +88,17 @@
         position: absolute;
         left: -16px;
         // top: 16px;
-        font-size: 24px;
+        font-size: 14px;
         font-weight: 900;
       }
     }
   }
 
-  .platform-ios .order-details ol li ion-icon {
+  ion-icon.icon-ios.ion-ios-checkmark.item-icon {
     color: $complete;
     position: absolute;
     left: -16px;
-    top: 12px;
-    font-size: 22px;
-    font-weight: 900;
-  }
-
-  .platform-android .order-details ol li ion-icon {
-    color: $complete;
-    position: absolute;
-    left: -16px;
-    top: 16px;
-    font-size: 14px;
+    font-size: 26px;
     font-weight: 900;
   }
 }
