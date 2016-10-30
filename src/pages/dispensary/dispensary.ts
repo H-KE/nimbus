@@ -23,7 +23,7 @@ export class DispensaryPage {
               public cartService: CartService,
               public loadingCtrl: LoadingController) {
     this.selectedDispensary = navParams.get('dispensary');
-    this.menu = this.selectedDispensary.products;
+    this.menu = _.sortBy(this.selectedDispensary.products, 'id');
     this.categorizeMenu();
   }
 

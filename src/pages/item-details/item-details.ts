@@ -41,7 +41,7 @@ export class ItemDetailsPage {
     this.dynamicSlider = this.selectedItem.prices.length > 1 ? true : false;
     this.quantity = this.dynamicSlider ? 0 : 1;
     this.quantityRange = _.range(1,20);
-    this.disabled = this.retailer.address === "Coming Soon";
+    this.disabled = this.retailer.bio === "Coming Soon";
   }
 
   addToCart(selectedItem, quantity) {
