@@ -33,9 +33,9 @@
             Awaiting Payment
             <div class="status_detail">
               <p style="">Please use the following information to email transfer your order total to complete the order.</p>
-              <p>Transfer To: <b>payment@nimbusfly.co</b></p>
+              <p>Transfer To: <b>payments@nimbusfly.co</b></p>
               <p>Amount: <b>{{order.total_price*1 + order.delivery_fee*1 + order.tax_amount*1 | currency:'USD':true:'1.2-2'}}</b></p>
-              <p>Transfer Description: <b>invoice {{order.id}}</b></p>
+              <p>Transfer Message: <b>invoice {{order.id}}</b></p>
               <p>Security Answer: <b>{{securityAnswer}}</b></p>
             </div>
           </li>
