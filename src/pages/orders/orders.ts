@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 
 import { Order } from '../../models/order';
 import { OrderService } from '../../providers/orders/orders';
@@ -15,7 +15,15 @@ export class OrdersPage {
   orderSegment: String;
 
   constructor(public navCtrl: NavController,
-              public orderService: OrderService) {
+              public orderService: OrderService,
+              public loadingCtrl: LoadingController) {
+
+    this.loadOrders();
+  };
+
+  loadOrders() {
+    var loader = this.loadingCtrl.create({});
+    loader.present();
     this.orderService.loadOrders()
       .map(response => response.json())
       .subscribe(
@@ -26,6 +34,7 @@ export class OrdersPage {
             for (var order of this.orders) {
               order.show = false;
             }
+            loader.dismiss();
           },
           error => console.log(error)
       )

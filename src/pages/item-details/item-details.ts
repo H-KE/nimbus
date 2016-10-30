@@ -61,7 +61,8 @@ export class ItemDetailsPage {
   presentAddToCartToast(selectedItem) {
     let toast = this.toastCtrl.create({
       message: selectedItem.name + ' has been added to your cart.',
-      duration: 3000
+      duration: 3000,
+      showCloseButton: true
     });
     toast.present();
   }
