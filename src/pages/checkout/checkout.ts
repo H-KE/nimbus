@@ -52,6 +52,7 @@ export class CheckoutPage {
 
     this.order = null;
     this.order = navParams.get('order');
+    console.log(this.order);
 
     this.addressOptions = {
       title: 'Select an address'
@@ -128,10 +129,21 @@ export class CheckoutPage {
       return;
     }
 
-    if (this.user.documents.length < 2) {
+    if (this.idDocuments.length < 1) {
       let alert = this.alertCtrl.create({
         title: 'Insufficient Verification!',
-        subTitle: 'Please upload a picture of your identification (driver license or health card) and your medical documentation.',
+        subTitle: 'Please upload a picture of your identification (driver license or health card) to verify your age.',
+        buttons: ['OK']
+      });
+      alert.present();
+
+      return;
+    }
+
+    if (this.order.medical && this.medicalDocuments.length < 1) {
+      let alert = this.alertCtrl.create({
+        title: 'Insufficient Verification!',
+        subTitle: 'Please upload pictures of your medical documentation.',
         buttons: ['OK']
       });
       alert.present();

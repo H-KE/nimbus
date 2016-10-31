@@ -17,4 +17,5 @@ export class Order {
   tax_amount: number;
   carrier_code: string;
   tracking_number: string;
+  medical: boolean;
 }
