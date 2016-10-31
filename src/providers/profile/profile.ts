@@ -16,14 +16,14 @@ export class ProfileService {
   }
 
   getUser(): any {
-    return this.auth.get('users/' + localStorage.getItem('uid'))
+    return this.auth.get('users/current_user')
   }
 
   updateUser(data) {
     let body = JSON.stringify(data);
 
     return new Promise(resolve => {
-      this.auth.put('users/' + localStorage.getItem('uid'), body)
+      this.auth.put('users/current_user', body)
         .map(response => response.json())
         .subscribe(
           data => {
