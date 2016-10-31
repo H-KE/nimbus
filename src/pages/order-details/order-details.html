@@ -151,6 +151,18 @@
   <ion-card>
     <ion-list>
       <ion-list-header>
+        Deliver To
+      </ion-list-header>
+      <ion-item>
+        <ion-icon item-left name="home"></ion-icon>
+        {{address.streetAndNumber}}, {{address.aptNumber}}, {{address.city}}, {{address.province}}, {{address.postalCode}}
+      </ion-item>
+    </ion-list>
+  </ion-card>
+  
+  <ion-card>
+    <ion-list>
+      <ion-list-header>
         <ion-label>Items</ion-label>
       </ion-list-header>
       <ion-item *ngFor="let item of order.order_details">
@@ -159,18 +171,6 @@
         </ion-avatar>
         <h2>{{item.name}}</h2>
         <p>Total: ${{item.price}} | Qty: {{item.quantity}}</p>
-      </ion-item>
-    </ion-list>
-  </ion-card>
-
-  <ion-card>
-    <ion-list>
-      <ion-list-header>
-        Deliver To
-      </ion-list-header>
-      <ion-item>
-        <ion-icon item-left name="home"></ion-icon>
-        {{address.streetAndNumber}}, {{address.aptNumber}}, {{address.city}}, {{address.province}}, {{address.postalCode}}
       </ion-item>
     </ion-list>
   </ion-card>
