@@ -10,5 +10,6 @@ export class Dispensary {
   description: string;
   shipping_fee: number;
   free_shipping_cap: number;
+  medical: boolean;
   products: Item[];
 }

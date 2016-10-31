@@ -22,7 +22,8 @@ export class ProfilePage {
   firstName: string;
   lastName: string;
   addresses: any[];
-  documents: any[];
+  idDocuments: any[];
+  medicalDocuments: any[];
   file: File;
 
   constructor(public navCtrl: NavController,
@@ -33,6 +34,8 @@ export class ProfilePage {
               public loadingCtrl: LoadingController,
               public profileService: ProfileService,
               public verificationService: VerificationService) {
+    this.idDocuments = new Array();
+    this.medicalDocuments = new Array();
 
     var loader = this.loadingCtrl.create({
     });
@@ -41,12 +44,11 @@ export class ProfilePage {
       .map(response => response.json())
       .subscribe(
         data => {
-          console.log(data);
           this.email = data.email;
           this.firstName = data.first_name;
           this.lastName = data.last_name;
           this.addresses = data.address ? JSON.parse(data.address) : [];
-          this.documents = data.documents;
+          this.categorizeDocuments(data.documents);
           loader.dismiss();
         },
         error => {
@@ -54,6 +56,17 @@ export class ProfilePage {
         }
       );
 
+  }
+
+  //TODO: There is a lot of duplicate code between this and checkout
+  categorizeDocuments(documents: any) {
+    for (var document of documents) {
+      if(document.type == 'identification') {
+        this.idDocuments.push(document);
+      } else {
+        this.medicalDocuments.push(document);
+      }
+    }
   }
 
   addAddress() {
@@ -83,13 +96,31 @@ export class ProfilePage {
       .subscribe(
         data => {
           loader.dismiss();
-          this.documents.push({
-            type: type,
-            url: "https://s3.amazonaws.com/verification.nimbus.co/" + filePath
-          })
+          if(type == 'identification') {
+            this.idDocuments.push({
+              type: type,
+              url: "https://s3.amazonaws.com/verification.nimbus.co/" + filePath
+            })
+          } else {
+            this.medicalDocuments.push({
+              type: type,
+              url: "https://s3.amazonaws.com/verification.nimbus.co/" + filePath
+            })
+          }
         },
         errors => {
           loader.dismiss();
+          if(type == 'identification') {
+            this.idDocuments.push({
+              type: type,
+              url: "https://s3.amazonaws.com/verification.nimbus.co/" + filePath
+            })
+          } else {
+            this.medicalDocuments.push({
+              type: type,
+              url: "https://s3.amazonaws.com/verification.nimbus.co/" + filePath
+            })
+          }
           // this.displayAlert('Upload Failed', 'Failed to upload your verification document to our servers. Please try again');
         }
       )
@@ -104,9 +135,15 @@ export class ProfilePage {
     alert.present();
   }
 
-  goToDocumentsPage() {
+  goToIdDocumentsPage() {
     this.navCtrl.push(DocumentsPage, {
-      documents: this.documents
+      documents: this.idDocuments
+    })
+  }
+
+  goToMedicalDocumentsPage() {
+    this.navCtrl.push(DocumentsPage, {
+      documents: this.medicalDocuments
     })
   }
 

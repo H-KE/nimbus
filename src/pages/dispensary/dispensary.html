@@ -15,14 +15,22 @@
       <div id="dispensary-logo-wrapper">
         <img src={{selectedDispensary.avatar_url}} class="dispensary-logo"/>
       </div>
+      <ion-card-header>
+        {{selectedDispensary.name}}
+      </ion-card-header>
       <ion-card-content>
-        <ion-card-title>
-          {{selectedDispensary.name}}
-        </ion-card-title>
         <p>
           {{selectedDispensary.description}}
         </p>
       </ion-card-content>
+      <button *ngIf="selectedDispensary.free_shipping_cap" disabled="true" clear ion-button small color="secondary" icon-left>
+        <ion-icon name="checkmark-circle"></ion-icon>
+        Free shipping over ${{selectedDispensary.free_shipping_cap}}
+      </button>
+      <button *ngIf="selectedDispensary.medical" disabled="true" clear ion-button small color="secondary" icon-left>
+        <ion-icon name="medical"></ion-icon>
+        Medical documents required
+      </button>
     </ion-card>
 
     <ion-card>

@@ -33,6 +33,8 @@ export class CheckoutPage {
   dismissModal: boolean;
   file: File;
   paymentMethod: string;
+  idDocuments: any[];
+  medicalDocuments: any[];
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -43,8 +45,11 @@ export class CheckoutPage {
               public modalCtrl: ModalController,
               public loadingCtrl: LoadingController,
               public alertCtrl: AlertController) {
+    this.idDocuments = new Array();
+    this.medicalDocuments = new Array();
+
     this.paymentMethod = "etransfer";
-    
+
     this.order = null;
     this.order = navParams.get('order');
 
@@ -67,12 +72,23 @@ export class CheckoutPage {
           this.user = data;
           this.user.addresses = data.address ? JSON.parse(data.address) : [];
           this.selectedAddress = this.user.addresses[0];
+          this.categorizeDocuments(data.documents);
           loader.dismiss();
         },
         error => {
           console.log(error);
         }
       );
+  }
+
+  categorizeDocuments(documents: any) {
+    for (var document of documents) {
+      if(document.type == 'identification') {
+        this.idDocuments.push(document);
+      } else {
+        this.medicalDocuments.push(document);
+      }
+    }
   }
 
   addAddress() {
@@ -151,9 +167,15 @@ export class CheckoutPage {
     });
   }
 
-  goToDocumentsPage() {
+  goToIdDocumentsPage() {
     this.navCtrl.push(DocumentsPage, {
-      documents: this.user.documents
+      documents: this.idDocuments
+    })
+  }
+
+  goToMedicalDocumentsPage() {
+    this.navCtrl.push(DocumentsPage, {
+      documents: this.medicalDocuments
     })
   }
 
@@ -166,7 +188,7 @@ export class CheckoutPage {
     alert.present();
   }
 
-  onChange(event, type) {
+  addDocument(event, type) {
     var files = event.srcElement.files;
     var filePath = this.user.email +  '/' + type;
     this.file = files[0];
@@ -179,18 +201,32 @@ export class CheckoutPage {
       .subscribe(
         data => {
           loader.dismiss();
-          this.user.documents.push({
-            type: type,
-            url: "https://s3.amazonaws.com/verification.nimbus.co/" + filePath
-          })
+          if(type == 'identification') {
+            this.idDocuments.push({
+              type: type,
+              url: "https://s3.amazonaws.com/verification.nimbus.co/" + filePath
+            })
+          } else {
+            this.medicalDocuments.push({
+              type: type,
+              url: "https://s3.amazonaws.com/verification.nimbus.co/" + filePath
+            })
+          }
         },
         errors => {
           // TODO: HACK  -- status 204 resolves to error
           loader.dismiss();
-          this.user.documents.push({
-            type: type,
-            url: "https://s3.amazonaws.com/verification.nimbus.co/" + filePath
-          })
+          if(type == 'identification') {
+            this.idDocuments.push({
+              type: type,
+              url: "https://s3.amazonaws.com/verification.nimbus.co/" + filePath
+            })
+          } else {
+            this.medicalDocuments.push({
+              type: type,
+              url: "https://s3.amazonaws.com/verification.nimbus.co/" + filePath
+            })
+          }
           // this.displayAlert('Upload Failed', 'Failed to upload your verification document to our servers. Please try again');
         }
       )

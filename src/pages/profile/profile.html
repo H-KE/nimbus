@@ -35,22 +35,32 @@
 
   <ion-list *ngIf="email">
     <ion-list-header>
-      Verification Documents
+      Age Verification Document
     </ion-list-header>
-    <button detail-push ion-item *ngIf="documents.length > 0" (click)="goToDocumentsPage()">
+    <button detail-push ion-item *ngIf="idDocuments.length > 0" (click)="goToIdDocumentsPage()">
       <ion-icon item-left name="document"></ion-icon>
-      View uploaded documents
+      View ID document
     </button>
-    <ion-item detail-push *ngIf="documents.length < 1">
-      <input type="file" accept="image/*;capture=camera" (change)="onChange($event, 'identification')"/>
+    <ion-item detail-push *ngIf="idDocuments.length < 1">
+      <input type="file" accept="image/*;capture=camera" (change)="addDocument($event, 'identification')"/>
       <span color="danger" item-right>
         Add a government ID
       </span>
     </ion-item>
-    <ion-item detail-push>
+  </ion-list>
+
+  <ion-list *ngIf="email">
+    <ion-list-header>
+      Medical Verification Document
+    </ion-list-header>
+    <button detail-push ion-item *ngIf="medicalDocuments.length > 0" (click)="goToMedicalDocumentsPage()">
+      <ion-icon item-left name="medical"></ion-icon>
+      View medical document
+    </button>
+    <ion-item detail-push *ngIf="medicalDocuments.length < 1">
       <input type="file" accept="image/*;capture=camera" (change)="addDocument($event, 'medical')"/>
       <span color="danger" item-right>
-        Add a medical document
+        Add medical document
       </span>
     </ion-item>
   </ion-list>
