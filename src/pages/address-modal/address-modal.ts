@@ -18,8 +18,8 @@ export class AddressModalPage {
   addressForm: any;
   placeSelected: boolean;
 
-  @ViewChild('autoComplete') autoCompleteInput: ElementRef;
-  @ViewChild('secondaryInput') secondaryInput: ElementRef;
+  @ViewChild('autoComplete') autoCompleteInput;
+  @ViewChild('secondaryInput') secondaryInput;
 
   constructor(public viewCtrl: ViewController,
               public formBuilder: FormBuilder,
