@@ -48,7 +48,7 @@ export class CartPage {
     this.order.order_details = this.cartService.carts[dispensaryName].content;
     this.order.total_price = this.cartService.carts[dispensaryName].total;
     this.order.delivery_fee = this.cartService.carts[dispensaryName].dispensary.shipping_fee * 1; //TODO: better parsing of int
-    this.order.tax_amount = (this.order.total_price + this.order.delivery_fee) * 0.13; //TODO: this should not be hard coded
+    this.order.tax_amount = (this.order.total_price) * 0.13; //TODO: this should not be hard coded
     this.order.dispensary_name = dispensaryName;
     this.order.show = false;
 

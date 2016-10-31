@@ -15,4 +15,6 @@ export class Order {
   dispensary_email: string;
   delivery_fee: number;
   tax_amount: number;
+  carrier_code: string;
+  tracking_number: string;
 }

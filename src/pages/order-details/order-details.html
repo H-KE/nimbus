@@ -24,15 +24,18 @@
       <ion-list-header>
         <ion-label>Status</ion-label>
       </ion-list-header>
+      <ion-item class="no_bottom_border" *ngIf="errorMessage">
+        <p class="error-message">{{errorMessage}}</p>
+      </ion-item>
       <ion-item [ngSwitch]="order.status">
         <ol *ngSwitchCase="'payment_pending'">
           <li class="current">
             Awaiting Payment
             <div class="status_detail">
               <p style="">Please use the following information to email transfer your order total to complete the order.</p>
-              <p>Transfer To: <b>payment@nimbusfly.co</b></p>
+              <p>Transfer To: <b>payments@nimbusfly.co</b></p>
               <p>Amount: <b>{{order.total_price*1 + order.delivery_fee*1 + order.tax_amount*1 | currency:'USD':true:'1.2-2'}}</b></p>
-              <p>Transfer Description: <b>invoice {{order.id}}</b></p>
+              <p>Transfer Message: <b>invoice {{order.id}}</b></p>
               <p>Security Answer: <b>{{securityAnswer}}</b></p>
             </div>
           </li>
@@ -46,7 +49,9 @@
           <li class="completed">
             <ion-icon name="checkmark"></ion-icon>Awaiting Payment
           </li>
-          <li class="current">Verifying</li>
+          <li class="current">
+            Verifying
+          </li>
           <li>Packaging</li>
           <li> In Transit</li>
           <li> Order Complete</li>
@@ -78,6 +83,11 @@
           </li>
           <li class="current">
             In Transit
+            <div *ngIf="trackingInfo && trackingInfo.tracking_status" class="status_detail">
+              <p>{{trackingInfo.tracking_status.status_date | date:'medium'}}</p>
+              <p>{{trackingInfo.tracking_status.status_details}}</p>
+              <p>{{trackingInfo.tracking_status.location.city}}, {{trackingInfo.tracking_status.location.state}}</p>
+            </div>
           </li>
           <li> Order Complete</li>
         </ol>
@@ -87,7 +97,7 @@
             <ion-icon name="checkmark"></ion-icon>Awaiting Payment
           </li>
           <li class="completed">
-             <ion-icon name="checkmark"></ion-icon> Verifying
+            <ion-icon name="checkmark"></ion-icon> Verifying
           </li>
           <li class="completed">
             <ion-icon name="checkmark"></ion-icon> Packaging
@@ -102,10 +112,21 @@
 
         <ol *ngSwitchCase="'declined'">
           <li class="completed">
-            <ion-icon name="close"></ion-icon> Order Declined
-            <!--TODO: Dynamic reason-->
+            <ion-icon name="checkmark"></ion-icon>Awaiting Payment
           </li>
-          <li class="current">Your documents were not verified.</li>
+          <li class="completed">
+             <ion-icon name="checkmark"></ion-icon> Verifying
+          </li>
+          <li class="completed">
+             <ion-icon name="checkmark"></ion-icon> Refunded
+          </li>
+          <li class="current">
+            Order Declined
+            <!--TODO: Dynamic reason-->
+            <div class="status_detail">
+              <p>Your documents were not verified.</p>
+            </div>
+          </li>
         </ol>
 
         <ol *ngSwitchDefault>
@@ -127,21 +148,6 @@
     </ion-list>
   </ion-card>
 
-  <ion-card>
-    <ion-list>
-      <ion-list-header>
-        <ion-label>Items</ion-label>
-      </ion-list-header>
-      <ion-item *ngFor="let item of order.order_details">
-        <ion-avatar item-left>
-          <img src="{{cartService.getItemThumbnail(item)}}">
-        </ion-avatar>
-        <h2>{{item.name}}</h2>
-        <p>Total: ${{item.price}} | Qty: {{item.quantity}}</p>
-      </ion-item>
-    </ion-list>
-  </ion-card>
-
   <ion-card *ngIf="address">
     <ion-list>
       <ion-list-header>
@@ -154,6 +160,21 @@
         {{address.administrative_area_level_1}} <br>
         {{address.postal_code}} <br>
         Canada
+      </ion-item>
+    </ion-list>
+  </ion-card>
+
+  <ion-card>
+    <ion-list>
+      <ion-list-header>
+        <ion-label>Items</ion-label>
+      </ion-list-header>
+      <ion-item *ngFor="let item of order.order_details">
+        <ion-avatar item-left>
+          <img src="{{cartService.getItemThumbnail(item)}}">
+        </ion-avatar>
+        <h2>{{item.name}}</h2>
+        <p>Total: ${{item.price}} | Qty: {{item.quantity}}</p>
       </ion-item>
     </ion-list>
   </ion-card>

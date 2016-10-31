@@ -15,7 +15,7 @@ import {DispensaryService} from '../../providers/dispensary/dispensary';
 })
 
 export class SearchPage {
-  dispensaries: any;
+  dispensaries: Dispensary;
   searchMode: string;
 
   constructor(public dispensaryService: DispensaryService,
@@ -39,7 +39,7 @@ export class SearchPage {
     loader.present();
     this.dispensaryService.getDispensaries(searchMode)
       .then(response => {
-        this.dispensaries = response;
+        this.dispensaries = response as Dispensary;
         loader.dismiss();
       });
   }
