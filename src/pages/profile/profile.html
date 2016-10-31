@@ -24,9 +24,9 @@
     <ion-list-header>
       Delivery Addresses
     </ion-list-header>
-    <button detail-push ion-item *ngFor="let address of addresses">
+    <button detail-push ion-item *ngFor="let address of addresses">  <!-- (click)="editAddress(address)"> -->
       <ion-icon item-left name="home"></ion-icon>
-      <b>{{address.streetAndNumber}}, {{address.aptNumber}}</b>, {{address.city}}, {{address.province}}, {{address.postalCode}}
+      <b>{{address.primary}} {{address.secondary}}</b>, {{address.locality}}, {{address.administrative_area_level_1}}, {{address.postal_code}}
     </button>
     <button ion-item (click)="addAddress()">
       <span color="danger" item-right>Add shipping address</span>

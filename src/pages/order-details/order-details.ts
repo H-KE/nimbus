@@ -24,7 +24,11 @@ export class OrderDetailsPage {
               public trackingService: TrackingService,
               public loadingCtrl: LoadingController) {
     this.order = navParams.get('order');
-    this.address = JSON.parse(this.order.address);
+    this.orderService.loadOrderAddress(this.order.address_id)
+      .map(res => res.json())
+      .subscribe(
+        data => this.address = data
+      )
 
     if(this.order.status == 'in_transit') {
       this.loadTrackingInfo();

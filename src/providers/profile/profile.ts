@@ -37,4 +37,10 @@ export class ProfileService {
         )
       });
   }
+
+  addAddress(data): any {
+    let body = JSON.stringify(data);
+
+    return this.auth.post('addresses', body);
+  }
 }

@@ -148,18 +148,22 @@
     </ion-list>
   </ion-card>
 
-  <ion-card>
+  <ion-card *ngIf="address">
     <ion-list>
       <ion-list-header>
         Deliver To
       </ion-list-header>
       <ion-item>
         <ion-icon item-left name="home"></ion-icon>
-        {{address.streetAndNumber}}, {{address.aptNumber}}, {{address.city}}, {{address.province}}, {{address.postalCode}}
+        {{address.primary}} {{address.secondary}} <br>
+        {{address.locality}} <br>
+        {{address.administrative_area_level_1}} <br>
+        {{address.postal_code}} <br>
+        Canada
       </ion-item>
     </ion-list>
   </ion-card>
-  
+
   <ion-card>
     <ion-list>
       <ion-list-header>

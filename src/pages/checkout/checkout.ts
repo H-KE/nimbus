@@ -30,7 +30,6 @@ export class CheckoutPage {
   selectedAddress: any;
   addressOptions: any;
   selectedText: any;
-  dismissModal: boolean;
   file: File;
   paymentMethod: string;
   idDocuments: any[];
@@ -71,7 +70,7 @@ export class CheckoutPage {
         data => {
           console.log(data);
           this.user = data;
-          this.user.addresses = data.address ? JSON.parse(data.address) : [];
+          this.user.addresses = data.addresses || [];
           this.selectedAddress = this.user.addresses[0];
           this.categorizeDocuments(data.documents);
           loader.dismiss();
@@ -94,24 +93,25 @@ export class CheckoutPage {
 
   addAddress() {
     let addressModal = this.modalCtrl.create(AddressModalPage);
-    this.dismissModal = false;
     addressModal.present();
     addressModal.onDidDismiss(data => {
       if (data) {
         var loader = this.loadingCtrl.create({});
         loader.present();
-
-        this.user.addresses.push(data);
-        this.selectedAddress = data;
-
-        this.profileService.updateUser({
-          address: JSON.stringify(this.user.addresses)
-        }).then(response => {
-          console.log(response);
-          loader.dismiss()
-        });
-      } else {
-          this.dismissModal = true;
+        this.profileService.addAddress(data)
+          .map(response => response.json())
+          .subscribe(
+            data => {
+              console.log(data);
+              this.user.addresses.push(data);
+              this.selectedAddress = data;
+              loader.dismiss();
+            },
+            error => {
+              console.log(error);
+              loader.dismiss();
+            }
+          )
       }
     });
   }
@@ -151,7 +151,7 @@ export class CheckoutPage {
       return;
     }
 
-    this.order.address = JSON.stringify(this.selectedAddress);
+    this.order.address_id = this.selectedAddress.address_id;
     this.order.distribution_channel = "mail";
 
     console.log(this.order);
@@ -166,16 +166,15 @@ export class CheckoutPage {
         data => {
           this.cartService.clearCart(this.order.dispensary_name);
           loader.dismiss();
-          this.order = data;
-          this.goToOrderDetails();
+          this.goToOrderDetails(data);
         },
         errors => console.log(errors)
       )
   }
 
-  goToOrderDetails() {
+  goToOrderDetails(newOrder) {
     this.navCtrl.setRoot(OrderDetailsPage, {
-      order: this.order
+      order: newOrder
     });
   }
 
