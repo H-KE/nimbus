@@ -7,7 +7,7 @@ export class Order {
   retailer_image: string;
   distribution_channel: string;
   order_details: Item[];
-  address: string;
+  address_id: number;
   total_price: number; //TODO: make this sub_total
   status: string;
   show: boolean;

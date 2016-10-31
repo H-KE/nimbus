@@ -24,6 +24,10 @@ export class OrderService {
     return this.auth.get('orders/'+id);
   }
 
+  loadOrderAddress(id): any {
+    return this.auth.get('addresses/'+id);
+  }
+
   placeOrder(order: Order): any {
     order.retailer_id = order.order_details[0].retailer_id;
     order.status = "payment_pending";

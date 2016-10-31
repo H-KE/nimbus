@@ -19,7 +19,11 @@ export class OrderDetailsPage {
               public orderService: OrderService) {
     this.order = null;
     this.order = navParams.get('order');
-    this.address = JSON.parse(this.order.address);
+    this.orderService.loadOrderAddress(this.order.address_id)
+      .map(res => res.json())
+      .subscribe(
+        data => this.address = data
+      )
 
     this.securityAnswer = this.order.dispensary_name.toLowerCase().replace(/ /g, '');
   };

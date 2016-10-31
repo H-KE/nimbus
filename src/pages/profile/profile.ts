@@ -45,7 +45,7 @@ export class ProfilePage {
           this.email = data.email;
           this.firstName = data.first_name;
           this.lastName = data.last_name;
-          this.addresses = data.address ? JSON.parse(data.address) : [];
+          this.addresses = data.addresses || [];
           this.documents = data.documents;
           loader.dismiss();
         },
@@ -61,10 +61,21 @@ export class ProfilePage {
     addressModal.present();
     addressModal.onDidDismiss(data => {
       if (data) {
-        this.addresses.push(data);
-        this.profileService.updateUser({
-          address: JSON.stringify(this.addresses)
-        });
+        var loader = this.loadingCtrl.create({});
+        loader.present();
+        this.profileService.addAddress(data)
+          .map(response => response.json())
+          .subscribe(
+            data => {
+              console.log(data);
+              this.addresses.push(data);
+              loader.dismiss();
+            },
+            error => {
+              console.log(error);
+              loader.dismiss();
+            }
+          )
       }
     });
   }

@@ -15,10 +15,10 @@
       <ion-item text-wrap id="address_select" *ngIf="user && user.addresses.length > 0">
         <ion-icon item-left name="home"></ion-icon>
         <ion-select [selectOptions]="addressOptions" [(ngModel)]="selectedAddress" *ngIf="user">
-          <ion-option *ngFor="let address of user.addresses" [value]="address"><b>{{address.streetAndNumber}}</b>, {{address.city}}, {{address.province}}, {{address.postalCode}}, Canada</ion-option>
+          <ion-option *ngFor="let address of user.addresses" [value]="address"><b>{{address.primary}} {{address.secondary}}</b>, {{address.locality}}, {{address.administrative_area_level_1}}, {{address.postal_code}}, Canada</ion-option>
         </ion-select>
       </ion-item>
-      <button *ngIf="!user || (user && user.addresses.length < 1)" ion-item detail-none (click)="addAddress()">
+      <button *ngIf="user" ion-item detail-none (click)="addAddress()">
         Add an address
         <ion-icon name="add" item-right></ion-icon>
       </button>
