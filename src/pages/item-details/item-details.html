@@ -31,7 +31,7 @@
           {{selectedItem.description}}
         </p>
         <ion-list no-lines>
-          <ion-list-header *ngIf="dynamicSlider">
+          <ion-list-header *ngIf="dynamicSlider" no-lines>
             <ion-badge color="secondary" item-right>{{selectedItem.price_labels[quantity]}}</ion-badge>
           </ion-list-header>
           <ion-item *ngIf="dynamicSlider">
