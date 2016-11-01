@@ -49,12 +49,16 @@ export class DispensaryPage {
   itemSelected(event, item) {
     this.navCtrl.push(ItemDetailsPage, {
       item: item,
+      itemSpec: this.renderItemDescription(item),
       dispensary: this.selectedDispensary
     });
   }
 
   goToCart() {
     this.navCtrl.push(CartPage);
+  }
+  renderItemPrice(item: Item) {
+    return "$" + item.prices[0] + " • " + item.price_labels[0];
   }
 
   renderItemDescription(item: Item) {
@@ -68,23 +72,20 @@ export class DispensaryPage {
                    "Cartridges",
                    "Cannabis Oil (Tears)"], item.category)) {
       if (item.thc == 0 && item.cbd == 0 ) {
-        desc += "THC: --% CBD: --%| ";
+        desc += "THC: --% CBD: --%";
       } else {
-        desc += "THC: " + item.thc + "% CBD: " + item.cbd + "% | ";
+        desc += "THC: " + item.thc + "% CBD: " + item.cbd + "%";
       }
-      desc += "$" + item.prices[0] + " / " + item.price_labels[0];
     } else if(_.contains(["Edibles",
                           "Capsules",
                           "Extracts"], item.category)) {
       if (item.thc == 0 && item.cbd == 0 ) {
-        desc += "THC: --mg CBD: --mg| ";
+        desc += "THC: --mg CBD: --mg";
       } else {
-        desc += "THC: " + item.thc + "mg CBD: " + item.cbd + "mg | ";
+        desc += "THC: " + item.thc + "mg CBD: " + item.cbd + "mg";
       }
-      desc += "$" + item.prices[0];
-    } else {
-      desc += "$" + item.prices[0];
     }
+
     return desc;
   }
 }

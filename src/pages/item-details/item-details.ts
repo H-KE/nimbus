@@ -14,6 +14,7 @@ import _ from 'underscore';
 })
 export class ItemDetailsPage {
   selectedItem: Item;
+  itemSpec: string;
   retailer: Dispensary;
   quantity: number;
   quantityLabel: string;
@@ -32,7 +33,7 @@ export class ItemDetailsPage {
               public cartService: CartService) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
-    console.log(this.selectedItem);
+    this.itemSpec = navParams.get('itemSpec');
     this.retailer = navParams.get('dispensary');
     this.selectedItem.retailer_name = this.retailer.name;
 

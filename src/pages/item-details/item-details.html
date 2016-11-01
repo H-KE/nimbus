@@ -21,9 +21,12 @@
       </div>
       <ion-card-header>
         {{selectedItem.name}}
-        <ion-badge color="secondary">{{selectedItem.subspecies}}</ion-badge>
       </ion-card-header>
       <ion-card-content>
+        <p>
+          <ion-badge color="green">{{selectedItem.subspecies}}</ion-badge>
+          <ion-badge color="lightgreen">{{itemSpec}}</ion-badge>
+        </p>
         <p>
           {{selectedItem.description}}
         </p>
