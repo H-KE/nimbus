@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ToastController } from 'ionic-angular';
+import { NavController, ToastController, LoadingController } from 'ionic-angular';
 import { FormBuilder, Validators } from '@angular/forms';
 
 import { AuthenticationService } from '../../providers/authentication/authentication'
@@ -19,7 +19,8 @@ export class SignupPage {
   constructor(public navCtrl: NavController,
               public formBuilder: FormBuilder,
               public toastCtrl: ToastController,
-              public auth: AuthenticationService) {
+              public auth: AuthenticationService,
+              public loadingCtrl: LoadingController) {
 
     this.signupForm = formBuilder.group({
       first_name: ["", Validators.required],
@@ -31,6 +32,8 @@ export class SignupPage {
   }
 
   signup() {
+    var loader = this.loadingCtrl.create({});
+    loader.present();
     this.auth.registerAccount(
       this.signupForm.controls.first_name.value,
       this.signupForm.controls.last_name.value,
@@ -39,6 +42,7 @@ export class SignupPage {
       this.signupForm.controls.password.value)
       .subscribe(
         res => {
+          loader.dismiss();
           let toast = this.toastCtrl.create({
             message: "Your account was successfully created!",
             duration: 3000
@@ -46,7 +50,10 @@ export class SignupPage {
           toast.present();
           this.goToSearch();
         },
-        error => this.errorMessage = error.json().errors.full_messages[0]
+        error => {
+          loader.dismiss();
+          this.errorMessage = error.json().errors.full_messages[0];
+        }
       )
   }
 

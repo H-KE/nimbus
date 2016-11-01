@@ -168,7 +168,16 @@ export class CheckoutPage {
           loader.dismiss();
           this.goToOrderDetails(data);
         },
-        errors => console.log(errors)
+        error => {
+          loader.dismiss();
+          console.log(error);
+          let alert = this.alertCtrl.create({
+            title: 'Oh No!',
+            subTitle: error == undefined? error.json().errors.full_messages[0] : 'An unknown error occured',
+            buttons: ['OK']
+          });
+          alert.present();
+        }
       )
   }
 

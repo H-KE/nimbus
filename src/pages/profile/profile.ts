@@ -52,7 +52,14 @@ export class ProfilePage {
           loader.dismiss();
         },
         error => {
+          loader.dismiss();
           console.log(error);
+          let alert = this.alertCtrl.create({
+            title: 'Oh No!',
+            subTitle: error == undefined? error.json().errors.full_messages[0] : 'An unknown error occured',
+            buttons: ['OK']
+          });
+          alert.present();
         }
       );
 
@@ -87,6 +94,12 @@ export class ProfilePage {
             error => {
               console.log(error);
               loader.dismiss();
+              let alert = this.alertCtrl.create({
+                title: 'Oh No!',
+                subTitle: error == undefined? error.json().errors.full_messages[0] : 'An unknown error occured',
+                buttons: ['OK']
+              });
+              alert.present();
             }
           )
       }

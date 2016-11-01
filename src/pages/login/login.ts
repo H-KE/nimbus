@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, LoadingController } from 'ionic-angular';
 import { SearchPage } from '../search/search';
 
 import { User } from '../../models/user'
@@ -15,7 +15,9 @@ export class LoginPage {
   password: string;
   errorMessage: string;
 
-  constructor(public navCtrl: NavController, public auth: AuthenticationService) {
+  constructor(public navCtrl: NavController,
+              public auth: AuthenticationService,
+              public loadingCtrl: LoadingController) {
     this.errorMessage = " ";
   }
 
@@ -23,12 +25,19 @@ export class LoginPage {
     let user = new User;
     user.email = this.email;
     user.password = this.password;
-
+    var loader = this.loadingCtrl.create({});
+    loader.present();
     this.auth.signIn(this.email, this.password)
       .map(response => response.json())
       .subscribe(
-        res => this.gotoSearch(),
-        error => this.errorMessage = "Invalid login credentials."
+        res => {
+          loader.dismiss();
+          this.gotoSearch();
+        },
+        error => {
+          loader.dismiss();
+          this.errorMessage = "Invalid login credentials.";
+        }
       )
   }
 
