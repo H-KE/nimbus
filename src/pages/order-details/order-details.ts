@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, LoadingController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, AlertController } from 'ionic-angular';
 import { Order } from '../../models/order';
 import { CartService } from '../../providers/cart/cart';
 import { OrderService } from '../../providers/orders/orders';
@@ -21,6 +21,7 @@ export class OrderDetailsPage {
               public navParams: NavParams,
               public cartService: CartService,
               public orderService: OrderService,
+              public alertCtrl: AlertController,
               public trackingService: TrackingService,
               public loadingCtrl: LoadingController) {
     this.order = navParams.get('order');
@@ -55,6 +56,12 @@ export class OrderDetailsPage {
                     refresher.complete();
                     if(this.trackingInfo && !this.trackingInfo.tracking_status) {
                       this.errorMessage = "No tracking info found for tracking number: " + this.order.tracking_number;
+                      let alert = this.alertCtrl.create({
+                        title: 'Oh No!',
+                        subTitle: "No tracking info found for carrier: " + this.order.carrier_code + ", and tracking number: " + this.order.tracking_number,
+                        buttons: ['OK']
+                      });
+                      alert.present();
                     }
                   },
                   error => {

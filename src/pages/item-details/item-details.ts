@@ -32,6 +32,7 @@ export class ItemDetailsPage {
               public cartService: CartService) {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = navParams.get('item');
+    console.log(this.selectedItem);
     this.retailer = navParams.get('dispensary');
     this.selectedItem.retailer_name = this.retailer.name;
 
@@ -40,7 +41,7 @@ export class ItemDetailsPage {
 
     this.dynamicSlider = this.selectedItem.prices.length > 1 ? true : false;
     this.quantity = this.dynamicSlider ? 0 : 1;
-    this.quantityRange = _.range(1,20);
+    this.quantityRange = _.range(1,11);
     this.disabled = this.retailer.bio === "Coming Soon";
   }
 

@@ -18,7 +18,7 @@
             <img src="{{cartService.getItemThumbnail(item)}}">
           </ion-avatar>
           <h2>{{item.name}}</h2>
-          <p>Total: ${{item.price}} | Qty: {{item.quantity}}</p>
+          <p>${{item.price}} | Qty: {{item.quantity}}</p>
           <ion-icon item-right name="close-circle" (click)="cartService.removeFromCart(cart.dispensary_name, item, i)"></ion-icon>
         </ion-item>
       </ion-list>

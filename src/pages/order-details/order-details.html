@@ -24,9 +24,6 @@
       <ion-list-header>
         <ion-label>Status</ion-label>
       </ion-list-header>
-      <ion-item class="no_bottom_border" *ngIf="errorMessage">
-        <p class="error-message">{{errorMessage}}</p>
-      </ion-item>
       <ion-item [ngSwitch]="order.status">
         <ol *ngSwitchCase="'payment_pending'">
           <li class="current">
