@@ -56,9 +56,10 @@
             </ion-avatar>
             <h2 style="display:inline">
               {{item.name}}
-              <!-- <p style="display:inline" *ngIf="item.subspecies"> ({{item.subspecies}})</p> -->
+              <!-- <p style="display:inline" *ngIf="item.subspecies"> • </p> -->
             </h2>
-            <p>{{renderItemDescription(item)}} | {{renderItemPrice(item)}}</p>
+            <p>{{renderItemDescription(item)}}</p>
+            <ion-note item-right="">{{renderItemPrice(item)}}</ion-note>
           </button>
         </ion-list>
       </span>

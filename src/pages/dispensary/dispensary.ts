@@ -58,7 +58,7 @@ export class DispensaryPage {
     this.navCtrl.push(CartPage);
   }
   renderItemPrice(item: Item) {
-    return "$" + item.prices[0] + " • " + item.price_labels[0];
+    return "$" + item.prices[0];
   }
 
   renderItemDescription(item: Item) {
