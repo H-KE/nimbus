@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, AlertController } from 'ionic-angular';
 
 import { Order } from '../../models/order'
+import { Cart } from '../../models/cart'
 import { OrdersPage } from '../orders/orders'
 import { CartService } from '../../providers/cart/cart';
 import { OrderService } from '../../providers/orders/orders';
@@ -48,7 +49,7 @@ export class CartPage {
     this.order.order_details = this.cartService.carts[dispensaryName].content;
     this.order.total_price = this.cartService.carts[dispensaryName].total;
     this.order.medical = this.cartService.carts[dispensaryName].dispensary.medical;
-    this.order.delivery_fee = this.cartService.carts[dispensaryName].dispensary.shipping_fee * 1; //TODO: better parsing of int
+    this.order.delivery_fee = this.calculateShippingCost(this.cartService.carts[dispensaryName]);
     this.order.tax_amount = (this.order.total_price) * 0.13; //TODO: this should not be hard coded
     this.order.dispensary_name = dispensaryName;
     this.order.show = false;
@@ -56,5 +57,12 @@ export class CartPage {
     this.goToCheckout();
 
     this.order = new Order();
+  }
+
+  calculateShippingCost(cart: Cart): number {
+    if(cart.dispensary.free_shipping_cap != null && cart.total >= cart.dispensary.free_shipping_cap) {
+      return 0;
+    }
+    return cart.dispensary.shipping_fee;
   }
 }
