@@ -25,6 +25,7 @@
         </ion-thumbnail>
         <h2 class="capitalize">{{orderStatusPipe(order.status)}}</h2>
         <p>${{order.total_price*1 + order.delivery_fee*1 + order.tax_amount*1}} • {{order.order_details.length}} items • from {{order.dispensary_name}}</p>
+        <p>{{order.created_at | date:'yMMMMd'}}</p>
       </button>
     </ion-card>
   </div>

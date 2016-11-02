@@ -25,10 +25,9 @@ export class SearchPage {
               public cartService: CartService,
               public loadingCtrl: LoadingController) {
     this.searchMode = "mail";
-    this.platform.ready().then(() => this.onPlatformReady());
   }
 
-  public onPlatformReady(): void {
+  public ionViewDidLoad(): void {
     this.loadDispensaries(this.searchMode);
   }
 
