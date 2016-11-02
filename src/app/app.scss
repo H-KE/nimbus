@@ -34,23 +34,12 @@ ion-select {
   white-space: pre-line;
 }
 
-// .alert-radio-label {
-//   white-space: pre-line !important;
-// }
-//
-//
-// button {
-//   .item-accordion {
-//     transition: 0.09s all linear;
-//   }
-// }
-
 .error-message {
   color: #f53d3d !important;
   white-space: normal !important;
   word-wrap: break-word !important;
 }
 
-// .no_bottom_border .item-inner {
-//   border-bottom: 0 !important;
-// }
+.capitalize {
+   text-transform: capitalize;
+}

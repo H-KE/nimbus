@@ -56,6 +56,9 @@ export class OrdersPage {
       case 'payment_pending':
         displayStatus = 'awaiting payment'
         break;
+      case 'in_transit':
+        displayStatus = 'in transit'
+        break;
     }
     return displayStatus;
   }

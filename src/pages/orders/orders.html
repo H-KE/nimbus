@@ -23,8 +23,9 @@
         <ion-thumbnail item-left>
           <img src={{order.dispensary_image}}>
         </ion-thumbnail>
-        <h2>{{order.dispensary_name}}</h2>
-        <p>${{order.total_price*1 + order.delivery_fee*1 + order.tax_amount*1}} | {{order.order_details.length}} items | {{orderStatusPipe(order.status)}}</p>
+        <h2 class="capitalize">{{orderStatusPipe(order.status)}}</h2>
+        <p>from {{order.dispensary_name}}</p>
+        <p>${{order.total_price*1 + order.delivery_fee*1 + order.tax_amount*1}} • {{order.order_details.length}} items</p>
       </button>
     </ion-card>
   </div>
