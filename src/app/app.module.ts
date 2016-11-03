@@ -10,6 +10,7 @@ import { OrderDetailsPage } from '../pages/order-details/order-details'
 import { LoginPage } from '../pages/login/login';
 import { SignupPage }  from '../pages/signup/signup';
 import { ProfilePage } from '../pages/profile/profile';
+import { ContactPage } from '../pages/contact/contact';
 import { CartPage } from '../pages/cart/cart';
 import { CheckoutPage } from '../pages/checkout/checkout';
 import { DispensaryPage } from '../pages/dispensary/dispensary';
@@ -37,6 +38,7 @@ import { TrackingService } from '../providers/tracking/tracking';
     LoginPage,
     SignupPage,
     ProfilePage,
+    ContactPage,
     CartPage,
     CheckoutPage,
     DispensaryPage,
@@ -59,6 +61,7 @@ import { TrackingService } from '../providers/tracking/tracking';
     LoginPage,
     SignupPage,
     ProfilePage,
+    ContactPage,
     CartPage,
     CheckoutPage,
     DispensaryPage,

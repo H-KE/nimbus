@@ -1,0 +1,51 @@
+.contact {
+  ion-card-content.search-card {
+    padding: 0;
+  }
+
+  ion-searchbar.search-search {
+    padding: 0;
+  }
+
+  ion-app._gmapscdv_ .nav-decor {
+    background-color: transparent !important;
+  }
+
+  ion-nav.has-views {
+    background-color: transparent !important;
+  }
+
+  ion-card img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+    -webkit-filter: brightness(75%);
+  }
+
+  ion-card {
+    height: 200px;
+    position: relative;
+    text-align: center;
+  }
+
+  .card-detail {
+    position: absolute;
+    display: block;
+    top: 80px;
+    height: calc(100% - 60px);
+    width: 100%;
+
+    .card-title {
+      font-size: 1.5em;
+      width: 100%;
+      font-weight: bold;
+      color: #000;
+    }
+
+    .card-subtitle {
+      font-size: 1.0em;
+      width: 100%;
+      color: #000;
+    }
+  }
+}

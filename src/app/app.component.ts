@@ -6,6 +6,7 @@ import { HomePage } from '../pages/home/home';
 import { SearchPage } from '../pages/search/search';
 import { OrdersPage } from '../pages/orders/orders'
 import { ProfilePage } from '../pages/profile/profile';
+import { ContactPage } from '../pages/contact/contact';
 
 @Component({
   templateUrl: 'app.html',
@@ -24,7 +25,8 @@ export class MyApp {
     this.pages = [
       { title: 'Explore', icon: 'search', component: SearchPage },
       { title: 'My Orders', icon: 'cloud', component: OrdersPage},
-      { title: 'My Profile', icon: 'contact', component: ProfilePage}
+      { title: 'My Profile', icon: 'contact', component: ProfilePage},
+      { title: 'Contact us', icon: 'cloud-circle', component: ContactPage}
     ];
   }
 
