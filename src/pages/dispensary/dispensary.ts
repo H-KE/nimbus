@@ -68,6 +68,7 @@ export class DispensaryPage {
                    "Hybrid",
                    "Flowers",
                    "Pre-rolls",
+                   "Prerolls",
                    "Concentrates",
                    "Cartridges",
                    "Cannabis Oil (Tears)"], item.category)) {

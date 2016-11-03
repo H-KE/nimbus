@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Storage } from '@ionic/storage'
 import 'rxjs/add/operator/map';
 
 import { Item } from '../../models/item';
@@ -12,9 +13,14 @@ export class CartService {
   carts: any; //TODO: object type should be map of dispensary name to cart objects, eg. {dispensary_name: Cart}
   itemCount: number;
 
-  constructor(public http: Http) {
-    this.carts = {};
-    this.itemCount = 0;
+  constructor(public http: Http,
+              public localStorage: Storage) {
+    this.init()
+  }
+
+  init() {
+    this.carts = JSON.parse(localStorage.getItem('carts')) || {};
+    this.itemCount = +localStorage.getItem('itemCount') || 0;
   }
 
   getAll() {
@@ -45,8 +51,7 @@ export class CartService {
 
     this.carts[dispensaryName] = cart;
     this.itemCount += 1;
-
-    console.log(this.carts);
+    this.updateLocalStorage();
   }
 
   removeFromCart(dispensaryName, removedItem, itemIndex) {
@@ -60,12 +65,18 @@ export class CartService {
     if(this.carts[dispensaryName].count == 0) {
       this.clearCart(dispensaryName);
     }
+    this.updateLocalStorage();
   }
 
-  clearCart(dispensaryName) {//TODO: this is not used, but if to use, need to handle itemCOunt logic to it
+  clearCart(dispensaryName) {
     this.itemCount -= this.carts[dispensaryName].count;
     delete this.carts[dispensaryName];
-    console.log(this.carts);
+    this.updateLocalStorage();
+  }
+
+  updateLocalStorage() {
+    localStorage.setItem('carts', JSON.stringify(this.carts));
+    localStorage.setItem('itemCount', this.itemCount.toString());
   }
 
   getItemThumbnail(item) {
