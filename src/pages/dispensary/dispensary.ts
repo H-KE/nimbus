@@ -22,10 +22,14 @@ export class DispensaryPage {
               public navParams: NavParams,
               public cartService: CartService,
               public loadingCtrl: LoadingController) {
-    this.selectedDispensary = navParams.get('dispensary');
+
+  }
+
+  public ionViewDidLoad(): void {
+    this.selectedDispensary = this.navParams.get('dispensary');
     this.menu = _.sortBy(this.selectedDispensary.products, 'id');
     this.categorizeMenu();
-  }
+  };
 
   categorizeMenu() {
     this.menuCategories = [];

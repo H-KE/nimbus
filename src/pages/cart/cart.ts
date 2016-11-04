@@ -23,10 +23,14 @@ export class CartPage {
               public cartService: CartService,
               public orderService: OrderService,
               public alertController: AlertController) {
+
+  }
+  
+  public ionViewDidLoad(): void {
     this.carts = _.values(this.cartService.getAll());
     this.carts.itemCount = this.cartService.itemCount;
     this.order = new Order();
-  }
+  };
 
   goToOrders() {
     this.navCtrl.push(OrdersPage);

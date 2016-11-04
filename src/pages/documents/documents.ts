@@ -14,7 +14,10 @@ export class DocumentsPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,) {
-    this.documents = navParams.get('documents');
   }
+
+  public ionViewDidLoad(): void {
+    this.documents = this.navParams.get('documents');
+  };
 
 }

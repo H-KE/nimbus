@@ -24,7 +24,11 @@ export class OrderDetailsPage {
               public alertCtrl: AlertController,
               public trackingService: TrackingService,
               public loadingCtrl: LoadingController) {
-    this.order = navParams.get('order');
+
+  };
+
+  public ionViewDidLoad(): void {
+    this.order = this.navParams.get('order');
     this.orderService.loadOrderAddress(this.order.address_id)
       .map(res => res.json())
       .subscribe(

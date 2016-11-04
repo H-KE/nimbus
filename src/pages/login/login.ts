@@ -18,8 +18,11 @@ export class LoginPage {
   constructor(public navCtrl: NavController,
               public auth: AuthenticationService,
               public loadingCtrl: LoadingController) {
-    this.errorMessage = " ";
   }
+
+  public ionViewDidLoad(): void {
+    this.errorMessage = " ";
+  };
 
   login() {
     let user = new User;

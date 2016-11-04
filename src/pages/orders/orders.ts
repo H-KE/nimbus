@@ -18,6 +18,9 @@ export class OrdersPage {
               public orderService: OrderService,
               public loadingCtrl: LoadingController) {
 
+  };
+
+  public ionViewDidLoad(): void {
     this.loadOrders();
   };
 

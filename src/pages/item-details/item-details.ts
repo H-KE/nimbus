@@ -31,10 +31,13 @@ export class ItemDetailsPage {
               public navParams: NavParams,
               public toastCtrl: ToastController,
               public cartService: CartService) {
+  }
+
+  public ionViewDidLoad(): void {
     // If we navigated to this page, we will have an item available as a nav param
-    this.selectedItem = navParams.get('item');
-    this.itemSpec = navParams.get('itemSpec');
-    this.retailer = navParams.get('dispensary');
+    this.selectedItem = this.navParams.get('item');
+    this.itemSpec = this.navParams.get('itemSpec');
+    this.retailer = this.navParams.get('dispensary');
     this.selectedItem.retailer_name = this.retailer.name;
 
     this.itemPrice = this.selectedItem.prices[0];
@@ -44,7 +47,7 @@ export class ItemDetailsPage {
     this.quantity = this.dynamicSlider ? 0 : 1;
     this.quantityRange = _.range(1,11);
     this.disabled = this.retailer.bio === "Coming Soon";
-  }
+  };
 
   addToCart(selectedItem, quantity) {
     if (this.dynamicSlider == true) {
