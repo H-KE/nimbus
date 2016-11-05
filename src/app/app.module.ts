@@ -17,6 +17,7 @@ import { DispensaryPage } from '../pages/dispensary/dispensary';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { AddressModalPage } from '../pages/address-modal/address-modal';
 import { DocumentsPage } from '../pages/documents/documents';
+import { TermsPage } from '../pages/terms/terms';
 
 import { CartService } from '../providers/cart/cart';
 import { DispensaryService } from '../providers/dispensary/dispensary';
@@ -44,7 +45,8 @@ import { TrackingService } from '../providers/tracking/tracking';
     DispensaryPage,
     ItemDetailsPage,
     AddressModalPage,
-    DocumentsPage
+    DocumentsPage,
+    TermsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -67,7 +69,8 @@ import { TrackingService } from '../providers/tracking/tracking';
     DispensaryPage,
     ItemDetailsPage,
     AddressModalPage,
-    DocumentsPage
+    DocumentsPage,
+    TermsPage
   ],
   providers: [
     CartService,

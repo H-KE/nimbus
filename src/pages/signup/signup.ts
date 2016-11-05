@@ -7,6 +7,7 @@ import { AuthenticationService } from '../../providers/authentication/authentica
 import { User } from '../../models/user'
 
 import { SearchPage } from '../search/search';
+import { TermsPage } from '../terms/terms';
 
 @Component({
   selector: 'signup',
@@ -59,5 +60,9 @@ export class SignupPage {
 
   goToSearch() {
     this.navCtrl.setRoot(SearchPage);
+  }
+
+  goToTerms() {
+    this.navCtrl.push(TermsPage);
   }
 }

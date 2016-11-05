@@ -11,6 +11,9 @@
     text-transform: none;
     font-weight: 400;
     white-space: normal;
+    button {
+      padding: 0px !important;
+    }
   }
 
   ol{
@@ -83,7 +86,7 @@
           0 9px 0 $sl-g;
       }
 
-      ion-icon {
+      ion-icon.checkmark  {
         color: $complete;
         position: absolute;
         left: -16px;

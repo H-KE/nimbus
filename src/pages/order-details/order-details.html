@@ -44,7 +44,7 @@
 
         <ol *ngSwitchCase="'verifying'">
           <li class="completed">
-            <ion-icon name="checkmark"></ion-icon>Awaiting Payment
+            <ion-icon class="checkmark" name="checkmark"></ion-icon>Awaiting Payment
           </li>
           <li class="current">
             Verifying
@@ -84,6 +84,10 @@
               <p>{{trackingInfo.tracking_status.status_date | date:'medium'}}</p>
               <p>{{trackingInfo.tracking_status.status_details}}</p>
               <p>{{trackingInfo.tracking_status.location.city}}, {{trackingInfo.tracking_status.location.state}}</p>
+              <button ion-button color="secondary" clear small icon-left>
+                <ion-icon name="pin"></ion-icon>
+                View on Map
+              </button>
             </div>
           </li>
           <li> Order Complete</li>
