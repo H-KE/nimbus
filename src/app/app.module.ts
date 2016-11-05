@@ -18,6 +18,7 @@ import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { AddressModalPage } from '../pages/address-modal/address-modal';
 import { DocumentsPage } from '../pages/documents/documents';
 import { TermsPage } from '../pages/terms/terms';
+import { ShippoPage } from '../pages/shippo/shippo';
 
 import { CartService } from '../providers/cart/cart';
 import { DispensaryService } from '../providers/dispensary/dispensary';
@@ -46,7 +47,8 @@ import { TrackingService } from '../providers/tracking/tracking';
     ItemDetailsPage,
     AddressModalPage,
     DocumentsPage,
-    TermsPage
+    TermsPage,
+    ShippoPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -70,7 +72,8 @@ import { TrackingService } from '../providers/tracking/tracking';
     ItemDetailsPage,
     AddressModalPage,
     DocumentsPage,
-    TermsPage
+    TermsPage,
+    ShippoPage
   ],
   providers: [
     CartService,

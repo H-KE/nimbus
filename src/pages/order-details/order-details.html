@@ -84,10 +84,9 @@
               <p>{{trackingInfo.tracking_status.status_date | date:'medium'}}</p>
               <p>{{trackingInfo.tracking_status.status_details}}</p>
               <p>{{trackingInfo.tracking_status.location.city}}, {{trackingInfo.tracking_status.location.state}}</p>
-              <button ion-button color="secondary" clear small icon-left>
-                <ion-icon name="pin"></ion-icon>
+              <a target="_blank" [href]="getShippoLink()" color="secondary">
                 View on Map
-              </button>
+              </a>
             </div>
           </li>
           <li> Order Complete</li>
@@ -125,21 +124,13 @@
             Order Declined
             <!--TODO: Dynamic reason-->
             <div class="status_detail">
-              <p>Your documents were not verified.</p>
+              <p>{{orderService.getStatusDetailMessage(order.status_detail)}}</p>
             </div>
           </li>
         </ol>
 
         <ol *ngSwitchDefault>
-          <li class="current">
-            Awaiting Payment
-            <div class="status_detail">
-              <p>Please use the following information to email transfer your <b>order total</b> to complete the order.</p>
-              <p>Transfer To: <b>payment@nimbusfly.co</b></p>
-              <p>Transfer Description: <b>invoice {{order.id}}</b></p>
-              <p>Security Answer: <b>{{securityAnswer}}</b></p>
-            </div>
-          </li>
+          <li>Awaiting Payment</li>
           <li>Verifying</li>
           <li>Packaging</li>
           <li> In Transit</li>

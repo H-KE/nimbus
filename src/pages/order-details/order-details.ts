@@ -5,6 +5,7 @@ import { CartService } from '../../providers/cart/cart';
 import { OrderService } from '../../providers/orders/orders';
 import { TrackingService } from '../../providers/tracking/tracking';
 
+import { ShippoPage } from '../shippo/shippo'
 
 @Component({
   selector: 'order-details',
@@ -115,4 +116,12 @@ export class OrderDetailsPage {
         }
       )
   };
+
+  goToShippo() {
+    this.navCtrl.push(ShippoPage);
+  };
+
+  getShippoLink() {
+    return "http://tracking.goshippo.com/" + this.order.carrier_code + "/" + this.order.tracking_number;
+  }
 }
