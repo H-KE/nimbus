@@ -45,7 +45,7 @@ export class SignupPage {
         res => {
           loader.dismiss();
           let toast = this.toastCtrl.create({
-            message: "Your account was successfully created!",
+            message: "Thank you for signing up, enjoy your Nimbus experience!",
             duration: 3000
           })
           toast.present();

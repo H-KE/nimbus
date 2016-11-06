@@ -107,14 +107,14 @@
           </li>
           <li class="completed">
             <ion-icon name="checkmark"></ion-icon> Order Complete
-            <div *ngIf="trackingInfo && trackingInfo.tracking_status" class="status_detail">
+            <!-- <div *ngIf="trackingInfo && trackingInfo.tracking_status" class="status_detail">
               <p>{{trackingInfo.tracking_status.status_date | date:'medium'}}</p>
               <p>{{trackingInfo.tracking_status.status_details}}</p>
               <p>{{trackingInfo.tracking_status.location.city}}, {{trackingInfo.tracking_status.location.state}}</p>
               <a target="_blank" [href]="getShippoLink()" color="secondary">
                 View on Map
               </a>
-            </div>
+            </div> -->
           </li>
         </ol>
 

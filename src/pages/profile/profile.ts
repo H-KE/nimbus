@@ -106,7 +106,9 @@ export class ProfilePage {
     var filePath = this.email +  '/' + type;
     this.file = files[0];
 
-    var loader = this.loadingCtrl.create({});
+    var loader = this.loadingCtrl.create({
+      content: "Uploading..."
+    });
     loader.present();
 
     this.verificationService.saveDocument(this.email, this.file, type)

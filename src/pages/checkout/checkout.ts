@@ -216,7 +216,9 @@ export class CheckoutPage {
     var filePath = this.user.email +  '/' + type;
     this.file = files[0];
 
-    var loader = this.loadingCtrl.create({});
+    var loader = this.loadingCtrl.create({
+      content: "Uploading..."
+    });
     loader.present();
 
     this.verificationService.saveDocument(this.user.email, this.file, type)
