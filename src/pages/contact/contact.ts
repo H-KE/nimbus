@@ -42,7 +42,7 @@ export class ContactPage {
             data => {
               loader.dismiss();
               let toast = this.toastCtrl.create({
-                message: "Thank you " + data.firstname + ", we have received your ticket!",
+                message: "Thank you " + data.first_name + ", we have received your ticket!",
                 duration: 3000
               })
               toast.present();

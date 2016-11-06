@@ -14,7 +14,7 @@
     <ion-list-header>
       Contact
     </ion-list-header>
-    <button detail-none ion-item>
+    <button detail-push ion-item>
       <ion-icon item-left name="person"></ion-icon>
       {{firstName}} {{lastName}}, {{email}}
     </button>
@@ -28,7 +28,7 @@
       <ion-icon item-left name="home"></ion-icon>
       <b>{{address.primary}} {{address.secondary}}</b>, {{address.locality}}, {{address.administrative_area_level_1}}, {{address.postal_code}}
     </button>
-    <button ion-item (click)="addAddress()">
+    <button detail-none ion-item (click)="addAddress()">
       <span color="danger" item-right>Add shipping address</span>
     </button>
   </ion-list>
@@ -41,7 +41,7 @@
       <ion-icon item-left name="document"></ion-icon>
       View ID document
     </button>
-    <ion-item detail-push *ngIf="idDocuments.length < 1">
+    <ion-item detail-none *ngIf="idDocuments.length < 1">
       <input type="file" accept="image/*;capture=camera" (change)="addDocument($event, 'identification')"/>
       <span color="danger" item-right>
         Add a government ID
@@ -57,12 +57,19 @@
       <ion-icon item-left name="medical"></ion-icon>
       View medical document
     </button>
-    <ion-item detail-push *ngIf="medicalDocuments.length < 1">
+    <ion-item detail-none *ngIf="medicalDocuments.length < 1">
       <input type="file" accept="image/*;capture=camera" (change)="addDocument($event, 'medical')"/>
       <span color="danger" item-right>
         Add medical document
       </span>
     </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="email">
+    <button detail-none ion-item (click)="goToTerms()">
+      <ion-icon item-left name="paper"></ion-icon>
+      Privacy Policy & Terms of Service
+    </button>
   </ion-list>
 
   <ion-list *ngIf="email">

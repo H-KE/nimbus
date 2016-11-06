@@ -8,6 +8,7 @@ import { NavController,
 import { HomePage } from '../home/home';
 import { AddressModalPage } from '../../pages/address-modal/address-modal';
 import { DocumentsPage } from '../../pages/documents/documents';
+import { TermsPage } from '../terms/terms';
 
 import { AuthenticationService } from '../../providers/authentication/authentication';
 import { ProfileService } from '../../providers/profile/profile';
@@ -162,6 +163,10 @@ export class ProfilePage {
     this.navCtrl.push(DocumentsPage, {
       documents: this.medicalDocuments
     })
+  }
+
+  goToTerms() {
+    this.navCtrl.push(TermsPage);
   }
 
   signOut() {
