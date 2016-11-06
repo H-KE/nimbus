@@ -6,6 +6,7 @@ import { NavController } from 'ionic-angular';
   templateUrl: 'shippo.html'
 })
 export class ShippoPage {
+  shippoLink: string;
 
   constructor(public navCtrl: NavController) {};
 }

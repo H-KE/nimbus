@@ -4,28 +4,31 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
-      Support
+      Contact Us
     </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content class="contact">
-  <ion-card>
+  <ion-card tappable (click)="sendTicket('order')">
     <div class="card-detail">
-      <div class="card-title">At Nimbus, we value your feedback, questions, and concerns greatly</div>
-      <div class="card-subtitle">Please feel free to e-mail us at hello@nimbusfly.co</div>
+      <ion-icon name="time"></ion-icon>
+      <div class="card-title">My Orders</div>
+      <div class="card-subtitle">Help with active and past orders</div>
     </div>
   </ion-card>
-  <ion-card>
+  <ion-card tappable (click)="sendTicket('account')">
     <div class="card-detail">
-      <div class="card-title">FAQ</div>
-      <div class="card-subtitle">Blah blah blah</div>
+      <ion-icon name="settings"></ion-icon>
+      <div class="card-title">Account</div>
+      <div class="card-subtitle">Help with your account and profile</div>
     </div>
   </ion-card>
-  <ion-card>
+  <ion-card tappable (click)="sendTicket('feedback')">
     <div class="card-detail">
-      <div class="card-title">Form?</div>
-      <div class="card-subtitle">Do we need?</div>
+      <ion-icon name="paper"></ion-icon>
+      <div class="card-title">Feedback</div>
+      <div class="card-subtitle">Let us know your experience with the app!</div>
     </div>
   </ion-card>
 </ion-content>

@@ -25,10 +25,6 @@ export class AddressModalPage {
               public formBuilder: FormBuilder,
               public changeDetect: ChangeDetectorRef,
               public zone: NgZone) {
-
-  }
-
-  public ionViewDidLoad(): void {
     this.placeSelected = false;
     this.addressForm = {
       street_number: '',
@@ -39,6 +35,10 @@ export class AddressModalPage {
       administrative_area_level_1: '',
       postal_code: ''
     };
+  }
+
+  ionViewDidLoad() {
+    //Do not use this for modals
   };
 
   ngAfterViewInit() {

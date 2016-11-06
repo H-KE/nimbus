@@ -16,6 +16,7 @@ import { CheckoutPage } from '../pages/checkout/checkout';
 import { DispensaryPage } from '../pages/dispensary/dispensary';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { AddressModalPage } from '../pages/address-modal/address-modal';
+import { ContactModalPage } from '../pages/contact-modal/contact-modal';
 import { DocumentsPage } from '../pages/documents/documents';
 import { TermsPage } from '../pages/terms/terms';
 import { ShippoPage } from '../pages/shippo/shippo';
@@ -28,7 +29,7 @@ import { OrderService } from '../providers/orders/orders';
 import { AuthenticationService } from '../providers/authentication/authentication'
 import { VerificationService } from '../providers/verification/verification';
 import { TrackingService } from '../providers/tracking/tracking';
-
+import { TicketService } from '../providers/ticket/ticket';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { TrackingService } from '../providers/tracking/tracking';
     AddressModalPage,
     DocumentsPage,
     TermsPage,
-    ShippoPage
+    ShippoPage,
+    ContactModalPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -73,7 +75,8 @@ import { TrackingService } from '../providers/tracking/tracking';
     AddressModalPage,
     DocumentsPage,
     TermsPage,
-    ShippoPage
+    ShippoPage,
+    ContactModalPage
   ],
   providers: [
     CartService,
@@ -84,7 +87,8 @@ import { TrackingService } from '../providers/tracking/tracking';
     AuthenticationService,
     VerificationService,
     TrackingService,
-    Storage
+    Storage,
+    TicketService
   ]
 })
 export class AppModule {}
