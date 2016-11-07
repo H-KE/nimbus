@@ -7,7 +7,7 @@ import { NavController,
 
 import { HomePage } from '../home/home';
 import { AddressModalPage } from '../../pages/address-modal/address-modal';
-import { DocumentsPage } from '../../pages/documents/documents';
+import { DocumentsModalPage } from '../../pages/documents-modal/documents-modal';
 import { TermsPage } from '../terms/terms';
 
 import { AuthenticationService } from '../../providers/authentication/authentication';
@@ -100,7 +100,6 @@ export class ProfilePage {
     });
   }
 
-
   addDocument(event, type) {
     var files = event.srcElement.files;
     var filePath = this.email +  '/' + type;
@@ -111,39 +110,27 @@ export class ProfilePage {
     });
     loader.present();
 
-    this.verificationService.saveDocument(this.email, this.file, type)
-      .map(res => res.json())
+    this.verificationService.postImageToS3(this.file, filePath)
       .subscribe(
-        data => {
-          loader.dismiss();
-          if(type == 'identification') {
-            this.idDocuments.push({
-              type: type,
-              url: "https://s3.amazonaws.com/verification.nimbus.co/" + filePath
-            })
-          } else {
-            this.medicalDocuments.push({
-              type: type,
-              url: "https://s3.amazonaws.com/verification.nimbus.co/" + filePath
-            })
-          }
-        },
-        errors => {
-          loader.dismiss();
-          if(type == 'identification') {
-            this.idDocuments.push({
-              type: type,
-              url: "https://s3.amazonaws.com/verification.nimbus.co/" + filePath
-            })
-          } else {
-            this.medicalDocuments.push({
-              type: type,
-              url: "https://s3.amazonaws.com/verification.nimbus.co/" + filePath
-            })
-          }
-          // this.displayAlert('Upload Failed', 'Failed to upload your verification document to our servers. Please try again');
+        res => {
+          this.verificationService.saveDocument(type, filePath)
+          .map (res => res.json())
+          .subscribe(
+            document => {
+              loader.dismiss();
+              if(type == 'identification') {
+                this.idDocuments.push(document);
+              } else {
+                this.medicalDocuments.push(document);
+              }
+            },
+            error => {
+              loader.dismiss();
+              this.displayAlert('Oh No!', 'I was unable to upload your document, please try again!');
+            }
+          );
         }
-      )
+      );
   }
 
   displayAlert(title, message) {
@@ -156,15 +143,23 @@ export class ProfilePage {
   }
 
   goToIdDocumentsPage() {
-    this.navCtrl.push(DocumentsPage, {
-      documents: this.idDocuments
-    })
+    let documentsModal = this.modalCtrl.create(DocumentsModalPage, {"documents": this.idDocuments});
+    documentsModal.present(documentsModal);
+    documentsModal.onDidDismiss(deleted => {
+      if(deleted) {
+        this.idDocuments = new Array();
+      }
+    });
   }
 
   goToMedicalDocumentsPage() {
-    this.navCtrl.push(DocumentsPage, {
-      documents: this.medicalDocuments
-    })
+    let documentsModal = this.modalCtrl.create(DocumentsModalPage, {"documents": this.medicalDocuments});
+    documentsModal.present(documentsModal);
+    documentsModal.onDidDismiss(deleted => {
+      if(deleted) {
+        this.medicalDocuments = new Array();
+      }
+    });
   }
 
   goToTerms() {

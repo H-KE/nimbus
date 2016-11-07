@@ -20,20 +20,14 @@ export class VerificationService {
     this.hostUrl = 'https://s3.amazonaws.com/verification.nimbus.co/';
   }
 
-  saveDocument(email, file, type): any {
-    var filePath = email +  '/' + type;
+  saveDocument(type, filePath): any {
     var data = {
       verification_type: type,
       verification_url: this.hostUrl + filePath
-    }
-    let body = JSON.stringify(data)
+    };
+    let body = JSON.stringify(data);
 
-    return this.postImageToS3(file, filePath)
-      .flatMap((x) => this.auth.post('verification_documents', body)
-          .map( (responseData) => {
-            return responseData.json();
-          })
-      )
+    return this.auth.post('verification_documents', body);
   }
 
   postImageToS3(file, path): any {
@@ -53,5 +47,9 @@ export class VerificationService {
     })
 
     return this.http.request(new Request(requestOptions));
+  }
+
+  deleteDocument(id): any {
+    return this.auth.delete('verification_documents/'+id);
   }
 }

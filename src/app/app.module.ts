@@ -17,7 +17,7 @@ import { DispensaryPage } from '../pages/dispensary/dispensary';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { AddressModalPage } from '../pages/address-modal/address-modal';
 import { ContactModalPage } from '../pages/contact-modal/contact-modal';
-import { DocumentsPage } from '../pages/documents/documents';
+import { DocumentsModalPage } from '../pages/documents-modal/documents-modal';
 import { TermsPage } from '../pages/terms/terms';
 import { ShippoPage } from '../pages/shippo/shippo';
 
@@ -47,7 +47,7 @@ import { TicketService } from '../providers/ticket/ticket';
     DispensaryPage,
     ItemDetailsPage,
     AddressModalPage,
-    DocumentsPage,
+    DocumentsModalPage,
     TermsPage,
     ShippoPage,
     ContactModalPage
@@ -73,7 +73,7 @@ import { TicketService } from '../providers/ticket/ticket';
     DispensaryPage,
     ItemDetailsPage,
     AddressModalPage,
-    DocumentsPage,
+    DocumentsModalPage,
     TermsPage,
     ShippoPage,
     ContactModalPage

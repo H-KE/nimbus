@@ -46,7 +46,7 @@ export class ContactModalPage {
     this.viewCtrl.dismiss();
   }
 
-  save() {
+  send() {
     this.viewCtrl.dismiss(this.ticketMessage);
   }
 }

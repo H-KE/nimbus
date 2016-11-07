@@ -1,12 +1,16 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>
-      My Documents
-    </ion-title>
+    <ion-buttons start>
+      <button ion-button (click)="cancel()">Cancel</button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="delete()">Delete</button>
+    </ion-buttons>
+    <ion-title>My Document</ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="documents-modal">
   <ion-card>
     <div id="item-logo-wrapper">
       <ion-slides [options]="slideOptions">
@@ -16,5 +20,4 @@
       </ion-slides>
     </div>
   </ion-card>
-
 </ion-content>
