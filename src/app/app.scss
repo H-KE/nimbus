@@ -19,6 +19,12 @@
     border-top: 0.55px solid;
     border-color: color($colors, dark, base) !important;
   }
+  ion-list-header {
+    background-color: color($colors, primary, base) !important;
+    border-top: 1px solid #333;
+    border-bottom: 0px !important;
+    color: #666 !important;
+  }
   background-color: color($colors, primary, base) !important;
 }
 

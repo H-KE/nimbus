@@ -20,6 +20,7 @@ import { ContactModalPage } from '../pages/contact-modal/contact-modal';
 import { DocumentsModalPage } from '../pages/documents-modal/documents-modal';
 import { TermsPage } from '../pages/terms/terms';
 import { ShippoPage } from '../pages/shippo/shippo';
+import { AboutPage } from '../pages/about/about';
 
 import { CartService } from '../providers/cart/cart';
 import { DispensaryService } from '../providers/dispensary/dispensary';
@@ -50,7 +51,8 @@ import { TicketService } from '../providers/ticket/ticket';
     DocumentsModalPage,
     TermsPage,
     ShippoPage,
-    ContactModalPage
+    ContactModalPage,
+    AboutPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -76,7 +78,8 @@ import { TicketService } from '../providers/ticket/ticket';
     DocumentsModalPage,
     TermsPage,
     ShippoPage,
-    ContactModalPage
+    ContactModalPage,
+    AboutPage
   ],
   providers: [
     CartService,
