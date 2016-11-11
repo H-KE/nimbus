@@ -27,11 +27,11 @@ export class ProfileService {
         .map(response => response.json())
         .subscribe(
           data => {
-            console.log(data);
+            // console.log(data);
             resolve(data);
           },
           error => {
-            console.log(error);
+            // console.log(error);
             resolve(error);
           }
         )

@@ -54,7 +54,7 @@ export class CheckoutPage {
 
     this.order = null;
     this.order = this.navParams.get('order');
-    console.log(this.order);
+    // console.log(this.order);
 
     this.addressOptions = {
       title: 'Select an address'
@@ -71,7 +71,7 @@ export class CheckoutPage {
       .map(response => response.json())
       .subscribe(
         data => {
-          console.log(data);
+          // console.log(data);
           this.user = data;
           this.user.addresses = data.addresses || [];
           this.selectedAddress = this.user.addresses[0];
@@ -79,7 +79,7 @@ export class CheckoutPage {
           loader.dismiss();
         },
         error => {
-          console.log(error);
+          // console.log(error);
         }
       );
   }
@@ -105,13 +105,13 @@ export class CheckoutPage {
           .map(response => response.json())
           .subscribe(
             data => {
-              console.log(data);
+              // console.log(data);
               this.user.addresses.push(data);
               this.selectedAddress = data;
               loader.dismiss();
             },
             error => {
-              console.log(error);
+              // console.log(error);
               loader.dismiss();
             }
           )
@@ -157,7 +157,7 @@ export class CheckoutPage {
     this.order.address_id = this.selectedAddress.address_id;
     this.order.distribution_channel = "mail";
 
-    console.log(this.order);
+    // console.log(this.order);
 
 
     var loader = this.loadingCtrl.create({});
@@ -173,9 +173,9 @@ export class CheckoutPage {
         },
         error => {
           loader.dismiss();
-          console.log(error);
+          // console.log(error);
           let alert = this.alertCtrl.create({
-            title: 'Oh No!',
+            title: 'Woops',
             subTitle: error == undefined? error.json().errors.full_messages[0] : 'An unknown error occured',
             buttons: ['OK']
           });
@@ -245,7 +245,7 @@ export class CheckoutPage {
             },
             error => {
               loader.dismiss();
-              this.displayAlert('Oh No!', 'I was unable to upload your document, please try again!');
+              this.displayAlert('Woops', 'I was unable to upload your document, please try again!');
             }
           );
         }

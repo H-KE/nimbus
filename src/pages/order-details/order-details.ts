@@ -48,7 +48,7 @@ export class OrderDetailsPage {
       .map(response => response.json())
       .subscribe(
           data => {
-            console.log(data);
+            // console.log(data);
             this.order = data;
             if(this.order.status == 'in_transit') {
               //TODO: duplicating load tracking info here because cannot figureout how to
@@ -58,11 +58,10 @@ export class OrderDetailsPage {
                 .subscribe(
                   data => {
                     this.trackingInfo = data;
-                    console.log(data);
                     refresher.complete();
                     if(this.trackingInfo && !this.trackingInfo.tracking_status) {
                       let alert = this.alertCtrl.create({
-                        title: 'Oh No!',
+                        title: 'Woops',
                         subTitle: "No tracking info found for carrier: " + this.order.carrier_code + ", and tracking number: " + this.order.tracking_number,
                         buttons: ['OK']
                       });
@@ -72,7 +71,7 @@ export class OrderDetailsPage {
                   error => {
                     refresher.complete();
                     let alert = this.alertCtrl.create({
-                      title: 'Oh No!',
+                      title: 'Woops',
                       subTitle: "Failed to fetch tracking details! Please try again.",
                       buttons: ['OK']
                     });
@@ -98,7 +97,7 @@ export class OrderDetailsPage {
           loader.dismiss();
           if(this.trackingInfo && !this.trackingInfo.tracking_status) {
             let alert = this.alertCtrl.create({
-              title: 'Oh No!',
+              title: 'Woops',
               subTitle: "No tracking info found for carrier: " + this.order.carrier_code + ", and tracking number: " + this.order.tracking_number,
               buttons: ['OK']
             });
@@ -108,7 +107,7 @@ export class OrderDetailsPage {
         error => {
           loader.dismiss();
           let alert = this.alertCtrl.create({
-            title: 'Oh No!',
+            title: 'Woops',
             subTitle: "Failed to fetch tracking details! Please try again.",
             buttons: ['OK']
           });

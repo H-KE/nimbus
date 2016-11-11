@@ -81,15 +81,15 @@ export class ProfilePage {
           .map(response => response.json())
           .subscribe(
             data => {
-              console.log(data);
+              // console.log(data);
               this.addresses.push(data);
               loader.dismiss();
             },
             error => {
-              console.log(error);
+              // console.log(error);
               loader.dismiss();
               let alert = this.alertCtrl.create({
-                title: 'Oh No!',
+                title: 'Woops',
                 subTitle: error == undefined? error.json().errors.full_messages[0] : 'An unknown error occured',
                 buttons: ['OK']
               });
@@ -126,7 +126,7 @@ export class ProfilePage {
             },
             error => {
               loader.dismiss();
-              this.displayAlert('Oh No!', 'I was unable to upload your document, please try again!');
+              this.displayAlert('Woops', 'I was unable to upload your document, please try again!');
             }
           );
         }

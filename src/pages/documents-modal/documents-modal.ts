@@ -43,7 +43,7 @@ export class DocumentsModalPage {
         errors => {
           loader.dismiss();
           let alert = this.alertCtrl.create({
-            title: 'Oh No!',
+            title: 'Woops',
             subTitle: 'Failed to delete document, please try again!',
             buttons: ['OK']
           });

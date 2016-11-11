@@ -81,9 +81,10 @@
           <li class="current">
             In Transit
             <div *ngIf="trackingInfo && trackingInfo.tracking_status" class="status_detail">
+              <p>Canada Post | {{order.tracking_number}}</p>
               <p>{{trackingInfo.tracking_status.status_date | date:'medium'}}</p>
               <p>{{trackingInfo.tracking_status.status_details}}</p>
-              <p>{{trackingInfo.tracking_status.location.city}}, {{trackingInfo.tracking_status.location.state}}</p>
+              <p *ngIf="trackingInfo.tracking_status.location">{{trackingInfo.tracking_status.location.city}}, {{trackingInfo.tracking_status.location.state}}</p>
               <a target="_blank" [href]="getShippoLink()" color="secondary">
                 View on Map
               </a>

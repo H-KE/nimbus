@@ -32,7 +32,7 @@ export class ContactPage {
     contactModal.present(contactModal);
     contactModal.onDidDismiss(message => {
       if (message) {
-        console.log(message);
+        // console.log(message);
         let ticket = new Ticket(ticketType, message);
         var loader = this.loadingCtrl.create({});
         loader.present();
@@ -48,10 +48,10 @@ export class ContactPage {
               toast.present();
             },
             error => {
-              console.log(error);
+              // console.log(error);
               loader.dismiss();
               let alert = this.alertCtrl.create({
-                title: 'Oh No!',
+                title: 'Woops',
                 subTitle: error == undefined? error.json().errors.full_messages[0] : 'Could not send ticket, please try again.',
                 buttons: ['OK']
               });
