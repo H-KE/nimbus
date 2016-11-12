@@ -67,7 +67,8 @@ export class AuthenticationService {
               userTypes:                  null,
 
               oAuthPaths: {
-                  github:                 'auth/github'
+                  github:                 'auth/github',
+                  facebook:               'auth/facebook'
               }
           };
 
@@ -123,12 +124,9 @@ export class AuthenticationService {
       signInOAuth(oAuthType: string) {
 
           let oAuthPath: string;
+          oAuthPath = this._options.oAuthPaths[oAuthType]
 
-          if (oAuthType == 'github') {
-              oAuthPath = this._options.oAuthPaths.github
-          }
-
-          window.open(this._constructUserPath() + oAuthPath);
+          window.open(this._constructApiPath() + oAuthPath);
       }
 
       // Sign out request and delete storage

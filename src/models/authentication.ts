@@ -13,6 +13,7 @@ export interface AuthData {
 
 export interface OAuthPaths {
     github?:    string;
+    facebook?:  string;
 }
 
 export interface Angular2TokenOptions {

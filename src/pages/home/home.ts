@@ -19,7 +19,7 @@ export class HomePage {
   ionViewDidLoad() {
     this.menuCtrl.swipeEnable(false);
   }
-  
+
   ionViewDidEnter() {
     this.auth.validateToken()
       .map(res => res.json())
@@ -41,5 +41,9 @@ export class HomePage {
 
   goToLogin() {
     this.navCtrl.push(LoginPage);
+  }
+
+  oauth(type) {
+    this.auth.signInOAuth(type);
   }
 }
