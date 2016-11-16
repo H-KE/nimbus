@@ -4,7 +4,8 @@ import { Http,
          Headers,
          Request,
          RequestMethod,
-         RequestOptions }   from '@angular/http';
+         RequestOptions,
+         URLSearchParams }   from '@angular/http';
 import { Observable }       from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/share';
@@ -45,9 +46,9 @@ export class AuthenticationService {
       init(options?: Angular2TokenOptions) {
 
           let defaultOptions: Angular2TokenOptions = {
-              apiPath:                    'https://nimbus-app.cfapps.io/api',
+              // apiPath:                    'https://nimbus-app.cfapps.io/api',
               // apiPath:                    'https://dev-nimbus.cfapps.io/api',
-              // apiPath:                    'http://localhost:3000/api',
+              apiPath:                    'http://localhost:3000/api',
 
               signInPath:                 'auth/sign_in',
               signInRedirect:             null,
@@ -68,7 +69,8 @@ export class AuthenticationService {
 
               oAuthPaths: {
                   github:                 'auth/github',
-                  facebook:               'auth/facebook'
+                  facebook:               'auth/facebook',
+                  google_oauth2:          'auth/google_oauth2'
               }
           };
 
@@ -126,7 +128,7 @@ export class AuthenticationService {
           let oAuthPath: string;
           oAuthPath = this._options.oAuthPaths[oAuthType]
 
-          window.open(this._constructApiPath() + oAuthPath);
+          window.location.replace(this._constructApiPath() + oAuthPath);
       }
 
       // Sign out request and delete storage
@@ -375,8 +377,26 @@ export class AuthenticationService {
               return true;
       }
 
-      // Try to load user config from storage
+      public _parseAuthUrl(url) {
+        if (url.get('auth_token')) {
+        }
+      }
+
+      // Try to load user config from query params or storage
       public _tryLoadAuthData() {
+
+          let queryParams: any = this.getJsonFromUrl(false);
+          if (queryParams.auth_token) {
+            let newAuthData: AuthData = {
+                accessToken:    queryParams.auth_token,
+                client:         queryParams.client_id,
+                expiry:         queryParams.expiry,
+                uid:            queryParams.uid,
+                tokenType:      'Bearer'
+            };
+            console.log(newAuthData)
+            this._setAuthData(newAuthData);
+          }
 
           let userType = this._getUserTypeByName(localStorage.getItem('userType'));
           if (userType)
@@ -410,5 +430,35 @@ export class AuthenticationService {
               return '';
           else
               return this._options.apiPath + '/';
+      }
+
+      public getJsonFromUrl(hashBased) {
+        var query;
+        if(hashBased) {
+          var pos = location.href.indexOf("?");
+          if(pos==-1) return [];
+          query = location.href.substr(pos+1);
+        } else {
+          query = location.search.substr(1);
+        }
+        var result = {};
+        query.split("&").forEach(function(part) {
+          if(!part) return;
+          part = part.split("+").join(" "); // replace every + with space, regexp-free version
+          var eq = part.indexOf("=");
+          var key = eq>-1 ? part.substr(0,eq) : part;
+          var val = eq>-1 ? decodeURIComponent(part.substr(eq+1)) : "";
+          var from = key.indexOf("[");
+          if(from==-1) result[decodeURIComponent(key)] = val;
+          else {
+            var to = key.indexOf("]");
+            var index = decodeURIComponent(key.substring(from+1,to));
+            key = decodeURIComponent(key.substring(0,from));
+            if(!result[key]) result[key] = [];
+            if(!index) result[key].push(val);
+            else result[key][index] = val;
+          }
+        });
+        return result;
       }
 }
