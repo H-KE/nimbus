@@ -23,6 +23,14 @@
           {{selectedDispensary.description}}
         </p>
       </ion-card-content>
+      <button disabled="true" clear ion-button small color="secondary" icon-left>
+        <ion-icon name="call"></ion-icon>
+        {{selectedDispensary.phone_number}}
+      </button>
+      <button disabled="true" clear ion-button small color="secondary" icon-left>
+        <ion-icon name="pin"></ion-icon>
+        {{selectedDispensary.address}}
+      </button>
       <button *ngIf="selectedDispensary.free_shipping_cap" disabled="true" clear ion-button small color="secondary" icon-left>
         <ion-icon name="checkmark-circle"></ion-icon>
         Free shipping over ${{selectedDispensary.free_shipping_cap}}

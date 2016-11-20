@@ -14,5 +14,6 @@ export class Dispensary {
   pickup: boolean;
   mail: boolean;
   delivery: boolean;
+  phone_number: string;
   products: Item[];
 }
