@@ -9,6 +9,8 @@ import {CartPage} from '../cart/cart';
 import {CartService} from '../../providers/cart/cart';
 import {DispensaryService} from '../../providers/dispensary/dispensary';
 
+import _ from 'underscore';
+
 @Component({
   selector: 'search',
   templateUrl: 'search.html'
@@ -29,7 +31,7 @@ export class SearchPage {
 
   public ionViewDidLoad(): void {
     this.menuCtrl.swipeEnable(true);
-    this.searchMode = "mail";
+    this.searchMode = "pickup";
     this.loadDispensaries(this.searchMode);
   }
 
@@ -40,9 +42,19 @@ export class SearchPage {
     loader.present();
     this.dispensaryService.getDispensaries(searchMode)
       .then(response => {
-        this.dispensaries = response as Dispensary;
+        this.orderDispensariesByReadiness(response);
         loader.dismiss();
       });
+  }
+
+  orderDispensariesByReadiness(dispensaries) {
+    let comingSoons = _.filter(dispensaries, function(dispensary) {
+      return dispensary.bio == 'Coming soon';
+    });
+    let goodToGos =  _.filter(dispensaries, function(dispensary) {
+      return dispensary.bio != 'Coming soon';
+    });
+    this.dispensaries = goodToGos.concat(comingSoons);
   }
 
   dispensarySelected(event, dispensary) {
