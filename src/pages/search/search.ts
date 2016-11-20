@@ -17,7 +17,8 @@ import _ from 'underscore';
 })
 
 export class SearchPage {
-  dispensaries: Dispensary;
+  pickupDispensaries: Dispensary;
+  mailDispensaries: Dispensary;
   searchMode: string;
 
   constructor(public dispensaryService: DispensaryService,
@@ -32,19 +33,31 @@ export class SearchPage {
   public ionViewDidLoad(): void {
     this.menuCtrl.swipeEnable(true);
     this.searchMode = "pickup";
-    this.loadDispensaries(this.searchMode);
+    this.loadDispensaries();
   }
 
-  loadDispensaries(searchMode) {
+  loadDispensaries() {
     var loader = this.loadingCtrl.create({
       content: "Finding Dispensaries...",
     });
     loader.present();
-    this.dispensaryService.getDispensaries(searchMode)
+    this.dispensaryService.getAll()
       .then(response => {
-        this.orderDispensariesByReadiness(response);
+        let dispensaries = this.orderDispensariesByReadiness(response);
+        this.mailDispensaries = _.filter(dispensaries, function(dispensary) {
+          return dispensary.mail == true;
+        });
+        this.pickupDispensaries = _.filter(dispensaries, function(dispensary) {
+          return dispensary.pickup == true;
+        });
+        console.log(this.pickupDispensaries);
         loader.dismiss();
       });
+  }
+
+  clearDispensaries() {
+    this.mailDispensaries = null;
+    this.pickupDispensaries = null;
   }
 
   orderDispensariesByReadiness(dispensaries) {
@@ -54,7 +67,7 @@ export class SearchPage {
     let goodToGos =  _.filter(dispensaries, function(dispensary) {
       return dispensary.bio != 'Coming soon';
     });
-    this.dispensaries = goodToGos.concat(comingSoons);
+    return goodToGos.concat(comingSoons);
   }
 
   dispensarySelected(event, dispensary) {

@@ -10,6 +10,21 @@ export class DispensaryService {
               public auth: AuthenticationService) {
       }
 
+      getAll() {
+        return new Promise(resolve => {
+          this.auth.get('retailers/')
+            .map(response => response.json())
+            .subscribe(
+              data => {
+                resolve(data);
+              },
+              error => {
+                resolve(error);
+              }
+            )
+        });
+      }
+
       getDispensaries(distribution) {
         var params = "?distribution=" + distribution;
 
