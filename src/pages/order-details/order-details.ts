@@ -30,6 +30,7 @@ export class OrderDetailsPage {
 
   public ionViewDidLoad(): void {
     this.order = this.navParams.get('order');
+    console.log(this.order);
     this.orderService.loadOrderAddress(this.order.address_id)
       .map(res => res.json())
       .subscribe(

@@ -8,7 +8,7 @@
 
 
 <ion-content class="checkout">
-    <ion-list>
+    <ion-list *ngIf="!order.pickup">
       <ion-list-header>
         <ion-label>Shipping Details</ion-label>
       </ion-list-header>

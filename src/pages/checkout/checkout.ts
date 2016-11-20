@@ -54,7 +54,7 @@ export class CheckoutPage {
 
     this.order = null;
     this.order = this.navParams.get('order');
-    // console.log(this.order);
+    console.log(this.order);
 
     this.addressOptions = {
       title: 'Select an address'
@@ -121,7 +121,7 @@ export class CheckoutPage {
 
   placeOrder() {
 
-    if (!this.selectedAddress) {
+    if (!this.selectedAddress && !this.order.pickup) {
       let alert = this.alertCtrl.create({
         title: 'No Address!',
         subTitle: 'Please add an address so we know where to ship your order.',
@@ -154,8 +154,9 @@ export class CheckoutPage {
       return;
     }
 
-    this.order.address_id = this.selectedAddress.address_id;
-    this.order.distribution_channel = "mail";
+
+    this.order.address_id =  this.order.pickup? "1" : this.selectedAddress.address_id;
+    this.order.distribution_channel = this.order.pickup? "pickup" : "mail";
 
     // console.log(this.order);
 

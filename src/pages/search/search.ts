@@ -50,7 +50,6 @@ export class SearchPage {
         this.pickupDispensaries = _.filter(dispensaries, function(dispensary) {
           return dispensary.pickup == true;
         });
-        console.log(this.pickupDispensaries);
         loader.dismiss();
       });
   }

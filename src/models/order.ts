@@ -18,5 +18,8 @@ export class Order {
   carrier_code: string;
   tracking_number: string;
   medical: boolean;
+  mail: boolean;
+  pickup: boolean;
+  delivery: boolean;
   created_at: any;
 }

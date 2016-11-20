@@ -25,7 +25,7 @@ export class CartPage {
               public alertController: AlertController) {
 
   }
-  
+
   public ionViewDidLoad(): void {
     this.carts = _.values(this.cartService.getAll());
     this.carts.itemCount = this.cartService.itemCount;
@@ -53,6 +53,9 @@ export class CartPage {
     this.order.order_details = this.cartService.carts[dispensaryName].content;
     this.order.total_price = this.cartService.carts[dispensaryName].total;
     this.order.medical = this.cartService.carts[dispensaryName].dispensary.medical;
+    this.order.mail = this.cartService.carts[dispensaryName].dispensary.mail;
+    this.order.pickup = this.cartService.carts[dispensaryName].dispensary.pickup;
+    this.order.delivery = this.cartService.carts[dispensaryName].dispensary.delivery;
     this.order.delivery_fee = this.calculateShippingCost(this.cartService.carts[dispensaryName]);
     this.order.tax_amount = (this.order.total_price) * 0.13; //TODO: this should not be hard coded
     this.order.dispensary_name = dispensaryName;
