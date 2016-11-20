@@ -15,10 +15,10 @@
   <ion-toolbar color="primary">
     <ion-segment [(ngModel)]="searchMode" color="white">
       <ion-segment-button (click)="loadDispensaries('pickup')" value="pickup">
-        Pickup
+        In-store pickup
       </ion-segment-button>
       <ion-segment-button (click)="loadDispensaries('mail')" value="mail">
-        Mail
+        Mail delivery
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
@@ -31,8 +31,9 @@
         <ion-card class="dispensary-avatar">
           <img src={{dispensary.avatar_url}}>
           <div class="card-detail">
+            <div class="card-header">Pickup order from: {{dispensary.bio}}</div>
             <div class="card-title">{{dispensary.name}}</div>
-            <div class="card-subtitle">{{dispensary.bio}}</div>
+            <div class="card-subtitle">{{dispensary.address}}</div>
           </div>
         </ion-card>
       </a>

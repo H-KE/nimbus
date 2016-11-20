@@ -25,6 +25,7 @@
   ion-card {
     position: relative;
     text-align: center;
+    background-color: #059361;
   }
 
   .card-detail {
@@ -33,6 +34,18 @@
     top: 80px;
     height: calc(100% - 60px);
     width: 100%;
+
+    .card-header {
+      font-size: 0.75em;
+      width: auto;
+      max-width: 210px;
+      margin: -30px auto 20px auto;
+      border-radius: 3px;
+      background-color: rgba(0,171,102,0.75);
+      text-transform: uppercase;
+      color: #fff;
+      text-shadow: 2px 4px 3px rgba(0,0,0,0.3);
+    }
 
     .card-title {
       font-size: 1.5em;
