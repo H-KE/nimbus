@@ -166,33 +166,33 @@
                 <p>Security Answer: <b>{{securityAnswer}}</b></p>
               </div>
             </li>
-            <li>Packaging</li>
+            <li>Preparing</li>
             <li>Ready for pickup</li>
             <li>Order complete</li>
           </ol>
 
-          <ol *ngSwitchCase="'packaging'">
+          <ol *ngSwitchCase="'verifying'">
             <li class="completed">
               <ion-icon name="checkmark"></ion-icon>Payment received
             </li>
             <li class="current">
-              Packaging
+              Preparing
             </li>
             <li>Ready for pickup</li>
             <li>Order complete</li>
           </ol>
 
-          <ol *ngSwitchCase="'ready_for_pickup'">
+          <ol *ngSwitchCase="'ready'">
             <li class="completed">
               <ion-icon name="checkmark"></ion-icon>Payment received
             </li>
             <li class="completed">
-              <ion-icon name="checkmark"></ion-icon> Packaging
-            </li>
-            <li class="completed">
-              <ion-icon name="checkmark"></ion-icon> Ready for pickup
+              <ion-icon name="checkmark"></ion-icon> Preparing
             </li>
             <li class="current">
+              Ready for pickup
+            </li>
+            <li>
               Order complete
             </li>
           </ol>
@@ -202,7 +202,7 @@
               <ion-icon name="checkmark"></ion-icon>Payment received
             </li>
             <li class="completed">
-              <ion-icon name="checkmark"></ion-icon> Packaging
+              <ion-icon name="checkmark"></ion-icon> Preparing
             </li>
             <li class="completed">
               <ion-icon name="checkmark"></ion-icon> Ready for pickup
@@ -224,8 +224,9 @@
 
           <ol *ngSwitchDefault>
             <li>Awaiting Payment</li>
-            <li>Packaging</li>
+            <li>Preparing</li>
             <li>Ready for pickup</li>
+            <li>Order complete</li>
           </ol>
         </ion-item>
       </ion-list>

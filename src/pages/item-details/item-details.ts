@@ -46,7 +46,8 @@ export class ItemDetailsPage {
     this.dynamicSlider = this.selectedItem.prices.length > 1 ? true : false;
     this.quantity = this.dynamicSlider ? 0 : 1;
     this.quantityRange = _.range(1,11);
-    this.disabled = this.retailer.bio === "Coming soon" || this.selectedItem.price == null;
+    this.disabled = this.retailer.bio === "Coming soon" || this.selectedItem.prices == null;
+    console.log(this.selectedItem.prices);
   };
 
   addToCart(selectedItem, quantity) {
