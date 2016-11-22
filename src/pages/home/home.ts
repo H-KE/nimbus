@@ -10,6 +10,23 @@ import { AuthenticationService } from '../../providers/authentication/authentica
   templateUrl: 'home.html'
 })
 export class HomePage {
+  slideOptions = {
+    initialSlide: 0,
+    pager: true
+  };
+
+  slides = [
+    {
+      title: "Mail Delivery",
+      description: "Don't want to go outside? Stay home and get premium cannabis <b>delivered straight to your door</b> from Canada's highest-quality dispensaries.",
+      image: "assets/img/nimbus-logo.png",
+    },
+    {
+      title: "In-Store Pickup",
+      description: "Hate waiting in line? Order from your favourite local dispensaries, and have your order <b>ready for pickup</b> when you arrive.",
+      image: "assets/img/nimbus-logo.png",
+    }
+  ];
 
   constructor(public navCtrl: NavController,
               public auth: AuthenticationService,

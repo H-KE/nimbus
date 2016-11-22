@@ -1,10 +1,16 @@
 <ion-content scroll="false" class="home">
+  <ion-slides [options]="slideOptions">
+    <ion-slide>
+      <img src="assets/img/nimbus-logo.png" class="slide-image"/>
+      <p class="slide-detail">The simplest way to buy marijuana in Canada.</p>
+    </ion-slide>
+    <ion-slide *ngFor="let slide of slides">
+      <img [src]="slide.image" class="slide-image"/>
+      <h3 class="slide-title" [innerHTML]="slide.title"></h3>
+      <p class="slide-detail" [innerHTML]="slide.description"></p>
+    </ion-slide>
+  </ion-slides>
   <ion-grid>
-    <ion-row class="home-logo">
-      <ion-col>
-        <img src="./assets/img/nimbus-logo.png"/>
-      </ion-col>
-    </ion-row>
     <ion-row class="auth-buttons">
       <ion-col>
         <ion-row>
