@@ -32,7 +32,7 @@ export class SearchPage {
 
   public ionViewDidLoad(): void {
     this.menuCtrl.swipeEnable(true);
-    this.searchMode = "pickup";
+    this.searchMode = "mail";
     this.loadDispensaries();
   }
 
