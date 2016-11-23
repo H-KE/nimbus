@@ -261,14 +261,14 @@ export class AuthenticationService {
                   'Client': this._currentAuthData.client,
                   'Expiry': this._currentAuthData.expiry,
                   'Token-Type': this._currentAuthData.tokenType,
-                  'Uid': this._currentAuthData.uid
+                  'Uid': this._currentAuthData.uid,
                   // 'Content-Type': 'application/json', // ToDo: Add to RequestOptions if available
                   // 'Accept': 'application/json',
-                  // 'access-token': this._currentAuthData.accessToken,
-                  // 'client': this._currentAuthData.client,
-                  // 'expiry': this._currentAuthData.expiry,
-                  // 'token-type': this._currentAuthData.tokenType,
-                  // 'uid': this._currentAuthData.uid
+                  'access-token': this._currentAuthData.accessToken,
+                  'client': this._currentAuthData.client,
+                  'expiry': this._currentAuthData.expiry,
+                  'token-type': this._currentAuthData.tokenType,
+                  'uid': this._currentAuthData.uid
               });
           else
               headers = new Headers({
