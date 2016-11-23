@@ -1,9 +1,5 @@
 <ion-content scroll="false" class="home">
   <ion-slides [options]="slideOptions">
-    <ion-slide>
-      <img src="assets/img/nimbus-logo.png" class="slide-image"/>
-      <p class="slide-detail">The simplest way to buy marijuana in Canada.</p>
-    </ion-slide>
     <ion-slide *ngFor="let slide of slides">
       <img [src]="slide.image" class="slide-image"/>
       <h3 class="slide-title" [innerHTML]="slide.title"></h3>

@@ -17,6 +17,11 @@ export class HomePage {
 
   slides = [
     {
+      title: "Welcome",
+      description: "Nimbus is the simplest way to buy marijuana in Canada.",
+      image: "assets/img/nimbus-logo.png",
+    },
+    {
       title: "Mail Delivery",
       description: "Don't want to go outside? Stay home and get premium cannabis <b>delivered straight to your door</b> from Canada's highest-quality dispensaries.",
       image: "assets/img/nimbus-logo.png",
