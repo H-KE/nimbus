@@ -64,7 +64,7 @@ export class SearchPage {
       return dispensary.bio == 'Coming soon';
     });
     let goodToGos =  _.filter(dispensaries, function(dispensary) {
-      return dispensary.bio != 'Coming soon';
+      return dispensary.bio != 'Coming soon' && dispensary.bio != 'Hidden';
     });
     return goodToGos.concat(comingSoons);
   }
