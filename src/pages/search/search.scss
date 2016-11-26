@@ -1,4 +1,7 @@
 .search {
+  ion-card:hover {
+    -webkit-filter: brightness(90%);
+  }
   ion-card-content.search-card {
     padding: 0;
   }
