@@ -11,49 +11,53 @@
 
 <ion-content class="item-details">
  <span *ngIf="selectedItem" class="selection">
-    <ion-card>
-      <div id="item-logo-wrapper">
-        <ion-slides [options]="slideOptions">
-          <ion-slide *ngFor="let image of selectedItem.images">
-            <img src={{image}} class="item-image"/>
-          </ion-slide>
-        </ion-slides>
-      </div>
-      <ion-card-header>
-        {{selectedItem.name}}
-      </ion-card-header>
-      <ion-card-content>
-        <p>
-          <ion-badge color="green">{{selectedItem.subspecies}}</ion-badge>
-          <ion-badge color="lightgreen">{{itemSpec}}</ion-badge>
-        </p>
-        <p style="white-space: pre-line;">
-          {{selectedItem.description}}
-        </p>
-        <ion-list no-lines>
-          <ion-list-header *ngIf="dynamicSlider" no-lines>
-            <ion-badge color="secondary" item-right>{{selectedItem.price_labels[quantity]}}</ion-badge>
-          </ion-list-header>
-          <ion-item *ngIf="dynamicSlider">
-            <ion-range min="0" [max]="selectedItem.prices.length - 1" step="1" snaps="true" color="secondary" [(ngModel)]="quantity" >
-            </ion-range>
-          </ion-item>
-          <ion-item *ngIf="!dynamicSlider">
-            <ion-label>Select Quantity</ion-label>
-            <ion-select [(ngModel)]="quantity">
-              <ion-option *ngFor='let i of quantityRange'>{{i}}</ion-option>
-            </ion-select>
-          </ion-item>
-        </ion-list>
-      </ion-card-content>
-      <button *ngIf="dynamicSlider" ion-button icon-left color="secondary" full (click)="addToCart(selectedItem, quantity)" [disabled]=disabled>
-        <ion-icon name='cart'></ion-icon>
-        Add to Cart (${{selectedItem.prices[quantity]}})
-      </button>
-      <button *ngIf="!dynamicSlider" ion-button icon-left color="secondary" full (click)="addToCart(selectedItem, quantity)" [disabled]=disabled>
-        <ion-icon name='cart'></ion-icon>
-        Add to Cart (${{selectedItem.prices[0] * quantity}})
-      </button>
-    </ion-card>
+   <ion-row responsive-md>
+     <ion-col width-50>
+       <ion-card>
+        <div id="item-logo-wrapper">
+          <ion-slides [options]="slideOptions">
+            <ion-slide *ngFor="let image of selectedItem.images">
+              <img src={{image}} class="item-image"/>
+            </ion-slide>
+          </ion-slides>
+        </div>
+        <ion-card-header>
+          {{selectedItem.name}}
+        </ion-card-header>
+        <ion-card-content>
+          <p>
+            <ion-badge color="green">{{selectedItem.subspecies}}</ion-badge>
+            <ion-badge color="lightgreen">{{itemSpec}}</ion-badge>
+          </p>
+          <p style="white-space: pre-line;">
+            {{selectedItem.description}}
+          </p>
+          <ion-list no-lines>
+            <ion-list-header *ngIf="dynamicSlider" no-lines>
+              <ion-badge color="secondary" item-right>{{selectedItem.price_labels[quantity]}}</ion-badge>
+            </ion-list-header>
+            <ion-item *ngIf="dynamicSlider">
+              <ion-range min="0" [max]="selectedItem.prices.length - 1" step="1" snaps="true" color="secondary" [(ngModel)]="quantity" >
+              </ion-range>
+            </ion-item>
+            <ion-item *ngIf="!dynamicSlider">
+              <ion-label>Select Quantity</ion-label>
+              <ion-select [(ngModel)]="quantity">
+                <ion-option *ngFor='let i of quantityRange'>{{i}}</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-card-content>
+        <button *ngIf="dynamicSlider" ion-button icon-left color="secondary" full (click)="addToCart(selectedItem, quantity)" [disabled]=disabled>
+          <ion-icon name='cart'></ion-icon>
+          Add to Cart (${{selectedItem.prices[quantity]}})
+        </button>
+        <button *ngIf="!dynamicSlider" ion-button icon-left color="secondary" full (click)="addToCart(selectedItem, quantity)" [disabled]=disabled>
+          <ion-icon name='cart'></ion-icon>
+          Add to Cart (${{selectedItem.prices[0] * quantity}})
+        </button>
+      </ion-card>
+    </ion-col>
+   </ion-row>
   </span>
 </ion-content>
