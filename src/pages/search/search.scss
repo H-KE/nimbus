@@ -1,4 +1,13 @@
 .search {
+  .scroll-content {
+    padding: 5px;
+  }
+
+  ion-col {
+    margin-bottom: 0px !important;
+    padding: 0px;
+  }
+
   ion-card:hover {
     -webkit-filter: brightness(90%);
   }

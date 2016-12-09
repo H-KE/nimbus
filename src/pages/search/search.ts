@@ -9,7 +9,7 @@ import {CartPage} from '../cart/cart';
 import {CartService} from '../../providers/cart/cart';
 import {DispensaryService} from '../../providers/dispensary/dispensary';
 
-import _ from 'underscore';
+import _ from 'lodash'
 
 @Component({
   selector: 'search',
@@ -17,8 +17,8 @@ import _ from 'underscore';
 })
 
 export class SearchPage {
-  pickupDispensaries: Dispensary;
-  mailDispensaries: Dispensary;
+  pickupDispensaries: any;
+  mailDispensaries: any;
   searchMode: string;
 
   constructor(public dispensaryService: DispensaryService,
@@ -47,9 +47,12 @@ export class SearchPage {
         this.mailDispensaries = _.filter(dispensaries, function(dispensary) {
           return dispensary.mail == true;
         });
+        this.mailDispensaries = _.chunk(this.mailDispensaries, 3)
+
         this.pickupDispensaries = _.filter(dispensaries, function(dispensary) {
           return dispensary.pickup == true;
         });
+        this.pickupDispensaries = _.chunk(this.pickupDispensaries, 3)
         loader.dismiss();
       });
   }
