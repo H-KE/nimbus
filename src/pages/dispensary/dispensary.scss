@@ -1,13 +1,14 @@
 dispensary {
   ion-col {
     margin-bottom: 0px !important;
+    padding: 0px !important;
   }
 
   #dispensary-logo-wrapper {
     height:30%;
     margin: 0
   }
-  
+
   a[disabled], button[disabled], [ion-button][disabled] {
       opacity: 1;
   }

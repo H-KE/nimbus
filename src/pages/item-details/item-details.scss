@@ -1,4 +1,9 @@
-.item-details {
+item-details {
+  ion-col {
+    margin: auto;
+    padding: 0px !important;
+  }
+
   div.selection {
     font-size: 22px;
     display: block;

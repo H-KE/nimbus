@@ -1,4 +1,9 @@
-.profile {
+profile {
+  ion-col {
+    margin: auto;
+    padding: 0px !important;
+  }
+
   [type=file] {
     cursor: inherit;
     display: block;

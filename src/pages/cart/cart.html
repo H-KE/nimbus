@@ -7,30 +7,34 @@
 </ion-header>
 
 <ion-content class="cart">
-  <span *ngIf="cartService.itemCount > 0">
-    <ion-card *ngFor="let cart of carts">
-      <ion-list>
-        <ion-list-header>
-          <ion-label item-left>{{cart.dispensary_name}}</ion-label>
-          <p item-right>${{cart.total}}</p>
-        </ion-list-header>
-        <ion-item *ngFor="let item of cart.content; let i = index">
-          <ion-avatar item-left>
-            <img src="{{cartService.getItemThumbnail(item)}}">
-          </ion-avatar>
-          <h2>{{item.name}}</h2>
-          <p>${{item.price}} • Qty: {{item.quantity}}</p>
-          <ion-icon item-right name="close-circle" (click)="cartService.removeFromCart(cart.dispensary_name, item, i)"></ion-icon>
+  <ion-row responsive-md>
+    <ion-col width-50>
+      <span *ngIf="cartService.itemCount > 0">
+        <ion-card *ngFor="let cart of carts">
+          <ion-list>
+            <ion-list-header>
+              <ion-label item-left>{{cart.dispensary_name}}</ion-label>
+              <p item-right>${{cart.total}}</p>
+            </ion-list-header>
+            <ion-item *ngFor="let item of cart.content; let i = index">
+              <ion-avatar item-left>
+                <img src="{{cartService.getItemThumbnail(item)}}">
+              </ion-avatar>
+              <h2>{{item.name}}</h2>
+              <p>${{item.price}} • Qty: {{item.quantity}}</p>
+              <ion-icon item-right name="close-circle" (click)="cartService.removeFromCart(cart.dispensary_name, item, i)"></ion-icon>
+            </ion-item>
+          </ion-list>
+          <button ion-button full color="secondary" (click)="checkoutCart(cart.dispensary_name)">
+            CHECKOUT
+          </button>
+        </ion-card>
+      </span>
+      <ion-card *ngIf="cartService.itemCount == 0">
+        <ion-item>
+          Nothing to see here...
         </ion-item>
-      </ion-list>
-      <button ion-button full color="secondary" (click)="checkoutCart(cart.dispensary_name)">
-        CHECKOUT
-      </button>
-    </ion-card>
-  </span>
-  <ion-card *ngIf="cartService.itemCount == 0">
-    <ion-item>
-      Nothing to see here...
-    </ion-item>
-  </ion-card>
+      </ion-card>
+    </ion-col>
+  </ion-row>
 </ion-content>

@@ -57,7 +57,7 @@ export class CartPage {
     this.order.pickup = this.cartService.carts[dispensaryName].dispensary.pickup;
     this.order.delivery = this.cartService.carts[dispensaryName].dispensary.delivery;
     this.order.delivery_fee = this.calculateShippingCost(this.cartService.carts[dispensaryName]);
-    this.order.tax_amount = (this.order.total_price) * 0.13; //TODO: this should not be hard coded
+    this.order.tax_amount = Number((this.order.total_price * 0.13).toFixed(2)); //TODO: this should not be hard coded
     this.order.dispensary_name = dispensaryName;
     this.order.show = false;
 

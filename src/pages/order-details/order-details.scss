@@ -1,4 +1,4 @@
-.order-details {
+order-details {
   $grad-top:         #f74d85;
   $grad-bottom:      #ca3063;
   $content-height:   460px;
@@ -103,5 +103,10 @@
     left: -16px;
     font-size: 26px;
     font-weight: 900;
+  }
+
+  ion-col {
+    margin: auto;
+    padding: 0px !important;
   }
 }

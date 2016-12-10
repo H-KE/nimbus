@@ -27,8 +27,8 @@ export class HomePage {
       image: "assets/img/nimbus-logo.png",
     },
     {
-      title: "In-Store Pickup",
-      description: "Hate waiting in line? Order from your favourite local dispensaries, and have your order <b>ready for pickup</b> when you arrive.",
+      title: "Premier Service",
+      description: "We are partnered with the best online vendors in Canada, so you can order from <b>a huge selection of products</b> all from one app.",
       image: "assets/img/nimbus-logo.png",
     }
   ];

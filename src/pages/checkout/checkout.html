@@ -8,6 +8,8 @@
 
 
 <ion-content class="checkout">
+  <ion-row responsive-md>
+   <ion-col width-50>
     <ion-list *ngIf="!order.pickup">
       <ion-list-header>
         <ion-label>Shipping Details</ion-label>
@@ -93,5 +95,6 @@
         <p>By pressing "place order" I agree to terms and conditions of the dispensary I am ordering from.</p>
       </ion-item> -->
     </ion-list>
-
+  </ion-col>
+ </ion-row>
 </ion-content>

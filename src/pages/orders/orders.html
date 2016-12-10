@@ -10,23 +10,27 @@
 </ion-header>
 
 <ion-content class="orders">
-  <div *ngIf="orders == null || orders.length == 0">
-    <ion-card padding >
-      <ion-item>
-        Nothing to see here...
-      </ion-item>
-    </ion-card>
-  </div>
-  <div *ngIf="orders != null">
-    <ion-card *ngFor="let order of orders">
-      <button ion-item detail-none (click)="goToOrderDetails($event, order)">
-        <ion-thumbnail item-left>
-          <img src={{order.dispensary_image}}>
-        </ion-thumbnail>
-        <h2 class="capitalize">{{orderStatusPipe(order.status)}}</h2>
-        <p>{{order.created_at | date:'yMMMMd'}}</p>
-        <p>${{order.total_price*1 + order.delivery_fee*1 + order.tax_amount*1}} • {{order.order_details.length}} items • {{order.dispensary_name}}</p>
-      </button>
-    </ion-card>
-  </div>
+  <ion-row responsive-md>
+    <ion-col width-50>
+      <div *ngIf="orders == null || orders.length == 0">
+        <ion-card padding >
+          <ion-item>
+            Nothing to see here...
+          </ion-item>
+        </ion-card>
+      </div>
+      <div *ngIf="orders != null">
+        <ion-card *ngFor="let order of orders">
+          <button ion-item detail-none (click)="goToOrderDetails($event, order)">
+            <ion-thumbnail item-left>
+              <img src={{order.dispensary_image}}>
+            </ion-thumbnail>
+            <h2 class="capitalize">{{orderStatusPipe(order.status)}}</h2>
+            <p>{{order.created_at | date:'yMMMMd'}}</p>
+            <p>${{order.total_price*1 + order.delivery_fee*1 + order.tax_amount*1}} • {{order.order_details.length}} items • {{order.dispensary_name}}</p>
+          </button>
+        </ion-card>
+      </div>
+    </ion-col>
+  </ion-row>
 </ion-content>

@@ -5,27 +5,31 @@
 </ion-header>
 
 <ion-content class="login">
-  <ion-list>
-    <ion-item>
-      <ion-label floating>E-mail Address</ion-label>
-      <ion-input type="email" [(ngModel)]="email"></ion-input>
-    </ion-item>
+  <ion-row responsive-md>
+    <ion-col width-50>
+      <ion-list>
+        <ion-item>
+          <ion-label floating>E-mail Address</ion-label>
+          <ion-input type="email" [(ngModel)]="email"></ion-input>
+        </ion-item>
 
-    <ion-item>
-      <ion-label floating>Password</ion-label>
-      <ion-input type="password" [(ngModel)]="password"></ion-input>
-    </ion-item>
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="password" [(ngModel)]="password"></ion-input>
+        </ion-item>
 
-    <ion-item class="no_bottom_border" *ngIf="errorMessage">
-      <p class="error-message">{{errorMessage}}</p>
-    </ion-item>
-  </ion-list>
-  <p class="align-center">
-    Welcome back!
-  </p>
-  <ion-list>
-    <button ion-button full color="secondary" (click)="login()">
-      <span>Sign In</span>
-    </button>
-  </ion-list>
+        <ion-item class="no_bottom_border" *ngIf="errorMessage">
+          <p class="error-message">{{errorMessage}}</p>
+        </ion-item>
+      </ion-list>
+      <p class="align-center">
+        Welcome back!
+      </p>
+      <ion-list>
+        <button ion-button full color="secondary" (click)="login()">
+          <span>Sign In</span>
+        </button>
+      </ion-list>
+    </ion-col>
+  </ion-row>
 </ion-content>

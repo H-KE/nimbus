@@ -12,7 +12,7 @@ import { Ticket } from '../../models/ticket';
 import { TicketService } from '../../providers/ticket/ticket';
 
 @Component({
-  selector: 'page-contact',
+  selector: 'contact',
   templateUrl: 'contact.html'
 })
 export class ContactPage {

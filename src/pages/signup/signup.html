@@ -5,39 +5,43 @@
 </ion-header>
 
 <ion-content class="signup">
-  <form [formGroup]="signupForm" (ngSubmit)="signup()">
-    <ion-list>
-        <ion-item>
-          <ion-label floating>First Name</ion-label>
-          <ion-input type="text" formControlName="first_name"></ion-input>
-        </ion-item>
+  <ion-row responsive-md>
+    <ion-col width-50>
+      <form [formGroup]="signupForm" (ngSubmit)="signup()">
+        <ion-list>
+            <ion-item>
+              <ion-label floating>First Name</ion-label>
+              <ion-input type="text" formControlName="first_name"></ion-input>
+            </ion-item>
 
-        <ion-item>
-          <ion-label floating>Last Name</ion-label>
-          <ion-input type="text" formControlName="last_name"></ion-input>
-        </ion-item>
+            <ion-item>
+              <ion-label floating>Last Name</ion-label>
+              <ion-input type="text" formControlName="last_name"></ion-input>
+            </ion-item>
 
-        <ion-item>
-          <ion-label floating>E-mail Address</ion-label>
-          <ion-input type="email" formControlName="email"></ion-input>
-        </ion-item>
+            <ion-item>
+              <ion-label floating>E-mail Address</ion-label>
+              <ion-input type="email" formControlName="email"></ion-input>
+            </ion-item>
 
-        <ion-item>
-          <ion-label floating>Password</ion-label>
-          <ion-input type="password" formControlName="password"></ion-input>
-        </ion-item>
+            <ion-item>
+              <ion-label floating>Password</ion-label>
+              <ion-input type="password" formControlName="password"></ion-input>
+            </ion-item>
 
-        <ion-item class="no_bottom_border" *ngIf="errorMessage">
-          <p class="error-message">{{errorMessage}}</p>
-        </ion-item>
-    </ion-list>
-  </form>
-  <p class="terms align-center">
-    By signing up I agree to the <a (click)="goToTerms()">Terms of Service</a>
-  </p>
-  <ion-list>
-    <button ion-button full color="secondary" (click)="signup()">
-      <span>Sign Up</span>
-    </button>
-  </ion-list>
+            <ion-item class="no_bottom_border" *ngIf="errorMessage">
+              <p class="error-message">{{errorMessage}}</p>
+            </ion-item>
+        </ion-list>
+      </form>
+      <p class="terms align-center">
+        By signing up I agree to the <a (click)="goToTerms()">Terms of Service</a>
+      </p>
+      <ion-list>
+        <button ion-button full color="secondary" (click)="signup()">
+          <span>Sign Up</span>
+        </button>
+      </ion-list>
+    </ion-col>
+  </ion-row>
 </ion-content>

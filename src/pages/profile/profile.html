@@ -10,71 +10,75 @@
 </ion-header>
 <!-- TODO: remove the ng ifs -->
 <ion-content class="profile">
-  <ion-list *ngIf="email">
-    <ion-list-header>
-      Contact
-    </ion-list-header>
-    <button detail-push ion-item>
-      <ion-icon item-left name="person"></ion-icon>
-      {{firstName}} {{lastName}}, {{email}}
-    </button>
-  </ion-list>
+  <ion-row responsive-md>
+    <ion-col width-50>
+      <ion-list *ngIf="email">
+        <ion-list-header>
+          Contact
+        </ion-list-header>
+        <button detail-push ion-item>
+          <ion-icon item-left name="person"></ion-icon>
+          {{firstName}} {{lastName}}, {{email}}
+        </button>
+      </ion-list>
 
-  <ion-list *ngIf="email">
-    <ion-list-header>
-      Delivery Addresses
-    </ion-list-header>
-    <button detail-push ion-item *ngFor="let address of addresses">  <!-- (click)="editAddress(address)"> -->
-      <ion-icon item-left name="home"></ion-icon>
-      <b>{{address.primary}} {{address.secondary}}</b>, {{address.locality}}, {{address.administrative_area_level_1}}, {{address.postal_code}}
-    </button>
-    <button detail-none ion-item (click)="addAddress()">
-      <span color="danger" item-right>Add shipping address</span>
-    </button>
-  </ion-list>
+      <ion-list *ngIf="email">
+        <ion-list-header>
+          Delivery Addresses
+        </ion-list-header>
+        <button detail-push ion-item *ngFor="let address of addresses">  <!-- (click)="editAddress(address)"> -->
+          <ion-icon item-left name="home"></ion-icon>
+          <b>{{address.primary}} {{address.secondary}}</b>, {{address.locality}}, {{address.administrative_area_level_1}}, {{address.postal_code}}
+        </button>
+        <button detail-none ion-item (click)="addAddress()">
+          <span color="danger" item-right>Add shipping address</span>
+        </button>
+      </ion-list>
 
-  <ion-list *ngIf="email">
-    <ion-list-header>
-      Age Verification Document
-    </ion-list-header>
-    <button detail-push ion-item *ngIf="idDocuments.length > 0" (click)="goToIdDocumentsPage()">
-      <ion-icon item-left name="document"></ion-icon>
-      View ID document
-    </button>
-    <ion-item detail-none *ngIf="idDocuments.length < 1">
-      <input type="file" accept="image/*;capture=camera" (change)="addDocument($event, 'identification')"/>
-      <span color="danger" item-right>
-        Add a government ID
-      </span>
-    </ion-item>
-  </ion-list>
+      <ion-list *ngIf="email">
+        <ion-list-header>
+          Age Verification Document
+        </ion-list-header>
+        <button detail-push ion-item *ngIf="idDocuments.length > 0" (click)="goToIdDocumentsPage()">
+          <ion-icon item-left name="document"></ion-icon>
+          View ID document
+        </button>
+        <ion-item detail-none *ngIf="idDocuments.length < 1">
+          <input type="file" accept="image/*;capture=camera" (change)="addDocument($event, 'identification')"/>
+          <span color="danger" item-right>
+            Add a government ID
+          </span>
+        </ion-item>
+      </ion-list>
 
-  <ion-list *ngIf="email">
-    <ion-list-header>
-      Medical Verification Document
-    </ion-list-header>
-    <button detail-push ion-item *ngIf="medicalDocuments.length > 0" (click)="goToMedicalDocumentsPage()">
-      <ion-icon item-left name="medical"></ion-icon>
-      View medical document
-    </button>
-    <ion-item detail-none *ngIf="medicalDocuments.length < 1">
-      <input type="file" accept="image/*;capture=camera" (change)="addDocument($event, 'medical')"/>
-      <span color="danger" item-right>
-        Add medical document
-      </span>
-    </ion-item>
-  </ion-list>
+      <ion-list *ngIf="email">
+        <ion-list-header>
+          Medical Verification Document
+        </ion-list-header>
+        <button detail-push ion-item *ngIf="medicalDocuments.length > 0" (click)="goToMedicalDocumentsPage()">
+          <ion-icon item-left name="medical"></ion-icon>
+          View medical document
+        </button>
+        <ion-item detail-none *ngIf="medicalDocuments.length < 1">
+          <input type="file" accept="image/*;capture=camera" (change)="addDocument($event, 'medical')"/>
+          <span color="danger" item-right>
+            Add medical document
+          </span>
+        </ion-item>
+      </ion-list>
 
-  <ion-list *ngIf="email">
-    <button detail-none ion-item (click)="goToTerms()">
-      <ion-icon item-left name="paper"></ion-icon>
-      Privacy Policy & Terms of Service
-    </button>
-  </ion-list>
+      <ion-list *ngIf="email">
+        <button detail-none ion-item (click)="goToTerms()">
+          <ion-icon item-left name="paper"></ion-icon>
+          Privacy Policy & Terms of Service
+        </button>
+      </ion-list>
 
-  <ion-list *ngIf="email">
-    <button ion-button full color="white" (click)="signOut()">
-      <span color="secondary">Sign Out</span>
-    </button>
-  </ion-list>
+      <ion-list *ngIf="email">
+        <button ion-button full color="white" (click)="signOut()">
+          <span color="secondary">Sign Out</span>
+        </button>
+      </ion-list>
+    </ion-col>
+  </ion-row>
 </ion-content>

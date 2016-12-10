@@ -1,3 +1,13 @@
+<!-- <ion-header no-shadow>
+  <ion-toolbar id="explore-nimbus" no-border>
+    <ion-buttons end>
+      <button ion-button icon-right (click)="goToSearch()" color="light" clear>
+        Explore Nimbus
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
 <ion-content scroll="false" class="home">
   <ion-grid class="logo">
     <img [src]="slides[0].image" class="slide-image"/>
@@ -11,8 +21,8 @@
     </ion-slide>
   </ion-slides>
   <ion-grid class="auth">
-    <ion-row>
-      <ion-col>
+    <ion-row responsive-md>
+      <ion-col id="responsive-col" width-50>
         <ion-row>
           <ion-col>
             <button (click)="oauth('facebook')" ion-button icon-left color="facebook" class="facebook-signup">

@@ -15,6 +15,11 @@
   -o-background-size: cover;
   background-size: cover;
 
+  ion-col#responsive-col {
+    margin: auto;
+    padding: 0px !important;
+  }
+
   p {
     color: white;
     text-align: center;
