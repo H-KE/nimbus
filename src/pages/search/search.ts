@@ -74,7 +74,8 @@ export class SearchPage {
 
   dispensarySelected(event, dispensary) {
     this.navCtrl.push(DispensaryPage, {
-      dispensary: dispensary
+      dispensary: dispensary,
+      dispensaryId: dispensary.id
     });
   }
 

@@ -6,6 +6,7 @@ import { Dispensary } from '../../models/dispensary';
 import { ItemDetailsPage } from '../item-details/item-details';
 import { CartPage } from '../cart/cart';
 import { CartService } from '../../providers/cart/cart';
+import { DispensaryService } from '../../providers/dispensary/dispensary';
 
 import _ from 'underscore';
 
@@ -14,24 +15,36 @@ import _ from 'underscore';
   templateUrl: 'dispensary.html'
 })
 export class DispensaryPage {
-  selectedDispensary: Dispensary;
+  selectedDispensary: any;
   menu: Item[];
   menuCategories: any[];
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public cartService: CartService,
+              public dispensaryService: DispensaryService,
               public loadingCtrl: LoadingController) {
 
   }
 
   public ionViewDidLoad(): void {
-    this.selectedDispensary = this.navParams.get('dispensary');
-    this.menu = _.sortBy(this.selectedDispensary.products, 'id');
-    this.categorizeMenu();
-  };
+    if(!this.navParams.get('dispensary')) {
+      var loader = this.loadingCtrl.create({})
+      loader.present()
+      this.dispensaryService.getDispensary(this.navParams.get('dispensaryId'))
+        .then(dispensary => {
+          this.selectedDispensary = dispensary
+          this.categorizeMenu()
+          loader.dismiss()
+        })
+    } else {
+      this.selectedDispensary = this.navParams.get('dispensary')
+      this.categorizeMenu()
+    }
+  }
 
   categorizeMenu() {
+    this.menu = _.sortBy(this.selectedDispensary.products, 'id');
     this.menuCategories = [];
     for (var category of _.uniq(_.pluck(this.menu, 'category'))) {
       this.menuCategories.push ({
