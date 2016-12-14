@@ -6,6 +6,7 @@ import { Cart } from '../../models/cart'
 import { OrdersPage } from '../orders/orders'
 import { CartService } from '../../providers/cart/cart';
 import { OrderService } from '../../providers/orders/orders';
+import { AuthenticationService } from '../../providers/authentication/authentication'
 import { CheckoutPage } from '../checkout/checkout';
 import { ItemDetailsPage } from '../item-details/item-details';
 
@@ -22,7 +23,8 @@ export class CartPage {
   constructor(public navCtrl: NavController,
               public cartService: CartService,
               public orderService: OrderService,
-              public alertController: AlertController) {
+              public alertCtrl: AlertController,
+              public auth: AuthenticationService) {
 
   }
 
@@ -37,9 +39,18 @@ export class CartPage {
   }
 
   goToCheckout() {
-    this.navCtrl.push(CheckoutPage, {
-      order: this.order
-    });
+    if(this.auth._currentUserData) {
+      this.navCtrl.push(CheckoutPage, {
+        order: this.order
+      });
+    } else {
+      let alert = this.alertCtrl.create({
+        title: 'Login Needed',
+        subTitle: 'Please login first before placing your order.',
+        buttons: ['OK']
+      });
+      alert.present();
+    }
   }
 
   editItem(item) {

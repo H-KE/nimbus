@@ -23,12 +23,12 @@ export class HomePage {
     },
     {
       title: "Mail Delivery",
-      description: "Don't want to go outside? Stay home and get premium cannabis <b>delivered straight to your door</b> from Canada's highest-quality dispensaries.",
+      description: "Don't want to go outside? Stay home and get premium cannabis <b>delivered straight to your door</b> from Canada's bests.",
       image: "assets/img/nimbus-logo.png",
     },
     {
       title: "Premier Service",
-      description: "We are partnered with the best online vendors in Canada, so you can order from <b>a huge selection of products</b> all from one app.",
+      description: "We are partnered with the best online dispensaries and brands in Canada, so you can order from <b>a huge selection of products</b> all from one app.",
       image: "assets/img/nimbus-logo.png",
     }
   ];

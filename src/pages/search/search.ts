@@ -8,6 +8,7 @@ import {CartPage} from '../cart/cart';
 
 import {CartService} from '../../providers/cart/cart';
 import {DispensaryService} from '../../providers/dispensary/dispensary';
+import { SideMenuService } from '../../providers/side-menu/side-menu'
 
 import _ from 'lodash'
 
@@ -27,13 +28,16 @@ export class SearchPage {
               public _zone: NgZone,
               public cartService: CartService,
               public loadingCtrl: LoadingController,
-              public menuCtrl: MenuController) {
+              public menuCtrl: MenuController,
+              public sideMenu: SideMenuService) {
   }
 
   public ionViewDidLoad(): void {
     this.menuCtrl.swipeEnable(true);
     this.searchMode = "mail";
     this.loadDispensaries();
+
+    this.sideMenu.loadSideMenu();
   }
 
   loadDispensaries() {

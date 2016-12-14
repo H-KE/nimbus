@@ -31,6 +31,7 @@ import { AuthenticationService } from '../providers/authentication/authenticatio
 import { VerificationService } from '../providers/verification/verification';
 import { TrackingService } from '../providers/tracking/tracking';
 import { TicketService } from '../providers/ticket/ticket';
+import { SideMenuService } from '../providers/side-menu/side-menu';
 
 @NgModule({
   declarations: [
@@ -57,19 +58,7 @@ import { TicketService } from '../providers/ticket/ticket';
   imports: [
     IonicModule.forRoot(MyApp, {}, {
       links: [
-        { component: HomePage, name: 'Home', segment: 'home' },
-        { component: SearchPage, name: 'Search', segment: 'dispensaries' },
-        { component: OrdersPage, name: 'Orders', segment: 'orders' },
-        { component: OrderDetailsPage, name: 'OrderDetails', segment: 'order-details' },
-        { component: LoginPage, name: 'Login', segment: 'login' },
-        { component: SignupPage, name: 'Signup', segment: 'signup' },
-        { component: ProfilePage, name: 'Profile', segment: 'profile' },
-        { component: ContactPage, name: 'Contact', segment: 'contact' },
-        { component: CartPage, name: 'Cart', segment: 'cart', defaultHistory: [SearchPage]  },
-        { component: CheckoutPage, name: 'Checkout', segment: 'checkout' },
         { component: DispensaryPage, name: 'dispensary', segment: 'dispensary/:dispensaryId', defaultHistory: [SearchPage] },
-        { component: TermsPage, name: 'Terms', segment: 'terms', defaultHistory: [HomePage] },
-        { component: AboutPage, name: 'About', segment: 'about' }
       ]
     })
   ],
@@ -107,7 +96,8 @@ import { TicketService } from '../providers/ticket/ticket';
     VerificationService,
     TrackingService,
     Storage,
-    TicketService
+    TicketService,
+    SideMenuService
   ]
 })
 export class AppModule {}
