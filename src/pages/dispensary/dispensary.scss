@@ -1,7 +1,7 @@
 dispensary {
   ion-col {
-    margin-bottom: 0px !important;
-    padding: 0px !important;
+    margin: auto !important;
+    padding: 0px;
   }
 
   #dispensary-logo-wrapper {
@@ -9,7 +9,38 @@ dispensary {
     margin: 0
   }
 
-  a[disabled], button[disabled], [ion-button][disabled] {
-      opacity: 1;
+  h2.category-name {
+    text-align: center;
+  }
+
+  #dispensary-card {
+    text-align: center;
+    border-radius: 100em;
+
+    // ion-item:active {
+    //   -webkit-filter: brightness(95%);
+    // }
+
+    img {
+      max-width: none !important;
+      max-height: none !important;
+      width: 5em !important;
+      height: 5em !important;
+      border-radius: 100em !important;
+    }
+    h2.product-name {
+      font-weight: 500;
+    }
+    h2.strain {
+      font-weight: 500;
+    }
+    .thc {
+      color: #000;
+      font-weight: 500;
+    }
+    .cbd {
+      color: #000;
+      font-weight: 500;
+    }
   }
 }

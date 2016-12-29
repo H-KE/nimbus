@@ -10,9 +10,34 @@
 </ion-header>
 
 <ion-content class="dispensary">
-  <span *ngIf="selectedDispensary" class="selection">
+  <div *ngIf="selectedDispensary" class="selection">
     <ion-row responsive-md>
       <ion-col width-50>
+        <div *ngFor="let category of menuCategories">
+          <h2 class="category-name">{{category.name}}</h2>
+          <div *ngFor="let item of category.items">
+            <ion-card id="dispensary-card">
+              <ion-item detail-none text-wrap (click)="itemSelected($event, item)">
+                <ion-avatar item-left>
+                  <img src="{{cartService.getItemThumbnail(item)}}">
+                </ion-avatar>
+                <h2 class="product-name">{{item.name}}</h2>
+                <h2 class="strain" *ngIf="item.subspecies" color="{{item.subspecies.toLowerCase()}}">{{item.subspecies}}</h2>
+                <p>{{renderItemDescription(item)}}</p>
+                <button ion-fab item-right color="secondary" (click)="addToCart($event, item)" [disabled]="isItemDisabled(item)">
+                  {{renderItemPrice(item)}}
+                  <ion-icon name="cart"></ion-icon>
+                </button>
+              </ion-item>
+            </ion-card>
+          </div>
+        </div>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>
+    <!-- <ion-row responsive-md> -->
+      <!-- <ion-col width-50>
         <ion-card>
           <div id="dispensary-logo-wrapper">
             <img src={{selectedDispensary.avatar_url}} class="dispensary-logo"/>
@@ -44,10 +69,10 @@
             Medical documents required
           </button>
         </ion-card>
-      </ion-col>
+      </ion-col> -->
 
-      <ion-col width-50>
-        <ion-card>
+      <!-- <ion-col width-50> -->
+        <!-- <ion-card>
           <ion-list-header>
             Menu
           </ion-list-header>
@@ -70,15 +95,12 @@
                 </ion-avatar>
                 <h2 style="display:inline">
                   {{item.name}}
-                  <!-- <p style="display:inline" *ngIf="item.subspecies"> • </p> -->
                 </h2>
                 <p>{{renderItemDescription(item)}}</p>
                 <ion-note item-right="">{{renderItemPrice(item)}}</ion-note>
               </button>
             </ion-list>
           </span>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </span>
-</ion-content>
+        </ion-card> -->
+      <!-- </ion-col> -->
+    <!-- </ion-row> -->
