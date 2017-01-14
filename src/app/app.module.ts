@@ -10,12 +10,17 @@ import { OrderDetailsPage } from '../pages/order-details/order-details'
 import { LoginPage } from '../pages/login/login';
 import { SignupPage }  from '../pages/signup/signup';
 import { ProfilePage } from '../pages/profile/profile';
+import { ContactPage } from '../pages/contact/contact';
 import { CartPage } from '../pages/cart/cart';
 import { CheckoutPage } from '../pages/checkout/checkout';
 import { DispensaryPage } from '../pages/dispensary/dispensary';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { AddressModalPage } from '../pages/address-modal/address-modal';
-import { CardModalPage } from '../pages/card-modal/card-modal';
+import { ContactModalPage } from '../pages/contact-modal/contact-modal';
+import { DocumentsModalPage } from '../pages/documents-modal/documents-modal';
+import { TermsPage } from '../pages/terms/terms';
+import { ShippoPage } from '../pages/shippo/shippo';
+import { AboutPage } from '../pages/about/about';
 
 import { CartService } from '../providers/cart/cart';
 import { DispensaryService } from '../providers/dispensary/dispensary';
@@ -23,8 +28,10 @@ import { MenuService } from '../providers/menu/menu';
 import { ProfileService } from '../providers/profile/profile';
 import { OrderService } from '../providers/orders/orders';
 import { AuthenticationService } from '../providers/authentication/authentication'
-import { StripeService } from '../providers/stripe/stripe';
-
+import { VerificationService } from '../providers/verification/verification';
+import { TrackingService } from '../providers/tracking/tracking';
+import { TicketService } from '../providers/ticket/ticket';
+import { SideMenuService } from '../providers/side-menu/side-menu';
 
 @NgModule({
   declarations: [
@@ -36,15 +43,24 @@ import { StripeService } from '../providers/stripe/stripe';
     LoginPage,
     SignupPage,
     ProfilePage,
+    ContactPage,
     CartPage,
     CheckoutPage,
     DispensaryPage,
     ItemDetailsPage,
     AddressModalPage,
-    CardModalPage
+    DocumentsModalPage,
+    TermsPage,
+    ShippoPage,
+    ContactModalPage,
+    AboutPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp, {}, {
+      links: [
+        { component: DispensaryPage, name: 'dispensary', segment: 'dispensary/:dispensaryId', defaultHistory: [SearchPage] },
+      ]
+    })
   ],
   bootstrap: [
     IonicApp
@@ -58,12 +74,17 @@ import { StripeService } from '../providers/stripe/stripe';
     LoginPage,
     SignupPage,
     ProfilePage,
+    ContactPage,
     CartPage,
     CheckoutPage,
     DispensaryPage,
     ItemDetailsPage,
     AddressModalPage,
-    CardModalPage
+    DocumentsModalPage,
+    TermsPage,
+    ShippoPage,
+    ContactModalPage,
+    AboutPage
   ],
   providers: [
     CartService,
@@ -72,8 +93,11 @@ import { StripeService } from '../providers/stripe/stripe';
     MenuService,
     ProfileService,
     AuthenticationService,
-    StripeService,
-    Storage
+    VerificationService,
+    TrackingService,
+    Storage,
+    TicketService,
+    SideMenuService
   ]
 })
 export class AppModule {}

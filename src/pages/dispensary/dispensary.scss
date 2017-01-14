@@ -1,21 +1,46 @@
-.dispensary {
+dispensary {
+  ion-col {
+    margin: auto !important;
+    padding: 0px;
+  }
+
   #dispensary-logo-wrapper {
     height:30%;
     margin: 0
   }
+
+  h2.category-name {
+    text-align: center;
+  }
+
+  #dispensary-card {
+    text-align: center;
+    border-radius: 100em;
+
+    // ion-item:active {
+    //   -webkit-filter: brightness(95%);
+    // }
+
+    img {
+      max-width: none !important;
+      max-height: none !important;
+      width: 5em !important;
+      height: 5em !important;
+      border-radius: 100em !important;
+    }
+    h2.product-name {
+      font-weight: 500;
+    }
+    h2.strain {
+      font-weight: 500;
+    }
+    .thc {
+      color: #000;
+      font-weight: 500;
+    }
+    .cbd {
+      color: #000;
+      font-weight: 500;
+    }
+  }
 }
-// .list .item.item-accordion {
-//   line-height: 38px;
-//   padding-top: 0;
-//   padding-bottom: 0;
-//   transition: 0.09s all linear;
-// }
-//
-// .item.item-accordion. {
-//   line-height: 0px;
-// }
-//
-// .item.item-accordion.ng-hide-add,
-// .item.item-accordion.ng-hide-remove {
-//   display: block !important;
-// }

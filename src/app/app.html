@@ -1,16 +1,19 @@
 <ion-menu [content]="content">
   <ion-header>
     <ion-toolbar color="primary">
-      <ion-title>Menu</ion-title>
+      <ion-title>Nimbus</ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-content class="menu">
     <ion-list>
-      <button color="primary" detail-non no-lines menuClose ion-item icon-left *ngFor="let p of pages" (click)="openPage(p)">
+      <button color="primary" detail-non no-lines menuClose ion-item icon-left *ngFor="let p of sideMenu.pages" (click)="openPage(p)">
         <ion-icon name={{p.icon}}></ion-icon>
         {{p.title}}
       </button>
+    </ion-list>
+    <ion-list>
+      <ion-list-header tappable menuToggle (click)="goToAbout()">About</ion-list-header>
     </ion-list>
   </ion-content>
 

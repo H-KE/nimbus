@@ -1,20 +1,36 @@
+<ion-header no-shadow>
+  <ion-toolbar id="explore-nimbus" no-border>
+    <ion-buttons end>
+      <button ion-button icon-right (click)="goToSearch()" color="light" clear>
+        Explore Nimbus
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
 <ion-content scroll="false" class="home">
-  <ion-grid>
-    <ion-row class="home-logo">
-      <ion-col>
-        <img src="./assets/img/nimbus-logo.jpg"/>
-      </ion-col>
-    </ion-row>
-    <ion-row class="auth-buttons">
-      <ion-col>
+  <ion-grid class="logo">
+    <img [src]="slides[0].image" class="slide-image"/>
+  </ion-grid>
+  <ion-slides [options]="slideOptions">
+    <ion-slide *ngFor="let slide of slides">
+      <div class="slider-content">
+        <h3 class="slide-title" [innerHTML]="slide.title"></h3>
+        <p class="slide-detail" [innerHTML]="slide.description"></p>
+      </div>
+    </ion-slide>
+  </ion-slides>
+  <ion-grid class="auth">
+    <ion-row responsive-md>
+      <ion-col id="responsive-col" width-50>
         <ion-row>
           <ion-col>
-            <button disabled="true" ion-button icon-left color="facebook" class="facebook-signup" (click)="goToSearch()">
+            <button (click)="oauth('facebook')" ion-button icon-left color="facebook" class="facebook-signup">
               <ion-icon name="logo-facebook"></ion-icon>
               <p>Facebook</p></button>
           </ion-col>
           <ion-col>
-            <button disabled="true" ion-button icon-left color="google" class="google-signup" (click)="goToSearch()">
+            <button (click)="oauth('google_oauth2')" ion-button icon-left color="google" class="google-signup">
               <ion-icon name="logo-googleplus"></ion-icon>
               <p>Google</p></button>
           </ion-col>
@@ -24,7 +40,7 @@
             <button ion-button (click)="goToSignUp()" color="white" class="email-signup"><p><b>Sign up</b> with Email</p></button>
           </ion-col>
         </ion-row>
-        <ion-row class="signin">
+        <ion-row>
           <ion-col>
             <p>Already a member? <b><a (click)="goToLogin()">Sign in here!</a></b></p>
           </ion-col>

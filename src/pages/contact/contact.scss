@@ -1,0 +1,36 @@
+contact {
+  ion-col {
+    margin: auto;
+    padding: 0px !important;
+  }
+  
+  ion-icon {
+    font-size: 4em;
+  }
+
+  ion-card {
+    height: 190px;
+    position: relative;
+    text-align: center;
+  }
+
+  .card-detail {
+    position: absolute;
+    display: block;
+    top: 40px;
+    height: calc(100% - 60px);
+    width: 100%;
+
+    .card-title {
+      font-size: 1.5em;
+      width: 100%;
+      font-weight: bold;
+    }
+
+    .card-subtitle {
+      font-size: 1.0em;
+      width: 100%;
+      color: #aeacb4;
+    }
+  }
+}

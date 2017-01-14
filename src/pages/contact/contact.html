@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <button ion-button icon-only menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Contact Us
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="contact">
+  <ion-row responsive-md>
+    <ion-col width-50>
+      <ion-card tappable (click)="sendTicket('order')">
+        <div class="card-detail">
+          <ion-icon name="time"></ion-icon>
+          <div class="card-title">My Orders</div>
+          <div class="card-subtitle">Help with active and past orders</div>
+        </div>
+      </ion-card>
+      <ion-card tappable (click)="sendTicket('account')">
+        <div class="card-detail">
+          <ion-icon name="settings"></ion-icon>
+          <div class="card-title">Account</div>
+          <div class="card-subtitle">Help with your account and profile</div>
+        </div>
+      </ion-card>
+      <ion-card tappable (click)="sendTicket('feedback')">
+        <div class="card-detail">
+          <ion-icon name="paper"></ion-icon>
+          <div class="card-title">Feedback</div>
+          <div class="card-subtitle">Let us know your experience with the app!</div>
+        </div>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-content>

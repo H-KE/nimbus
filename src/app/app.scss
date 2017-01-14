@@ -19,6 +19,12 @@
     border-top: 0.55px solid;
     border-color: color($colors, dark, base) !important;
   }
+  ion-list-header {
+    background-color: color($colors, primary, base) !important;
+    border-top: 1px solid #333;
+    border-bottom: 0px !important;
+    color: #666 !important;
+  }
   background-color: color($colors, primary, base) !important;
 }
 
@@ -30,30 +36,33 @@ ion-select {
   max-width: 100% !important;
 }
 
+body {
+  position: relative !important;
+  margin: 0 auto !important;
+}
+
 #address_select .select-text{
   white-space: pre-line;
 }
 
-.list-md .item-block .item-inner {
-  border-bottom: 1px solid #dedede !important;
-}
-
-.alert-radio-label {
-  white-space: pre-line !important;
-}
-
-
-button {
-  .item-accordion {
-    transition: 0.09s all linear;
-  }
-}
-
 .error-message {
   color: #f53d3d !important;
+  white-space: normal !important;
   word-wrap: break-word !important;
 }
 
-.no_bottom_border .item-inner {
-  border-bottom: 0 !important;
+.capitalize {
+   text-transform: capitalize;
+}
+
+p.align-center {
+  text-align: center;
+  padding: 0 12px 0 12px;
+}
+
+
+#explore-nimbus {
+  .toolbar-background {
+    background-color: transparent !important;
+  }
 }

@@ -1,6 +1,6 @@
 {
-  "name": "nimbus-upgrade",
-  "app_id": "",
+  "name": "nimbus",
+  "app_id": "337212e8",
   "v2": true,
   "typescript": true
 }

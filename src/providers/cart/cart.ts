@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { Storage } from '@ionic/storage'
 import 'rxjs/add/operator/map';
 
 import { Item } from '../../models/item';
@@ -12,9 +13,14 @@ export class CartService {
   carts: any; //TODO: object type should be map of dispensary name to cart objects, eg. {dispensary_name: Cart}
   itemCount: number;
 
-  constructor(public http: Http) {
-    this.carts = {};
-    this.itemCount = 0;
+  constructor(public http: Http,
+              public localStorage: Storage) {
+    this.init()
+  }
+
+  init() {
+    this.carts = JSON.parse(localStorage.getItem('carts')) || {};
+    this.itemCount = +localStorage.getItem('itemCount') || 0;
   }
 
   getAll() {
@@ -32,21 +38,20 @@ export class CartService {
     return this.carts.itemCount;
   }
 
-  addToCart(dispensaryName, item, quantity, price) {
+  addToCart(dispensaryName, dispensary, item, quantity, price) {
     let newItem = Object.assign({}, item);
     newItem.quantity = quantity;
     newItem.price = price;
 
     let cart = this.carts[dispensaryName] == null?
-                new Cart(dispensaryName, [], 0, 0) : this.carts[dispensaryName];
+                new Cart(dispensaryName, dispensary, [], 0, 0) : this.carts[dispensaryName];
     cart.content.push(newItem);
     cart.count += 1;
     cart.total += price;
 
     this.carts[dispensaryName] = cart;
     this.itemCount += 1;
-
-    console.log(this.carts);
+    this.updateLocalStorage();
   }
 
   removeFromCart(dispensaryName, removedItem, itemIndex) {
@@ -60,16 +65,23 @@ export class CartService {
     if(this.carts[dispensaryName].count == 0) {
       this.clearCart(dispensaryName);
     }
+    this.updateLocalStorage();
   }
 
-  clearCart(dispensaryName) {//TODO: this is not used, but if to use, need to handle itemCOunt logic to it
+  clearCart(dispensaryName) {
     this.itemCount -= this.carts[dispensaryName].count;
     delete this.carts[dispensaryName];
-    console.log(this.carts);
+    this.updateLocalStorage();
   }
 
-  getItemThumbnail(item) { //TODO: Why is this here? move to item service or something
-    let url = item.images[0]
+  updateLocalStorage() {
+    localStorage.setItem('carts', JSON.stringify(this.carts));
+    localStorage.setItem('itemCount', this.itemCount.toString());
+  }
+
+  getItemThumbnail(item) {
+    let url = item.thumbnail == undefined? item.images[0] : item.thumbnail
+    //TODO: make this better..
     if (item.retailer_id == 2) {
       url = url.replace('.jpg', '_tn.jpg');
     }

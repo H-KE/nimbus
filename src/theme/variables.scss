@@ -11,6 +11,9 @@
 
 $text-color:        #000;
 $background-color:  #fff;
+$item-md-detail-push-show: true;
+$item-wp-detail-push-show: true;
+$item-ios-detail-push-show: true;
 
 
 // Named Color Variables
@@ -30,8 +33,15 @@ $colors: (
   favorite:   #69BB7B,
   background: #eeeeee,
   white:      #fff,
+  blue:       #387ef5,
+  green:      #0c794d,
+  lightgreen: #00ab66,
   facebook:   #4E6BAC,
-  google:     #303030
+  google:     #303030,
+  sativa:     #ebb22d,
+  hybrid:     #00be8c,
+  indica:     #44afe3,
+  cbd:        #b43554
 );
 
 

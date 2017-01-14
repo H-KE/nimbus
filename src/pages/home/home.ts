@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, MenuController } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
 import { LoginPage } from '../login/login';
 import { SearchPage } from '../search/search';
@@ -10,22 +10,52 @@ import { AuthenticationService } from '../../providers/authentication/authentica
   templateUrl: 'home.html'
 })
 export class HomePage {
+  slideOptions = {
+    initialSlide: 0,
+    pager: true
+  };
+
+  slides = [
+    {
+      title: "Welcome",
+      description: "Nimbus is the simplest way to buy marijuana in Canada.",
+      image: "assets/img/nimbus-logo.png",
+    },
+    {
+      title: "Mail Delivery",
+      description: "Don't want to go outside? Stay home and get premium cannabis <b>delivered straight to your door</b> from Canada's bests.",
+      image: "assets/img/nimbus-logo.png",
+    },
+    {
+      title: "Premier Service",
+      description: "We are partnered with the best online dispensaries and brands in Canada, so you can order from <b>a huge selection of products</b> all from one app.",
+      image: "assets/img/nimbus-logo.png",
+    }
+  ];
 
   constructor(public navCtrl: NavController,
-              public auth: AuthenticationService) {
-
+              public auth: AuthenticationService,
+              public menuCtrl: MenuController) {
   }
 
-  // goToSearch() {
-  //   this.auth.signIn(
-  //     "admin@nimbusfly.co",
-  //     "topsecret")
-  //     .map(response => response.json())
-  //     .subscribe(
-  //       res => this.navCtrl.setRoot(SearchPage),
-  //       error => console.log("WTF")
-  //     )
-  // }
+  ionViewDidLoad() {
+    this.menuCtrl.swipeEnable(false);
+  }
+
+  ionViewDidEnter() {
+    this.auth.validateToken()
+      .map(res => res.json())
+      .subscribe(
+        res => {
+          this.goToSearch();
+        },
+        error => {}
+      )
+  }
+
+  goToSearch() {
+    this.navCtrl.setRoot(SearchPage);
+  }
 
   goToSignUp() {
     this.navCtrl.push(SignupPage);
@@ -33,5 +63,9 @@ export class HomePage {
 
   goToLogin() {
     this.navCtrl.push(LoginPage);
+  }
+
+  oauth(type) {
+    this.auth.signInOAuth(type);
   }
 }
