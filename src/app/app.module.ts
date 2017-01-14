@@ -58,7 +58,7 @@ import { SideMenuService } from '../providers/side-menu/side-menu';
   imports: [
     IonicModule.forRoot(MyApp, {}, {
       links: [
-        { component: DispensaryPage, name: 'dispensary', segment: 'dispensary/:dispensaryId', defaultHistory: [SearchPage] },
+        { component: DispensaryPage, name: 'dispensary', segment: 'dispensary/:dispensaryId', defaultHistory: [SearchPage] }
       ]
     })
   ],

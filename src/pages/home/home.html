@@ -1,4 +1,4 @@
-<ion-header no-shadow>
+<!-- <ion-header no-shadow>
   <ion-toolbar id="explore-nimbus" no-border>
     <ion-buttons end>
       <button ion-button icon-right (click)="goToSearch()" color="light" clear>
@@ -7,9 +7,9 @@
       </button>
     </ion-buttons>
   </ion-toolbar>
-</ion-header>
-<ion-content scroll="false" class="home">
-  <ion-grid class="logo">
+</ion-header> -->
+<ion-content class="home">
+  <!-- <ion-grid class="logo">
     <img [src]="slides[0].image" class="slide-image"/>
   </ion-grid>
   <ion-slides [options]="slideOptions">
@@ -47,5 +47,17 @@
         </ion-row>
       </ion-col>
     </ion-row>
-  </ion-grid>
+  </ion-grid> -->
+  <div class="home-two">
+     <div class="home-section-content home-two-content">
+        <h1 class="home-title" color="secondary">NIMBUS</h1>
+        <p class="home-title-2">Buy medical marijuana from Canada's best dispensaries.</p>
+        <div class="home-two-down-arrow"></div>
+        <h2 class="home-title-3">Are you in Canada and over 19?</h2>
+        <div class="home-two-answer-section">
+          <button ion-button color="secondary" large (click)="goToSearch()">YES</button>
+          <!-- <button ion-button color="danger" large (click)="goToSearch()">No, I am not</button> -->
+        </div>
+     </div>
+  </div>
 </ion-content>

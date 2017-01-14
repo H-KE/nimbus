@@ -77,6 +77,9 @@
         <ion-label>Order Summary</ion-label>
       </ion-list-header>
       <ion-item text-wrap no-lines *ngFor="let item of order.order_details">
+        <ion-avatar item-left>
+          <img src="{{cartService.getItemThumbnail(item)}}">
+        </ion-avatar>
         <p>{{item.name}} X {{item.quantity}}</p>
         <p class="item-price" item-right>{{item.price | currency:'USD':true:'1.2-2'}}</p>
       </ion-item>

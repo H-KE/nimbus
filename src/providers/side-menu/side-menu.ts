@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { AuthenticationService } from '../authentication/authentication'
 
 import { HomePage } from '../../pages/home/home';
+import { SignupPage } from '../../pages/signup/signup';
+import { LoginPage } from '../../pages/login/login';
 import { SearchPage } from '../../pages/search/search';
 import { OrdersPage } from '../../pages/orders/orders'
 import { ProfilePage } from '../../pages/profile/profile';
@@ -28,7 +30,9 @@ export class SideMenuService {
         },
         error => {
           this.pages = [
-            { title: 'Sign In', icon: 'cloud-circle', component: HomePage }
+            { title: 'Explore', icon: 'search', component: SearchPage },
+            { title: 'Sign Up', icon: 'cloud-circle', component: SignupPage },
+            { title: 'Sign In', icon: 'cloud-circle', component: LoginPage }
           ];
         }
       )

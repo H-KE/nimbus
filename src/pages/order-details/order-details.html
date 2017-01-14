@@ -256,9 +256,9 @@
             <ion-label>Items</ion-label>
           </ion-list-header>
           <ion-item *ngFor="let item of order.order_details">
-            <ion-avatar item-left>
+            <!-- <ion-avatar item-left>
               <img src="{{cartService.getItemThumbnail(item)}}">
-            </ion-avatar>
+            </ion-avatar> -->
             <h2>{{item.name}}</h2>
             <p>${{item.price}} • Qty: {{item.quantity}}</p>
           </ion-item>
