@@ -18,17 +18,17 @@ export class HomePage {
   slides = [
     {
       title: "Welcome",
-      description: "Nimbus is the simplest way to buy marijuana in Canada.",
+      description: "Nimbus is the simplest way to shop in Canada.",
       image: "assets/img/nimbus-logo.png",
     },
     {
       title: "Mail Delivery",
-      description: "Don't want to go outside? Stay home and get premium cannabis <b>delivered straight to your door</b> from Canada's bests.",
+      description: "Don't want to go outside? Stay home and get premium items <b>delivered straight to your door</b> from Canada's bests.",
       image: "assets/img/nimbus-logo.png",
     },
     {
       title: "Premier Service",
-      description: "We are partnered with the best online dispensaries and brands in Canada, so you can order from <b>a huge selection of products</b> all from one app.",
+      description: "We are partnered with the best online shops and brands in Canada, so you can order from <b>a huge selection of products</b> all from one app.",
       image: "assets/img/nimbus-logo.png",
     }
   ];

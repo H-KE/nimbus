@@ -15,4 +15,5 @@ export class Item {
   quantity: string;
   price: number;
   edit: boolean;
+  stock: number;
 }
