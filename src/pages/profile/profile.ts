@@ -24,7 +24,6 @@ export class ProfilePage {
   lastName: string;
   addresses: any[];
   idDocuments: any[];
-  medicalDocuments: any[];
   file: File;
 
   constructor(public navCtrl: NavController,
@@ -36,7 +35,6 @@ export class ProfilePage {
               public profileService: ProfileService,
               public verificationService: VerificationService) {
     this.idDocuments = new Array();
-    this.medicalDocuments = new Array();
 
     var loader = this.loadingCtrl.create({
     });
@@ -49,7 +47,7 @@ export class ProfilePage {
           this.firstName = data.first_name;
           this.lastName = data.last_name;
           this.addresses = data.addresses || []
-          this.categorizeDocuments(data.documents);
+          this.idDocuments = data.documents
           loader.dismiss();
         },
         error => {
@@ -57,17 +55,6 @@ export class ProfilePage {
         }
       );
 
-  }
-
-  //TODO: There is a lot of duplicate code between this and checkout
-  categorizeDocuments(documents: any) {
-    for (var document of documents) {
-      if(document.type == 'identification') {
-        this.idDocuments.push(document);
-      } else {
-        this.medicalDocuments.push(document);
-      }
-    }
   }
 
   addAddress() {
@@ -81,12 +68,10 @@ export class ProfilePage {
           .map(response => response.json())
           .subscribe(
             data => {
-              // console.log(data);
               this.addresses.push(data);
               loader.dismiss();
             },
             error => {
-              // console.log(error);
               loader.dismiss();
               let alert = this.alertCtrl.create({
                 title: 'Woops',
@@ -118,11 +103,7 @@ export class ProfilePage {
           .subscribe(
             document => {
               loader.dismiss();
-              if(type == 'identification') {
-                this.idDocuments.push(document);
-              } else {
-                this.medicalDocuments.push(document);
-              }
+              this.idDocuments.push(document);
             },
             error => {
               loader.dismiss();
@@ -148,16 +129,6 @@ export class ProfilePage {
     documentsModal.onDidDismiss(deleted => {
       if(deleted) {
         this.idDocuments = new Array();
-      }
-    });
-  }
-
-  goToMedicalDocumentsPage() {
-    let documentsModal = this.modalCtrl.create(DocumentsModalPage, {"documents": this.medicalDocuments});
-    documentsModal.present(documentsModal);
-    documentsModal.onDidDismiss(deleted => {
-      if(deleted) {
-        this.medicalDocuments = new Array();
       }
     });
   }
