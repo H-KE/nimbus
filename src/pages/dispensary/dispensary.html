@@ -1,6 +1,6 @@
 <ion-header>
   <ion-navbar color="primary">
-    <ion-title>Dispensary</ion-title>
+    <ion-title *ngIf="selectedDispensary">{{selectedDispensary.name}}</ion-title>
     <ion-buttons end>
       <button ion-button icon-only (click)="goToCart()">
         <ion-icon name="cart"></ion-icon>{{cartService.itemCount}}
@@ -36,71 +36,3 @@
     </ion-row>
   </div>
 </ion-content>
-    <!-- <ion-row responsive-md> -->
-      <!-- <ion-col width-50>
-        <ion-card>
-          <div id="dispensary-logo-wrapper">
-            <img src={{selectedDispensary.avatar_url}} class="dispensary-logo"/>
-          </div>
-          <ion-card-header>
-            {{selectedDispensary.name}}
-          </ion-card-header>
-          <ion-card-content>
-            <p>
-              {{selectedDispensary.description}}
-            </p>
-          </ion-card-content>
-          <span *ngIf="selectedDispensary.pickup">
-            <button disabled="true" clear ion-button small color="secondary" icon-left>
-              <ion-icon name="call"></ion-icon>
-              {{selectedDispensary.phone_number}}
-            </button>
-            <button disabled="true" clear ion-button small color="secondary" icon-left>
-              <ion-icon name="pin"></ion-icon>
-              {{selectedDispensary.address}}
-            </button>
-          </span>
-          <button *ngIf="selectedDispensary.free_shipping_cap" disabled="true" clear ion-button small color="secondary" icon-left>
-            <ion-icon name="checkmark-circle"></ion-icon>
-            Free shipping over ${{selectedDispensary.free_shipping_cap}}
-          </button>
-          <button *ngIf="selectedDispensary.medical" disabled="true" clear ion-button small color="secondary" icon-left>
-            <ion-icon name="medical"></ion-icon>
-            Medical documents required
-          </button>
-        </ion-card>
-      </ion-col> -->
-
-      <!-- <ion-col width-50> -->
-        <!-- <ion-card>
-          <ion-list-header>
-            Menu
-          </ion-list-header>
-          <span *ngFor="let category of menuCategories">
-            <ion-list>
-              <button ion-item detail-none class="item-stable"
-                        (click)="toggleMenuCategory(category)"
-                        [class.active]="!isCategoryShown(category)">
-                <h2>{{category.name}}</h2>
-                <ion-icon [name]="isCategoryShown(category) ? 'arrow-dropup' : 'arrow-dropdown'" item-right></ion-icon>
-              </button>
-            </ion-list>
-            <ion-list>
-              <button ion-item detail-push *ngFor="let item of category.items"
-                        (click)="itemSelected($event, item)"
-                        class="item-accordian"
-                        [hidden]="!isCategoryShown(category)">
-                <ion-avatar item-left>
-                  <img src="{{cartService.getItemThumbnail(item)}}">
-                </ion-avatar>
-                <h2 style="display:inline">
-                  {{item.name}}
-                </h2>
-                <p>{{renderItemDescription(item)}}</p>
-                <ion-note item-right="">{{renderItemPrice(item)}}</ion-note>
-              </button>
-            </ion-list>
-          </span>
-        </ion-card> -->
-      <!-- </ion-col> -->
-    <!-- </ion-row> -->

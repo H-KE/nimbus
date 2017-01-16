@@ -40,8 +40,8 @@ export class SearchPage {
     loader.present();
     this.dispensaryService.getAll()
       .then(response => {
-        this.dispensaries = this.orderDispensariesByReadiness(response);
-        this.dispensaries = _.chunk(this.dispensaries, 3)
+        // this.dispensaries = this.orderDispensariesByReadiness(response);
+        this.dispensaries = _.chunk(response, 3)
         loader.dismiss();
       });
   }
