@@ -1,14 +1,4 @@
-// .home::before {
-//     content: '';
-//     display: block;
-//     position: absolute;
-//     background-color: #000;
-//     opacity: 0.5;
-//     width: 100%;
-//     height: 100%;
-// }
-
-.home {
+home {
   .home-two {
       background: url(https://d375e1b1g1c73t.cloudfront.net/images/home-elements_intro-bg-007c05e060eccbaeaa1905e25accb215.jpg) center/cover no-repeat #ddd;
       color: #000;
@@ -52,81 +42,4 @@
         padding: 24px!important;
     }
   }
-
-  // background: url('../assets/img/background.png') no-repeat center center fixed !important;
-  // -webkit-background-size: cover;
-  // -moz-background-size: cover;
-  // -o-background-size: cover;
-  // background-size: cover;
-  //
-  // ion-col#responsive-col {
-  //   margin: auto;
-  //   padding: 0px !important;
-  // }
-  //
-  // p {
-  //   color: white;
-  //   text-align: center;
-  // }
-  //
-  // a {
-  //   text-align: center;
-  //   color: white;
-  // }
-  //
-  // .logo {
-  //   position: absolute;
-  //
-  //   img {
-  //     max-width: 200px;
-  //     align-self: center;
-  //   }
-  // }
-  //
-  //
-  // .slide-zoom {
-  //   height: 100%;
-  // }
-  //
-  // .slider-content {
-  //   margin-top: 20rem;
-  //
-  //   .slide-title {
-  //     color: #fff;
-  //   }
-  //   .slide-detail {
-  //     line-height: 1.5;
-  //     padding: 0 30px;
-  //     font-size: 0.8em;
-  //     color: #d3d3d3;
-  //     b {
-  //       color: #fff;
-  //     }
-  //   }
-  // }
-  //
-  // .swiper-pagination-bullet {
-  //   border: 4px solid white;
-  // }
-  //
-  // .swiper-pagination-bullet-active {
-  //   border: 4px solid white;
-  // }
-  //
-  // .auth {
-  //   position: absolute;
-  //   bottom: 20px;
-  //   z-index: 10;
-  //
-  //   button {
-  //     width: 100%;
-  //     min-height: 44px;
-  //   }
-  //
-  //   .email-signup {
-  //     p {
-  //       color: color($colors, primary, base);
-  //     }
-  //   }
-  // }
 }
