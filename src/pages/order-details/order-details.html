@@ -34,7 +34,7 @@
                   <div class="status_detail">
                     <p style="">Please use the following information to email transfer your order total to complete the order.</p>
                     <p>Transfer To: <b>payments@nimbusfly.co</b></p>
-                    <p>Amount: <b>{{order.total_price*1 + order.delivery_fee*1 + order.tax_amount*1 | currency:'USD':true:'1.2-2'}}</b></p>
+                    <p>Amount: <b>{{order.total_price*1 + order.delivery_fee*1 | currency:'USD':true:'1.2-2'}}</b></p>
                     <p>Transfer Message: <b>invoice {{order.id}}</b></p>
                     <p>Security Answer: <b>{{securityAnswer}}</b></p>
                   </div>
@@ -163,7 +163,7 @@
                   <div class="status_detail">
                     <p style="">Please use the following information to email transfer your order total to complete the order.</p>
                     <p>Transfer To: <b>payments@nimbusfly.co</b></p>
-                    <p>Amount: <b>{{order.total_price*1 + order.delivery_fee*1 + order.tax_amount*1 | currency:'USD':true:'1.2-2'}}</b></p>
+                    <p>Amount: <b>{{order.total_price*1 + order.delivery_fee*1 | currency:'USD':true:'1.2-2'}}</b></p>
                     <p>Transfer Message: <b>invoice {{order.id}}</b></p>
                     <p>Security Answer: <b>{{securityAnswer}}</b></p>
                   </div>
@@ -273,8 +273,7 @@
           <ion-item text-wrap>
             <p align="right">Subtotal: {{order.total_price | currency:'USD':true:'1.2-2'}}</p>
             <p align="right">Delivery Charges: {{order.delivery_fee | currency:'USD':true:'1.2-2'}}</p>
-            <p align="right">Sales Tax (13.0%): {{order.tax_amount | currency:'USD':true:'1.2-2'}}</p>
-            <h3 align="right">Order Total: {{order.total_price*1 + order.delivery_fee*1 + order.tax_amount*1 | currency:'USD':true:'1.2-2'}}</h3>
+            <h3 align="right">Order Total: {{order.total_price*1 + order.delivery_fee*1 | currency:'USD':true:'1.2-2'}}</h3>
           </ion-item>
         </ion-list>
       </ion-card>
