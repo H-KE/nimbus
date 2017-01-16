@@ -3,7 +3,6 @@ import { Nav, Platform } from 'ionic-angular';
 import { StatusBar } from 'ionic-native';
 
 import { HomePage } from '../pages/home/home';
-import { AboutPage } from '../pages/about/about';
 
 import { AuthenticationService } from '../providers/authentication/authentication'
 import { SideMenuService } from '../providers/side-menu/side-menu'
@@ -37,9 +36,5 @@ export class MyApp {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
-  }
-
-  goToAbout() {
-    this.nav.setRoot(AboutPage);
   }
 }

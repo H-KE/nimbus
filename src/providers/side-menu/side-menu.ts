@@ -8,7 +8,6 @@ import { SearchPage } from '../../pages/search/search';
 import { OrdersPage } from '../../pages/orders/orders'
 import { ProfilePage } from '../../pages/profile/profile';
 import { ContactPage } from '../../pages/contact/contact';
-import { AboutPage } from '../../pages/about/about';
 
 @Injectable()
 export class SideMenuService {

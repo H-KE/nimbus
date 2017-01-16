@@ -51,7 +51,6 @@ export class AddressModalPage {
     this.autoComplete.addListener('place_changed', () => {
       self.zone.run(() => {
         var place = this.autoComplete.getPlace();
-        // // console.log(place);
 
         place.address_components.forEach(function(component) {
           var addressType = component.types[0];
@@ -79,5 +78,4 @@ export class AddressModalPage {
   remove() {
     this.viewCtrl.dismiss();
   }
-
 }
