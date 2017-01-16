@@ -31,9 +31,7 @@ export class OrdersPage {
       .map(response => response.json())
       .subscribe(
           data => {
-            // console.log(data);
             this.orders = data as Order[]
-            this.orderSegment = "open";
             loader.dismiss();
           },
           error => console.log(error)

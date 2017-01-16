@@ -17,8 +17,6 @@ order-details {
   }
 
   ol{
-    //background: #e7ecee;
-
     li{
       color: #aaa;
       text-transform: uppercase;
@@ -26,11 +24,9 @@ order-details {
       font-size: 12px;
       font-weight: 700;
       min-height: $li-height;
-      // border-top: 1px solid $sl-g;
       line-height: 46px;
       text-indent: 0;
       position: relative;
-      // margin: 0 20px 0 28px;
       list-style-type: none;
       white-space: normal;
 
@@ -90,7 +86,6 @@ order-details {
         color: $complete;
         position: absolute;
         left: -16px;
-        // top: 16px;
         font-size: 14px;
         font-weight: 900;
       }

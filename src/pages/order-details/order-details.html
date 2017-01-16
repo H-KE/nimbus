@@ -9,233 +9,139 @@
   </ion-navbar>
 </ion-header>
 
-
 <ion-content class="order-details">
-  <ion-refresher (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content
-     pullingIcon="arrow-dropdown"
-     pullingText="Pull to refresh"
-     refreshingSpinner="circles"
-     refreshingText="Refreshing...">
-   </ion-refresher-content>
-  </ion-refresher>
   <ion-row responsive-md>
     <ion-col width-50>
-      <div [ngSwitch]="order.distribution_channel">
-        <ion-card *ngSwitchCase="'mail'">
-          <ion-list>
-            <ion-list-header>
-              <ion-label>Status</ion-label>
-            </ion-list-header>
-            <ion-item [ngSwitch]="order.status">
-              <ol *ngSwitchCase="'payment_pending'">
-                <li class="current">
-                  Awaiting Payment
-                  <div class="status_detail">
-                    <p style="">Please use the following information to email transfer your order total to complete the order.</p>
-                    <p>Transfer To: <b>payments@nimbusfly.co</b></p>
-                    <p>Amount: <b>{{order.total_price*1 + order.delivery_fee*1 | currency:'USD':true:'1.2-2'}}</b></p>
-                    <p>Transfer Message: <b>invoice {{order.id}}</b></p>
-                    <p>Security Answer: <b>{{securityAnswer}}</b></p>
-                  </div>
-                </li>
-                <li>Verifying</li>
-                <li>Packaging</li>
-                <li> In Transit</li>
-                <li> Order Complete</li>
-              </ol>
+      <ion-card>
+        <ion-list>
+          <ion-list-header>
+            <ion-label>Status</ion-label>
+          </ion-list-header>
+          <ion-item [ngSwitch]="order.status">
+            <ol *ngSwitchCase="'payment_pending'">
+              <li class="current">
+                Awaiting Payment
+                <div class="status_detail">
+                  <p style="">Please use the following information to email transfer your order total to complete the order.</p>
+                  <p>Transfer To: <b>payments@nimbusfly.co</b></p>
+                  <p>Amount: <b>{{order.total_price*1 + order.delivery_fee*1 | currency:'USD':true:'1.2-2'}}</b></p>
+                  <p>Transfer Message: <b>invoice {{order.id}}</b></p>
+                  <p>Security Answer: <b>{{securityAnswer}}</b></p>
+                </div>
+              </li>
+              <li>Verifying</li>
+              <li>Packaging</li>
+              <li> In Transit</li>
+              <li> Order Complete</li>
+            </ol>
 
-              <ol *ngSwitchCase="'verifying'">
-                <li class="completed">
-                  <ion-icon class="checkmark" name="checkmark"></ion-icon>Awaiting Payment
-                </li>
-                <li class="current">
-                  Verifying
-                </li>
-                <li>Packaging</li>
-                <li> In Transit</li>
-                <li> Order Complete</li>
-              </ol>
+            <ol *ngSwitchCase="'verifying'">
+              <li class="completed">
+                <ion-icon class="checkmark" name="checkmark"></ion-icon>Awaiting Payment
+              </li>
+              <li class="current">
+                Verifying
+              </li>
+              <li>Packaging</li>
+              <li> In Transit</li>
+              <li> Order Complete</li>
+            </ol>
 
-              <ol *ngSwitchCase="'packaging'">
-                <li class="completed">
-                  <ion-icon name="checkmark"></ion-icon>Awaiting Payment
-                </li>
-                <li class="completed">
-                   <ion-icon name="checkmark"></ion-icon> Verifying
-                </li>
-                <li class="current">
-                  Packaging
-                </li>
-                <li> In Transit</li>
-                <li> Order Complete</li>
-              </ol>
+            <ol *ngSwitchCase="'packaging'">
+              <li class="completed">
+                <ion-icon name="checkmark"></ion-icon>Awaiting Payment
+              </li>
+              <li class="completed">
+                 <ion-icon name="checkmark"></ion-icon> Verifying
+              </li>
+              <li class="current">
+                Packaging
+              </li>
+              <li> In Transit</li>
+              <li> Order Complete</li>
+            </ol>
 
-              <ol *ngSwitchCase="'in_transit'">
-                <li class="completed">
-                  <ion-icon name="checkmark"></ion-icon>Awaiting Payment
-                </li>
-                <li class="completed">
-                   <ion-icon name="checkmark"></ion-icon> Verifying
-                </li>
-                <li class="completed">
-                  <ion-icon name="checkmark"></ion-icon> Packaging
-                </li>
-                <li class="current">
-                  In Transit
-                  <div *ngIf="trackingInfo && trackingInfo.tracking_status" class="status_detail">
-                    <p>Canada Post | {{order.tracking_number}}</p>
-                    <p>{{trackingInfo.tracking_status.status_date | date:'medium'}}</p>
-                    <p>{{trackingInfo.tracking_status.status_details}}</p>
-                    <p *ngIf="trackingInfo.tracking_status.location">{{trackingInfo.tracking_status.location.city}}, {{trackingInfo.tracking_status.location.state}}</p>
-                    <a target="_blank" [href]="getShippoLink()" color="secondary">
-                      View on Map
-                    </a>
-                  </div>
-                </li>
-                <li> Order Complete</li>
-              </ol>
+            <ol *ngSwitchCase="'in_transit'">
+              <li class="completed">
+                <ion-icon name="checkmark"></ion-icon>Awaiting Payment
+              </li>
+              <li class="completed">
+                 <ion-icon name="checkmark"></ion-icon> Verifying
+              </li>
+              <li class="completed">
+                <ion-icon name="checkmark"></ion-icon> Packaging
+              </li>
+              <li class="current">
+                In Transit
+                <div *ngIf="trackingInfo && trackingInfo.tracking_status" class="status_detail">
+                  <p>Canada Post | {{order.tracking_number}}</p>
+                  <p>{{trackingInfo.tracking_status.status_date | date:'medium'}}</p>
+                  <p>{{trackingInfo.tracking_status.status_details}}</p>
+                  <p *ngIf="trackingInfo.tracking_status.location">{{trackingInfo.tracking_status.location.city}}, {{trackingInfo.tracking_status.location.state}}</p>
+                  <a target="_blank" [href]="getShippoLink()" color="secondary">
+                    View on Map
+                  </a>
+                </div>
+              </li>
+              <li> Order Complete</li>
+            </ol>
 
-              <ol *ngSwitchCase="'completed'">
-                <li class="completed">
-                  <ion-icon name="checkmark"></ion-icon>Awaiting Payment
-                </li>
-                <li class="completed">
-                  <ion-icon name="checkmark"></ion-icon> Verifying
-                </li>
-                <li class="completed">
-                  <ion-icon name="checkmark"></ion-icon> Packaging
-                </li>
-                <li class="completed">
-                  <ion-icon name="checkmark"></ion-icon> In Transit
-                </li>
-                <li class="completed">
-                  <ion-icon name="checkmark"></ion-icon> Order Complete
-                  <!-- <div *ngIf="trackingInfo && trackingInfo.tracking_status" class="status_detail">
-                    <p>{{trackingInfo.tracking_status.status_date | date:'medium'}}</p>
-                    <p>{{trackingInfo.tracking_status.status_details}}</p>
-                    <p>{{trackingInfo.tracking_status.location.city}}, {{trackingInfo.tracking_status.location.state}}</p>
-                    <a target="_blank" [href]="getShippoLink()" color="secondary">
-                      View on Map
-                    </a>
-                  </div> -->
-                </li>
-              </ol>
+            <ol *ngSwitchCase="'completed'">
+              <li class="completed">
+                <ion-icon name="checkmark"></ion-icon>Awaiting Payment
+              </li>
+              <li class="completed">
+                <ion-icon name="checkmark"></ion-icon> Verifying
+              </li>
+              <li class="completed">
+                <ion-icon name="checkmark"></ion-icon> Packaging
+              </li>
+              <li class="completed">
+                <ion-icon name="checkmark"></ion-icon> In Transit
+              </li>
+              <li class="completed">
+                <ion-icon name="checkmark"></ion-icon> Order Complete
+                <!-- <div *ngIf="trackingInfo && trackingInfo.tracking_status" class="status_detail">
+                  <p>{{trackingInfo.tracking_status.status_date | date:'medium'}}</p>
+                  <p>{{trackingInfo.tracking_status.status_details}}</p>
+                  <p>{{trackingInfo.tracking_status.location.city}}, {{trackingInfo.tracking_status.location.state}}</p>
+                  <a target="_blank" [href]="getShippoLink()" color="secondary">
+                    View on Map
+                  </a>
+                </div> -->
+              </li>
+            </ol>
 
-              <ol *ngSwitchCase="'declined'">
-                <li class="completed">
-                  <ion-icon name="checkmark"></ion-icon>Awaiting Payment
-                </li>
-                <li class="completed">
-                   <ion-icon name="checkmark"></ion-icon> Verifying
-                </li>
-                <li class="completed">
-                   <ion-icon name="checkmark"></ion-icon> Refunded
-                </li>
-                <li class="current">
-                  Order Declined
-                  <!--TODO: Dynamic reason-->
-                  <div class="status_detail">
-                    <p>{{orderService.getStatusDetailMessage(order.status_detail)}}</p>
-                  </div>
-                </li>
-              </ol>
+            <ol *ngSwitchCase="'declined'">
+              <li class="completed">
+                <ion-icon name="checkmark"></ion-icon>Awaiting Payment
+              </li>
+              <li class="completed">
+                 <ion-icon name="checkmark"></ion-icon> Verifying
+              </li>
+              <li class="completed">
+                 <ion-icon name="checkmark"></ion-icon> Refunded
+              </li>
+              <li class="current">
+                Order Declined
+                <div class="status_detail">
+                  <p>{{orderService.getStatusDetailMessage(order.status_detail)}}</p>
+                </div>
+              </li>
+            </ol>
 
-              <ol *ngSwitchDefault>
-                <li>Awaiting Payment</li>
-                <li>Verifying</li>
-                <li>Packaging</li>
-                <li> In Transit</li>
-                <li> Order Complete</li>
-              </ol>
-            </ion-item>
-          </ion-list>
-        </ion-card>
-        <ion-card *ngSwitchCase="'pickup'">
-          <ion-list>
-            <ion-list-header>
-              <ion-label>Status</ion-label>
-            </ion-list-header>
-            <ion-item [ngSwitch]="order.status">
-              <ol *ngSwitchCase="'payment_pending'">
-                <li class="current">
-                  Awaiting payment
-                  <div class="status_detail">
-                    <p style="">Please use the following information to email transfer your order total to complete the order.</p>
-                    <p>Transfer To: <b>payments@nimbusfly.co</b></p>
-                    <p>Amount: <b>{{order.total_price*1 + order.delivery_fee*1 | currency:'USD':true:'1.2-2'}}</b></p>
-                    <p>Transfer Message: <b>invoice {{order.id}}</b></p>
-                    <p>Security Answer: <b>{{securityAnswer}}</b></p>
-                  </div>
-                </li>
-                <li>Preparing</li>
-                <li>Ready for pickup</li>
-                <li>Order complete</li>
-              </ol>
+            <ol *ngSwitchDefault>
+              <li>Awaiting Payment</li>
+              <li>Verifying</li>
+              <li>Packaging</li>
+              <li>In Transit</li>
+              <li>Order Complete</li>
+            </ol>
+          </ion-item>
+        </ion-list>
+      </ion-card>
 
-              <ol *ngSwitchCase="'verifying'">
-                <li class="completed">
-                  <ion-icon name="checkmark"></ion-icon>Payment received
-                </li>
-                <li class="current">
-                  Preparing
-                </li>
-                <li>Ready for pickup</li>
-                <li>Order complete</li>
-              </ol>
-
-              <ol *ngSwitchCase="'ready'">
-                <li class="completed">
-                  <ion-icon name="checkmark"></ion-icon>Payment received
-                </li>
-                <li class="completed">
-                  <ion-icon name="checkmark"></ion-icon> Preparing
-                </li>
-                <li class="current">
-                  Ready for pickup
-                </li>
-                <li>
-                  Order complete
-                </li>
-              </ol>
-
-              <ol *ngSwitchCase="'completed'">
-                <li class="completed">
-                  <ion-icon name="checkmark"></ion-icon>Payment received
-                </li>
-                <li class="completed">
-                  <ion-icon name="checkmark"></ion-icon> Preparing
-                </li>
-                <li class="completed">
-                  <ion-icon name="checkmark"></ion-icon> Ready for pickup
-                </li>
-                <li class="completed">
-                  <ion-icon name="checkmark"></ion-icon>Order complete
-                </li>
-              </ol>
-
-              <ol *ngSwitchCase="'declined'">
-                <li class="current">
-                  Order Declined
-                  <!--TODO: Dynamic reason-->
-                  <div class="status_detail">
-                    <p>{{orderService.getStatusDetailMessage(order.status_detail)}}</p>
-                  </div>
-                </li>
-              </ol>
-
-              <ol *ngSwitchDefault>
-                <li>Awaiting Payment</li>
-                <li>Preparing</li>
-                <li>Ready for pickup</li>
-                <li>Order complete</li>
-              </ol>
-            </ion-item>
-          </ion-list>
-        </ion-card>
-      </div>
-
-      <ion-card *ngIf="address && order.distribution_channel != 'pickup'">
+      <ion-card *ngIf="address">
         <ion-list>
           <ion-list-header>
             Deliver To
@@ -256,9 +162,6 @@
             <ion-label>Items</ion-label>
           </ion-list-header>
           <ion-item *ngFor="let item of order.order_details">
-            <!-- <ion-avatar item-left>
-              <img src="{{cartService.getItemThumbnail(item)}}">
-            </ion-avatar> -->
             <h2>{{item.name}}</h2>
             <p>${{item.price}} • Qty: {{item.quantity}}</p>
           </ion-item>
