@@ -15,45 +15,17 @@
 </ion-header>
 
 <ion-content class="search">
-  <div [ngSwitch]="searchMode">
-    <div *ngSwitchCase="'mail'">
-      <div *ngFor="let dispensaryGroup of mailDispensaries">
-        <ion-row responsive-md>
-          <ion-col width-33 *ngFor="let dispensary of dispensaryGroup">
-            <ion-card (click)="dispensarySelected($event, dispensary)">
-              <img src={{dispensary.avatar_url}}>
-              <ion-item>
-                <h2><b>{{dispensary.name}}</b></h2>
-                <p>{{dispensary.bio}}</p>
-              </ion-item>
-            </ion-card>
-          </ion-col>
-        </ion-row>
-      </div>
-    </div>
-    <!-- <div *ngSwitchCase="'pickup'">
-      <a *ngFor="let dispensary of pickupDispensaries" (click)="dispensarySelected($event, dispensary)">
-        <ion-card class="dispensary-avatar">
+  <div *ngFor="let dispensaryGroup of dispensaries">
+    <ion-row responsive-md>
+      <ion-col width-33 *ngFor="let dispensary of dispensaryGroup">
+        <ion-card (click)="dispensarySelected($event, dispensary)">
           <img src={{dispensary.avatar_url}}>
-          <div class="card-detail">
-            <div class="card-title">{{dispensary.name}}</div>
-            <div class="card-subtitle">{{dispensary.bio}}</div>
-          </div>
+          <ion-item>
+            <h2><b>{{dispensary.name}}</b></h2>
+            <p>{{dispensary.bio}}</p>
+          </ion-item>
         </ion-card>
-      </a>
-    </div> -->
+      </ion-col>
+    </ion-row>
   </div>
 </ion-content>
-
-<!-- <ion-footer>
-  <ion-toolbar color="primary">
-    <ion-segment [(ngModel)]="searchMode" color="white">
-      <ion-segment-button value="mail">
-        Mail delivery
-      </ion-segment-button>
-      <ion-segment-button value="pickup">
-        In-store pickup
-      </ion-segment-button>
-    </ion-segment>
-  </ion-toolbar>
-</ion-footer> -->

@@ -18,14 +18,10 @@ import _ from 'lodash'
 })
 
 export class SearchPage {
-  pickupDispensaries: any;
-  mailDispensaries: any;
-  searchMode: string;
+  dispensaries: any;
 
   constructor(public dispensaryService: DispensaryService,
               public navCtrl: NavController,
-              public platform: Platform,
-              public _zone: NgZone,
               public cartService: CartService,
               public loadingCtrl: LoadingController,
               public menuCtrl: MenuController,
@@ -34,36 +30,20 @@ export class SearchPage {
 
   public ionViewDidLoad(): void {
     this.menuCtrl.swipeEnable(true);
-    this.searchMode = "mail";
     this.loadDispensaries();
 
     this.sideMenu.loadSideMenu();
   }
 
   loadDispensaries() {
-    var loader = this.loadingCtrl.create({
-      content: "Finding Dispensaries...",
-    });
+    var loader = this.loadingCtrl.create();
     loader.present();
     this.dispensaryService.getAll()
       .then(response => {
-        let dispensaries = this.orderDispensariesByReadiness(response);
-        this.mailDispensaries = _.filter(dispensaries, function(dispensary) {
-          return dispensary.mail == true;
-        });
-        this.mailDispensaries = _.chunk(this.mailDispensaries, 3)
-
-        this.pickupDispensaries = _.filter(dispensaries, function(dispensary) {
-          return dispensary.pickup == true;
-        });
-        this.pickupDispensaries = _.chunk(this.pickupDispensaries, 3)
+        this.dispensaries = this.orderDispensariesByReadiness(response);
+        this.dispensaries = _.chunk(this.dispensaries, 3)
         loader.dismiss();
       });
-  }
-
-  clearDispensaries() {
-    this.mailDispensaries = null;
-    this.pickupDispensaries = null;
   }
 
   orderDispensariesByReadiness(dispensaries) {
@@ -85,9 +65,5 @@ export class SearchPage {
 
   goToCart() {
     this.navCtrl.push(CartPage);
-  }
-
-  firstToUpperCase( str: String ) {
-    return str.substr(0, 1).toUpperCase() + str.substr(1);
   }
 }
