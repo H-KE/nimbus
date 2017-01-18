@@ -17,10 +17,12 @@ dispensary {
     text-align: center;
     border-radius: 100em;
 
-    // ion-item:active {
-    //   -webkit-filter: brightness(95%);
-    //   border-radius: 100em;
-    // }
+    ion-item:hover {
+      cursor: pointer;
+    }
+    ion-item:active {
+      -webkit-filter: brightness(95%);
+    }
 
     img {
       max-width: none !important;

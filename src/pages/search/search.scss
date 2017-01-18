@@ -8,6 +8,10 @@ search {
     -webkit-filter: brightness(90%);
   }
 
+  ion-card:hover {
+    cursor: pointer;
+  }
+
   ion-card img {
     height: 200px;
     width: 100%;
