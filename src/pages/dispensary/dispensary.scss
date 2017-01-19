@@ -19,8 +19,10 @@ dispensary {
 
     ion-item:hover {
       cursor: pointer;
+      border-radius: 100em;
     }
     ion-item:active {
+      border-radius: 100em;
       -webkit-filter: brightness(95%);
     }
 
