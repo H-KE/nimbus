@@ -1,88 +1,45 @@
-.home::before {
-    content: '';
-    display: block;
-    position: absolute;
-    background-color: #000;
-    opacity: 0.5;
-    width: 100%;
-    height: 100%;
-}
-
-.home {
-  background: url('../assets/img/background.png') no-repeat center center fixed !important;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-
-  ion-col#responsive-col {
-    margin: auto;
-    padding: 0px !important;
-  }
-
-  p {
-    color: white;
-    text-align: center;
-  }
-
-  a {
-    text-align: center;
-    color: white;
-  }
-
-  .logo {
-    position: absolute;
-
-    img {
-      max-width: 200px;
-      align-self: center;
-    }
-  }
-
-
-  .slide-zoom {
-    height: 100%;
-  }
-
-  .slider-content {
-    margin-top: 20rem;
-
-    .slide-title {
-      color: #fff;
-    }
-    .slide-detail {
-      line-height: 1.5;
-      padding: 0 30px;
-      font-size: 0.8em;
-      color: #d3d3d3;
-      b {
-        color: #fff;
-      }
-    }
-  }
-
-  .swiper-pagination-bullet {
-    border: 4px solid white;
-  }
-
-  .swiper-pagination-bullet-active {
-    border: 4px solid white;
-  }
-
-  .auth {
-    position: absolute;
-    bottom: 20px;
-    z-index: 10;
-
-    button {
+home {
+  .home-two {
+      background: url(https://d375e1b1g1c73t.cloudfront.net/images/home-elements_intro-bg-007c05e060eccbaeaa1905e25accb215.jpg) center/cover no-repeat #ddd;
+      color: #000;
+      display: table;
+      height: 460px;
+      height: 100vh;
+      text-align: center;
       width: 100%;
-      min-height: 44px;
-    }
+  }
+  .home-title {
+    font-size: 32px;
+  }
+  .home-title-2 {
+    font-size: 16px;
+  }
+  .home-title-3 {
+    font-size: 32px;
+    font-weight: 400;
+  }
+  .home-two-content {
+      display: table-cell;
+      padding: 60px 0!important;
+      vertical-align: middle;
+  }
+  .home-two-down-arrow {
+      background: url(https://d375e1b1g1c73t.cloudfront.net/images/home-two-down-arrow-bff89a8af1b84a2db1b38d1822d1d041.png) center/33px 16px no-repeat;
+      height: 16px;
+      margin: 0 auto;
+      width: 33px;
+  }
+  .home-two-answer-section {
+      margin-top: 24px;
+      margin-bottom: 60px;
 
-    .email-signup {
-      p {
-        color: color($colors, primary, base);
+      button {
+        padding: 1em 1.5em !important;
       }
+  }
+  @media (max-width: 499px) {
+    .home-two-content {
+        padding: 24px!important;
     }
   }
 }

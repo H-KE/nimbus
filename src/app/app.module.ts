@@ -20,11 +20,9 @@ import { ContactModalPage } from '../pages/contact-modal/contact-modal';
 import { DocumentsModalPage } from '../pages/documents-modal/documents-modal';
 import { TermsPage } from '../pages/terms/terms';
 import { ShippoPage } from '../pages/shippo/shippo';
-import { AboutPage } from '../pages/about/about';
 
 import { CartService } from '../providers/cart/cart';
 import { DispensaryService } from '../providers/dispensary/dispensary';
-import { MenuService } from '../providers/menu/menu';
 import { ProfileService } from '../providers/profile/profile';
 import { OrderService } from '../providers/orders/orders';
 import { AuthenticationService } from '../providers/authentication/authentication'
@@ -52,13 +50,12 @@ import { SideMenuService } from '../providers/side-menu/side-menu';
     DocumentsModalPage,
     TermsPage,
     ShippoPage,
-    ContactModalPage,
-    AboutPage
+    ContactModalPage
   ],
   imports: [
     IonicModule.forRoot(MyApp, {}, {
       links: [
-        { component: DispensaryPage, name: 'dispensary', segment: 'dispensary/:dispensaryId', defaultHistory: [SearchPage] },
+        { component: DispensaryPage, name: 'dispensary', segment: 'dispensary/:dispensaryId', defaultHistory: [SearchPage] }
       ]
     })
   ],
@@ -83,14 +80,12 @@ import { SideMenuService } from '../providers/side-menu/side-menu';
     DocumentsModalPage,
     TermsPage,
     ShippoPage,
-    ContactModalPage,
-    AboutPage
+    ContactModalPage
   ],
   providers: [
     CartService,
     DispensaryService,
     OrderService,
-    MenuService,
     ProfileService,
     AuthenticationService,
     VerificationService,

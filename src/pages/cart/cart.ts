@@ -9,6 +9,7 @@ import { OrderService } from '../../providers/orders/orders';
 import { AuthenticationService } from '../../providers/authentication/authentication'
 import { CheckoutPage } from '../checkout/checkout';
 import { ItemDetailsPage } from '../item-details/item-details';
+import { SignupPage } from '../signup/signup'
 
 import _ from 'underscore';
 
@@ -25,7 +26,6 @@ export class CartPage {
               public orderService: OrderService,
               public alertCtrl: AlertController,
               public auth: AuthenticationService) {
-
   }
 
   public ionViewDidLoad(): void {
@@ -46,18 +46,16 @@ export class CartPage {
     } else {
       let alert = this.alertCtrl.create({
         title: 'Login Needed',
-        subTitle: 'Please login first before placing your order.',
-        buttons: ['OK']
+        subTitle: 'Please signup first before placing your order.',
+        buttons: [{
+          text: 'Ok',
+          handler: () => {
+            this.navCtrl.setRoot(SignupPage)
+          }
+        }]
       });
       alert.present();
     }
-  }
-
-  editItem(item) {
-    item.edit = true;
-    this.navCtrl.push(ItemDetailsPage, {
-      item: item
-    })
   }
 
   checkoutCart(dispensaryName) {
@@ -68,9 +66,7 @@ export class CartPage {
     this.order.pickup = this.cartService.carts[dispensaryName].dispensary.pickup;
     this.order.delivery = this.cartService.carts[dispensaryName].dispensary.delivery;
     this.order.delivery_fee = this.calculateShippingCost(this.cartService.carts[dispensaryName]);
-    this.order.tax_amount = Number((this.order.total_price * 0.13).toFixed(2)); //TODO: this should not be hard coded
     this.order.dispensary_name = dispensaryName;
-    this.order.show = false;
 
     this.goToCheckout();
 

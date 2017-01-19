@@ -33,7 +33,6 @@ export class CheckoutPage {
   file: File;
   paymentMethod: string;
   idDocuments: any[];
-  medicalDocuments: any[];
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -48,13 +47,11 @@ export class CheckoutPage {
 
   public ionViewDidLoad(): void {
     this.idDocuments = new Array();
-    this.medicalDocuments = new Array();
 
     this.paymentMethod = "etransfer";
 
     this.order = null;
     this.order = this.navParams.get('order');
-    console.log(this.order);
 
     this.addressOptions = {
       title: 'Select an address'
@@ -71,27 +68,15 @@ export class CheckoutPage {
       .map(response => response.json())
       .subscribe(
         data => {
-          // console.log(data);
           this.user = data;
           this.user.addresses = data.addresses || [];
           this.selectedAddress = this.user.addresses[0];
-          this.categorizeDocuments(data.documents);
+          this.idDocuments = data.documents
           loader.dismiss();
         },
         error => {
-          // console.log(error);
         }
       );
-  }
-
-  categorizeDocuments(documents: any) {
-    for (var document of documents) {
-      if(document.type == 'identification') {
-        this.idDocuments.push(document);
-      } else {
-        this.medicalDocuments.push(document);
-      }
-    }
   }
 
   addAddress() {
@@ -105,13 +90,11 @@ export class CheckoutPage {
           .map(response => response.json())
           .subscribe(
             data => {
-              // console.log(data);
               this.user.addresses.push(data);
               this.selectedAddress = data;
               loader.dismiss();
             },
             error => {
-              // console.log(error);
               loader.dismiss();
             }
           )
@@ -121,7 +104,7 @@ export class CheckoutPage {
 
   placeOrder() {
 
-    if (!this.selectedAddress && !this.order.pickup) {
+    if (!this.selectedAddress) {
       let alert = this.alertCtrl.create({
         title: 'No Address!',
         subTitle: 'Please add an address so we know where to ship your order.',
@@ -143,23 +126,8 @@ export class CheckoutPage {
       return;
     }
 
-    if (this.order.medical && this.medicalDocuments.length < 1) {
-      let alert = this.alertCtrl.create({
-        title: 'Insufficient Verification!',
-        subTitle: 'Please upload pictures of your medical documentation.',
-        buttons: ['OK']
-      });
-      alert.present();
-
-      return;
-    }
-
-
-    this.order.address_id =  this.order.pickup? "1" : this.selectedAddress.address_id;
-    this.order.distribution_channel = this.order.pickup? "pickup" : "mail";
-
-    // console.log(this.order);
-
+    this.order.address_id = this.selectedAddress.address_id;
+    this.order.distribution_channel = "mail";
 
     var loader = this.loadingCtrl.create({});
     loader.present();
@@ -174,10 +142,9 @@ export class CheckoutPage {
         },
         error => {
           loader.dismiss();
-          // console.log(error);
           let alert = this.alertCtrl.create({
             title: 'Woops',
-            subTitle: error == undefined? error.json().errors.full_messages[0] : 'An unknown error occured',
+            subTitle: error == undefined? error.json().errors.full_messages[0] : 'An unknown error occured, please try again',
             buttons: ['OK']
           });
           alert.present();
@@ -197,16 +164,6 @@ export class CheckoutPage {
     documentsModal.onDidDismiss(deleted => {
       if(deleted) {
         this.idDocuments = new Array();
-      }
-    });
-  }
-
-  goToMedicalDocumentsPage() {
-    let documentsModal = this.modalCtrl.create(DocumentsModalPage, {"documents": this.medicalDocuments});
-    documentsModal.present(documentsModal);
-    documentsModal.onDidDismiss(deleted => {
-      if(deleted) {
-        this.medicalDocuments = new Array();
       }
     });
   }
@@ -238,11 +195,7 @@ export class CheckoutPage {
           .subscribe(
             document => {
               loader.dismiss();
-              if(type == 'identification') {
-                this.idDocuments.push(document);
-              } else {
-                this.medicalDocuments.push(document);
-              }
+              this.idDocuments.push(document);
             },
             error => {
               loader.dismiss();
@@ -252,5 +205,4 @@ export class CheckoutPage {
         }
       );
   }
-
 }

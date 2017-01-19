@@ -26,7 +26,7 @@
         <ion-list-header>
           Delivery Addresses
         </ion-list-header>
-        <button detail-push ion-item *ngFor="let address of addresses">  <!-- (click)="editAddress(address)"> -->
+        <button detail-push ion-item *ngFor="let address of addresses">
           <ion-icon item-left name="home"></ion-icon>
           <b>{{address.primary}} {{address.secondary}}</b>, {{address.locality}}, {{address.administrative_area_level_1}}, {{address.postal_code}}
         </button>
@@ -47,22 +47,6 @@
           <input type="file" accept="image/*;capture=camera" (change)="addDocument($event, 'identification')"/>
           <span color="danger" item-right>
             Add a government ID
-          </span>
-        </ion-item>
-      </ion-list>
-
-      <ion-list *ngIf="email">
-        <ion-list-header>
-          Medical Verification Document
-        </ion-list-header>
-        <button detail-push ion-item *ngIf="medicalDocuments.length > 0" (click)="goToMedicalDocumentsPage()">
-          <ion-icon item-left name="medical"></ion-icon>
-          View medical document
-        </button>
-        <ion-item detail-none *ngIf="medicalDocuments.length < 1">
-          <input type="file" accept="image/*;capture=camera" (change)="addDocument($event, 'medical')"/>
-          <span color="danger" item-right>
-            Add medical document
           </span>
         </ion-item>
       </ion-list>

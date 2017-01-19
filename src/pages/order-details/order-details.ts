@@ -30,7 +30,7 @@ export class OrderDetailsPage {
 
   public ionViewDidLoad(): void {
     this.order = this.navParams.get('order');
-    console.log(this.order);
+
     this.orderService.loadOrderAddress(this.order.address_id)
       .map(res => res.json())
       .subscribe(
@@ -42,49 +42,6 @@ export class OrderDetailsPage {
     }
 
     this.securityAnswer = this.order.dispensary_name.toLowerCase().replace(/ /g, '');
-  };
-
-  doRefresh(refresher) {
-    this.orderService.loadOrder(this.order.id)
-      .map(response => response.json())
-      .subscribe(
-          data => {
-            // console.log(data);
-            this.order = data;
-            if(this.order.status == 'in_transit') {
-              //TODO: duplicating load tracking info here because cannot figureout how to
-              //complete refresher otherwise
-              this.trackingService.getTrackingInfo(this.order.carrier_code, this.order.tracking_number)
-                .map(response => response.json())
-                .subscribe(
-                  data => {
-                    this.trackingInfo = data;
-                    refresher.complete();
-                    if(this.trackingInfo && !this.trackingInfo.tracking_status) {
-                      let alert = this.alertCtrl.create({
-                        title: 'Woops',
-                        subTitle: "No tracking info found for carrier: " + this.order.carrier_code + ", and tracking number: " + this.order.tracking_number,
-                        buttons: ['OK']
-                      });
-                      alert.present();
-                    }
-                  },
-                  error => {
-                    refresher.complete();
-                    let alert = this.alertCtrl.create({
-                      title: 'Woops',
-                      subTitle: "Failed to fetch tracking details! Please try again.",
-                      buttons: ['OK']
-                    });
-                    alert.present();
-                  }
-                )
-            } else {
-              refresher.complete();
-            }
-          },
-          error => refresher.complete()
-      )
   };
 
   loadTrackingInfo() {

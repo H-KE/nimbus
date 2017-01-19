@@ -10,29 +10,6 @@ import { AuthenticationService } from '../../providers/authentication/authentica
   templateUrl: 'home.html'
 })
 export class HomePage {
-  slideOptions = {
-    initialSlide: 0,
-    pager: true
-  };
-
-  slides = [
-    {
-      title: "Welcome",
-      description: "Nimbus is the simplest way to buy marijuana in Canada.",
-      image: "assets/img/nimbus-logo.png",
-    },
-    {
-      title: "Mail Delivery",
-      description: "Don't want to go outside? Stay home and get premium cannabis <b>delivered straight to your door</b> from Canada's bests.",
-      image: "assets/img/nimbus-logo.png",
-    },
-    {
-      title: "Premier Service",
-      description: "We are partnered with the best online dispensaries and brands in Canada, so you can order from <b>a huge selection of products</b> all from one app.",
-      image: "assets/img/nimbus-logo.png",
-    }
-  ];
-
   constructor(public navCtrl: NavController,
               public auth: AuthenticationService,
               public menuCtrl: MenuController) {
@@ -55,14 +32,6 @@ export class HomePage {
 
   goToSearch() {
     this.navCtrl.setRoot(SearchPage);
-  }
-
-  goToSignUp() {
-    this.navCtrl.push(SignupPage);
-  }
-
-  goToLogin() {
-    this.navCtrl.push(LoginPage);
   }
 
   oauth(type) {

@@ -34,7 +34,6 @@ export class ItemDetailsPage {
   }
 
   public ionViewDidLoad(): void {
-    // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = this.navParams.get('item');
     this.itemSpec = this.navParams.get('itemSpec');
     this.retailer = this.navParams.get('dispensary');
@@ -47,7 +46,6 @@ export class ItemDetailsPage {
     this.quantity = this.dynamicSlider ? 0 : 1;
     this.quantityRange = _.range(1,11);
     this.disabled = this.retailer.bio === "Coming soon" || this.selectedItem.prices == null || this.selectedItem.prices[0] == null;
-    console.log(this.selectedItem.prices);
   };
 
   addToCart(selectedItem, quantity) {

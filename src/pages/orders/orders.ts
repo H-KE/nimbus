@@ -31,12 +31,7 @@ export class OrdersPage {
       .map(response => response.json())
       .subscribe(
           data => {
-            // console.log(data);
             this.orders = data as Order[]
-            this.orderSegment = "open";
-            for (var order of this.orders) {
-              order.show = false;
-            }
             loader.dismiss();
           },
           error => console.log(error)
@@ -47,10 +42,6 @@ export class OrdersPage {
     this.navCtrl.push(OrderDetailsPage, {
       order: order
     });
-  };
-
-  isOrderShown(order) {
-    return order.show;
   };
 
   orderStatusPipe(orderStatus: string) {
