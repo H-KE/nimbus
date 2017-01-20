@@ -1,0 +1,16 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{dispensary.name}}</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="goToCart()">
+        <ion-icon name="cart"></ion-icon>{{cartService.itemCount}}
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-tabs color="primary" tabsLayout="icon-top">
+  <ion-tab tabIcon="basket" tabTitle="Menu" [root]="menuRoot" [rootParams]="dispensary"></ion-tab>
+  <ion-tab tabIcon="text" tabTitle="Reviews" [root]="reviewRoot" [rootParams]="dispensary"></ion-tab>
+  <ion-tab tabIcon="compass" tabTitle="Info" [root]="infoRoot" [rootParams]="dispensary"></ion-tab>
+</ion-tabs>

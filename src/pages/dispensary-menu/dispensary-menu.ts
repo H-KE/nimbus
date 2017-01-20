@@ -11,10 +11,10 @@ import { DispensaryService } from '../../providers/dispensary/dispensary'
 import _ from 'lodash'
 
 @Component({
-  selector: 'dispensary',
-  templateUrl: 'dispensary.html'
+  selector: 'dispensary-menu',
+  templateUrl: 'dispensary-menu.html'
 })
-export class DispensaryPage {
+export class DispensaryMenuPage {
   selectedDispensary: any
   menu: Item[]
   menuCategories: any[]
@@ -41,19 +41,8 @@ export class DispensaryPage {
   }
 
   public ionViewDidLoad(): void {
-    if(!this.navParams.get('dispensary')) {
-      var loader = this.loadingCtrl.create({})
-      loader.present()
-      this.dispensaryService.getDispensary(this.navParams.get('dispensaryId'))
-        .then(dispensary => {
-          this.selectedDispensary = dispensary
-          this.categorizeMenu()
-          loader.dismiss()
-        })
-    } else {
-      this.selectedDispensary = this.navParams.get('dispensary')
-      this.categorizeMenu()
-    }
+    this.selectedDispensary = this.navParams.data
+    this.categorizeMenu()
   }
 
   categorizeMenu() {

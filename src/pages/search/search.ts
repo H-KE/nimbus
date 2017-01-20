@@ -3,7 +3,7 @@ import {NavController, NavParams, Platform, LoadingController, MenuController} f
 
 import {Dispensary} from '../../models/dispensary'
 
-import {DispensaryPage} from '../dispensary/dispensary'
+import {DispensaryTabsPage} from '../dispensary-tabs/dispensary-tabs'
 import {CartPage} from '../cart/cart';
 
 import {CartService} from '../../providers/cart/cart';
@@ -57,7 +57,7 @@ export class SearchPage {
   }
 
   dispensarySelected(event, dispensary) {
-    this.navCtrl.push(DispensaryPage, {
+    this.navCtrl.push(DispensaryTabsPage, {
       dispensary: dispensary,
       dispensaryId: dispensary.id
     });

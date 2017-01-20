@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar color="primary">
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="selectedDispensary">
+    <ion-row responsive-md>
+      <ion-col width-50>
+        <ion-card>
+          <div id="dispensary-logo-wrapper">
+            <img src={{selectedDispensary.avatar_url}} class="dispensary-logo"/>
+          </div>
+          <ion-card-header>
+            {{selectedDispensary.name}}
+          </ion-card-header>
+          <ion-card-content>
+            <p>
+              {{selectedDispensary.description}}
+            </p>
+          </ion-card-content>
+
+          <button *ngIf="selectedDispensary.free_shipping_cap" disabled="true" clear ion-button small color="secondary" icon-left>
+            <ion-icon name="checkmark-circle"></ion-icon>
+            Free shipping over ${{selectedDispensary.free_shipping_cap}}
+          </button>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-content>

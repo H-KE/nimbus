@@ -13,13 +13,15 @@ import { ProfilePage } from '../pages/profile/profile';
 import { ContactPage } from '../pages/contact/contact';
 import { CartPage } from '../pages/cart/cart';
 import { CheckoutPage } from '../pages/checkout/checkout';
-import { DispensaryPage } from '../pages/dispensary/dispensary';
+import { DispensaryMenuPage } from '../pages/dispensary-menu/dispensary-menu';
+import { DispensaryInfoPage } from '../pages/dispensary-info/dispensary-info';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { AddressModalPage } from '../pages/address-modal/address-modal';
 import { ContactModalPage } from '../pages/contact-modal/contact-modal';
 import { DocumentsModalPage } from '../pages/documents-modal/documents-modal';
 import { TermsPage } from '../pages/terms/terms';
 import { ShippoPage } from '../pages/shippo/shippo';
+import { DispensaryTabsPage} from '../pages/dispensary-tabs/dispensary-tabs'
 
 import { CartService } from '../providers/cart/cart';
 import { DispensaryService } from '../providers/dispensary/dispensary';
@@ -44,18 +46,20 @@ import { SideMenuService } from '../providers/side-menu/side-menu';
     ContactPage,
     CartPage,
     CheckoutPage,
-    DispensaryPage,
+    DispensaryMenuPage,
+    DispensaryInfoPage,
     ItemDetailsPage,
     AddressModalPage,
     DocumentsModalPage,
     TermsPage,
     ShippoPage,
-    ContactModalPage
+    ContactModalPage,
+    DispensaryTabsPage
   ],
   imports: [
     IonicModule.forRoot(MyApp, {}, {
       links: [
-        { component: DispensaryPage, name: 'dispensary', segment: 'dispensary/:dispensaryId', defaultHistory: [SearchPage] }
+        // { component: DispensaryPage, name: 'dispensary', segment: 'dispensary/:dispensaryId', defaultHistory: [SearchPage] }
       ]
     })
   ],
@@ -74,13 +78,15 @@ import { SideMenuService } from '../providers/side-menu/side-menu';
     ContactPage,
     CartPage,
     CheckoutPage,
-    DispensaryPage,
+    DispensaryMenuPage,
+    DispensaryInfoPage,
     ItemDetailsPage,
     AddressModalPage,
     DocumentsModalPage,
     TermsPage,
     ShippoPage,
-    ContactModalPage
+    ContactModalPage,
+    DispensaryTabsPage
   ],
   providers: [
     CartService,
