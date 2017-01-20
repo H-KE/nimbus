@@ -1,5 +1,5 @@
 import { Component, Inject } from '@angular/core'
-import { NavController, NavParams, LoadingController, ToastController} from 'ionic-angular'
+import { App, NavController, NavParams, LoadingController, ToastController} from 'ionic-angular'
 
 import { Item } from '../../models/item'
 import { Dispensary } from '../../models/dispensary'
@@ -36,7 +36,8 @@ export class DispensaryMenuPage {
               public cartService: CartService,
               public dispensaryService: DispensaryService,
               public toastCtrl: ToastController,
-              public loadingCtrl: LoadingController) {
+              public loadingCtrl: LoadingController,
+              public appCtrl: App) {
 
   }
 
@@ -57,7 +58,7 @@ export class DispensaryMenuPage {
   }
 
   itemSelected(event, item) {
-    this.navCtrl.push(ItemDetailsPage, {
+    this.appCtrl.getRootNav().push(ItemDetailsPage, {
       item: item,
       itemSpec: this.renderItemDescription(item),
       dispensary: this.selectedDispensary
