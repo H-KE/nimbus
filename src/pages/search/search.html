@@ -18,7 +18,7 @@
   <div *ngFor="let dispensaryGroup of dispensaries">
     <ion-row responsive-md>
       <ion-col width-33 *ngFor="let dispensary of dispensaryGroup">
-        <ion-card (click)="dispensarySelected($event, dispensary)">
+        <ion-card tappable (click)="dispensarySelected($event, dispensary)">
           <img src={{dispensary.avatar_url}}>
           <ion-item>
             <h2><b>{{dispensary.name}}</b></h2>

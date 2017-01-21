@@ -11,7 +11,7 @@
           <h2 class="category-name">{{category.name}}</h2>
           <div *ngFor="let item of category.items">
             <ion-card id="dispensary-card">
-              <ion-item detail-none text-wrap (click)="itemSelected($event, item)">
+              <ion-item detail-none text-wrap tappable (click)="itemSelected($event, item)">
                 <ion-avatar item-left>
                   <img src="{{cartService.getItemThumbnail(item)}}">
                 </ion-avatar>
