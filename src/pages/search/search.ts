@@ -1,5 +1,6 @@
 import {Component, NgZone} from '@angular/core';
-import {NavController, NavParams, Platform, LoadingController, MenuController} from 'ionic-angular';
+import { Storage } from '@ionic/storage'
+import { NavController, NavParams, Platform, LoadingController, MenuController, AlertController } from 'ionic-angular';
 
 import {Dispensary} from '../../models/dispensary'
 
@@ -25,10 +26,22 @@ export class SearchPage {
               public cartService: CartService,
               public loadingCtrl: LoadingController,
               public menuCtrl: MenuController,
+              public localStorage: Storage,
+              public alertCtrl: AlertController,
               public sideMenu: SideMenuService) {
   }
 
   public ionViewDidLoad(): void {
+    if(!this.isLocalStorageSupported()) {
+      let alert = this.alertCtrl.create({
+        title: 'Private Mode Detected',
+        message: 'Some functionalities will not work under Safari private mode. To turn off: Tap □ in bottom right corner, tap Private, then tap Done',
+        buttons: [{
+          text: 'Ok'
+        }]
+      });
+      alert.present();
+    }
     this.menuCtrl.swipeEnable(true);
     this.loadDispensaries();
 
@@ -65,5 +78,15 @@ export class SearchPage {
 
   goToCart() {
     this.navCtrl.push(CartPage);
+  }
+
+  isLocalStorageSupported() {
+    try {
+      localStorage.setItem('test', '1')
+      localStorage.removeItem('test')
+      return true
+    } catch (error) {
+      return false
+    }
   }
 }
