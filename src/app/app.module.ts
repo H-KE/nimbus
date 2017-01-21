@@ -15,6 +15,7 @@ import { CartPage } from '../pages/cart/cart';
 import { CheckoutPage } from '../pages/checkout/checkout';
 import { DispensaryMenuPage } from '../pages/dispensary-menu/dispensary-menu';
 import { DispensaryInfoPage } from '../pages/dispensary-info/dispensary-info';
+import { DispensaryReviewPage } from '../pages/dispensary-review/dispensary-review';
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { AddressModalPage } from '../pages/address-modal/address-modal';
 import { ContactModalPage } from '../pages/contact-modal/contact-modal';
@@ -48,6 +49,7 @@ import { SideMenuService } from '../providers/side-menu/side-menu';
     CheckoutPage,
     DispensaryMenuPage,
     DispensaryInfoPage,
+    DispensaryReviewPage,
     ItemDetailsPage,
     AddressModalPage,
     DocumentsModalPage,
@@ -80,6 +82,7 @@ import { SideMenuService } from '../providers/side-menu/side-menu';
     CheckoutPage,
     DispensaryMenuPage,
     DispensaryInfoPage,
+    DispensaryReviewPage,
     ItemDetailsPage,
     AddressModalPage,
     DocumentsModalPage,

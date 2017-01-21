@@ -3,6 +3,7 @@ import { NavParams, NavController } from 'ionic-angular'
 
 import { DispensaryMenuPage } from '../dispensary-menu/dispensary-menu'
 import { DispensaryInfoPage } from '../dispensary-info/dispensary-info'
+import { DispensaryReviewPage } from '../dispensary-review/dispensary-review'
 import { CartPage } from '../cart/cart'
 
 import { CartService } from '../../providers/cart/cart'
@@ -13,7 +14,7 @@ import { CartService } from '../../providers/cart/cart'
 })
 export class DispensaryTabsPage {
   menuRoot = DispensaryMenuPage;
-  reviewRoot = DispensaryMenuPage;
+  reviewRoot = DispensaryReviewPage;
   infoRoot = DispensaryInfoPage;
   dispensary: any;
 
