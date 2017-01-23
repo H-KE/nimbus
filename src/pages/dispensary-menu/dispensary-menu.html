@@ -10,7 +10,7 @@
         <div *ngFor="let category of menuCategories">
           <h2 class="category-name">{{category.name}}</h2>
           <div *ngFor="let item of category.items">
-            <ion-card id="dispensary-card">
+            <ion-card id="item-card">
               <ion-item detail-none text-wrap tappable (click)="itemSelected($event, item)">
                 <ion-avatar item-left>
                   <img src="{{cartService.getItemThumbnail(item)}}">
@@ -18,6 +18,10 @@
                 <h2 class="product-name">{{item.name}}</h2>
                 <h2 class="strain" *ngIf="item.subspecies" color="{{item.subspecies.toLowerCase()}}">{{item.subspecies}}</h2>
                 <p>{{renderItemDescription(item)}}</p>
+                <span id="rating" *ngIf="item.reviews.length > 0">
+                  <rating [(ngModel)]="item.rating" readOnly="true"></rating>
+                  <ion-icon color="primary">({{item.reviews.length}})</ion-icon>
+                </span>
                 <button ion-fab item-right color="secondary" (click)="addToCart($event, item)" [disabled]="isItemDisabled(item)">
                   {{renderItemPrice(item)}}
                   <ion-icon name="cart"></ion-icon>

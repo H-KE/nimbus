@@ -23,6 +23,10 @@
           <ion-item>
             <h2><b>{{dispensary.name}}</b></h2>
             <p>{{dispensary.bio}}</p>
+            <span id="rating">
+              <rating [(ngModel)]="dispensary.rating" readOnly="true"></rating>
+              <ion-icon color="primary">({{dispensary.reviews.length}})</ion-icon>
+            </span>
           </ion-item>
         </ion-card>
       </ion-col>

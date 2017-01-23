@@ -17,4 +17,13 @@ search {
     width: 100%;
     object-fit: cover;
   }
+  
+  #rating {
+    ul {
+      display: inline-block;
+    }
+    ion-icon {
+      color: #059361;
+    }
+  }
 }

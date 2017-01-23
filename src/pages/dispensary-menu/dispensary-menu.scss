@@ -13,7 +13,7 @@ dispensary-menu {
     text-align: center;
   }
 
-  #dispensary-card {
+  #item-card {
     text-align: center;
     border-radius: 100em;
 
@@ -48,6 +48,14 @@ dispensary-menu {
     .cbd {
       color: #000;
       font-weight: 500;
+    }
+    #rating {
+      ul {
+        display: inline-block;
+      }
+      ion-icon {
+        color: #059361;
+      }
     }
   }
 }
