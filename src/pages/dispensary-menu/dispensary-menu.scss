@@ -17,13 +17,15 @@ dispensary-menu {
     text-align: center;
     border-radius: 100em;
 
+    ion-item {
+      border-radius: 100em;
+    }
     ion-item:hover {
       cursor: pointer;
       border-radius: 100em;
     }
-    ion-item:active {
+    ion-item:active:focus {
       border-radius: 100em;
-      -webkit-filter: brightness(95%);
     }
 
     img {
