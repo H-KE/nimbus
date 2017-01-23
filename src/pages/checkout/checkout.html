@@ -10,72 +10,79 @@
 <ion-content class="checkout">
   <ion-row responsive-md>
    <ion-col width-50>
-    <ion-list>
-      <ion-list-header>
-        <ion-label>Shipping Details</ion-label>
-      </ion-list-header>
-      <ion-item text-wrap id="address_select" *ngIf="user && user.addresses.length > 0">
-        <ion-icon item-left name="home"></ion-icon>
-        <ion-select [selectOptions]="addressOptions" [(ngModel)]="selectedAddress" *ngIf="user">
-          <ion-option *ngFor="let address of user.addresses" [value]="address"><b>{{address.primary}} {{address.secondary}}</b>, {{address.locality}}, {{address.administrative_area_level_1}}, {{address.postal_code}}, Canada</ion-option>
-        </ion-select>
-      </ion-item>
-      <button *ngIf="user" ion-item detail-none (click)="addAddress()">
-        <span item-right>
-          Add a shipping address
-        </span>
-        <ion-icon name="add" item-right></ion-icon>
-      </button>
-    </ion-list>
+    <ion-card>
+      <ion-list>
+        <ion-list-header>
+          <ion-label>Shipping Details</ion-label>
+        </ion-list-header>
+        <ion-item text-wrap id="address_select" *ngIf="user && user.addresses.length > 0">
+          <ion-icon item-left name="home"></ion-icon>
+          <ion-select [selectOptions]="addressOptions" [(ngModel)]="selectedAddress" *ngIf="user">
+            <ion-option *ngFor="let address of user.addresses" [value]="address"><b>{{address.primary}} {{address.secondary}}</b>, {{address.locality}}, {{address.administrative_area_level_1}}, {{address.postal_code}}, Canada</ion-option>
+          </ion-select>
+        </ion-item>
+        <button *ngIf="user" ion-item detail-none (click)="addAddress()">
+          <span item-right>
+            Add a shipping address
+          </span>
+          <ion-icon name="add" item-right></ion-icon>
+        </button>
+      </ion-list>
+    </ion-card>
 
-    <ion-list>
-      <ion-list-header>
-        <ion-label>Payment Method</ion-label>
-      </ion-list-header>
-      <ion-item>
-        <ion-icon item-left name="card"></ion-icon>
-        <ion-select [(ngModel)]="paymentMethod">
-          <ion-option value="etransfer">Interac e-Transfer</ion-option>
-        </ion-select>
-      </ion-item>
-    </ion-list>
+    <ion-card>
+      <ion-list>
+        <ion-list-header>
+          <ion-label>Payment Method</ion-label>
+        </ion-list-header>
+        <ion-item>
+          <ion-icon item-left name="card"></ion-icon>
+          <ion-select [(ngModel)]="paymentMethod">
+            <ion-option value="etransfer">Interac e-Transfer</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+    </ion-card>
 
-    <ion-list>
-      <ion-list-header>
-        Age Verification Document
-      </ion-list-header>
-      <button detail-push ion-item *ngIf="idDocuments.length > 0" (click)="goToIdDocumentsPage()">
-        <ion-icon item-left name="document"></ion-icon>
-        View ID document
-      </button>
-      <ion-item detail-push *ngIf="idDocuments.length < 1">
-        <input type="file" accept="image/*;capture=camera" (change)="addDocument($event, 'identification')"/>
-        <span color="danger" item-right>
-          Add a government ID
-        </span>
-      </ion-item>
-    </ion-list>
+    <ion-card>
+      <ion-list>
+        <ion-list-header>
+          Age Verification Document
+        </ion-list-header>
+        <button detail-push ion-item *ngIf="idDocuments.length > 0" (click)="goToIdDocumentsPage()">
+          <ion-icon item-left name="document"></ion-icon>
+          View ID document
+        </button>
+        <ion-item detail-push *ngIf="idDocuments.length < 1">
+          <input type="file" accept="image/*;capture=camera" (change)="addDocument($event, 'identification')"/>
+          <span color="danger" item-right>
+            Add a government ID
+          </span>
+        </ion-item>
+      </ion-list>
+    </ion-card>
 
-    <ion-list>
-      <ion-list-header>
-        <ion-label>Order Summary</ion-label>
-      </ion-list-header>
-      <ion-item text-wrap no-lines *ngFor="let item of order.order_details">
-        <ion-avatar item-left>
-          <img src="{{cartService.getItemThumbnail(item)}}">
-        </ion-avatar>
-        <p>{{item.name}} X {{item.quantity}}</p>
-        <p class="item-price" item-right>{{item.price | currency:'USD':true:'1.2-2'}}</p>
-      </ion-item>
-      <ion-item text-wrap>
-        <p align="right">Subtotal: {{order.total_price | currency:'USD':true:'1.2-2'}}</p>
-        <p align="right">Delivery Charges: {{order.delivery_fee | currency:'USD':true:'1.2-2'}}</p>
-        <h3 align="right">Order Total: {{order.total_price*1 + order.delivery_fee*1| currency:'USD':true:'1.2-2'}}</h3>
-      </ion-item>
-    </ion-list>
+    <ion-card>
+      <ion-list>
+        <ion-list-header>
+          <ion-label>Order Summary</ion-label>
+        </ion-list-header>
+        <ion-item text-wrap no-lines *ngFor="let item of order.order_details">
+          <ion-avatar item-left>
+            <img src="{{cartService.getItemThumbnail(item)}}">
+          </ion-avatar>
+          <p>{{item.name}} X {{item.quantity}}</p>
+          <p class="item-price" item-right>{{item.price | currency:'USD':true:'1.2-2'}}</p>
+        </ion-item>
+        <ion-item text-wrap>
+          <p align="right">Subtotal: {{order.total_price | currency:'USD':true:'1.2-2'}}</p>
+          <p align="right">Delivery Charges: {{order.delivery_fee | currency:'USD':true:'1.2-2'}}</p>
+          <h3 align="right">Order Total: {{order.total_price*1 + order.delivery_fee*1| currency:'USD':true:'1.2-2'}}</h3>
+        </ion-item>
+      </ion-list>
+    </ion-card>
 
-
-    <ion-list>
+    <ion-list id="place-order">
       <button ion-button full color="secondary" (click)="placeOrder()">PLACE ORDER</button>
       <!-- <ion-item text-wrap>
         <p>By pressing "place order" I agree to terms and conditions of the dispensary I am ordering from.</p>

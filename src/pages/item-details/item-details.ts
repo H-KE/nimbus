@@ -46,9 +46,6 @@ export class ItemDetailsPage {
               public alertCtrl: AlertController,
               public cartService: CartService,
               public ticketService: TicketService) {
-  }
-
-  public ionViewDidLoad(): void {
     // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = this.navParams.get('item');
     this.itemSpec = this.navParams.get('itemSpec');
@@ -64,7 +61,9 @@ export class ItemDetailsPage {
     this.quantity = this.dynamicSlider ? 0 : 1;
     this.quantityRange = _.range(1,11);
     this.disabled = this.retailer.bio === "Coming soon" || this.selectedItem.prices == null || this.selectedItem.prices[0] == null;
-  };
+  }
+
+  public ionViewDidLoad(): void {}
 
   addToCart(selectedItem, quantity) {
     if (this.dynamicSlider == true) {

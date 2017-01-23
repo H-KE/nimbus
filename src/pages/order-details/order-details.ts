@@ -25,10 +25,6 @@ export class OrderDetailsPage {
               public alertCtrl: AlertController,
               public trackingService: TrackingService,
               public loadingCtrl: LoadingController) {
-
-  };
-
-  public ionViewDidLoad(): void {
     this.order = this.navParams.get('order');
 
     this.orderService.loadOrderAddress(this.order.address_id)
@@ -43,6 +39,8 @@ export class OrderDetailsPage {
 
     this.securityAnswer = this.order.dispensary_name.toLowerCase().replace(/ /g, '');
   };
+
+  public ionViewDidLoad(): void {}
 
   loadTrackingInfo() {
     var loader = this.loadingCtrl.create({});

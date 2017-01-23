@@ -38,12 +38,12 @@ export class DispensaryMenuPage {
               public toastCtrl: ToastController,
               public loadingCtrl: LoadingController,
               public appCtrl: App) {
-
+    this.selectedDispensary = this.navParams.data
+    this.categorizeMenu()
   }
 
   public ionViewDidLoad(): void {
-    this.selectedDispensary = this.navParams.data
-    this.categorizeMenu()
+
   }
 
   categorizeMenu() {

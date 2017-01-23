@@ -26,12 +26,13 @@ export class CartPage {
               public orderService: OrderService,
               public alertCtrl: AlertController,
               public auth: AuthenticationService) {
-  }
-
-  public ionViewDidLoad(): void {
     this.carts = _.values(this.cartService.getAll());
     this.carts.itemCount = this.cartService.itemCount;
     this.order = new Order();
+  }
+
+  public ionViewDidLoad(): void {
+
   };
 
   goToOrders() {

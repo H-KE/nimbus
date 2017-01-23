@@ -43,22 +43,18 @@ export class CheckoutPage {
               public modalCtrl: ModalController,
               public loadingCtrl: LoadingController,
               public alertCtrl: AlertController) {
-  }
-
-  public ionViewDidLoad(): void {
     this.idDocuments = new Array();
-
     this.paymentMethod = "etransfer";
-
     this.order = null;
     this.order = this.navParams.get('order');
-
     this.addressOptions = {
       title: 'Select an address'
     }
-
     this.loadUser();
-  };
+  }
+
+  public ionViewDidLoad(): void {
+  }
 
   loadUser() {
     var loader = this.loadingCtrl.create({});

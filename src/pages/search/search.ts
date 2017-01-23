@@ -29,6 +29,10 @@ export class SearchPage {
               public localStorage: Storage,
               public alertCtrl: AlertController,
               public sideMenu: SideMenuService) {
+    this.menuCtrl.swipeEnable(true);
+    this.loadDispensaries();
+
+    this.sideMenu.loadSideMenu();
   }
 
   public ionViewDidLoad(): void {
@@ -42,10 +46,6 @@ export class SearchPage {
       });
       alert.present();
     }
-    this.menuCtrl.swipeEnable(true);
-    this.loadDispensaries();
-
-    this.sideMenu.loadSideMenu();
   }
 
   loadDispensaries() {
@@ -53,20 +53,10 @@ export class SearchPage {
     loader.present();
     this.dispensaryService.getAll()
       .then(response => {
-        this.dispensaries = this.orderDispensariesByReadiness(response);
+        this.dispensaries = response
         this.dispensaries = _.chunk(response, 3)
         loader.dismiss();
       });
-  }
-
-  orderDispensariesByReadiness(dispensaries) {
-    let comingSoons = _.filter(dispensaries, function(dispensary) {
-      return dispensary.bio == 'Coming soon';
-    });
-    let goodToGos =  _.filter(dispensaries, function(dispensary) {
-      return dispensary.bio != 'Coming soon' && dispensary.bio != 'Hidden';
-    });
-    return goodToGos.concat(comingSoons);
   }
 
   dispensarySelected(event, dispensary) {

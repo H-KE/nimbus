@@ -34,13 +34,13 @@ export class DispensaryReviewPage {
               public alertCtrl: AlertController,
               public cartService: CartService,
               public ticketService: TicketService) {
-
-  }
-
-  public ionViewDidLoad(): void {
     this.selectedDispensary = this.navParams.data;
     this.review_count = this.selectedDispensary.reviews.length;
     this.rating = this.selectedDispensary.rating / this.review_count
+  }
+
+  public ionViewDidLoad(): void {
+
   }
 
   goToCart() {

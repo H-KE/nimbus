@@ -17,12 +17,10 @@ export class OrdersPage {
   constructor(public navCtrl: NavController,
               public orderService: OrderService,
               public loadingCtrl: LoadingController) {
-
-  };
-
-  public ionViewDidLoad(): void {
     this.loadOrders();
   };
+
+  public ionViewDidLoad(): void {}
 
   loadOrders() {
     var loader = this.loadingCtrl.create({});

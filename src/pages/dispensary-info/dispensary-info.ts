@@ -14,11 +14,10 @@ export class DispensaryInfoPage {
   constructor(public navParams: NavParams,
               public navCtrl: NavController,
               public cartService: CartService) {
-
+    this.selectedDispensary = this.navParams.data
   }
 
   public ionViewDidLoad(): void {
-    this.selectedDispensary = this.navParams.data
   }
 
   goToCart() {

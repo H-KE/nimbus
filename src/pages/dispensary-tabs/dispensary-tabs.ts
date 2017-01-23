@@ -21,11 +21,12 @@ export class DispensaryTabsPage {
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public cartService: CartService) {
-
+    this.dispensary = this.navParams.get('dispensary')
+    console.log(this.dispensary)
   }
 
   public ionViewDidLoad(): void {
-    this.dispensary = this.navParams.get('dispensary')
+
   }
 
   goToCart() {
