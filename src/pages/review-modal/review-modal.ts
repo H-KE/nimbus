@@ -19,8 +19,8 @@ export class ReviewModalPage {
               public navParams: NavParams) {
     this.type = navParams.get('type')
     this.selectedItem = navParams.get('selectedItem')
-    this.reviewBody = "Type here to start your review..."
-    this.rating = 3;
+    this.reviewBody = ""
+    this.rating = 5
   }
 
   ionViewDidLoad() {

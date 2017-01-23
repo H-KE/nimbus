@@ -12,8 +12,8 @@
 <ion-content class="item-details">
  <span *ngIf="selectedItem" class="selection">
    <ion-row responsive-md>
-     <ion-col width-33>
-       <ion-card>
+     <ion-col width-50>
+       <ion-card id="item-images">
         <div id="item-logo-wrapper">
           <ion-slides [options]="slideOptions">
             <ion-slide *ngFor="let image of selectedItem.images">
@@ -21,6 +21,10 @@
             </ion-slide>
           </ion-slides>
         </div>
+      </ion-card>
+    </ion-col>
+    <ion-col width-50>
+      <ion-card id="item-info">
         <ion-card-header>
           {{selectedItem.name}}
         </ion-card-header>
@@ -59,9 +63,13 @@
         </button>
       </ion-card>
       <ion-card>
-        <ion-card-header>
-          Reviews
-        </ion-card-header>
+        <ion-item>
+          <h2>Reviews ({{selectedItem.reviews.length}})</h2>
+          <button item-right icon-left ion-button color="secondary" (click)="writeReview(selectedItem)">
+            <ion-icon name="chatbubbles"></ion-icon>
+            Write a review
+          </button>
+        </ion-item>
         <ion-list *ngIf="selectedItem.reviews.length > 0">
           <ion-item text-wrap *ngFor="let review of selectedItem.reviews">
             <ion-avatar item-left>
@@ -77,9 +85,6 @@
         <ion-item text-wrap *ngIf="selectedItem.reviews.length == 0">
           <p>No reviews yet, feel free to leave one and share your experience</p>
         </ion-item>
-        <button ion-button color="secondary" full (click)="writeReview(selectedItem)">
-          Write a review
-        </button>
       </ion-card>
     </ion-col>
    </ion-row>
