@@ -1,10 +1,20 @@
 import {Component} from '@angular/core';
-import {NavController, NavParams, ToastController} from 'ionic-angular';
+import {NavController,
+        NavParams,
+        ModalController,
+        ToastController,
+        LoadingController,
+        AlertController} from 'ionic-angular';
 
 import { Item } from '../../models/item';
+import { Review } from '../../models/review';
 import { Dispensary } from '../../models/dispensary';
-import { CartService } from '../../providers/cart/cart';
+
 import { CartPage } from '../cart/cart';
+import { ReviewModalPage } from '../review-modal/review-modal';
+
+import { CartService } from '../../providers/cart/cart';
+import { TicketService } from '../../providers/ticket/ticket';
 
 import _ from 'underscore';
 
@@ -26,18 +36,26 @@ export class ItemDetailsPage {
     pager: true,
     loop: true
   };
+  rating: number;
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
+              public modalCtrl: ModalController,
+              public loadingCtrl: LoadingController,
               public toastCtrl: ToastController,
-              public cartService: CartService) {
+              public alertCtrl: AlertController,
+              public cartService: CartService,
+              public ticketService: TicketService) {
   }
 
   public ionViewDidLoad(): void {
+    // If we navigated to this page, we will have an item available as a nav param
     this.selectedItem = this.navParams.get('item');
     this.itemSpec = this.navParams.get('itemSpec');
     this.retailer = this.navParams.get('dispensary');
     this.selectedItem.retailer_name = this.retailer.name;
+    console.log(this.selectedItem)
+    this.rating = this.selectedItem.rating / this.selectedItem.reviews.length;
 
     this.itemPrice = this.selectedItem.prices[0];
     this.quantityLabel = this.selectedItem.price_labels[0];
@@ -69,5 +87,45 @@ export class ItemDetailsPage {
       showCloseButton: true
     });
     toast.present();
+  }
+
+  addReviewToSelectedItem(review) {
+    this.selectedItem.reviews.push(review);
+    this.selectedItem.rating = review.rating + Number(this.selectedItem.rating);
+    this.rating = this.selectedItem.rating / this.selectedItem.reviews.length;
+  }
+
+  writeReview(selectedItem) {
+    let reviewModal = this.modalCtrl.create(ReviewModalPage, {"selectedItem": selectedItem, "type": 'PRODUCT'});
+    reviewModal.present(reviewModal);
+    reviewModal.onDidDismiss(review => {
+      if (review) {
+        var loader = this.loadingCtrl.create({});
+        loader.present();
+        this.ticketService.sendReview(review)
+          .map(response => response.json())
+          .subscribe(
+            data => {
+              this.addReviewToSelectedItem(data)
+              loader.dismiss();
+              let toast = this.toastCtrl.create({
+                message: "Thank you " + data.name + ", for helping the community!",
+                duration: 3000
+              })
+              toast.present();
+            },
+            error => {
+              // console.log(error);
+              loader.dismiss();
+              let alert = this.alertCtrl.create({
+                title: 'Woops',
+                subTitle: error == undefined? error.json().errors.full_messages[0] : 'Could not submit review, please try again.',
+                buttons: ['OK']
+              });
+              alert.present();
+            }
+          )
+      }
+    });
   }
 }

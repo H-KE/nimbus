@@ -66,3 +66,18 @@ p.align-center {
     background-color: transparent !important;
   }
 }
+
+ul {
+  padding: 0px;
+  margin: 0px 0px;
+
+  &.rating li {
+    padding: 0px 0px !important;
+    background: none;
+    color: #059361;
+
+    ion-icon {
+      font-size: 20px;
+    }
+  }
+}

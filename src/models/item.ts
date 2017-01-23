@@ -15,4 +15,6 @@ export class Item {
   quantity: string;
   price: number;
   edit: boolean;
+  reviews: any[];
+  rating: number;
 }

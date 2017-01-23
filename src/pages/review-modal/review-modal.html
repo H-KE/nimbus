@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button ion-button (click)="cancel()">Cancel</button>
+    </ion-buttons>
+    <ion-buttons end>
+      <button ion-button (click)="submit()">Submit</button>
+    </ion-buttons>
+    <ion-title>Write a review</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="review-modal">
+  <ion-list>
+    <ion-item>
+      <h2> Rating: </h2>
+      <rating [(ngModel)]="rating"></rating>
+    </ion-item>
+    <ion-item>
+      <ion-textarea [(ngModel)]="reviewBody" rows="20"></ion-textarea>
+    </ion-item>
+  </ion-list>
+  <p class="align-center">
+    We appreciate you sharing your experience!
+  </p>
+</ion-content>

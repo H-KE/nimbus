@@ -19,10 +19,11 @@ import { DispensaryReviewPage } from '../pages/dispensary-review/dispensary-revi
 import { ItemDetailsPage } from '../pages/item-details/item-details';
 import { AddressModalPage } from '../pages/address-modal/address-modal';
 import { ContactModalPage } from '../pages/contact-modal/contact-modal';
+import { ReviewModalPage } from '../pages/review-modal/review-modal';
 import { DocumentsModalPage } from '../pages/documents-modal/documents-modal';
 import { TermsPage } from '../pages/terms/terms';
 import { ShippoPage } from '../pages/shippo/shippo';
-import { DispensaryTabsPage} from '../pages/dispensary-tabs/dispensary-tabs'
+import { DispensaryTabsPage} from '../pages/dispensary-tabs/dispensary-tabs';
 
 import { CartService } from '../providers/cart/cart';
 import { DispensaryService } from '../providers/dispensary/dispensary';
@@ -33,6 +34,7 @@ import { VerificationService } from '../providers/verification/verification';
 import { TrackingService } from '../providers/tracking/tracking';
 import { TicketService } from '../providers/ticket/ticket';
 import { SideMenuService } from '../providers/side-menu/side-menu';
+import { Ionic2RatingModule } from 'ionic2-rating';
 
 @NgModule({
   declarations: [
@@ -56,14 +58,16 @@ import { SideMenuService } from '../providers/side-menu/side-menu';
     TermsPage,
     ShippoPage,
     ContactModalPage,
-    DispensaryTabsPage
+    DispensaryTabsPage,
+    ReviewModalPage
   ],
   imports: [
     IonicModule.forRoot(MyApp, {}, {
       links: [
         // { component: DispensaryPage, name: 'dispensary', segment: 'dispensary/:dispensaryId', defaultHistory: [SearchPage] }
       ]
-    })
+    }),
+    Ionic2RatingModule
   ],
   bootstrap: [
     IonicApp
@@ -89,7 +93,8 @@ import { SideMenuService } from '../providers/side-menu/side-menu';
     TermsPage,
     ShippoPage,
     ContactModalPage,
-    DispensaryTabsPage
+    DispensaryTabsPage,
+    ReviewModalPage
   ],
   providers: [
     CartService,

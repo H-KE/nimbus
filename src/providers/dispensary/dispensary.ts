@@ -74,4 +74,20 @@ export class DispensaryService {
         )
     });
   }
+
+  getItem(id) {
+
+    return new Promise(resolve => {
+      this.auth.get('producs/' + id)
+        .map(response => response.json())
+        .subscribe(
+          data => {
+            resolve(data);
+          },
+          error => {
+            resolve(error);
+          }
+        )
+    });
+  }
 }

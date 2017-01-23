@@ -28,6 +28,7 @@
           <p>
             <ion-badge color="green">{{selectedItem.subspecies}}</ion-badge>
             <ion-badge color="lightgreen">{{itemSpec}}</ion-badge>
+            <rating [(ngModel)]="rating" readOnly="true"></rating>
           </p>
           <p style="white-space: pre-line;">
             {{selectedItem.description}}
@@ -55,6 +56,29 @@
         <button *ngIf="!dynamicSlider" ion-button icon-left color="secondary" full (click)="addToCart(selectedItem, quantity)" [disabled]=disabled>
           <ion-icon name='cart'></ion-icon>
           Add to Cart (${{selectedItem.prices[0] * quantity}})
+        </button>
+      </ion-card>
+      <ion-card>
+        <ion-card-header>
+          Reviews
+        </ion-card-header>
+        <ion-list *ngIf="selectedItem.reviews.length > 0">
+          <ion-item text-wrap *ngFor="let review of selectedItem.reviews">
+            <ion-avatar item-left>
+              <img src="assets/img/square_missing.png">
+            </ion-avatar>
+            <h2>{{review.name}}</h2>
+            <rating [(ngModel)]="review.rating" readOnly="true"></rating>
+            <p style="white-space: pre-line;">
+              {{review.comment}}
+            </p>
+          </ion-item>
+        </ion-list>
+        <ion-item text-wrap *ngIf="selectedItem.reviews.length == 0">
+          <p>No reviews yet, feel free to leave one and share your experience</p>
+        </ion-item>
+        <button ion-button color="secondary" full (click)="writeReview(selectedItem)">
+          Write a review
         </button>
       </ion-card>
     </ion-col>

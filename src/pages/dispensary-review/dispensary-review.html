@@ -9,13 +9,27 @@
       <ion-col width-50>
         <ion-card>
           <ion-card-header>
-            Reviews
+            Reviews ({{review_count}})
+            <rating [(ngModel)]="rating" readOnly="true"></rating>
           </ion-card-header>
-          <ion-card-content>
-            <p>
-              review
-            </p>
-          </ion-card-content>
+          <ion-list *ngIf="selectedDispensary.reviews.length > 0">
+            <ion-item text-wrap *ngFor="let review of selectedDispensary.reviews">
+              <ion-avatar item-left>
+                <img src="assets/img/square_missing.png">
+              </ion-avatar>
+              <h2>{{review.name}}</h2>
+              <rating [(ngModel)]="review.rating" readOnly="true"></rating>
+              <p style="white-space: pre-line;">
+                {{review.comment}}
+              </p>
+            </ion-item>
+          </ion-list>
+          <ion-item text-wrap *ngIf="selectedDispensary.reviews.length == 0">
+            <p>No reviews yet, feel free to leave one and share your experience</p>
+          </ion-item>
+          <button ion-button color="secondary" full (click)="writeReview(selectedDispensary)">
+            Write a review
+          </button>
         </ion-card>
       </ion-col>
     </ion-row>
