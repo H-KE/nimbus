@@ -27,6 +27,10 @@
                   <p>Amount: <b>{{order.total_price*1 + order.delivery_fee*1 | currency:'USD':true:'1.2-2'}}</b></p>
                   <p>Transfer Message: <b>invoice {{order.id}}</b></p>
                   <p>Security Answer: <b>{{securityAnswer}}</b></p>
+                  <button icon-left ion-button color="danger" (click)="initiateEtransferAlert()">
+                    <ion-icon name="send"></ion-icon>
+                    Send Payment
+                  </button>
                 </div>
               </li>
               <li>Verifying</li>
@@ -49,10 +53,10 @@
 
             <ol *ngSwitchCase="'packaging'">
               <li class="completed">
-                <ion-icon name="checkmark"></ion-icon>Awaiting Payment
+                <ion-icon class="checkmark" name="checkmark"></ion-icon>Awaiting Payment
               </li>
               <li class="completed">
-                 <ion-icon name="checkmark"></ion-icon> Verifying
+                 <ion-icon class="checkmark" name="checkmark"></ion-icon> Verifying
               </li>
               <li class="current">
                 Packaging
@@ -63,13 +67,13 @@
 
             <ol *ngSwitchCase="'in_transit'">
               <li class="completed">
-                <ion-icon name="checkmark"></ion-icon>Awaiting Payment
+                <ion-icon class="checkmark" name="checkmark"></ion-icon>Awaiting Payment
               </li>
               <li class="completed">
-                 <ion-icon name="checkmark"></ion-icon> Verifying
+                 <ion-icon class="checkmark" name="checkmark"></ion-icon> Verifying
               </li>
               <li class="completed">
-                <ion-icon name="checkmark"></ion-icon> Packaging
+                <ion-icon class="checkmark" name="checkmark"></ion-icon> Packaging
               </li>
               <li class="current">
                 In Transit
@@ -88,19 +92,19 @@
 
             <ol *ngSwitchCase="'completed'">
               <li class="completed">
-                <ion-icon name="checkmark"></ion-icon>Awaiting Payment
+                <ion-icon class="checkmark" name="checkmark"></ion-icon>Awaiting Payment
               </li>
               <li class="completed">
-                <ion-icon name="checkmark"></ion-icon> Verifying
+                <ion-icon class="checkmark" name="checkmark"></ion-icon> Verifying
               </li>
               <li class="completed">
-                <ion-icon name="checkmark"></ion-icon> Packaging
+                <ion-icon class="checkmark" name="checkmark"></ion-icon> Packaging
               </li>
               <li class="completed">
-                <ion-icon name="checkmark"></ion-icon> In Transit
+                <ion-icon class="checkmark" name="checkmark"></ion-icon> In Transit
               </li>
               <li class="completed">
-                <ion-icon name="checkmark"></ion-icon> Order Complete
+                <ion-icon class="checkmark" name="checkmark"></ion-icon> Order Complete
                 <!-- <div *ngIf="trackingInfo && trackingInfo.tracking_status" class="status_detail">
                   <p>{{trackingInfo.tracking_status.status_date | date:'medium'}}</p>
                   <p>{{trackingInfo.tracking_status.status_details}}</p>
@@ -114,13 +118,13 @@
 
             <ol *ngSwitchCase="'declined'">
               <li class="completed">
-                <ion-icon name="checkmark"></ion-icon>Awaiting Payment
+                <ion-icon class="checkmark" name="checkmark"></ion-icon>Awaiting Payment
               </li>
               <li class="completed">
-                 <ion-icon name="checkmark"></ion-icon> Verifying
+                 <ion-icon class="checkmark" name="checkmark"></ion-icon> Verifying
               </li>
               <li class="completed">
-                 <ion-icon name="checkmark"></ion-icon> Refunded
+                 <ion-icon class="checkmark" name="checkmark"></ion-icon> Refunded
               </li>
               <li class="current">
                 Order Declined

@@ -6,6 +6,7 @@ import { OrderService } from '../../providers/orders/orders';
 import { TrackingService } from '../../providers/tracking/tracking';
 
 import { ShippoPage } from '../shippo/shippo'
+import _ from 'lodash'
 
 @Component({
   selector: 'order-details',
@@ -17,6 +18,32 @@ export class OrderDetailsPage {
   securityAnswer: string;
   trackingInfo: any;
   errorMessage: string;
+  bankLinks = [
+    {
+      name: 'RBC',
+      link: 'https://www1.royalbank.com/cgi-bin/rbaccess/rbunxcgi?F6=1&F7=IB&F21=IB&F22=IB&REQUEST=ClientSignin&LANGUAGE=ENGLISH&_ga=1.168909345.1897265541.1485218757'
+    },
+    {
+      name: 'TD Canada Trust',
+      link: 'https://easyweb.td.com/waw/idp/login.htm?execution=e1s1'
+    },
+    {
+      name: 'Scotiabank',
+      link: 'https://www1.scotiaonline.scotiabank.com/online/authentication/authentication.bns'
+    },
+    {
+      name: 'BMO',
+      link: 'https://www1.bmo.com/onlinebanking/cgi-bin/netbnx/NBmain?product=5'
+    },
+    {
+      name: 'PC Financial',
+      link: 'https://www.txn.banking.pcfinancial.ca/ebm-resources/public/client/web/index.html#/signon'
+    },
+    {
+      name: 'CIBC',
+      link: 'https://www.cibc.com/en/personal-banking.html'
+    }
+  ]
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
@@ -71,6 +98,22 @@ export class OrderDetailsPage {
         }
       )
   };
+
+  initiateEtransferAlert() {
+    let alert = this.alertCtrl.create();
+    alert.setTitle('E-Transfer Quick Links');
+    _.map(this.bankLinks, bank => {
+      alert.addInput({type: 'radio', label: bank.name, value: bank.link});
+    })
+    alert.addButton('Cancel');
+    alert.addButton({
+      text   : 'Go',
+      handler: data => {
+        window.open(data)
+      }
+    });
+    alert.present();
+  }
 
   goToShippo() {
     this.navCtrl.push(ShippoPage);
