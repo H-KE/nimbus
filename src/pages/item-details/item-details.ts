@@ -15,6 +15,7 @@ import { ReviewModalPage } from '../review-modal/review-modal';
 
 import { CartService } from '../../providers/cart/cart';
 import { TicketService } from '../../providers/ticket/ticket';
+import { AuthenticationService } from '../../providers/authentication/authentication'
 
 import _ from 'underscore';
 
@@ -40,6 +41,7 @@ export class ItemDetailsPage {
 
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
+              public auth: AuthenticationService,
               public modalCtrl: ModalController,
               public loadingCtrl: LoadingController,
               public toastCtrl: ToastController,

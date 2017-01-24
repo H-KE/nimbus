@@ -65,7 +65,7 @@
       <ion-card>
         <ion-item>
           <h2>Reviews ({{selectedItem.reviews.length}})</h2>
-          <button item-right icon-left ion-button color="secondary" (click)="writeReview(selectedItem)">
+          <button item-right icon-left ion-button color="secondary" (click)="writeReview(selectedItem)" *ngIf="auth._currentUserData">
             <ion-icon name="chatbubbles"></ion-icon>
             Write a review
           </button>

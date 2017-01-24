@@ -14,13 +14,15 @@ export class ReviewModalPage {
   rating: number;
   selectedItem: number;
   type: string;
+  errorMessage: string;
 
   constructor(public viewCtrl: ViewController,
               public navParams: NavParams) {
     this.type = navParams.get('type')
     this.selectedItem = navParams.get('selectedItem')
     this.reviewBody = ""
-    this.rating = 5
+    this.rating = 0
+    this.errorMessage = ""
   }
 
   ionViewDidLoad() {
@@ -32,7 +34,13 @@ export class ReviewModalPage {
   }
 
   submit() {
-    this.review = new Review(this.selectedItem, this.reviewBody, this.rating, this.type)
-    this.viewCtrl.dismiss(this.review)
+    if(this.reviewBody == "") {
+      this.errorMessage = "Cannot submit an empty review."
+    } else if(this.rating == 0){
+      this.errorMessage = "Please select a rating."
+    } else {
+      this.review = new Review(this.selectedItem, this.reviewBody, this.rating, this.type)
+      this.viewCtrl.dismiss(this.review)
+    }
   }
 }

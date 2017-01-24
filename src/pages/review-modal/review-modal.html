@@ -12,6 +12,9 @@
 
 <ion-content class="review-modal">
   <ion-list>
+    <ion-item no-lines *ngIf="errorMessage">
+      <p class="error-message">{{errorMessage}}</p>
+    </ion-item>
     <ion-item>
       <h2> Rating: </h2>
       <rating [(ngModel)]="rating"></rating>

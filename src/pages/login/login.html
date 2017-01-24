@@ -21,7 +21,7 @@
           <ion-input type="password" [(ngModel)]="password"></ion-input>
         </ion-item>
 
-        <ion-item class="no_bottom_border" *ngIf="errorMessage">
+        <ion-item no-lines *ngIf="errorMessage">
           <p class="error-message">{{errorMessage}}</p>
         </ion-item>
       </ion-list>
