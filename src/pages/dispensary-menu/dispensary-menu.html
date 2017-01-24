@@ -19,7 +19,7 @@
                 <h2 class="strain" *ngIf="item.subspecies" color="{{item.subspecies.toLowerCase()}}">{{item.subspecies}}</h2>
                 <p>{{renderItemDescription(item)}}</p>
                 <span id="rating" *ngIf="item.reviews.length > 0">
-                  <rating [(ngModel)]="item.rating" readOnly="true"></rating>
+                  <rating [(ngModel)]="item.rating/item.reviews.length" readOnly="true"></rating>
                   <ion-icon color="primary">({{item.reviews.length}})</ion-icon>
                 </span>
                 <button ion-fab item-right color="secondary" (click)="addToCart($event, item)" [disabled]="isItemDisabled(item)">
