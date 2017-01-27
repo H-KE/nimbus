@@ -3,6 +3,8 @@ import { NavController, MenuController } from 'ionic-angular';
 import { SignupPage } from '../signup/signup';
 import { LoginPage } from '../login/login';
 import { SearchPage } from '../search/search';
+import { TermsPage } from '../terms/terms';
+
 import { AuthenticationService } from '../../providers/authentication/authentication'
 
 @Component({
@@ -32,6 +34,10 @@ export class HomePage {
 
   goToSearch() {
     this.navCtrl.setRoot(SearchPage);
+  }
+
+  goToTerms() {
+    this.navCtrl.push(TermsPage);
   }
 
   oauth(type) {

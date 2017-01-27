@@ -1,4 +1,40 @@
 home {
+  h2 {
+    font-weight: 400;
+  }
+
+  @media (max-width: 499px) {
+    .home-two-content {
+        padding: 24px!important;
+    }
+
+    .home-section-content {
+        padding: 135px 24px;
+    }
+
+    .footer-column {
+      width: 49% !important;
+
+      h2 {
+        font-size: 18px;
+        margin-bottom: 10px;
+      }
+
+      ul {
+        margin-bottom: 35px;
+
+        li {
+          font-size: 12px;
+          margin-bottom: 5px;
+        }
+      }
+    }
+
+    .footer-disclaimer {
+      font-size: 12px;
+    }
+  }
+
   .home-two {
       background: url(https://d375e1b1g1c73t.cloudfront.net/images/home-elements_intro-bg-007c05e060eccbaeaa1905e25accb215.jpg) center/cover no-repeat #ddd;
       color: #000;
@@ -10,6 +46,7 @@ home {
   }
   .home-title {
     font-size: 32px;
+    font-weight: 400;
   }
   .home-title-2 {
     font-size: 26px;
@@ -20,7 +57,7 @@ home {
   }
   .home-two-content {
       display: table-cell;
-      padding: 60px 0!important;
+      padding: 60px 0;
       vertical-align: middle;
   }
   .home-two-down-arrow {
@@ -37,9 +74,68 @@ home {
         padding: 1em 1.5em !important;
       }
   }
-  @media (max-width: 499px) {
-    .home-two-content {
-        padding: 24px!important;
+
+  .as-featured {
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 20px 24px;
+
+    h2 {
+      color: #7154a0;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .as-featured-images {
+      text-align: center;
+    }
+
+    img {
+      border: 0;
+      height: 100px;
+      margin: 10px 14px;
+    }
+  }
+
+  .home-section-content {
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 50px 24px;
+  }
+
+  .footer-column {
+    text-align: center;
+    display: inline-block;
+    padding: 0 10px;
+    vertical-align: top;
+    width: 49%;
+
+    h2 {
+      color: #7154a0;
+      margin-bottom: 20px;
+    }
+
+    ul {
+      list-style-type: none!important;
+
+      li {
+        margin-bottom: 8px;
+      }
+    }
+
+    a {
+      color: #929497;
+      text-decoration: none!important;
+    }
+  }
+
+  .footer-disclaimer {
+    margin: 110px auto 0px auto;
+    color: #929497;
+    text-align: center;
+
+    p {
+      margin: 0;
     }
   }
 }
