@@ -10,8 +10,10 @@ import {CartPage} from '../cart/cart';
 import {CartService} from '../../providers/cart/cart';
 import {DispensaryService} from '../../providers/dispensary/dispensary';
 import { SideMenuService } from '../../providers/side-menu/side-menu'
+import { AuthenticationService } from '../../providers/authentication/authentication'
 
 import _ from 'lodash'
+import mixpanel from 'mixpanel-browser'
 
 @Component({
   selector: 'search',
@@ -28,7 +30,8 @@ export class SearchPage {
               public menuCtrl: MenuController,
               public localStorage: Storage,
               public alertCtrl: AlertController,
-              public sideMenu: SideMenuService) {
+              public sideMenu: SideMenuService,
+              public auth: AuthenticationService) {
     this.menuCtrl.swipeEnable(true);
     this.loadDispensaries();
 
@@ -60,6 +63,11 @@ export class SearchPage {
   }
 
   dispensarySelected(event, dispensary) {
+    mixpanel.track("Dispensary selected", {
+      api: this.auth._options.apiPath,
+      user: this.auth._currentAuthData ? this.auth._currentAuthData.uid : 'unregistered',
+      dispensary: dispensary.name
+    });
     this.navCtrl.push(DispensaryTabsPage, {
       dispensary: dispensary,
       dispensaryId: dispensary.id

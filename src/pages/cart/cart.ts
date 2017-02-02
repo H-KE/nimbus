@@ -12,6 +12,7 @@ import { ItemDetailsPage } from '../item-details/item-details';
 import { SignupPage } from '../signup/signup'
 
 import _ from 'underscore';
+import mixpanel from 'mixpanel-browser'
 
 @Component({
   selector: 'cart',
@@ -68,6 +69,14 @@ export class CartPage {
     this.order.delivery = this.cartService.carts[dispensaryName].dispensary.delivery;
     this.order.delivery_fee = this.calculateShippingCost(this.cartService.carts[dispensaryName]);
     this.order.dispensary_name = dispensaryName;
+    mixpanel.track("Cart checked out", {
+      api: this.auth._options.apiPath,
+      user: this.auth._currentAuthData ? this.auth._currentAuthData.uid : 'unregistered',
+      dispensary: dispensaryName,
+      order_total_price: this.order.total_price,
+      order_delivery_fee: this.order.delivery_fee,
+      order_details: this.order.order_details
+    });
 
     this.goToCheckout();
 

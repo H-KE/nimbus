@@ -7,6 +7,8 @@ import { HomePage } from '../pages/home/home';
 import { AuthenticationService } from '../providers/authentication/authentication'
 import { SideMenuService } from '../providers/side-menu/side-menu'
 
+import mixpanel from 'mixpanel-browser'
+
 @Component({
   templateUrl: 'app.html',
 })
@@ -29,6 +31,7 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       StatusBar.styleDefault();
+      mixpanel.init("763361f8295db208ff1ba60a68b321b5")
     });
   }
 

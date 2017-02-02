@@ -7,8 +7,10 @@ import { ItemDetailsPage } from '../item-details/item-details'
 import { CartPage } from '../cart/cart'
 import { CartService } from '../../providers/cart/cart'
 import { DispensaryService } from '../../providers/dispensary/dispensary'
+import { AuthenticationService } from '../../providers/authentication/authentication'
 
 import _ from 'lodash'
+import mixpanel from 'mixpanel-browser'
 
 @Component({
   selector: 'dispensary-menu',
@@ -37,7 +39,8 @@ export class DispensaryMenuPage {
               public dispensaryService: DispensaryService,
               public toastCtrl: ToastController,
               public loadingCtrl: LoadingController,
-              public appCtrl: App) {
+              public appCtrl: App,
+              public auth: AuthenticationService) {
     this.selectedDispensary = this.navParams.data
     this.categorizeMenu()
   }
@@ -58,6 +61,14 @@ export class DispensaryMenuPage {
   }
 
   itemSelected(event, item) {
+    mixpanel.track("Item selected", {
+      api: this.auth._options.apiPath,
+      user: this.auth._currentAuthData ? this.auth._currentAuthData.uid : 'unregistered',
+      dispensary: this.selectedDispensary.name,
+      item_id: item.id,
+      item_name: item.name
+    });
+
     this.appCtrl.getRootNav().push(ItemDetailsPage, {
       item: item,
       itemSpec: this.renderItemDescription(item),
@@ -107,6 +118,13 @@ export class DispensaryMenuPage {
 
   addToCart($event, selectedItem) {
     $event.stopPropagation()
+    mixpanel.track("Instant add to cart", {
+      api: this.auth._options.apiPath,
+      user: this.auth._currentAuthData ? this.auth._currentAuthData.uid : 'unregistered',
+      dispensary: this.selectedDispensary.name,
+      item_id: selectedItem.id,
+      item_name: selectedItem.name
+    });
     if(this.isFlower(selectedItem)) {
       this.cartService.addToCart(this.selectedDispensary.name, this.selectedDispensary, selectedItem, selectedItem.price_labels[1], 1 * selectedItem.prices[1])
     } else {

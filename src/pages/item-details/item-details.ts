@@ -18,6 +18,7 @@ import { TicketService } from '../../providers/ticket/ticket';
 import { AuthenticationService } from '../../providers/authentication/authentication'
 
 import _ from 'underscore';
+import mixpanel from 'mixpanel-browser';
 
 @Component({
   selector: 'item-details',
@@ -68,6 +69,15 @@ export class ItemDetailsPage {
   public ionViewDidLoad(): void {}
 
   addToCart(selectedItem, quantity) {
+    mixpanel.track("Item added to cart", {
+      api: this.auth._options.apiPath,
+      user: this.auth._currentAuthData ? this.auth._currentAuthData.uid : 'unregistered',
+      item_id: selectedItem.id,
+      item_name: selectedItem.name,
+      item_price: selectedItem.price,
+      item_quantity: selectedItem.quantity
+    });
+
     if (this.dynamicSlider == true) {
       this.cartService.addToCart(this.retailer.name, this.retailer, selectedItem, selectedItem.price_labels[quantity], selectedItem.prices[quantity]);
     } else {
