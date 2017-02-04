@@ -71,16 +71,19 @@
           </button>
         </ion-item>
         <ion-list *ngIf="selectedItem.reviews.length > 0">
-          <ion-item text-wrap *ngFor="let review of selectedItem.reviews">
-            <ion-avatar item-left>
-              <img src="assets/img/square_missing.png">
-            </ion-avatar>
-            <h2>{{review.name}}</h2>
-            <rating [(ngModel)]="review.rating" readOnly="true"></rating>
-            <p style="white-space: pre-line;">
+          <div *ngFor="let review of selectedItem.reviews">
+            <ion-item >
+              <ion-avatar item-left>
+                <img src="assets/img/square_missing.png">
+              </ion-avatar>
+              <h2>{{review.name}}</h2>
+              <rating [(ngModel)]="review.rating" readOnly="true"></rating>
+              <p item-right>{{review.created_at}}</p>
+            </ion-item>
+            <p class="review_text">
               {{review.comment}}
             </p>
-          </ion-item>
+          </div>
         </ion-list>
         <ion-item text-wrap *ngIf="selectedItem.reviews.length == 0">
           <p>No reviews yet, feel free to leave one and share your experience</p>

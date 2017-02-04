@@ -9,6 +9,8 @@ import { User } from '../../models/user'
 import { SearchPage } from '../search/search';
 import { TermsPage } from '../terms/terms';
 
+import mixpanel from 'mixpanel-browser'
+
 @Component({
   selector: 'signup',
   templateUrl: 'signup.html'
@@ -33,6 +35,11 @@ export class SignupPage {
   }
 
   signup() {
+    mixpanel.track("Signup", {
+      api: this.auth._options.apiPath,
+      user: 'unregistered'
+    });
+
     var loader = this.loadingCtrl.create({});
     loader.present();
     this.auth.registerAccount(

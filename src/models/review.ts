@@ -7,7 +7,7 @@ export class Review {
 
   constructor(item: any, comment: string, rating: number, type: string) {
     type == 'RETAILER' ? this.retailer_id = item.id : this.product_id = item.id;
-    this.comment = comment;
+    this.comment = comment
     this.rating = rating
   }
 }
